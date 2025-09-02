@@ -331,7 +331,7 @@ class TestBusinessRadar:
     def test_validate_headers(self) -> None:
         client = BusinessRadar(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
-        assert request.headers.get("Authorization") == api_key
+        assert request.headers.get("Authorization") == f"Bearer {api_key}"
 
         with pytest.raises(BusinessRadarError):
             with update_env(**{"BUSINESSRADAR_API_KEY": Omit()}):
@@ -1123,7 +1123,7 @@ class TestAsyncBusinessRadar:
     def test_validate_headers(self) -> None:
         client = AsyncBusinessRadar(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
-        assert request.headers.get("Authorization") == api_key
+        assert request.headers.get("Authorization") == f"Bearer {api_key}"
 
         with pytest.raises(BusinessRadarError):
             with update_env(**{"BUSINESSRADAR_API_KEY": Omit()}):
