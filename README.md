@@ -32,8 +32,8 @@ client = BusinessRadar(
     api_key=os.environ.get("BUSINESSRADAR_API_KEY"),  # This is the default and can be omitted
 )
 
-articles = client.news.articles.list()
-print(articles.next_key)
+page = client.news.articles.list()
+print(page.results)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -56,8 +56,8 @@ client = AsyncBusinessRadar(
 
 
 async def main() -> None:
-    articles = await client.news.articles.list()
-    print(articles.next_key)
+    page = await client.news.articles.list()
+    print(page.results)
 
 
 asyncio.run(main())
@@ -89,8 +89,8 @@ async def main() -> None:
         api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
-        articles = await client.news.articles.list()
-        print(articles.next_key)
+        page = await client.news.articles.list()
+        print(page.results)
 
 
 asyncio.run(main())
@@ -104,6 +104,77 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 - Converting to a dictionary, `model.to_dict()`
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
+
+## Pagination
+
+List methods in the Business Radar API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```python
+from businessradar import BusinessRadar
+
+client = BusinessRadar()
+
+all_articles = []
+# Automatically fetches more pages as needed.
+for article in client.news.articles.list(
+    next_key="24345",
+):
+    # Do something with article here
+    all_articles.append(article)
+print(all_articles)
+```
+
+Or, asynchronously:
+
+```python
+import asyncio
+from businessradar import AsyncBusinessRadar
+
+client = AsyncBusinessRadar()
+
+
+async def main() -> None:
+    all_articles = []
+    # Iterate through items across all pages, issuing requests as needed.
+    async for article in client.news.articles.list(
+        next_key="24345",
+    ):
+        all_articles.append(article)
+    print(all_articles)
+
+
+asyncio.run(main())
+```
+
+Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
+
+```python
+first_page = await client.news.articles.list(
+    next_key="24345",
+)
+if first_page.has_next_page():
+    print(f"will fetch next page using these details: {first_page.next_page_info()}")
+    next_page = await first_page.get_next_page()
+    print(f"number of items we just fetched: {len(next_page.results)}")
+
+# Remove `await` for non-async usage.
+```
+
+Or just work directly with the returned data:
+
+```python
+first_page = await client.news.articles.list(
+    next_key="24345",
+)
+
+print(f"next page cursor: {first_page.next_key}")  # => "next page cursor: ..."
+for article in first_page.results:
+    print(article.external_id)
+
+# Remove `await` for non-async usage.
+```
 
 ## Nested params
 
@@ -248,7 +319,7 @@ response = client.news.articles.with_raw_response.list()
 print(response.headers.get('X-My-Header'))
 
 article = response.parse()  # get the object that `news.articles.list()` would have returned
-print(article.next_key)
+print(article.external_id)
 ```
 
 These methods return an [`APIResponse`](https://github.com/businessradar/businessradar-sdk-python/tree/master/src/businessradar/_response.py) object.

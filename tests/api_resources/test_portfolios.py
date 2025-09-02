@@ -9,7 +9,8 @@ import pytest
 
 from tests.utils import assert_matches_type
 from businessradar import BusinessRadar, AsyncBusinessRadar
-from businessradar.types import Portfolio, PortfolioListResponse
+from businessradar.types import Portfolio
+from businessradar.pagination import SyncNextKey, AsyncNextKey
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -65,7 +66,7 @@ class TestPortfolios:
     @parametrize
     def test_method_list(self, client: BusinessRadar) -> None:
         portfolio = client.portfolios.list()
-        assert_matches_type(PortfolioListResponse, portfolio, path=["response"])
+        assert_matches_type(SyncNextKey[Portfolio], portfolio, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -73,7 +74,7 @@ class TestPortfolios:
         portfolio = client.portfolios.list(
             next_key="next_key",
         )
-        assert_matches_type(PortfolioListResponse, portfolio, path=["response"])
+        assert_matches_type(SyncNextKey[Portfolio], portfolio, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -83,7 +84,7 @@ class TestPortfolios:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         portfolio = response.parse()
-        assert_matches_type(PortfolioListResponse, portfolio, path=["response"])
+        assert_matches_type(SyncNextKey[Portfolio], portfolio, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -93,7 +94,7 @@ class TestPortfolios:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             portfolio = response.parse()
-            assert_matches_type(PortfolioListResponse, portfolio, path=["response"])
+            assert_matches_type(SyncNextKey[Portfolio], portfolio, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -151,7 +152,7 @@ class TestAsyncPortfolios:
     @parametrize
     async def test_method_list(self, async_client: AsyncBusinessRadar) -> None:
         portfolio = await async_client.portfolios.list()
-        assert_matches_type(PortfolioListResponse, portfolio, path=["response"])
+        assert_matches_type(AsyncNextKey[Portfolio], portfolio, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -159,7 +160,7 @@ class TestAsyncPortfolios:
         portfolio = await async_client.portfolios.list(
             next_key="next_key",
         )
-        assert_matches_type(PortfolioListResponse, portfolio, path=["response"])
+        assert_matches_type(AsyncNextKey[Portfolio], portfolio, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -169,7 +170,7 @@ class TestAsyncPortfolios:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         portfolio = await response.parse()
-        assert_matches_type(PortfolioListResponse, portfolio, path=["response"])
+        assert_matches_type(AsyncNextKey[Portfolio], portfolio, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -179,6 +180,6 @@ class TestAsyncPortfolios:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             portfolio = await response.parse()
-            assert_matches_type(PortfolioListResponse, portfolio, path=["response"])
+            assert_matches_type(AsyncNextKey[Portfolio], portfolio, path=["response"])
 
         assert cast(Any, response.is_closed) is True

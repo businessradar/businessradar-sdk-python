@@ -16,7 +16,6 @@ from .company_create_params import CompanyCreateParams as CompanyCreateParams
 from .company_list_response import CompanyListResponse as CompanyListResponse
 from .portfolio_list_params import PortfolioListParams as PortfolioListParams
 from .portfolio_create_params import PortfolioCreateParams as PortfolioCreateParams
-from .portfolio_list_response import PortfolioListResponse as PortfolioListResponse
 from .compliance_create_params import ComplianceCreateParams as ComplianceCreateParams
 from .company_retrieve_response import CompanyRetrieveResponse as CompanyRetrieveResponse
 from .compliance_create_response import ComplianceCreateResponse as ComplianceCreateResponse
@@ -30,8 +29,6 @@ from .compliance_retrieve_response import ComplianceRetrieveResponse as Complian
 if _compat.PYDANTIC_V2:
     news.article.Article.model_rebuild(_parent_namespace_depth=0)
     news.category_tree.CategoryTree.model_rebuild(_parent_namespace_depth=0)
-    news.article_list_response.ArticleListResponse.model_rebuild(_parent_namespace_depth=0)
 else:
     news.article.Article.update_forward_refs()  # type: ignore
     news.category_tree.CategoryTree.update_forward_refs()  # type: ignore
-    news.article_list_response.ArticleListResponse.update_forward_refs()  # type: ignore

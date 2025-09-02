@@ -34,12 +34,19 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ....types.news import FeedbackTypeEnum, article_list_params, article_create_feedback_params
-from ...._base_client import make_request_options
+from ....pagination import SyncNextKey, AsyncNextKey
+from ....types.news import (
+    FeedbackTypeEnum,
+    article_list_params,
+    article_create_feedback_params,
+    article_list_saved_article_filters_params,
+)
+from ...._base_client import AsyncPaginator, make_request_options
+from ....types.news.article import Article
 from ....types.news.feedback_type_enum import FeedbackTypeEnum
-from ....types.news.article_list_response import ArticleListResponse
 from ....types.news.article_create_feedback_response import ArticleCreateFeedbackResponse
 from ....types.news.article_retrieve_related_response import ArticleRetrieveRelatedResponse
+from ....types.news.article_list_saved_article_filters_response import ArticleListSavedArticleFiltersResponse
 
 __all__ = ["ArticlesResource", "AsyncArticlesResource"]
 
@@ -107,7 +114,7 @@ class ArticlesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArticleListResponse:
+    ) -> SyncNextKey[Article]:
         """
         Search News Articles.
 
@@ -162,8 +169,9 @@ class ArticlesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/ext/v3/articles",
+            page=SyncNextKey[Article],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -194,7 +202,7 @@ class ArticlesResource(SyncAPIResource):
                     article_list_params.ArticleListParams,
                 ),
             ),
-            cast_to=ArticleListResponse,
+            model=Article,
         )
 
     def create_feedback(
@@ -242,6 +250,48 @@ class ArticlesResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ArticleCreateFeedbackResponse,
+        )
+
+    def list_saved_article_filters(
+        self,
+        *,
+        next_key: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncNextKey[ArticleListSavedArticleFiltersResponse]:
+        """
+        List Create Saved Article Filter.
+
+        Args:
+          next_key: The next_key is an cursor used to make it possible to paginate to the next
+              results, pass the next_key from the previous request to retrieve next results.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/ext/v3/saved_article_filters",
+            page=SyncNextKey[ArticleListSavedArticleFiltersResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"next_key": next_key},
+                    article_list_saved_article_filters_params.ArticleListSavedArticleFiltersParams,
+                ),
+            ),
+            model=ArticleListSavedArticleFiltersResponse,
         )
 
     def retrieve_related(
@@ -306,7 +356,7 @@ class AsyncArticlesResource(AsyncAPIResource):
         """
         return AsyncArticlesResourceWithStreamingResponse(self)
 
-    async def list(
+    def list(
         self,
         *,
         category: List[str] | NotGiven = NOT_GIVEN,
@@ -341,7 +391,7 @@ class AsyncArticlesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArticleListResponse:
+    ) -> AsyncPaginator[Article, AsyncNextKey[Article]]:
         """
         Search News Articles.
 
@@ -396,14 +446,15 @@ class AsyncArticlesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/ext/v3/articles",
+            page=AsyncNextKey[Article],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "category": category,
                         "company": company,
@@ -428,7 +479,7 @@ class AsyncArticlesResource(AsyncAPIResource):
                     article_list_params.ArticleListParams,
                 ),
             ),
-            cast_to=ArticleListResponse,
+            model=Article,
         )
 
     async def create_feedback(
@@ -478,6 +529,48 @@ class AsyncArticlesResource(AsyncAPIResource):
             cast_to=ArticleCreateFeedbackResponse,
         )
 
+    def list_saved_article_filters(
+        self,
+        *,
+        next_key: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncPaginator[ArticleListSavedArticleFiltersResponse, AsyncNextKey[ArticleListSavedArticleFiltersResponse]]:
+        """
+        List Create Saved Article Filter.
+
+        Args:
+          next_key: The next_key is an cursor used to make it possible to paginate to the next
+              results, pass the next_key from the previous request to retrieve next results.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/ext/v3/saved_article_filters",
+            page=AsyncNextKey[ArticleListSavedArticleFiltersResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"next_key": next_key},
+                    article_list_saved_article_filters_params.ArticleListSavedArticleFiltersParams,
+                ),
+            ),
+            model=ArticleListSavedArticleFiltersResponse,
+        )
+
     async def retrieve_related(
         self,
         article_id: str,
@@ -522,6 +615,9 @@ class ArticlesResourceWithRawResponse:
         self.create_feedback = to_raw_response_wrapper(
             articles.create_feedback,
         )
+        self.list_saved_article_filters = to_raw_response_wrapper(
+            articles.list_saved_article_filters,
+        )
         self.retrieve_related = to_raw_response_wrapper(
             articles.retrieve_related,
         )
@@ -544,6 +640,9 @@ class AsyncArticlesResourceWithRawResponse:
         )
         self.create_feedback = async_to_raw_response_wrapper(
             articles.create_feedback,
+        )
+        self.list_saved_article_filters = async_to_raw_response_wrapper(
+            articles.list_saved_article_filters,
         )
         self.retrieve_related = async_to_raw_response_wrapper(
             articles.retrieve_related,
@@ -568,6 +667,9 @@ class ArticlesResourceWithStreamingResponse:
         self.create_feedback = to_streamed_response_wrapper(
             articles.create_feedback,
         )
+        self.list_saved_article_filters = to_streamed_response_wrapper(
+            articles.list_saved_article_filters,
+        )
         self.retrieve_related = to_streamed_response_wrapper(
             articles.retrieve_related,
         )
@@ -590,6 +692,9 @@ class AsyncArticlesResourceWithStreamingResponse:
         )
         self.create_feedback = async_to_streamed_response_wrapper(
             articles.create_feedback,
+        )
+        self.list_saved_article_filters = async_to_streamed_response_wrapper(
+            articles.list_saved_article_filters,
         )
         self.retrieve_related = async_to_streamed_response_wrapper(
             articles.retrieve_related,

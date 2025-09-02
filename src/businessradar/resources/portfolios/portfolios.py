@@ -26,9 +26,9 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncNextKey, AsyncNextKey
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.portfolio import Portfolio
-from ...types.portfolio_list_response import PortfolioListResponse
 
 __all__ = ["PortfoliosResource", "AsyncPortfoliosResource"]
 
@@ -117,7 +117,7 @@ class PortfoliosResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PortfolioListResponse:
+    ) -> SyncNextKey[Portfolio]:
         """
         List Create Portfolio.
 
@@ -133,8 +133,9 @@ class PortfoliosResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/ext/v3/portfolios",
+            page=SyncNextKey[Portfolio],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -142,7 +143,7 @@ class PortfoliosResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform({"next_key": next_key}, portfolio_list_params.PortfolioListParams),
             ),
-            cast_to=PortfolioListResponse,
+            model=Portfolio,
         )
 
 
@@ -220,7 +221,7 @@ class AsyncPortfoliosResource(AsyncAPIResource):
             cast_to=Portfolio,
         )
 
-    async def list(
+    def list(
         self,
         *,
         next_key: str | NotGiven = NOT_GIVEN,
@@ -230,7 +231,7 @@ class AsyncPortfoliosResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PortfolioListResponse:
+    ) -> AsyncPaginator[Portfolio, AsyncNextKey[Portfolio]]:
         """
         List Create Portfolio.
 
@@ -246,16 +247,17 @@ class AsyncPortfoliosResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/ext/v3/portfolios",
+            page=AsyncNextKey[Portfolio],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"next_key": next_key}, portfolio_list_params.PortfolioListParams),
+                query=maybe_transform({"next_key": next_key}, portfolio_list_params.PortfolioListParams),
             ),
-            cast_to=PortfolioListResponse,
+            model=Portfolio,
         )
 
 
