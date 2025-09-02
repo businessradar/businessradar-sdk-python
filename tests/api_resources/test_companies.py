@@ -14,6 +14,7 @@ from businessradar.types import (
     CompanyListResponse,
     CompanyRetrieveResponse,
 )
+from businessradar.pagination import SyncNextKey, AsyncNextKey
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -108,7 +109,7 @@ class TestCompanies:
     @parametrize
     def test_method_list(self, client: BusinessRadar) -> None:
         company = client.companies.list()
-        assert_matches_type(CompanyListResponse, company, path=["response"])
+        assert_matches_type(SyncNextKey[CompanyListResponse], company, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -122,7 +123,7 @@ class TestCompanies:
             registration_number=["string"],
             website_url="website_url",
         )
-        assert_matches_type(CompanyListResponse, company, path=["response"])
+        assert_matches_type(SyncNextKey[CompanyListResponse], company, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -132,7 +133,7 @@ class TestCompanies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = response.parse()
-        assert_matches_type(CompanyListResponse, company, path=["response"])
+        assert_matches_type(SyncNextKey[CompanyListResponse], company, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -142,9 +143,51 @@ class TestCompanies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             company = response.parse()
-            assert_matches_type(CompanyListResponse, company, path=["response"])
+            assert_matches_type(SyncNextKey[CompanyListResponse], company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_retrieve_registration(self, client: BusinessRadar) -> None:
+        company = client.companies.retrieve_registration(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+        assert_matches_type(Registration, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_retrieve_registration(self, client: BusinessRadar) -> None:
+        response = client.companies.with_raw_response.retrieve_registration(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = response.parse()
+        assert_matches_type(Registration, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_retrieve_registration(self, client: BusinessRadar) -> None:
+        with client.companies.with_streaming_response.retrieve_registration(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = response.parse()
+            assert_matches_type(Registration, company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_path_params_retrieve_registration(self, client: BusinessRadar) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `registration_id` but received ''"):
+            client.companies.with_raw_response.retrieve_registration(
+                "",
+            )
 
 
 class TestAsyncCompanies:
@@ -239,7 +282,7 @@ class TestAsyncCompanies:
     @parametrize
     async def test_method_list(self, async_client: AsyncBusinessRadar) -> None:
         company = await async_client.companies.list()
-        assert_matches_type(CompanyListResponse, company, path=["response"])
+        assert_matches_type(AsyncNextKey[CompanyListResponse], company, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -253,7 +296,7 @@ class TestAsyncCompanies:
             registration_number=["string"],
             website_url="website_url",
         )
-        assert_matches_type(CompanyListResponse, company, path=["response"])
+        assert_matches_type(AsyncNextKey[CompanyListResponse], company, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -263,7 +306,7 @@ class TestAsyncCompanies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = await response.parse()
-        assert_matches_type(CompanyListResponse, company, path=["response"])
+        assert_matches_type(AsyncNextKey[CompanyListResponse], company, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -273,6 +316,48 @@ class TestAsyncCompanies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             company = await response.parse()
-            assert_matches_type(CompanyListResponse, company, path=["response"])
+            assert_matches_type(AsyncNextKey[CompanyListResponse], company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_retrieve_registration(self, async_client: AsyncBusinessRadar) -> None:
+        company = await async_client.companies.retrieve_registration(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+        assert_matches_type(Registration, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_retrieve_registration(self, async_client: AsyncBusinessRadar) -> None:
+        response = await async_client.companies.with_raw_response.retrieve_registration(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = await response.parse()
+        assert_matches_type(Registration, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_retrieve_registration(self, async_client: AsyncBusinessRadar) -> None:
+        async with async_client.companies.with_streaming_response.retrieve_registration(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = await response.parse()
+            assert_matches_type(Registration, company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_path_params_retrieve_registration(self, async_client: AsyncBusinessRadar) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `registration_id` but received ''"):
+            await async_client.companies.with_raw_response.retrieve_registration(
+                "",
+            )

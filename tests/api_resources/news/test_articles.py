@@ -10,10 +10,12 @@ import pytest
 from tests.utils import assert_matches_type
 from businessradar import BusinessRadar, AsyncBusinessRadar
 from businessradar._utils import parse_datetime
+from businessradar.pagination import SyncNextKey, AsyncNextKey
 from businessradar.types.news import (
-    ArticleListResponse,
+    Article,
     ArticleCreateFeedbackResponse,
     ArticleRetrieveRelatedResponse,
+    ArticleListSavedArticleFiltersResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -26,7 +28,7 @@ class TestArticles:
     @parametrize
     def test_method_list(self, client: BusinessRadar) -> None:
         article = client.news.articles.list()
-        assert_matches_type(ArticleListResponse, article, path=["response"])
+        assert_matches_type(SyncNextKey[Article], article, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -52,7 +54,7 @@ class TestArticles:
             sorting="creation_date",
             sorting_order="asc",
         )
-        assert_matches_type(ArticleListResponse, article, path=["response"])
+        assert_matches_type(SyncNextKey[Article], article, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -62,7 +64,7 @@ class TestArticles:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         article = response.parse()
-        assert_matches_type(ArticleListResponse, article, path=["response"])
+        assert_matches_type(SyncNextKey[Article], article, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -72,7 +74,7 @@ class TestArticles:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             article = response.parse()
-            assert_matches_type(ArticleListResponse, article, path=["response"])
+            assert_matches_type(SyncNextKey[Article], article, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -118,6 +120,42 @@ class TestArticles:
 
             article = response.parse()
             assert_matches_type(ArticleCreateFeedbackResponse, article, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_list_saved_article_filters(self, client: BusinessRadar) -> None:
+        article = client.news.articles.list_saved_article_filters()
+        assert_matches_type(SyncNextKey[ArticleListSavedArticleFiltersResponse], article, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_list_saved_article_filters_with_all_params(self, client: BusinessRadar) -> None:
+        article = client.news.articles.list_saved_article_filters(
+            next_key="next_key",
+        )
+        assert_matches_type(SyncNextKey[ArticleListSavedArticleFiltersResponse], article, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_list_saved_article_filters(self, client: BusinessRadar) -> None:
+        response = client.news.articles.with_raw_response.list_saved_article_filters()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        article = response.parse()
+        assert_matches_type(SyncNextKey[ArticleListSavedArticleFiltersResponse], article, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_list_saved_article_filters(self, client: BusinessRadar) -> None:
+        with client.news.articles.with_streaming_response.list_saved_article_filters() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            article = response.parse()
+            assert_matches_type(SyncNextKey[ArticleListSavedArticleFiltersResponse], article, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -173,7 +211,7 @@ class TestAsyncArticles:
     @parametrize
     async def test_method_list(self, async_client: AsyncBusinessRadar) -> None:
         article = await async_client.news.articles.list()
-        assert_matches_type(ArticleListResponse, article, path=["response"])
+        assert_matches_type(AsyncNextKey[Article], article, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -199,7 +237,7 @@ class TestAsyncArticles:
             sorting="creation_date",
             sorting_order="asc",
         )
-        assert_matches_type(ArticleListResponse, article, path=["response"])
+        assert_matches_type(AsyncNextKey[Article], article, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -209,7 +247,7 @@ class TestAsyncArticles:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         article = await response.parse()
-        assert_matches_type(ArticleListResponse, article, path=["response"])
+        assert_matches_type(AsyncNextKey[Article], article, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -219,7 +257,7 @@ class TestAsyncArticles:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             article = await response.parse()
-            assert_matches_type(ArticleListResponse, article, path=["response"])
+            assert_matches_type(AsyncNextKey[Article], article, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -265,6 +303,42 @@ class TestAsyncArticles:
 
             article = await response.parse()
             assert_matches_type(ArticleCreateFeedbackResponse, article, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_saved_article_filters(self, async_client: AsyncBusinessRadar) -> None:
+        article = await async_client.news.articles.list_saved_article_filters()
+        assert_matches_type(AsyncNextKey[ArticleListSavedArticleFiltersResponse], article, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_saved_article_filters_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
+        article = await async_client.news.articles.list_saved_article_filters(
+            next_key="next_key",
+        )
+        assert_matches_type(AsyncNextKey[ArticleListSavedArticleFiltersResponse], article, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_list_saved_article_filters(self, async_client: AsyncBusinessRadar) -> None:
+        response = await async_client.news.articles.with_raw_response.list_saved_article_filters()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        article = await response.parse()
+        assert_matches_type(AsyncNextKey[ArticleListSavedArticleFiltersResponse], article, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_list_saved_article_filters(self, async_client: AsyncBusinessRadar) -> None:
+        async with async_client.news.articles.with_streaming_response.list_saved_article_filters() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            article = await response.parse()
+            assert_matches_type(AsyncNextKey[ArticleListSavedArticleFiltersResponse], article, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

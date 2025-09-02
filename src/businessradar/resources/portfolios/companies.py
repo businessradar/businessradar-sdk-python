@@ -17,7 +17,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncNextKey, AsyncNextKey
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.portfolios import company_list_params, company_create_params
 from ...types.registration import Registration
 from ...types.portfolios.company_list_response import CompanyListResponse
@@ -367,7 +368,7 @@ class CompaniesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyListResponse:
+    ) -> SyncNextKey[CompanyListResponse]:
         """
         List And Create Portfolio Companies.
 
@@ -385,8 +386,9 @@ class CompaniesResource(SyncAPIResource):
         """
         if not portfolio_id:
             raise ValueError(f"Expected a non-empty value for `portfolio_id` but received {portfolio_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/ext/v3/portfolios/{portfolio_id}/companies",
+            page=SyncNextKey[CompanyListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -394,7 +396,7 @@ class CompaniesResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform({"next_key": next_key}, company_list_params.CompanyListParams),
             ),
-            cast_to=CompanyListResponse,
+            model=CompanyListResponse,
         )
 
     def delete(
@@ -765,7 +767,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
             cast_to=Registration,
         )
 
-    async def list(
+    def list(
         self,
         portfolio_id: str,
         *,
@@ -776,7 +778,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyListResponse:
+    ) -> AsyncPaginator[CompanyListResponse, AsyncNextKey[CompanyListResponse]]:
         """
         List And Create Portfolio Companies.
 
@@ -794,16 +796,17 @@ class AsyncCompaniesResource(AsyncAPIResource):
         """
         if not portfolio_id:
             raise ValueError(f"Expected a non-empty value for `portfolio_id` but received {portfolio_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/ext/v3/portfolios/{portfolio_id}/companies",
+            page=AsyncNextKey[CompanyListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"next_key": next_key}, company_list_params.CompanyListParams),
+                query=maybe_transform({"next_key": next_key}, company_list_params.CompanyListParams),
             ),
-            cast_to=CompanyListResponse,
+            model=CompanyListResponse,
         )
 
     async def delete(

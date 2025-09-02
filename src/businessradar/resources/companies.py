@@ -18,7 +18,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncNextKey, AsyncNextKey
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.registration import Registration
 from ..types.company_list_response import CompanyListResponse
 from ..types.company_retrieve_response import CompanyRetrieveResponse
@@ -403,7 +404,7 @@ class CompaniesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyListResponse:
+    ) -> SyncNextKey[CompanyListResponse]:
         """
         Search all companies using Dun and Bradstreet.
 
@@ -437,8 +438,9 @@ class CompaniesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/ext/v3/companies",
+            page=SyncNextKey[CompanyListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -457,7 +459,40 @@ class CompaniesResource(SyncAPIResource):
                     company_list_params.CompanyListParams,
                 ),
             ),
-            cast_to=CompanyListResponse,
+            model=CompanyListResponse,
+        )
+
+    def retrieve_registration(
+        self,
+        registration_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Registration:
+        """
+        Get Registration Information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not registration_id:
+            raise ValueError(f"Expected a non-empty value for `registration_id` but received {registration_id!r}")
+        return self._get(
+            f"/ext/v3/registrations/{registration_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Registration,
         )
 
 
@@ -821,7 +856,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
             cast_to=CompanyRetrieveResponse,
         )
 
-    async def list(
+    def list(
         self,
         *,
         country: List[str] | NotGiven = NOT_GIVEN,
@@ -837,7 +872,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyListResponse:
+    ) -> AsyncPaginator[CompanyListResponse, AsyncNextKey[CompanyListResponse]]:
         """
         Search all companies using Dun and Bradstreet.
 
@@ -871,14 +906,15 @@ class AsyncCompaniesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/ext/v3/companies",
+            page=AsyncNextKey[CompanyListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "country": country,
                         "duns_number": duns_number,
@@ -891,7 +927,40 @@ class AsyncCompaniesResource(AsyncAPIResource):
                     company_list_params.CompanyListParams,
                 ),
             ),
-            cast_to=CompanyListResponse,
+            model=CompanyListResponse,
+        )
+
+    async def retrieve_registration(
+        self,
+        registration_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Registration:
+        """
+        Get Registration Information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not registration_id:
+            raise ValueError(f"Expected a non-empty value for `registration_id` but received {registration_id!r}")
+        return await self._get(
+            f"/ext/v3/registrations/{registration_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Registration,
         )
 
 
@@ -908,6 +977,9 @@ class CompaniesResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             companies.list,
         )
+        self.retrieve_registration = to_raw_response_wrapper(
+            companies.retrieve_registration,
+        )
 
 
 class AsyncCompaniesResourceWithRawResponse:
@@ -922,6 +994,9 @@ class AsyncCompaniesResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             companies.list,
+        )
+        self.retrieve_registration = async_to_raw_response_wrapper(
+            companies.retrieve_registration,
         )
 
 
@@ -938,6 +1013,9 @@ class CompaniesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             companies.list,
         )
+        self.retrieve_registration = to_streamed_response_wrapper(
+            companies.retrieve_registration,
+        )
 
 
 class AsyncCompaniesResourceWithStreamingResponse:
@@ -952,4 +1030,7 @@ class AsyncCompaniesResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             companies.list,
+        )
+        self.retrieve_registration = async_to_streamed_response_wrapper(
+            companies.retrieve_registration,
         )
