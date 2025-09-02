@@ -4,16 +4,16 @@ from typing import List, Optional
 
 from .._models import BaseModel
 
-__all__ = ["CompanyListResponse", "Result", "ResultIndustryCode"]
+__all__ = ["CompanyListResponse", "IndustryCode"]
 
 
-class ResultIndustryCode(BaseModel):
+class IndustryCode(BaseModel):
     code: str
 
     description: str
 
 
-class Result(BaseModel):
+class CompanyListResponse(BaseModel):
     address_place: str
 
     address_postal: str
@@ -28,23 +28,10 @@ class Result(BaseModel):
 
     external_id: Optional[str] = None
 
-    industry_codes: List[ResultIndustryCode]
+    industry_codes: List[IndustryCode]
 
     name: str
 
     social_logo: Optional[str] = None
 
     website_icon_url: Optional[str] = None
-
-
-class CompanyListResponse(BaseModel):
-    next_key: Optional[str] = None
-    """
-    The next_key is an cursor used to make it possible to paginate to the next
-    results, pass this next_key onto the next request to retrieve next results.
-    """
-
-    results: Optional[List[Result]] = None
-
-    total_results: Optional[float] = None
-    """Total amount of results available"""
