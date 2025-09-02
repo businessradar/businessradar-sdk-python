@@ -23,7 +23,7 @@ from ._utils import is_given, get_async_library
 from ._version import __version__
 from .resources import companies, compliance
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError, BusinessradarError
+from ._exceptions import APIStatusError, BusinessRadarError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -37,20 +37,20 @@ __all__ = [
     "Transport",
     "ProxiesTypes",
     "RequestOptions",
-    "Businessradar",
-    "AsyncBusinessradar",
+    "BusinessRadar",
+    "AsyncBusinessRadar",
     "Client",
     "AsyncClient",
 ]
 
 
-class Businessradar(SyncAPIClient):
+class BusinessRadar(SyncAPIClient):
     news: news.NewsResource
     companies: companies.CompaniesResource
     compliance: compliance.ComplianceResource
     portfolios: portfolios.PortfoliosResource
-    with_raw_response: BusinessradarWithRawResponse
-    with_streaming_response: BusinessradarWithStreamedResponse
+    with_raw_response: BusinessRadarWithRawResponse
+    with_streaming_response: BusinessRadarWithStreamedResponse
 
     # client options
     api_key: str
@@ -78,20 +78,20 @@ class Businessradar(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous Businessradar client instance.
+        """Construct a new synchronous BusinessRadar client instance.
 
         This automatically infers the `api_key` argument from the `BUSINESSRADAR_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("BUSINESSRADAR_API_KEY")
         if api_key is None:
-            raise BusinessradarError(
+            raise BusinessRadarError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the BUSINESSRADAR_API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("BUSINESSRADAR_BASE_URL")
+            base_url = os.environ.get("BUSINESS_RADAR_BASE_URL")
         if base_url is None:
             base_url = f"https://api.businessradar.com"
 
@@ -110,8 +110,8 @@ class Businessradar(SyncAPIClient):
         self.companies = companies.CompaniesResource(self)
         self.compliance = compliance.ComplianceResource(self)
         self.portfolios = portfolios.PortfoliosResource(self)
-        self.with_raw_response = BusinessradarWithRawResponse(self)
-        self.with_streaming_response = BusinessradarWithStreamedResponse(self)
+        self.with_raw_response = BusinessRadarWithRawResponse(self)
+        self.with_streaming_response = BusinessRadarWithStreamedResponse(self)
 
     @property
     @override
@@ -218,13 +218,13 @@ class Businessradar(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncBusinessradar(AsyncAPIClient):
+class AsyncBusinessRadar(AsyncAPIClient):
     news: news.AsyncNewsResource
     companies: companies.AsyncCompaniesResource
     compliance: compliance.AsyncComplianceResource
     portfolios: portfolios.AsyncPortfoliosResource
-    with_raw_response: AsyncBusinessradarWithRawResponse
-    with_streaming_response: AsyncBusinessradarWithStreamedResponse
+    with_raw_response: AsyncBusinessRadarWithRawResponse
+    with_streaming_response: AsyncBusinessRadarWithStreamedResponse
 
     # client options
     api_key: str
@@ -252,20 +252,20 @@ class AsyncBusinessradar(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async AsyncBusinessradar client instance.
+        """Construct a new async AsyncBusinessRadar client instance.
 
         This automatically infers the `api_key` argument from the `BUSINESSRADAR_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("BUSINESSRADAR_API_KEY")
         if api_key is None:
-            raise BusinessradarError(
+            raise BusinessRadarError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the BUSINESSRADAR_API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("BUSINESSRADAR_BASE_URL")
+            base_url = os.environ.get("BUSINESS_RADAR_BASE_URL")
         if base_url is None:
             base_url = f"https://api.businessradar.com"
 
@@ -284,8 +284,8 @@ class AsyncBusinessradar(AsyncAPIClient):
         self.companies = companies.AsyncCompaniesResource(self)
         self.compliance = compliance.AsyncComplianceResource(self)
         self.portfolios = portfolios.AsyncPortfoliosResource(self)
-        self.with_raw_response = AsyncBusinessradarWithRawResponse(self)
-        self.with_streaming_response = AsyncBusinessradarWithStreamedResponse(self)
+        self.with_raw_response = AsyncBusinessRadarWithRawResponse(self)
+        self.with_streaming_response = AsyncBusinessRadarWithStreamedResponse(self)
 
     @property
     @override
@@ -392,38 +392,38 @@ class AsyncBusinessradar(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class BusinessradarWithRawResponse:
-    def __init__(self, client: Businessradar) -> None:
+class BusinessRadarWithRawResponse:
+    def __init__(self, client: BusinessRadar) -> None:
         self.news = news.NewsResourceWithRawResponse(client.news)
         self.companies = companies.CompaniesResourceWithRawResponse(client.companies)
         self.compliance = compliance.ComplianceResourceWithRawResponse(client.compliance)
         self.portfolios = portfolios.PortfoliosResourceWithRawResponse(client.portfolios)
 
 
-class AsyncBusinessradarWithRawResponse:
-    def __init__(self, client: AsyncBusinessradar) -> None:
+class AsyncBusinessRadarWithRawResponse:
+    def __init__(self, client: AsyncBusinessRadar) -> None:
         self.news = news.AsyncNewsResourceWithRawResponse(client.news)
         self.companies = companies.AsyncCompaniesResourceWithRawResponse(client.companies)
         self.compliance = compliance.AsyncComplianceResourceWithRawResponse(client.compliance)
         self.portfolios = portfolios.AsyncPortfoliosResourceWithRawResponse(client.portfolios)
 
 
-class BusinessradarWithStreamedResponse:
-    def __init__(self, client: Businessradar) -> None:
+class BusinessRadarWithStreamedResponse:
+    def __init__(self, client: BusinessRadar) -> None:
         self.news = news.NewsResourceWithStreamingResponse(client.news)
         self.companies = companies.CompaniesResourceWithStreamingResponse(client.companies)
         self.compliance = compliance.ComplianceResourceWithStreamingResponse(client.compliance)
         self.portfolios = portfolios.PortfoliosResourceWithStreamingResponse(client.portfolios)
 
 
-class AsyncBusinessradarWithStreamedResponse:
-    def __init__(self, client: AsyncBusinessradar) -> None:
+class AsyncBusinessRadarWithStreamedResponse:
+    def __init__(self, client: AsyncBusinessRadar) -> None:
         self.news = news.AsyncNewsResourceWithStreamingResponse(client.news)
         self.companies = companies.AsyncCompaniesResourceWithStreamingResponse(client.companies)
         self.compliance = compliance.AsyncComplianceResourceWithStreamingResponse(client.compliance)
         self.portfolios = portfolios.AsyncPortfoliosResourceWithStreamingResponse(client.portfolios)
 
 
-Client = Businessradar
+Client = BusinessRadar
 
-AsyncClient = AsyncBusinessradar
+AsyncClient = AsyncBusinessRadar

@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from businessradar import Businessradar, AsyncBusinessradar
+from businessradar import BusinessRadar, AsyncBusinessRadar
 from businessradar._utils import parse_datetime
 from businessradar.types.news.articles import ArticleExport
 
@@ -20,7 +20,7 @@ class TestExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: Businessradar) -> None:
+    def test_method_create(self, client: BusinessRadar) -> None:
         export = client.news.articles.export.create(
             file_type="PDF",
             filters={},
@@ -29,7 +29,7 @@ class TestExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: Businessradar) -> None:
+    def test_method_create_with_all_params(self, client: BusinessRadar) -> None:
         export = client.news.articles.export.create(
             file_type="PDF",
             filters={
@@ -57,7 +57,7 @@ class TestExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: Businessradar) -> None:
+    def test_raw_response_create(self, client: BusinessRadar) -> None:
         response = client.news.articles.export.with_raw_response.create(
             file_type="PDF",
             filters={},
@@ -70,7 +70,7 @@ class TestExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: Businessradar) -> None:
+    def test_streaming_response_create(self, client: BusinessRadar) -> None:
         with client.news.articles.export.with_streaming_response.create(
             file_type="PDF",
             filters={},
@@ -85,7 +85,7 @@ class TestExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_retrieve(self, client: Businessradar) -> None:
+    def test_method_retrieve(self, client: BusinessRadar) -> None:
         export = client.news.articles.export.retrieve(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
@@ -93,7 +93,7 @@ class TestExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_retrieve(self, client: Businessradar) -> None:
+    def test_raw_response_retrieve(self, client: BusinessRadar) -> None:
         response = client.news.articles.export.with_raw_response.retrieve(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
@@ -105,7 +105,7 @@ class TestExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_retrieve(self, client: Businessradar) -> None:
+    def test_streaming_response_retrieve(self, client: BusinessRadar) -> None:
         with client.news.articles.export.with_streaming_response.retrieve(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         ) as response:
@@ -119,7 +119,7 @@ class TestExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_path_params_retrieve(self, client: Businessradar) -> None:
+    def test_path_params_retrieve(self, client: BusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_id` but received ''"):
             client.news.articles.export.with_raw_response.retrieve(
                 "",
@@ -133,7 +133,7 @@ class TestAsyncExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncBusinessradar) -> None:
+    async def test_method_create(self, async_client: AsyncBusinessRadar) -> None:
         export = await async_client.news.articles.export.create(
             file_type="PDF",
             filters={},
@@ -142,7 +142,7 @@ class TestAsyncExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncBusinessradar) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         export = await async_client.news.articles.export.create(
             file_type="PDF",
             filters={
@@ -170,7 +170,7 @@ class TestAsyncExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncBusinessradar) -> None:
+    async def test_raw_response_create(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.news.articles.export.with_raw_response.create(
             file_type="PDF",
             filters={},
@@ -183,7 +183,7 @@ class TestAsyncExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncBusinessradar) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.news.articles.export.with_streaming_response.create(
             file_type="PDF",
             filters={},
@@ -198,7 +198,7 @@ class TestAsyncExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncBusinessradar) -> None:
+    async def test_method_retrieve(self, async_client: AsyncBusinessRadar) -> None:
         export = await async_client.news.articles.export.retrieve(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
@@ -206,7 +206,7 @@ class TestAsyncExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncBusinessradar) -> None:
+    async def test_raw_response_retrieve(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.news.articles.export.with_raw_response.retrieve(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
@@ -218,7 +218,7 @@ class TestAsyncExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncBusinessradar) -> None:
+    async def test_streaming_response_retrieve(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.news.articles.export.with_streaming_response.retrieve(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         ) as response:
@@ -232,7 +232,7 @@ class TestAsyncExport:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_path_params_retrieve(self, async_client: AsyncBusinessradar) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncBusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_id` but received ''"):
             await async_client.news.articles.export.with_raw_response.retrieve(
                 "",
