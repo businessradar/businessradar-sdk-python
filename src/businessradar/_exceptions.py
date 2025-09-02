@@ -18,11 +18,11 @@ __all__ = [
 ]
 
 
-class BusinessradarError(Exception):
+class BusinessRadarError(Exception):
     pass
 
 
-class APIError(BusinessradarError):
+class APIError(BusinessRadarError):
     message: str
     request: httpx.Request
 

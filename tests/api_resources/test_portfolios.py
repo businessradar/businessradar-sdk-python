@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from businessradar import Businessradar, AsyncBusinessradar
+from businessradar import BusinessRadar, AsyncBusinessRadar
 from businessradar.types import Portfolio, PortfolioListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -19,7 +19,7 @@ class TestPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create(self, client: Businessradar) -> None:
+    def test_method_create(self, client: BusinessRadar) -> None:
         portfolio = client.portfolios.create(
             name="x",
         )
@@ -27,7 +27,7 @@ class TestPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_create_with_all_params(self, client: Businessradar) -> None:
+    def test_method_create_with_all_params(self, client: BusinessRadar) -> None:
         portfolio = client.portfolios.create(
             name="x",
             customer_reference="customer_reference",
@@ -37,7 +37,7 @@ class TestPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_create(self, client: Businessradar) -> None:
+    def test_raw_response_create(self, client: BusinessRadar) -> None:
         response = client.portfolios.with_raw_response.create(
             name="x",
         )
@@ -49,7 +49,7 @@ class TestPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_create(self, client: Businessradar) -> None:
+    def test_streaming_response_create(self, client: BusinessRadar) -> None:
         with client.portfolios.with_streaming_response.create(
             name="x",
         ) as response:
@@ -63,13 +63,13 @@ class TestPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list(self, client: Businessradar) -> None:
+    def test_method_list(self, client: BusinessRadar) -> None:
         portfolio = client.portfolios.list()
         assert_matches_type(PortfolioListResponse, portfolio, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_list_with_all_params(self, client: Businessradar) -> None:
+    def test_method_list_with_all_params(self, client: BusinessRadar) -> None:
         portfolio = client.portfolios.list(
             next_key="next_key",
         )
@@ -77,7 +77,7 @@ class TestPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_list(self, client: Businessradar) -> None:
+    def test_raw_response_list(self, client: BusinessRadar) -> None:
         response = client.portfolios.with_raw_response.list()
 
         assert response.is_closed is True
@@ -87,7 +87,7 @@ class TestPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_list(self, client: Businessradar) -> None:
+    def test_streaming_response_list(self, client: BusinessRadar) -> None:
         with client.portfolios.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -105,7 +105,7 @@ class TestAsyncPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create(self, async_client: AsyncBusinessradar) -> None:
+    async def test_method_create(self, async_client: AsyncBusinessRadar) -> None:
         portfolio = await async_client.portfolios.create(
             name="x",
         )
@@ -113,7 +113,7 @@ class TestAsyncPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncBusinessradar) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         portfolio = await async_client.portfolios.create(
             name="x",
             customer_reference="customer_reference",
@@ -123,7 +123,7 @@ class TestAsyncPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncBusinessradar) -> None:
+    async def test_raw_response_create(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.portfolios.with_raw_response.create(
             name="x",
         )
@@ -135,7 +135,7 @@ class TestAsyncPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncBusinessradar) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.portfolios.with_streaming_response.create(
             name="x",
         ) as response:
@@ -149,13 +149,13 @@ class TestAsyncPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list(self, async_client: AsyncBusinessradar) -> None:
+    async def test_method_list(self, async_client: AsyncBusinessRadar) -> None:
         portfolio = await async_client.portfolios.list()
         assert_matches_type(PortfolioListResponse, portfolio, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncBusinessradar) -> None:
+    async def test_method_list_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         portfolio = await async_client.portfolios.list(
             next_key="next_key",
         )
@@ -163,7 +163,7 @@ class TestAsyncPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncBusinessradar) -> None:
+    async def test_raw_response_list(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.portfolios.with_raw_response.list()
 
         assert response.is_closed is True
@@ -173,7 +173,7 @@ class TestAsyncPortfolios:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncBusinessradar) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.portfolios.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

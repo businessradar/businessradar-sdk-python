@@ -1,9 +1,9 @@
-# Businessradar Python API library
+# Business Radar Python API library
 
 <!-- prettier-ignore -->
 [![PyPI version](https://img.shields.io/pypi/v/businessradar.svg?label=pypi%20(stable))](https://pypi.org/project/businessradar/)
 
-The Businessradar Python library provides convenient access to the Businessradar REST API from any Python 3.8+
+The Business Radar Python library provides convenient access to the Business Radar REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -11,7 +11,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [api.businessradar.com](https://api.businessradar.com/ext/v3/). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
@@ -26,9 +26,9 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from businessradar import Businessradar
+from businessradar import BusinessRadar
 
-client = Businessradar(
+client = BusinessRadar(
     api_key=os.environ.get("BUSINESSRADAR_API_KEY"),  # This is the default and can be omitted
 )
 
@@ -43,14 +43,14 @@ so that your API Key is not stored in source control.
 
 ## Async usage
 
-Simply import `AsyncBusinessradar` instead of `Businessradar` and use `await` with each API call:
+Simply import `AsyncBusinessRadar` instead of `BusinessRadar` and use `await` with each API call:
 
 ```python
 import os
 import asyncio
-from businessradar import AsyncBusinessradar
+from businessradar import AsyncBusinessRadar
 
-client = AsyncBusinessradar(
+client = AsyncBusinessRadar(
     api_key=os.environ.get("BUSINESSRADAR_API_KEY"),  # This is the default and can be omitted
 )
 
@@ -81,11 +81,11 @@ Then you can enable it by instantiating the client with `http_client=DefaultAioH
 ```python
 import asyncio
 from businessradar import DefaultAioHttpClient
-from businessradar import AsyncBusinessradar
+from businessradar import AsyncBusinessRadar
 
 
 async def main() -> None:
-    async with AsyncBusinessradar(
+    async with AsyncBusinessRadar(
         api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
@@ -110,9 +110,9 @@ Typed requests and responses provide autocomplete and documentation within your 
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
 
 ```python
-from businessradar import Businessradar
+from businessradar import BusinessRadar
 
-client = Businessradar()
+client = BusinessRadar()
 
 article_export = client.news.articles.export.create(
     file_type="PDF",
@@ -132,9 +132,9 @@ All errors inherit from `businessradar.APIError`.
 
 ```python
 import businessradar
-from businessradar import Businessradar
+from businessradar import BusinessRadar
 
-client = Businessradar()
+client = BusinessRadar()
 
 try:
     client.news.articles.list()
@@ -171,10 +171,10 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from businessradar import Businessradar
+from businessradar import BusinessRadar
 
 # Configure the default for all requests:
-client = Businessradar(
+client = BusinessRadar(
     # default is 2
     max_retries=0,
 )
@@ -189,16 +189,16 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
-from businessradar import Businessradar
+from businessradar import BusinessRadar
 
 # Configure the default for all requests:
-client = Businessradar(
+client = BusinessRadar(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
 )
 
 # More granular control:
-client = Businessradar(
+client = BusinessRadar(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
@@ -216,10 +216,10 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `BUSINESSRADAR_LOG` to `info`.
+You can enable logging by setting the environment variable `BUSINESS_RADAR_LOG` to `info`.
 
 ```shell
-$ export BUSINESSRADAR_LOG=info
+$ export BUSINESS_RADAR_LOG=info
 ```
 
 Or to `debug` for more verbose logging.
@@ -241,9 +241,9 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from businessradar import Businessradar
+from businessradar import BusinessRadar
 
-client = Businessradar()
+client = BusinessRadar()
 response = client.news.articles.with_raw_response.list()
 print(response.headers.get('X-My-Header'))
 
@@ -315,10 +315,10 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 
 ```python
 import httpx
-from businessradar import Businessradar, DefaultHttpxClient
+from businessradar import BusinessRadar, DefaultHttpxClient
 
-client = Businessradar(
-    # Or use the `BUSINESSRADAR_BASE_URL` env var
+client = BusinessRadar(
+    # Or use the `BUSINESS_RADAR_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
         proxy="http://my.test.proxy.example.com",
@@ -338,9 +338,9 @@ client.with_options(http_client=DefaultHttpxClient(...))
 By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
 
 ```py
-from businessradar import Businessradar
+from businessradar import BusinessRadar
 
-with Businessradar() as client:
+with BusinessRadar() as client:
   # make requests here
   ...
 
