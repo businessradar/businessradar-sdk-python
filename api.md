@@ -1,3 +1,9 @@
+# Shared Types
+
+```python
+from businessradar.types import PortfolioCompanyDetailRequest
+```
+
 # News
 
 ## Articles

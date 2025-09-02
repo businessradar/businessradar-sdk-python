@@ -21,6 +21,7 @@ from ..._base_client import make_request_options
 from ...types.portfolios import company_list_params, company_create_params
 from ...types.registration import Registration
 from ...types.portfolios.company_list_response import CompanyListResponse
+from ...types.shared_params.portfolio_company_detail_request import PortfolioCompanyDetailRequest
 
 __all__ = ["CompaniesResource", "AsyncCompaniesResource"]
 
@@ -49,7 +50,7 @@ class CompaniesResource(SyncAPIResource):
         self,
         portfolio_id: str,
         *,
-        company: Optional[company_create_params.Company] | NotGiven = NOT_GIVEN,
+        company: Optional[PortfolioCompanyDetailRequest] | NotGiven = NOT_GIVEN,
         country: Optional[
             Literal[
                 "AF",
@@ -458,7 +459,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         self,
         portfolio_id: str,
         *,
-        company: Optional[company_create_params.Company] | NotGiven = NOT_GIVEN,
+        company: Optional[PortfolioCompanyDetailRequest] | NotGiven = NOT_GIVEN,
         country: Optional[
             Literal[
                 "AF",

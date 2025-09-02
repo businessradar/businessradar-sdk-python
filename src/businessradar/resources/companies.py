@@ -22,6 +22,7 @@ from .._base_client import make_request_options
 from ..types.registration import Registration
 from ..types.company_list_response import CompanyListResponse
 from ..types.company_retrieve_response import CompanyRetrieveResponse
+from ..types.shared_params.portfolio_company_detail_request import PortfolioCompanyDetailRequest
 
 __all__ = ["CompaniesResource", "AsyncCompaniesResource"]
 
@@ -49,7 +50,7 @@ class CompaniesResource(SyncAPIResource):
     def create(
         self,
         *,
-        company: Optional[company_create_params.Company] | NotGiven = NOT_GIVEN,
+        company: Optional[PortfolioCompanyDetailRequest] | NotGiven = NOT_GIVEN,
         country: Optional[
             Literal[
                 "AF",
@@ -483,7 +484,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        company: Optional[company_create_params.Company] | NotGiven = NOT_GIVEN,
+        company: Optional[PortfolioCompanyDetailRequest] | NotGiven = NOT_GIVEN,
         country: Optional[
             Literal[
                 "AF",
