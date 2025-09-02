@@ -27,7 +27,7 @@ class ExtResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/businessradar-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/businessradar/businessradar-sdk-python#accessing-raw-response-data-eg-headers
         """
         return ExtResourceWithRawResponse(self)
 
@@ -36,7 +36,7 @@ class ExtResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/businessradar-python#with_streaming_response
+        For more information, see https://www.github.com/businessradar/businessradar-sdk-python#with_streaming_response
         """
         return ExtResourceWithStreamingResponse(self)
 
@@ -52,7 +52,7 @@ class AsyncExtResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/businessradar-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/businessradar/businessradar-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncExtResourceWithRawResponse(self)
 
@@ -61,7 +61,7 @@ class AsyncExtResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/businessradar-python#with_streaming_response
+        For more information, see https://www.github.com/businessradar/businessradar-sdk-python#with_streaming_response
         """
         return AsyncExtResourceWithStreamingResponse(self)
 
