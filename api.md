@@ -5,7 +5,11 @@
 Types:
 
 ```python
-from businessradar.types.ext import V3GetSchemaResponse, V3ListSavedArticleFiltersResponse
+from businessradar.types.ext import (
+    PortfolioCompanyDetailRequest,
+    V3GetSchemaResponse,
+    V3ListSavedArticleFiltersResponse,
+)
 ```
 
 Methods:
@@ -70,7 +74,6 @@ from businessradar.types.ext.v3 import (
     BlankEnum,
     CountryEnum,
     IndustryCode,
-    NullEnum,
     Registration,
     RegistrationRequest,
     CompanyRetrieveResponse,

@@ -3,13 +3,15 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, TypedDict
 
-__all__ = ["CompanyCreateParams", "Company"]
+from ..portfolio_company_detail_request_param import PortfolioCompanyDetailRequestParam
+
+__all__ = ["CompanyCreateParams"]
 
 
 class CompanyCreateParams(TypedDict, total=False):
-    company: Optional[Company]
+    company: Optional[PortfolioCompanyDetailRequestParam]
     """Portfolio Company Detail Serializer.
 
     Alternative serializer for the Company model which is limited.
@@ -278,7 +280,3 @@ class CompanyCreateParams(TypedDict, total=False):
     primary_name: Optional[str]
 
     registration_number: Optional[str]
-
-
-class Company(TypedDict, total=False):
-    external_id: Required[str]
