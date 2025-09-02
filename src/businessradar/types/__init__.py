@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from . import news
 from .. import _compat
+from .shared import PortfolioCompanyDetailRequest as PortfolioCompanyDetailRequest
 from .portfolio import Portfolio as Portfolio
 from .blank_enum import BlankEnum as BlankEnum
 from .country_enum import CountryEnum as CountryEnum
