@@ -727,7 +727,7 @@ class TestBusinessradar:
         respx_mock.get("/ext/v3/articles").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            client.ext.v3.articles.with_streaming_response.list().__enter__()
+            client.news.articles.with_streaming_response.list().__enter__()
 
         assert _get_open_connections(self.client) == 0
 
@@ -737,7 +737,7 @@ class TestBusinessradar:
         respx_mock.get("/ext/v3/articles").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            client.ext.v3.articles.with_streaming_response.list().__enter__()
+            client.news.articles.with_streaming_response.list().__enter__()
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
@@ -766,7 +766,7 @@ class TestBusinessradar:
 
         respx_mock.get("/ext/v3/articles").mock(side_effect=retry_handler)
 
-        response = client.ext.v3.articles.with_raw_response.list()
+        response = client.news.articles.with_raw_response.list()
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -790,7 +790,7 @@ class TestBusinessradar:
 
         respx_mock.get("/ext/v3/articles").mock(side_effect=retry_handler)
 
-        response = client.ext.v3.articles.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
+        response = client.news.articles.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -813,7 +813,7 @@ class TestBusinessradar:
 
         respx_mock.get("/ext/v3/articles").mock(side_effect=retry_handler)
 
-        response = client.ext.v3.articles.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
+        response = client.news.articles.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
@@ -1544,7 +1544,7 @@ class TestAsyncBusinessradar:
         respx_mock.get("/ext/v3/articles").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            await async_client.ext.v3.articles.with_streaming_response.list().__aenter__()
+            await async_client.news.articles.with_streaming_response.list().__aenter__()
 
         assert _get_open_connections(self.client) == 0
 
@@ -1556,7 +1556,7 @@ class TestAsyncBusinessradar:
         respx_mock.get("/ext/v3/articles").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            await async_client.ext.v3.articles.with_streaming_response.list().__aenter__()
+            await async_client.news.articles.with_streaming_response.list().__aenter__()
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
@@ -1586,7 +1586,7 @@ class TestAsyncBusinessradar:
 
         respx_mock.get("/ext/v3/articles").mock(side_effect=retry_handler)
 
-        response = await client.ext.v3.articles.with_raw_response.list()
+        response = await client.news.articles.with_raw_response.list()
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1611,9 +1611,7 @@ class TestAsyncBusinessradar:
 
         respx_mock.get("/ext/v3/articles").mock(side_effect=retry_handler)
 
-        response = await client.ext.v3.articles.with_raw_response.list(
-            extra_headers={"x-stainless-retry-count": Omit()}
-        )
+        response = await client.news.articles.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -1637,7 +1635,7 @@ class TestAsyncBusinessradar:
 
         respx_mock.get("/ext/v3/articles").mock(side_effect=retry_handler)
 
-        response = await client.ext.v3.articles.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
+        response = await client.news.articles.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 

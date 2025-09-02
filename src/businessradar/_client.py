@@ -21,6 +21,7 @@ from ._types import (
 )
 from ._utils import is_given, get_async_library
 from ._version import __version__
+from .resources import companies, compliance
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError, BusinessradarError
 from ._base_client import (
@@ -28,7 +29,8 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.ext import ext
+from .resources.news import news
+from .resources.portfolios import portfolios
 
 __all__ = [
     "Timeout",
@@ -43,7 +45,10 @@ __all__ = [
 
 
 class Businessradar(SyncAPIClient):
-    ext: ext.ExtResource
+    news: news.NewsResource
+    companies: companies.CompaniesResource
+    compliance: compliance.ComplianceResource
+    portfolios: portfolios.PortfoliosResource
     with_raw_response: BusinessradarWithRawResponse
     with_streaming_response: BusinessradarWithStreamedResponse
 
@@ -101,7 +106,10 @@ class Businessradar(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.ext = ext.ExtResource(self)
+        self.news = news.NewsResource(self)
+        self.companies = companies.CompaniesResource(self)
+        self.compliance = compliance.ComplianceResource(self)
+        self.portfolios = portfolios.PortfoliosResource(self)
         self.with_raw_response = BusinessradarWithRawResponse(self)
         self.with_streaming_response = BusinessradarWithStreamedResponse(self)
 
@@ -211,7 +219,10 @@ class Businessradar(SyncAPIClient):
 
 
 class AsyncBusinessradar(AsyncAPIClient):
-    ext: ext.AsyncExtResource
+    news: news.AsyncNewsResource
+    companies: companies.AsyncCompaniesResource
+    compliance: compliance.AsyncComplianceResource
+    portfolios: portfolios.AsyncPortfoliosResource
     with_raw_response: AsyncBusinessradarWithRawResponse
     with_streaming_response: AsyncBusinessradarWithStreamedResponse
 
@@ -269,7 +280,10 @@ class AsyncBusinessradar(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.ext = ext.AsyncExtResource(self)
+        self.news = news.AsyncNewsResource(self)
+        self.companies = companies.AsyncCompaniesResource(self)
+        self.compliance = compliance.AsyncComplianceResource(self)
+        self.portfolios = portfolios.AsyncPortfoliosResource(self)
         self.with_raw_response = AsyncBusinessradarWithRawResponse(self)
         self.with_streaming_response = AsyncBusinessradarWithStreamedResponse(self)
 
@@ -380,22 +394,34 @@ class AsyncBusinessradar(AsyncAPIClient):
 
 class BusinessradarWithRawResponse:
     def __init__(self, client: Businessradar) -> None:
-        self.ext = ext.ExtResourceWithRawResponse(client.ext)
+        self.news = news.NewsResourceWithRawResponse(client.news)
+        self.companies = companies.CompaniesResourceWithRawResponse(client.companies)
+        self.compliance = compliance.ComplianceResourceWithRawResponse(client.compliance)
+        self.portfolios = portfolios.PortfoliosResourceWithRawResponse(client.portfolios)
 
 
 class AsyncBusinessradarWithRawResponse:
     def __init__(self, client: AsyncBusinessradar) -> None:
-        self.ext = ext.AsyncExtResourceWithRawResponse(client.ext)
+        self.news = news.AsyncNewsResourceWithRawResponse(client.news)
+        self.companies = companies.AsyncCompaniesResourceWithRawResponse(client.companies)
+        self.compliance = compliance.AsyncComplianceResourceWithRawResponse(client.compliance)
+        self.portfolios = portfolios.AsyncPortfoliosResourceWithRawResponse(client.portfolios)
 
 
 class BusinessradarWithStreamedResponse:
     def __init__(self, client: Businessradar) -> None:
-        self.ext = ext.ExtResourceWithStreamingResponse(client.ext)
+        self.news = news.NewsResourceWithStreamingResponse(client.news)
+        self.companies = companies.CompaniesResourceWithStreamingResponse(client.companies)
+        self.compliance = compliance.ComplianceResourceWithStreamingResponse(client.compliance)
+        self.portfolios = portfolios.PortfoliosResourceWithStreamingResponse(client.portfolios)
 
 
 class AsyncBusinessradarWithStreamedResponse:
     def __init__(self, client: AsyncBusinessradar) -> None:
-        self.ext = ext.AsyncExtResourceWithStreamingResponse(client.ext)
+        self.news = news.AsyncNewsResourceWithStreamingResponse(client.news)
+        self.companies = companies.AsyncCompaniesResourceWithStreamingResponse(client.companies)
+        self.compliance = compliance.AsyncComplianceResourceWithStreamingResponse(client.compliance)
+        self.portfolios = portfolios.AsyncPortfoliosResourceWithStreamingResponse(client.portfolios)
 
 
 Client = Businessradar
