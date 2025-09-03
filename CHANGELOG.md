@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0 (2025-09-03)
+
+Full Changelog: [v1.2.0...v1.3.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.2.0...v1.3.0)
+
+### Features
+
+* **types:** replace List[str] with SequenceNotStr in params ([f0cd154](https://github.com/businessradar/businessradar-sdk-python/commit/f0cd154a08d32800ff262980b2a01ff80bff3f36))
+
 ## 1.2.0 (2025-09-02)
 
 Full Changelog: [v1.1.1...v1.2.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.1.1...v1.2.0)
