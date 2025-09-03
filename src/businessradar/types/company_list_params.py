@@ -2,17 +2,18 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["CompanyListParams"]
 
 
 class CompanyListParams(TypedDict, total=False):
-    country: List[str]
+    country: SequenceNotStr[str]
     """ISO 2-letter Country Code"""
 
-    duns_number: List[str]
+    duns_number: SequenceNotStr[str]
     """9-digit Dun And Bradstreet Number"""
 
     next_key: str
@@ -21,13 +22,13 @@ class CompanyListParams(TypedDict, total=False):
     results, pass the next_key from the previous request to retrieve next results.
     """
 
-    portfolio_id: List[str]
+    portfolio_id: SequenceNotStr[str]
     """Portfolio ID to filter companies"""
 
     query: str
     """Custom search query to text search all companies."""
 
-    registration_number: List[str]
+    registration_number: SequenceNotStr[str]
     """Local Registration Number"""
 
     website_url: str

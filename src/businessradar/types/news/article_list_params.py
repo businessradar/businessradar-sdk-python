@@ -2,35 +2,36 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Literal, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["ArticleListParams"]
 
 
 class ArticleListParams(TypedDict, total=False):
-    category: List[str]
+    category: SequenceNotStr[str]
     """Category ID to filter articles"""
 
-    company: List[str]
+    company: SequenceNotStr[str]
     """Company ID's"""
 
-    country: List[str]
+    country: SequenceNotStr[str]
     """ISO 2-letter Country Code"""
 
-    duns_number: List[str]
+    duns_number: SequenceNotStr[str]
     """9-digit Dun And Bradstreet Number"""
 
-    global_ultimate: List[str]
+    global_ultimate: SequenceNotStr[str]
     """9-digit Dun And Bradstreet Number"""
 
     include_clustered_articles: bool
     """Include clustered articles"""
 
-    language: List[str]
+    language: SequenceNotStr[str]
     """ISO 2-letter Language Code"""
 
     max_creation_date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
@@ -51,13 +52,13 @@ class ArticleListParams(TypedDict, total=False):
     results, pass the next_key from the previous request to retrieve next results.
     """
 
-    portfolio_id: List[str]
+    portfolio_id: SequenceNotStr[str]
     """Portfolio ID to filter articles"""
 
     query: str
     """Custom search filters to text search all articles."""
 
-    registration_number: List[str]
+    registration_number: SequenceNotStr[str]
     """Local Registration Number"""
 
     saved_article_filter_id: str

@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import company_list_params, company_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -391,12 +391,12 @@ class CompaniesResource(SyncAPIResource):
     def list(
         self,
         *,
-        country: List[str] | NotGiven = NOT_GIVEN,
-        duns_number: List[str] | NotGiven = NOT_GIVEN,
+        country: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        duns_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_key: str | NotGiven = NOT_GIVEN,
-        portfolio_id: List[str] | NotGiven = NOT_GIVEN,
+        portfolio_id: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         query: str | NotGiven = NOT_GIVEN,
-        registration_number: List[str] | NotGiven = NOT_GIVEN,
+        registration_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         website_url: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -859,12 +859,12 @@ class AsyncCompaniesResource(AsyncAPIResource):
     def list(
         self,
         *,
-        country: List[str] | NotGiven = NOT_GIVEN,
-        duns_number: List[str] | NotGiven = NOT_GIVEN,
+        country: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        duns_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_key: str | NotGiven = NOT_GIVEN,
-        portfolio_id: List[str] | NotGiven = NOT_GIVEN,
+        portfolio_id: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         query: str | NotGiven = NOT_GIVEN,
-        registration_number: List[str] | NotGiven = NOT_GIVEN,
+        registration_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         website_url: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Optional
+from typing import Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -16,7 +16,7 @@ from .export import (
     ExportResourceWithStreamingResponse,
     AsyncExportResourceWithStreamingResponse,
 )
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ...._utils import maybe_transform, async_maybe_transform
 from .analytics import (
     AnalyticsResource,
@@ -82,21 +82,21 @@ class ArticlesResource(SyncAPIResource):
     def list(
         self,
         *,
-        category: List[str] | NotGiven = NOT_GIVEN,
-        company: List[str] | NotGiven = NOT_GIVEN,
-        country: List[str] | NotGiven = NOT_GIVEN,
-        duns_number: List[str] | NotGiven = NOT_GIVEN,
-        global_ultimate: List[str] | NotGiven = NOT_GIVEN,
+        category: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        company: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        country: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        duns_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        global_ultimate: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         include_clustered_articles: bool | NotGiven = NOT_GIVEN,
-        language: List[str] | NotGiven = NOT_GIVEN,
+        language: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         max_creation_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         max_publication_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         min_creation_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         min_publication_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         next_key: str | NotGiven = NOT_GIVEN,
-        portfolio_id: List[str] | NotGiven = NOT_GIVEN,
+        portfolio_id: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         query: str | NotGiven = NOT_GIVEN,
-        registration_number: List[str] | NotGiven = NOT_GIVEN,
+        registration_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         saved_article_filter_id: str | NotGiven = NOT_GIVEN,
         sentiment: bool | NotGiven = NOT_GIVEN,
         sorting: Literal[
@@ -359,21 +359,21 @@ class AsyncArticlesResource(AsyncAPIResource):
     def list(
         self,
         *,
-        category: List[str] | NotGiven = NOT_GIVEN,
-        company: List[str] | NotGiven = NOT_GIVEN,
-        country: List[str] | NotGiven = NOT_GIVEN,
-        duns_number: List[str] | NotGiven = NOT_GIVEN,
-        global_ultimate: List[str] | NotGiven = NOT_GIVEN,
+        category: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        company: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        country: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        duns_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        global_ultimate: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         include_clustered_articles: bool | NotGiven = NOT_GIVEN,
-        language: List[str] | NotGiven = NOT_GIVEN,
+        language: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         max_creation_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         max_publication_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         min_creation_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         min_publication_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         next_key: str | NotGiven = NOT_GIVEN,
-        portfolio_id: List[str] | NotGiven = NOT_GIVEN,
+        portfolio_id: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         query: str | NotGiven = NOT_GIVEN,
-        registration_number: List[str] | NotGiven = NOT_GIVEN,
+        registration_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         saved_article_filter_id: str | NotGiven = NOT_GIVEN,
         sentiment: bool | NotGiven = NOT_GIVEN,
         sorting: Literal[
