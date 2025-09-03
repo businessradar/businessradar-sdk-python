@@ -9,6 +9,8 @@ The Business Radar Python library provides convenient access to the Business Rad
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
+Reach out to [support@businessradar.com](mailto:support@businessradar.com) for any technical questions/suggestions.
+
 ## Documentation
 
 The REST API documentation can be found on [businessradar.com](https://api.businessradar.com/ext/v3/). 
