@@ -3,15 +3,15 @@
 <!-- prettier-ignore -->
 [![PyPI version](https://img.shields.io/pypi/v/businessradar.svg?label=pypi%20(stable))](https://pypi.org/project/businessradar/)
 
+Easily integrate [Business Radar’s](https://www.businessradar.com) real-time company and news data into your Python apps.
+
 The Business Radar Python library provides convenient access to the Business Radar REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
-It is generated with [Stainless](https://www.stainless.com/).
-
 ## Documentation
 
-The REST API documentation can be found on [api.businessradar.com](https://api.businessradar.com/ext/v3/). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [businessradar.com](https://api.businessradar.com/ext/v3/). 
 
 ## Installation
 
@@ -41,7 +41,7 @@ we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
 to add `BUSINESSRADAR_API_KEY="My API Key"` to your `.env` file
 so that your API Key is not stored in source control.
 
-## Async usage
+## Async Support
 
 Simply import `AsyncBusinessRadar` instead of `BusinessRadar` and use `await` with each API call:
 
@@ -444,7 +444,3 @@ print(businessradar.__version__)
 ## Requirements
 
 Python 3.8 or higher.
-
-## Contributing
-
-See [the contributing documentation](./CONTRIBUTING.md).
