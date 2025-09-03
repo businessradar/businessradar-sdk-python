@@ -2,29 +2,30 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Literal, Annotated, TypedDict
 
+from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
 
 __all__ = ["AnalyticsGetCountByDateParams"]
 
 
 class AnalyticsGetCountByDateParams(TypedDict, total=False):
-    category: List[str]
+    category: SequenceNotStr[str]
     """Category ID to filter articles"""
 
-    company: List[str]
+    company: SequenceNotStr[str]
     """Company ID's"""
 
-    country: List[str]
+    country: SequenceNotStr[str]
     """ISO 2-letter Country Code"""
 
-    duns_number: List[str]
+    duns_number: SequenceNotStr[str]
     """9-digit Dun And Bradstreet Number"""
 
-    global_ultimate: List[str]
+    global_ultimate: SequenceNotStr[str]
     """9-digit Dun And Bradstreet Number"""
 
     include_clustered_articles: bool
@@ -32,7 +33,7 @@ class AnalyticsGetCountByDateParams(TypedDict, total=False):
 
     interval: Literal["day", "month", "week", "year"]
 
-    language: List[str]
+    language: SequenceNotStr[str]
     """ISO 2-letter Language Code"""
 
     max_creation_date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
@@ -47,13 +48,13 @@ class AnalyticsGetCountByDateParams(TypedDict, total=False):
     min_publication_date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """Filter articles published after this date"""
 
-    portfolio_id: List[str]
+    portfolio_id: SequenceNotStr[str]
     """Portfolio ID to filter articles"""
 
     query: str
     """Custom search filters to text search all articles."""
 
-    registration_number: List[str]
+    registration_number: SequenceNotStr[str]
     """Local Registration Number"""
 
     saved_article_filter_id: str
