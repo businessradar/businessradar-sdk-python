@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Optional
+from typing import Union, Optional
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
 from .data_export_file_type import DataExportFileType
 
@@ -25,21 +26,21 @@ class ExportCreateParams(TypedDict, total=False):
 
 
 class Filters(TypedDict, total=False):
-    categories: Optional[List[str]]
+    categories: Optional[SequenceNotStr[str]]
 
-    companies: Optional[List[str]]
+    companies: Optional[SequenceNotStr[str]]
 
-    countries: Optional[List[str]]
+    countries: Optional[SequenceNotStr[str]]
 
-    duns_numbers: Optional[List[str]]
+    duns_numbers: Optional[SequenceNotStr[str]]
 
-    global_ultimates: Optional[List[str]]
+    global_ultimates: Optional[SequenceNotStr[str]]
 
     include_clustered_articles: bool
 
-    industries: Optional[List[str]]
+    industries: Optional[SequenceNotStr[str]]
 
-    languages: Optional[List[str]]
+    languages: Optional[SequenceNotStr[str]]
 
     max_creation_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
 
@@ -53,10 +54,10 @@ class Filters(TypedDict, total=False):
 
     parent_category: Optional[str]
 
-    portfolios: Optional[List[str]]
+    portfolios: Optional[SequenceNotStr[str]]
 
     query: Optional[str]
 
-    registration_numbers: Optional[List[str]]
+    registration_numbers: Optional[SequenceNotStr[str]]
 
     sentiment: Optional[bool]
