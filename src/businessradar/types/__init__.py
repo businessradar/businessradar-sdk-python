@@ -26,9 +26,9 @@ from .compliance_retrieve_response import ComplianceRetrieveResponse as Complian
 # This ensures that, when building the deferred (due to cyclical references) model schema,
 # Pydantic can resolve the necessary references.
 # See: https://github.com/pydantic/pydantic/issues/11250 for more context.
-if _compat.PYDANTIC_V2:
-    news.article.Article.model_rebuild(_parent_namespace_depth=0)
-    news.category_tree.CategoryTree.model_rebuild(_parent_namespace_depth=0)
-else:
+if _compat.PYDANTIC_V1:
     news.article.Article.update_forward_refs()  # type: ignore
     news.category_tree.CategoryTree.update_forward_refs()  # type: ignore
+else:
+    news.article.Article.model_rebuild(_parent_namespace_depth=0)
+    news.category_tree.CategoryTree.model_rebuild(_parent_namespace_depth=0)

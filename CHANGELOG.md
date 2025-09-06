@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.4.0 (2025-09-06)
+
+Full Changelog: [v1.3.0...v1.4.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.3.0...v1.4.0)
+
+### Features
+
+* improve future compat with pydantic v3 ([082bbe1](https://github.com/businessradar/businessradar-sdk-python/commit/082bbe1ee170a17a2d97fa98e81a147a39acc7ad))
+
+
+### Chores
+
+* **internal:** move mypy configurations to `pyproject.toml` file ([8dc8271](https://github.com/businessradar/businessradar-sdk-python/commit/8dc827195bf21031c1d7ffe1a73ecae6333aba6e))
+
 ## 1.3.0 (2025-09-03)
 
 Full Changelog: [v1.2.0...v1.3.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.2.0...v1.3.0)
