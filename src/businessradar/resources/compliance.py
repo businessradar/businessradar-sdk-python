@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..types import compliance_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -46,15 +46,15 @@ class ComplianceResource(SyncAPIResource):
         self,
         *,
         company_id: str,
-        all_entities_screening_enabled: bool | NotGiven = NOT_GIVEN,
-        directors_screening_enabled: bool | NotGiven = NOT_GIVEN,
-        ownership_screening_threshold: float | NotGiven = NOT_GIVEN,
+        all_entities_screening_enabled: bool | Omit = omit,
+        directors_screening_enabled: bool | Omit = omit,
+        ownership_screening_threshold: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ComplianceCreateResponse:
         """
         Create a new compliance check.
@@ -97,7 +97,7 @@ class ComplianceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ComplianceRetrieveResponse:
         """
         Get compliance check results.
@@ -146,15 +146,15 @@ class AsyncComplianceResource(AsyncAPIResource):
         self,
         *,
         company_id: str,
-        all_entities_screening_enabled: bool | NotGiven = NOT_GIVEN,
-        directors_screening_enabled: bool | NotGiven = NOT_GIVEN,
-        ownership_screening_threshold: float | NotGiven = NOT_GIVEN,
+        all_entities_screening_enabled: bool | Omit = omit,
+        directors_screening_enabled: bool | Omit = omit,
+        ownership_screening_threshold: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ComplianceCreateResponse:
         """
         Create a new compliance check.
@@ -197,7 +197,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ComplianceRetrieveResponse:
         """
         Get compliance check results.

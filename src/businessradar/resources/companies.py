@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import company_list_params, company_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -51,7 +51,7 @@ class CompaniesResource(SyncAPIResource):
     def create(
         self,
         *,
-        company: Optional[PortfolioCompanyDetailRequest] | NotGiven = NOT_GIVEN,
+        company: Optional[PortfolioCompanyDetailRequest] | Omit = omit,
         country: Optional[
             Literal[
                 "AF",
@@ -306,17 +306,17 @@ class CompaniesResource(SyncAPIResource):
                 "",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        customer_reference: Optional[str] | NotGiven = NOT_GIVEN,
-        duns_number: Optional[str] | NotGiven = NOT_GIVEN,
-        primary_name: Optional[str] | NotGiven = NOT_GIVEN,
-        registration_number: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        customer_reference: Optional[str] | Omit = omit,
+        duns_number: Optional[str] | Omit = omit,
+        primary_name: Optional[str] | Omit = omit,
+        registration_number: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Registration:
         """
         Register new Company to Business Radar.
@@ -364,7 +364,7 @@ class CompaniesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanyRetrieveResponse:
         """
         Get Company Information.
@@ -391,19 +391,19 @@ class CompaniesResource(SyncAPIResource):
     def list(
         self,
         *,
-        country: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        duns_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        next_key: str | NotGiven = NOT_GIVEN,
-        portfolio_id: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        query: str | NotGiven = NOT_GIVEN,
-        registration_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        website_url: str | NotGiven = NOT_GIVEN,
+        country: SequenceNotStr[str] | Omit = omit,
+        duns_number: SequenceNotStr[str] | Omit = omit,
+        next_key: str | Omit = omit,
+        portfolio_id: SequenceNotStr[str] | Omit = omit,
+        query: str | Omit = omit,
+        registration_number: SequenceNotStr[str] | Omit = omit,
+        website_url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[CompanyListResponse]:
         """
         Search all companies using Dun and Bradstreet.
@@ -471,7 +471,7 @@ class CompaniesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Registration:
         """
         Get Registration Information.
@@ -519,7 +519,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        company: Optional[PortfolioCompanyDetailRequest] | NotGiven = NOT_GIVEN,
+        company: Optional[PortfolioCompanyDetailRequest] | Omit = omit,
         country: Optional[
             Literal[
                 "AF",
@@ -774,17 +774,17 @@ class AsyncCompaniesResource(AsyncAPIResource):
                 "",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        customer_reference: Optional[str] | NotGiven = NOT_GIVEN,
-        duns_number: Optional[str] | NotGiven = NOT_GIVEN,
-        primary_name: Optional[str] | NotGiven = NOT_GIVEN,
-        registration_number: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        customer_reference: Optional[str] | Omit = omit,
+        duns_number: Optional[str] | Omit = omit,
+        primary_name: Optional[str] | Omit = omit,
+        registration_number: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Registration:
         """
         Register new Company to Business Radar.
@@ -832,7 +832,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanyRetrieveResponse:
         """
         Get Company Information.
@@ -859,19 +859,19 @@ class AsyncCompaniesResource(AsyncAPIResource):
     def list(
         self,
         *,
-        country: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        duns_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        next_key: str | NotGiven = NOT_GIVEN,
-        portfolio_id: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        query: str | NotGiven = NOT_GIVEN,
-        registration_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        website_url: str | NotGiven = NOT_GIVEN,
+        country: SequenceNotStr[str] | Omit = omit,
+        duns_number: SequenceNotStr[str] | Omit = omit,
+        next_key: str | Omit = omit,
+        portfolio_id: SequenceNotStr[str] | Omit = omit,
+        query: str | Omit = omit,
+        registration_number: SequenceNotStr[str] | Omit = omit,
+        website_url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CompanyListResponse, AsyncNextKey[CompanyListResponse]]:
         """
         Search all companies using Dun and Bradstreet.
@@ -939,7 +939,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Registration:
         """
         Get Registration Information.

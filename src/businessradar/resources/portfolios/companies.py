@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -51,7 +51,7 @@ class CompaniesResource(SyncAPIResource):
         self,
         portfolio_id: str,
         *,
-        company: Optional[PortfolioCompanyDetailRequest] | NotGiven = NOT_GIVEN,
+        company: Optional[PortfolioCompanyDetailRequest] | Omit = omit,
         country: Optional[
             Literal[
                 "AF",
@@ -306,17 +306,17 @@ class CompaniesResource(SyncAPIResource):
                 "",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        customer_reference: Optional[str] | NotGiven = NOT_GIVEN,
-        duns_number: Optional[str] | NotGiven = NOT_GIVEN,
-        primary_name: Optional[str] | NotGiven = NOT_GIVEN,
-        registration_number: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        customer_reference: Optional[str] | Omit = omit,
+        duns_number: Optional[str] | Omit = omit,
+        primary_name: Optional[str] | Omit = omit,
+        registration_number: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Registration:
         """
         Register a new Portfolio Company.
@@ -361,13 +361,13 @@ class CompaniesResource(SyncAPIResource):
         self,
         portfolio_id: str,
         *,
-        next_key: str | NotGiven = NOT_GIVEN,
+        next_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[CompanyListResponse]:
         """
         List And Create Portfolio Companies.
@@ -409,7 +409,7 @@ class CompaniesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Remove Portfolio Companies.
@@ -461,7 +461,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         self,
         portfolio_id: str,
         *,
-        company: Optional[PortfolioCompanyDetailRequest] | NotGiven = NOT_GIVEN,
+        company: Optional[PortfolioCompanyDetailRequest] | Omit = omit,
         country: Optional[
             Literal[
                 "AF",
@@ -716,17 +716,17 @@ class AsyncCompaniesResource(AsyncAPIResource):
                 "",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        customer_reference: Optional[str] | NotGiven = NOT_GIVEN,
-        duns_number: Optional[str] | NotGiven = NOT_GIVEN,
-        primary_name: Optional[str] | NotGiven = NOT_GIVEN,
-        registration_number: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        customer_reference: Optional[str] | Omit = omit,
+        duns_number: Optional[str] | Omit = omit,
+        primary_name: Optional[str] | Omit = omit,
+        registration_number: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Registration:
         """
         Register a new Portfolio Company.
@@ -771,13 +771,13 @@ class AsyncCompaniesResource(AsyncAPIResource):
         self,
         portfolio_id: str,
         *,
-        next_key: str | NotGiven = NOT_GIVEN,
+        next_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CompanyListResponse, AsyncNextKey[CompanyListResponse]]:
         """
         List And Create Portfolio Companies.
@@ -819,7 +819,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Remove Portfolio Companies.
