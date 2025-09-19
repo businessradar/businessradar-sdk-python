@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -48,29 +48,29 @@ class AnalyticsResource(SyncAPIResource):
     def get_count_by_date(
         self,
         *,
-        category: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        company: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        country: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        duns_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        global_ultimate: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        include_clustered_articles: bool | NotGiven = NOT_GIVEN,
-        interval: Literal["day", "month", "week", "year"] | NotGiven = NOT_GIVEN,
-        language: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        max_creation_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        max_publication_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        min_creation_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        min_publication_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        portfolio_id: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        query: str | NotGiven = NOT_GIVEN,
-        registration_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        saved_article_filter_id: str | NotGiven = NOT_GIVEN,
-        sentiment: bool | NotGiven = NOT_GIVEN,
+        category: SequenceNotStr[str] | Omit = omit,
+        company: SequenceNotStr[str] | Omit = omit,
+        country: SequenceNotStr[str] | Omit = omit,
+        duns_number: SequenceNotStr[str] | Omit = omit,
+        global_ultimate: SequenceNotStr[str] | Omit = omit,
+        include_clustered_articles: bool | Omit = omit,
+        interval: Literal["day", "month", "week", "year"] | Omit = omit,
+        language: SequenceNotStr[str] | Omit = omit,
+        max_creation_date: Union[str, datetime] | Omit = omit,
+        max_publication_date: Union[str, datetime] | Omit = omit,
+        min_creation_date: Union[str, datetime] | Omit = omit,
+        min_publication_date: Union[str, datetime] | Omit = omit,
+        portfolio_id: SequenceNotStr[str] | Omit = omit,
+        query: str | Omit = omit,
+        registration_number: SequenceNotStr[str] | Omit = omit,
+        saved_article_filter_id: str | Omit = omit,
+        sentiment: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AnalyticsGetCountByDateResponse:
         """
         Get Count of Articles published by Date.
@@ -173,29 +173,29 @@ class AsyncAnalyticsResource(AsyncAPIResource):
     async def get_count_by_date(
         self,
         *,
-        category: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        company: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        country: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        duns_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        global_ultimate: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        include_clustered_articles: bool | NotGiven = NOT_GIVEN,
-        interval: Literal["day", "month", "week", "year"] | NotGiven = NOT_GIVEN,
-        language: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        max_creation_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        max_publication_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        min_creation_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        min_publication_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        portfolio_id: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        query: str | NotGiven = NOT_GIVEN,
-        registration_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        saved_article_filter_id: str | NotGiven = NOT_GIVEN,
-        sentiment: bool | NotGiven = NOT_GIVEN,
+        category: SequenceNotStr[str] | Omit = omit,
+        company: SequenceNotStr[str] | Omit = omit,
+        country: SequenceNotStr[str] | Omit = omit,
+        duns_number: SequenceNotStr[str] | Omit = omit,
+        global_ultimate: SequenceNotStr[str] | Omit = omit,
+        include_clustered_articles: bool | Omit = omit,
+        interval: Literal["day", "month", "week", "year"] | Omit = omit,
+        language: SequenceNotStr[str] | Omit = omit,
+        max_creation_date: Union[str, datetime] | Omit = omit,
+        max_publication_date: Union[str, datetime] | Omit = omit,
+        min_creation_date: Union[str, datetime] | Omit = omit,
+        min_publication_date: Union[str, datetime] | Omit = omit,
+        portfolio_id: SequenceNotStr[str] | Omit = omit,
+        query: str | Omit = omit,
+        registration_number: SequenceNotStr[str] | Omit = omit,
+        saved_article_filter_id: str | Omit = omit,
+        sentiment: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AnalyticsGetCountByDateResponse:
         """
         Get Count of Articles published by Date.

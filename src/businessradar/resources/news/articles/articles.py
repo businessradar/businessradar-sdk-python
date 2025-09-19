@@ -16,7 +16,7 @@ from .export import (
     ExportResourceWithStreamingResponse,
     AsyncExportResourceWithStreamingResponse,
 )
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from .analytics import (
     AnalyticsResource,
@@ -82,23 +82,23 @@ class ArticlesResource(SyncAPIResource):
     def list(
         self,
         *,
-        category: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        company: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        country: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        duns_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        global_ultimate: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        include_clustered_articles: bool | NotGiven = NOT_GIVEN,
-        language: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        max_creation_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        max_publication_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        min_creation_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        min_publication_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        next_key: str | NotGiven = NOT_GIVEN,
-        portfolio_id: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        query: str | NotGiven = NOT_GIVEN,
-        registration_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        saved_article_filter_id: str | NotGiven = NOT_GIVEN,
-        sentiment: bool | NotGiven = NOT_GIVEN,
+        category: SequenceNotStr[str] | Omit = omit,
+        company: SequenceNotStr[str] | Omit = omit,
+        country: SequenceNotStr[str] | Omit = omit,
+        duns_number: SequenceNotStr[str] | Omit = omit,
+        global_ultimate: SequenceNotStr[str] | Omit = omit,
+        include_clustered_articles: bool | Omit = omit,
+        language: SequenceNotStr[str] | Omit = omit,
+        max_creation_date: Union[str, datetime] | Omit = omit,
+        max_publication_date: Union[str, datetime] | Omit = omit,
+        min_creation_date: Union[str, datetime] | Omit = omit,
+        min_publication_date: Union[str, datetime] | Omit = omit,
+        next_key: str | Omit = omit,
+        portfolio_id: SequenceNotStr[str] | Omit = omit,
+        query: str | Omit = omit,
+        registration_number: SequenceNotStr[str] | Omit = omit,
+        saved_article_filter_id: str | Omit = omit,
+        sentiment: bool | Omit = omit,
         sorting: Literal[
             "creation_date",
             "publication_date_clustering",
@@ -106,14 +106,14 @@ class ArticlesResource(SyncAPIResource):
             "publication_date_source_references",
             "publication_datetime",
         ]
-        | NotGiven = NOT_GIVEN,
-        sorting_order: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        sorting_order: Literal["asc", "desc"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[Article]:
         """
         Search News Articles.
@@ -209,15 +209,15 @@ class ArticlesResource(SyncAPIResource):
         self,
         *,
         article: str,
-        comment: Optional[str] | NotGiven = NOT_GIVEN,
-        email: Optional[str] | NotGiven = NOT_GIVEN,
-        feedback_type: FeedbackTypeEnum | NotGiven = NOT_GIVEN,
+        comment: Optional[str] | Omit = omit,
+        email: Optional[str] | Omit = omit,
+        feedback_type: FeedbackTypeEnum | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ArticleCreateFeedbackResponse:
         """
         Create Article Feedback.
@@ -255,13 +255,13 @@ class ArticlesResource(SyncAPIResource):
     def list_saved_article_filters(
         self,
         *,
-        next_key: str | NotGiven = NOT_GIVEN,
+        next_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[ArticleListSavedArticleFiltersResponse]:
         """
         List Create Saved Article Filter.
@@ -303,7 +303,7 @@ class ArticlesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ArticleRetrieveRelatedResponse:
         """
         Retrieve Article Embedding Search.
@@ -359,23 +359,23 @@ class AsyncArticlesResource(AsyncAPIResource):
     def list(
         self,
         *,
-        category: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        company: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        country: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        duns_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        global_ultimate: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        include_clustered_articles: bool | NotGiven = NOT_GIVEN,
-        language: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        max_creation_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        max_publication_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        min_creation_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        min_publication_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        next_key: str | NotGiven = NOT_GIVEN,
-        portfolio_id: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        query: str | NotGiven = NOT_GIVEN,
-        registration_number: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        saved_article_filter_id: str | NotGiven = NOT_GIVEN,
-        sentiment: bool | NotGiven = NOT_GIVEN,
+        category: SequenceNotStr[str] | Omit = omit,
+        company: SequenceNotStr[str] | Omit = omit,
+        country: SequenceNotStr[str] | Omit = omit,
+        duns_number: SequenceNotStr[str] | Omit = omit,
+        global_ultimate: SequenceNotStr[str] | Omit = omit,
+        include_clustered_articles: bool | Omit = omit,
+        language: SequenceNotStr[str] | Omit = omit,
+        max_creation_date: Union[str, datetime] | Omit = omit,
+        max_publication_date: Union[str, datetime] | Omit = omit,
+        min_creation_date: Union[str, datetime] | Omit = omit,
+        min_publication_date: Union[str, datetime] | Omit = omit,
+        next_key: str | Omit = omit,
+        portfolio_id: SequenceNotStr[str] | Omit = omit,
+        query: str | Omit = omit,
+        registration_number: SequenceNotStr[str] | Omit = omit,
+        saved_article_filter_id: str | Omit = omit,
+        sentiment: bool | Omit = omit,
         sorting: Literal[
             "creation_date",
             "publication_date_clustering",
@@ -383,14 +383,14 @@ class AsyncArticlesResource(AsyncAPIResource):
             "publication_date_source_references",
             "publication_datetime",
         ]
-        | NotGiven = NOT_GIVEN,
-        sorting_order: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        sorting_order: Literal["asc", "desc"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Article, AsyncNextKey[Article]]:
         """
         Search News Articles.
@@ -486,15 +486,15 @@ class AsyncArticlesResource(AsyncAPIResource):
         self,
         *,
         article: str,
-        comment: Optional[str] | NotGiven = NOT_GIVEN,
-        email: Optional[str] | NotGiven = NOT_GIVEN,
-        feedback_type: FeedbackTypeEnum | NotGiven = NOT_GIVEN,
+        comment: Optional[str] | Omit = omit,
+        email: Optional[str] | Omit = omit,
+        feedback_type: FeedbackTypeEnum | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ArticleCreateFeedbackResponse:
         """
         Create Article Feedback.
@@ -532,13 +532,13 @@ class AsyncArticlesResource(AsyncAPIResource):
     def list_saved_article_filters(
         self,
         *,
-        next_key: str | NotGiven = NOT_GIVEN,
+        next_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ArticleListSavedArticleFiltersResponse, AsyncNextKey[ArticleListSavedArticleFiltersResponse]]:
         """
         List Create Saved Article Filter.
@@ -580,7 +580,7 @@ class AsyncArticlesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ArticleRetrieveRelatedResponse:
         """
         Retrieve Article Embedding Search.
