@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.4.0 (2025-09-20)
+
+Full Changelog: [v1.3.0...v1.4.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.3.0...v1.4.0)
+
+### Features
+
+* improve future compat with pydantic v3 ([082bbe1](https://github.com/businessradar/businessradar-sdk-python/commit/082bbe1ee170a17a2d97fa98e81a147a39acc7ad))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([61c6d6b](https://github.com/businessradar/businessradar-sdk-python/commit/61c6d6bbf14bf35a09bb956ca18bc5afa3f85f42))
+* **internal:** move mypy configurations to `pyproject.toml` file ([8dc8271](https://github.com/businessradar/businessradar-sdk-python/commit/8dc827195bf21031c1d7ffe1a73ecae6333aba6e))
+* **internal:** update pydantic dependency ([ce274a6](https://github.com/businessradar/businessradar-sdk-python/commit/ce274a6655430552d5cbb79e7a1a028242437b0c))
+* **tests:** simplify `get_platform` test ([cf21969](https://github.com/businessradar/businessradar-sdk-python/commit/cf2196994bf945079ba7fc459131721c14551dd2))
+* **types:** change optional parameter type from NotGiven to Omit ([4863ae2](https://github.com/businessradar/businessradar-sdk-python/commit/4863ae26849677a6fc34fc5660364f04d4a5a1e8))
+
 ## 1.3.0 (2025-09-03)
 
 Full Changelog: [v1.2.0...v1.3.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.2.0...v1.3.0)
