@@ -32,8 +32,6 @@ class Filters(TypedDict, total=False):
 
     countries: Optional[SequenceNotStr[str]]
 
-    disable_company_article_deduplication: bool
-
     duns_numbers: Optional[SequenceNotStr[str]]
 
     global_ultimates: Optional[SequenceNotStr[str]]
