@@ -22,13 +22,6 @@ class ArticleListParams(TypedDict, total=False):
     country: SequenceNotStr[str]
     """ISO 2-letter Country Code"""
 
-    disable_company_article_deduplication: bool
-    """
-    By default companies with the same trade names are grouped and the best one is
-    picked, the other ones are not included. By disabling this the amount of company
-    articles will grow significantly.
-    """
-
     duns_number: SequenceNotStr[str]
     """9-digit Dun And Bradstreet Number"""
 
