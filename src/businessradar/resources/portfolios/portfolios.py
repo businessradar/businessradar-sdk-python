@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import portfolio_list_params, portfolio_create_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .companies import (
@@ -61,14 +61,14 @@ class PortfoliosResource(SyncAPIResource):
         self,
         *,
         name: str,
-        customer_reference: Optional[str] | NotGiven = NOT_GIVEN,
-        default_permission: Optional[Literal["view_only", "write", "admin", "owner", ""]] | NotGiven = NOT_GIVEN,
+        customer_reference: Optional[str] | Omit = omit,
+        default_permission: Optional[Literal["view_only", "write", "admin", "owner", ""]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Portfolio:
         """
         List Create Portfolio.
@@ -110,13 +110,13 @@ class PortfoliosResource(SyncAPIResource):
     def list(
         self,
         *,
-        next_key: str | NotGiven = NOT_GIVEN,
+        next_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[Portfolio]:
         """
         List Create Portfolio.
@@ -175,14 +175,14 @@ class AsyncPortfoliosResource(AsyncAPIResource):
         self,
         *,
         name: str,
-        customer_reference: Optional[str] | NotGiven = NOT_GIVEN,
-        default_permission: Optional[Literal["view_only", "write", "admin", "owner", ""]] | NotGiven = NOT_GIVEN,
+        customer_reference: Optional[str] | Omit = omit,
+        default_permission: Optional[Literal["view_only", "write", "admin", "owner", ""]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Portfolio:
         """
         List Create Portfolio.
@@ -224,13 +224,13 @@ class AsyncPortfoliosResource(AsyncAPIResource):
     def list(
         self,
         *,
-        next_key: str | NotGiven = NOT_GIVEN,
+        next_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Portfolio, AsyncNextKey[Portfolio]]:
         """
         List Create Portfolio.
