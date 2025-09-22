@@ -17,8 +17,6 @@ class Filters(BaseModel):
 
     countries: Optional[List[str]] = None
 
-    disable_company_article_deduplication: Optional[bool] = None
-
     duns_numbers: Optional[List[str]] = None
 
     global_ultimates: Optional[List[str]] = None
