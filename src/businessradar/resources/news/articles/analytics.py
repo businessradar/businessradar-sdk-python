@@ -51,6 +51,7 @@ class AnalyticsResource(SyncAPIResource):
         category: SequenceNotStr[str] | Omit = omit,
         company: SequenceNotStr[str] | Omit = omit,
         country: SequenceNotStr[str] | Omit = omit,
+        disable_company_article_deduplication: bool | Omit = omit,
         duns_number: SequenceNotStr[str] | Omit = omit,
         global_ultimate: SequenceNotStr[str] | Omit = omit,
         include_clustered_articles: bool | Omit = omit,
@@ -81,6 +82,10 @@ class AnalyticsResource(SyncAPIResource):
           company: Company ID's
 
           country: ISO 2-letter Country Code
+
+          disable_company_article_deduplication: By default companies with the same trade names are grouped and the best one is
+              picked, the other ones are not included. By disabling this the amount of company
+              articles will grow significantly.
 
           duns_number: 9-digit Dun And Bradstreet Number
 
@@ -128,6 +133,7 @@ class AnalyticsResource(SyncAPIResource):
                         "category": category,
                         "company": company,
                         "country": country,
+                        "disable_company_article_deduplication": disable_company_article_deduplication,
                         "duns_number": duns_number,
                         "global_ultimate": global_ultimate,
                         "include_clustered_articles": include_clustered_articles,
@@ -176,6 +182,7 @@ class AsyncAnalyticsResource(AsyncAPIResource):
         category: SequenceNotStr[str] | Omit = omit,
         company: SequenceNotStr[str] | Omit = omit,
         country: SequenceNotStr[str] | Omit = omit,
+        disable_company_article_deduplication: bool | Omit = omit,
         duns_number: SequenceNotStr[str] | Omit = omit,
         global_ultimate: SequenceNotStr[str] | Omit = omit,
         include_clustered_articles: bool | Omit = omit,
@@ -206,6 +213,10 @@ class AsyncAnalyticsResource(AsyncAPIResource):
           company: Company ID's
 
           country: ISO 2-letter Country Code
+
+          disable_company_article_deduplication: By default companies with the same trade names are grouped and the best one is
+              picked, the other ones are not included. By disabling this the amount of company
+              articles will grow significantly.
 
           duns_number: 9-digit Dun And Bradstreet Number
 
@@ -253,6 +264,7 @@ class AsyncAnalyticsResource(AsyncAPIResource):
                         "category": category,
                         "company": company,
                         "country": country,
+                        "disable_company_article_deduplication": disable_company_article_deduplication,
                         "duns_number": duns_number,
                         "global_ultimate": global_ultimate,
                         "include_clustered_articles": include_clustered_articles,
