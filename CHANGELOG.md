@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.1 (2025-09-22)
+
+Full Changelog: [v1.4.0...v1.4.1](https://github.com/businessradar/businessradar-sdk-python/compare/v1.4.0...v1.4.1)
+
+### Chores
+
+* sync repo ([0f74c25](https://github.com/businessradar/businessradar-sdk-python/commit/0f74c256f039ad9fd815955a0bf29dc4a5f611c4))
+
 ## 1.4.0 (2025-09-20)
 
 Full Changelog: [v1.3.0...v1.4.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.3.0...v1.4.0)
