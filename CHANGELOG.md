@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.2 (2025-10-11)
+
+Full Changelog: [v1.4.1...v1.4.2](https://github.com/businessradar/businessradar-sdk-python/compare/v1.4.1...v1.4.2)
+
+### Chores
+
+* **internal:** detect missing future annotations with ruff ([e19b26a](https://github.com/businessradar/businessradar-sdk-python/commit/e19b26acd7fde3cfa9395d0e55615928dfaed3d2))
+
 ## 1.4.1 (2025-09-22)
 
 Full Changelog: [v1.4.0...v1.4.1](https://github.com/businessradar/businessradar-sdk-python/compare/v1.4.0...v1.4.1)
