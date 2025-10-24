@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.4.2 (2025-10-24)
+
+Full Changelog: [v1.4.1...v1.4.2](https://github.com/businessradar/businessradar-sdk-python/compare/v1.4.1...v1.4.2)
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([99414e4](https://github.com/businessradar/businessradar-sdk-python/commit/99414e4051836ed883db3868dab334e51ddce1ea))
+* **internal:** detect missing future annotations with ruff ([e19b26a](https://github.com/businessradar/businessradar-sdk-python/commit/e19b26acd7fde3cfa9395d0e55615928dfaed3d2))
+
 ## 1.4.1 (2025-09-22)
 
 Full Changelog: [v1.4.0...v1.4.1](https://github.com/businessradar/businessradar-sdk-python/compare/v1.4.0...v1.4.1)
