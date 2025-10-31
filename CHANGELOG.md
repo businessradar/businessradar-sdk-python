@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.5.1 (2025-10-31)
+
+Full Changelog: [v1.4.2...v1.5.1](https://github.com/businessradar/businessradar-sdk-python/compare/v1.4.2...v1.5.1)
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([b61515d](https://github.com/businessradar/businessradar-sdk-python/commit/b61515d03bc0c230dcae28a3508cf66da165a5d0))
+
+
+### Chores
+
+* **internal/tests:** avoid race condition with implicit client cleanup ([3362d7a](https://github.com/businessradar/businessradar-sdk-python/commit/3362d7a0d94899b34c2d09e17df44b16f68d3c4e))
+
 ## 1.4.2 (2025-10-24)
 
 Full Changelog: [v1.4.1...v1.4.2](https://github.com/businessradar/businessradar-sdk-python/compare/v1.4.1...v1.4.2)
