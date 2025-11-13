@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.6.0 (2025-11-13)
+
+Full Changelog: [v1.5.1...v1.6.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.5.1...v1.6.0)
+
+### Features
+
+* **api:** api update ([79c8f34](https://github.com/businessradar/businessradar-sdk-python/commit/79c8f34ca6f2f88b6854ac846c89ec8efff455ab))
+
+
+### Bug Fixes
+
+* compat with Python 3.14 ([791d295](https://github.com/businessradar/businessradar-sdk-python/commit/791d2952d47bae569018154e810807b49a268ffb))
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([bac5787](https://github.com/businessradar/businessradar-sdk-python/commit/bac5787696bafd43a0e5fda396c26f147cd41e57))
+
+
+### Chores
+
+* **internal:** grammar fix (it's -&gt; its) ([76d2d86](https://github.com/businessradar/businessradar-sdk-python/commit/76d2d86f6764f50a4df3fcad2e5e13f3fcae6913))
+* **package:** drop Python 3.8 support ([2c423b3](https://github.com/businessradar/businessradar-sdk-python/commit/2c423b3eb354cc820966cc462ecef04643ed9b22))
+
 ## 1.5.1 (2025-10-31)
 
 Full Changelog: [v1.4.2...v1.5.1](https://github.com/businessradar/businessradar-sdk-python/compare/v1.4.2...v1.5.1)
