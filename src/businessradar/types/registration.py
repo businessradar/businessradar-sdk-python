@@ -286,6 +286,7 @@ class Registration(BaseModel):
         "registering",
         "queued_website_search",
         "searching_website",
+        "searching_activity_description",
         "searching_website_icon",
         "searching_directors",
         "social_search",
@@ -308,6 +309,7 @@ class Registration(BaseModel):
     - `registering` - Registering company
     - `queued_website_search` - Queued for website search
     - `searching_website` - Searching for company website
+    - `searching_activity_description` - Generating company activity description
     - `searching_website_icon` - Searching for company website icon
     - `searching_directors` - Searching for directors online
     - `social_search` - Searching for social media websites
