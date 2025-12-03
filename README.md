@@ -79,6 +79,7 @@ pip install businessradar[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
+import os
 import asyncio
 from businessradar import DefaultAioHttpClient
 from businessradar import AsyncBusinessRadar
@@ -86,7 +87,7 @@ from businessradar import AsyncBusinessRadar
 
 async def main() -> None:
     async with AsyncBusinessRadar(
-        api_key="My API Key",
+        api_key=os.environ.get("BUSINESSRADAR_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
         page = await client.news.articles.list()
