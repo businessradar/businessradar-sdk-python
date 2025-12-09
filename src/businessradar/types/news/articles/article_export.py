@@ -11,6 +11,8 @@ __all__ = ["ArticleExport", "Filters"]
 
 
 class Filters(BaseModel):
+    """Article Filter Serializer."""
+
     categories: Optional[List[str]] = None
 
     companies: Optional[List[str]] = None
@@ -51,6 +53,8 @@ class Filters(BaseModel):
 
 
 class ArticleExport(BaseModel):
+    """Data Export Serializer."""
+
     created_at: datetime
 
     export_type: Literal["NEWS", "BINDER", "COMPANIES", "REGISTRATIONS", "COMPLIANCE", "BILLING"]

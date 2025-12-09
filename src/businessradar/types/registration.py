@@ -11,6 +11,11 @@ __all__ = ["Registration", "Company"]
 
 
 class Company(BaseModel):
+    """Portfolio Company Detail Serializer.
+
+    Alternative serializer for the Company model which is limited.
+    """
+
     country: CountryEnum
     """
     - `AF` - Afghanistan
@@ -272,6 +277,11 @@ class Company(BaseModel):
 
 
 class Registration(BaseModel):
+    """Portfolio Registration Serializer.
+
+    Serializer used for registering a new company.
+    """
+
     external_id: str
 
     finished_at: Optional[datetime] = None

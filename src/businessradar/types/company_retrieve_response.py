@@ -11,6 +11,8 @@ __all__ = ["CompanyRetrieveResponse", "RegistrationNumber"]
 
 
 class RegistrationNumber(BaseModel):
+    """Registration Number."""
+
     description: str
 
     number: str
@@ -20,6 +22,8 @@ class RegistrationNumber(BaseModel):
 
 
 class CompanyRetrieveResponse(BaseModel):
+    """Company."""
+
     country: CountryEnum
     """
     - `AF` - Afghanistan
