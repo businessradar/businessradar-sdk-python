@@ -14,6 +14,8 @@ __all__ = ["Article", "CompanyArticle", "CompanyArticleCompany", "Source", "SubA
 
 
 class CompanyArticleCompany(BaseModel):
+    """Custom Company Serializer for News Articles."""
+
     country: CountryEnum
     """
     - `AF` - Afghanistan
@@ -282,6 +284,8 @@ class CompanyArticleCompany(BaseModel):
 
 
 class CompanyArticle(BaseModel):
+    """Serialize Company Article."""
+
     categories: List["CategoryTree"]
 
     company: CompanyArticleCompany
@@ -295,6 +299,8 @@ class CompanyArticle(BaseModel):
 
 
 class Source(BaseModel):
+    """Serializer for Source Information."""
+
     domain: str
 
     name: str
@@ -303,12 +309,16 @@ class Source(BaseModel):
 
 
 class SubArticle(BaseModel):
+    """Serializer for snippet of Sub Article."""
+
     url: str
 
     external_id: Optional[str] = None
 
 
 class Article(BaseModel):
+    """Custom Serializer for the Article Model."""
+
     categories: List["CategoryTree"]
 
     company_articles: List[CompanyArticle]

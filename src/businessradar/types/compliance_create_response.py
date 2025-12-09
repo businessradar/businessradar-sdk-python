@@ -6,4 +6,6 @@ __all__ = ["ComplianceCreateResponse"]
 
 
 class ComplianceCreateResponse(BaseModel):
+    """Compliance check create serializer."""
+
     external_id: str

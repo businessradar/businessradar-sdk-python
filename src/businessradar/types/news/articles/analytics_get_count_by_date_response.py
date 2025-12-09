@@ -10,6 +10,8 @@ __all__ = ["AnalyticsGetCountByDateResponse", "AnalyticsGetCountByDateResponseIt
 
 
 class AnalyticsGetCountByDateResponseItem(BaseModel):
+    """Article Date Aggregation Serializer."""
+
     average_sentiment: float
 
     count: int

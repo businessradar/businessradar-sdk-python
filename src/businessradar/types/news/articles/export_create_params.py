@@ -26,6 +26,8 @@ class ExportCreateParams(TypedDict, total=False):
 
 
 class Filters(TypedDict, total=False):
+    """Article Filter Serializer."""
+
     categories: Optional[SequenceNotStr[str]]
 
     companies: Optional[SequenceNotStr[str]]

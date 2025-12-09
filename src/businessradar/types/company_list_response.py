@@ -14,6 +14,8 @@ class IndustryCode(BaseModel):
 
 
 class CompanyListResponse(BaseModel):
+    """Universal Company."""
+
     address_place: str
 
     address_postal: str

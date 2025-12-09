@@ -18,6 +18,8 @@ __all__ = [
 
 
 class EntityResultAddress(BaseModel):
+    """Compliance entity result address serializer."""
+
     city: Optional[str] = None
 
     country: Optional[
@@ -281,6 +283,8 @@ class EntityResultAddress(BaseModel):
 
 
 class EntityResultSource(BaseModel):
+    """Compliance entity result source serializer."""
+
     url: str
 
     description: Optional[str] = None
@@ -295,10 +299,14 @@ class EntityResultSource(BaseModel):
 
 
 class EntityResultTag(BaseModel):
+    """Compliance entity result tag serializer."""
+
     tag: str
 
 
 class EntityResult(BaseModel):
+    """Compliance entity result serializer."""
+
     addresses: List[EntityResultAddress]
 
     created_at: datetime

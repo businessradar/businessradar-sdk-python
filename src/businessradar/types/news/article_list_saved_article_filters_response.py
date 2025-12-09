@@ -6,6 +6,8 @@ __all__ = ["ArticleListSavedArticleFiltersResponse"]
 
 
 class ArticleListSavedArticleFiltersResponse(BaseModel):
+    """SavedArticleFilter Instance."""
+
     external_id: str
 
     name: str

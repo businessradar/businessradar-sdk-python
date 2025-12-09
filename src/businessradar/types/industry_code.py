@@ -8,6 +8,8 @@ __all__ = ["IndustryCode"]
 
 
 class IndustryCode(BaseModel):
+    """Industry Code."""
+
     code: str
 
     description: Optional[str] = None
