@@ -9,6 +9,8 @@ __all__ = ["ArticleCreateFeedbackResponse"]
 
 
 class ArticleCreateFeedbackResponse(BaseModel):
+    """External Article Feedback Serializer."""
+
     article: str
 
     external_id: str

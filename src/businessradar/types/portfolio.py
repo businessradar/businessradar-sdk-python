@@ -9,6 +9,8 @@ __all__ = ["Portfolio"]
 
 
 class Portfolio(BaseModel):
+    """Portfolio Instance."""
+
     external_id: str
 
     name: str

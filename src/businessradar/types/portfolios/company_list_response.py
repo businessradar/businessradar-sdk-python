@@ -10,6 +10,8 @@ __all__ = ["CompanyListResponse", "Company"]
 
 
 class Company(BaseModel):
+    """Company List."""
+
     country: CountryEnum
     """
     - `AF` - Afghanistan
@@ -321,6 +323,8 @@ class Company(BaseModel):
 
 
 class CompanyListResponse(BaseModel):
+    """Portfolio Company Instance."""
+
     company: Company
     """Company List."""
 

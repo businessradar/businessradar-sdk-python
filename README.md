@@ -5,7 +5,7 @@
 
 Easily integrate [Business Radar’s](https://www.businessradar.com) real-time company and news data into your Python apps.
 
-The Business Radar Python library provides convenient access to the Business Radar REST API from any Python 3.8+
+The Business Radar Python library provides convenient access to the Business Radar REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -81,6 +81,7 @@ pip install businessradar[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
+import os
 import asyncio
 from businessradar import DefaultAioHttpClient
 from businessradar import AsyncBusinessRadar
@@ -88,7 +89,7 @@ from businessradar import AsyncBusinessRadar
 
 async def main() -> None:
     async with AsyncBusinessRadar(
-        api_key="My API Key",
+        api_key=os.environ.get("BUSINESSRADAR_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
         page = await client.news.articles.list()
@@ -445,4 +446,4 @@ print(businessradar.__version__)
 
 ## Requirements
 
-Python 3.8 or higher.
+Python 3.9 or higher.

@@ -11,6 +11,8 @@ __all__ = ["ArticleRetrieveRelatedResponse", "ArticleRetrieveRelatedResponseItem
 
 
 class ArticleRetrieveRelatedResponseItem(BaseModel):
+    """Related Article Serializer."""
+
     article: "Article"
     """Custom Serializer for the Article Model."""
 

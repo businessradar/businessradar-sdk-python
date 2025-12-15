@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.6.0 (2025-12-15)
+
+Full Changelog: [v1.5.1...v1.6.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.5.1...v1.6.0)
+
+### Features
+
+* **api:** api update ([10044f7](https://github.com/businessradar/businessradar-sdk-python/commit/10044f76ebe043321dd17ace090b9bebf3ea237a))
+* **api:** api update ([79c8f34](https://github.com/businessradar/businessradar-sdk-python/commit/79c8f34ca6f2f88b6854ac846c89ec8efff455ab))
+
+
+### Bug Fixes
+
+* compat with Python 3.14 ([791d295](https://github.com/businessradar/businessradar-sdk-python/commit/791d2952d47bae569018154e810807b49a268ffb))
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([bac5787](https://github.com/businessradar/businessradar-sdk-python/commit/bac5787696bafd43a0e5fda396c26f147cd41e57))
+* ensure streams are always closed ([d40fa9d](https://github.com/businessradar/businessradar-sdk-python/commit/d40fa9d5659d7c8401b199451cc125450e02c2e3))
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([08baa95](https://github.com/businessradar/businessradar-sdk-python/commit/08baa95b47f8926140296afbc6f266409ab977d3))
+
+
+### Chores
+
+* add missing docstrings ([9112e6c](https://github.com/businessradar/businessradar-sdk-python/commit/9112e6cb061f8f537980e06b3859615306033346))
+* add Python 3.14 classifier and testing ([08e7bb8](https://github.com/businessradar/businessradar-sdk-python/commit/08e7bb8c02a52c07014d3cbcde6c7ac7cbee59ed))
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([864efbf](https://github.com/businessradar/businessradar-sdk-python/commit/864efbf05d8a2734050fef58e9a23856ddb75784))
+* **docs:** use environment variables for authentication in code snippets ([f20e275](https://github.com/businessradar/businessradar-sdk-python/commit/f20e2751a9b0f091191e2139ecf61bffa8f9f82f))
+* **internal:** grammar fix (it's -&gt; its) ([76d2d86](https://github.com/businessradar/businessradar-sdk-python/commit/76d2d86f6764f50a4df3fcad2e5e13f3fcae6913))
+* **package:** drop Python 3.8 support ([2c423b3](https://github.com/businessradar/businessradar-sdk-python/commit/2c423b3eb354cc820966cc462ecef04643ed9b22))
+* update lockfile ([821f301](https://github.com/businessradar/businessradar-sdk-python/commit/821f301afb14b25f5d0d5c4055b19ecff9b0f0c4))
+
 ## 1.5.1 (2025-10-31)
 
 Full Changelog: [v1.4.2...v1.5.1](https://github.com/businessradar/businessradar-sdk-python/compare/v1.4.2...v1.5.1)

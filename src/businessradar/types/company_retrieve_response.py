@@ -11,6 +11,8 @@ __all__ = ["CompanyRetrieveResponse", "RegistrationNumber"]
 
 
 class RegistrationNumber(BaseModel):
+    """Registration Number."""
+
     description: str
 
     number: str
@@ -20,6 +22,8 @@ class RegistrationNumber(BaseModel):
 
 
 class CompanyRetrieveResponse(BaseModel):
+    """Company."""
+
     country: CountryEnum
     """
     - `AF` - Afghanistan
@@ -311,6 +315,9 @@ class CompanyRetrieveResponse(BaseModel):
     """Amount of articles available"""
 
     external_id: Optional[str] = None
+
+    is_out_of_business: Optional[bool] = None
+    """Indicates whether the company is out of business."""
 
     linkedin_url: Optional[str] = None
 
