@@ -37,3 +37,5 @@ class CompanyListResponse(BaseModel):
     social_logo: Optional[str] = None
 
     website_icon_url: Optional[str] = None
+
+    is_out_of_business: Optional[bool] = None

@@ -316,6 +316,9 @@ class CompanyRetrieveResponse(BaseModel):
 
     external_id: Optional[str] = None
 
+    is_out_of_business: Optional[bool] = None
+    """Indicates whether the company is out of business."""
+
     linkedin_url: Optional[str] = None
 
     publication_count: Optional[int] = None
