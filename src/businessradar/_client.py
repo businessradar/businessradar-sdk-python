@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 from typing_extensions import Self, override
 
 import httpx
@@ -20,8 +20,8 @@ from ._types import (
     not_given,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
-from .resources import companies, compliance
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError, BusinessRadarError
 from ._base_client import (
@@ -29,8 +29,13 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.news import news
-from .resources.portfolios import portfolios
+
+if TYPE_CHECKING:
+    from .resources import news, companies, compliance, portfolios
+    from .resources.companies import CompaniesResource, AsyncCompaniesResource
+    from .resources.news.news import NewsResource, AsyncNewsResource
+    from .resources.compliance import ComplianceResource, AsyncComplianceResource
+    from .resources.portfolios.portfolios import PortfoliosResource, AsyncPortfoliosResource
 
 __all__ = [
     "Timeout",
@@ -45,13 +50,6 @@ __all__ = [
 
 
 class BusinessRadar(SyncAPIClient):
-    news: news.NewsResource
-    companies: companies.CompaniesResource
-    compliance: compliance.ComplianceResource
-    portfolios: portfolios.PortfoliosResource
-    with_raw_response: BusinessRadarWithRawResponse
-    with_streaming_response: BusinessRadarWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -106,12 +104,37 @@ class BusinessRadar(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.news = news.NewsResource(self)
-        self.companies = companies.CompaniesResource(self)
-        self.compliance = compliance.ComplianceResource(self)
-        self.portfolios = portfolios.PortfoliosResource(self)
-        self.with_raw_response = BusinessRadarWithRawResponse(self)
-        self.with_streaming_response = BusinessRadarWithStreamedResponse(self)
+    @cached_property
+    def news(self) -> NewsResource:
+        from .resources.news import NewsResource
+
+        return NewsResource(self)
+
+    @cached_property
+    def companies(self) -> CompaniesResource:
+        from .resources.companies import CompaniesResource
+
+        return CompaniesResource(self)
+
+    @cached_property
+    def compliance(self) -> ComplianceResource:
+        from .resources.compliance import ComplianceResource
+
+        return ComplianceResource(self)
+
+    @cached_property
+    def portfolios(self) -> PortfoliosResource:
+        from .resources.portfolios import PortfoliosResource
+
+        return PortfoliosResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> BusinessRadarWithRawResponse:
+        return BusinessRadarWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> BusinessRadarWithStreamedResponse:
+        return BusinessRadarWithStreamedResponse(self)
 
     @property
     @override
@@ -219,13 +242,6 @@ class BusinessRadar(SyncAPIClient):
 
 
 class AsyncBusinessRadar(AsyncAPIClient):
-    news: news.AsyncNewsResource
-    companies: companies.AsyncCompaniesResource
-    compliance: compliance.AsyncComplianceResource
-    portfolios: portfolios.AsyncPortfoliosResource
-    with_raw_response: AsyncBusinessRadarWithRawResponse
-    with_streaming_response: AsyncBusinessRadarWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -280,12 +296,37 @@ class AsyncBusinessRadar(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.news = news.AsyncNewsResource(self)
-        self.companies = companies.AsyncCompaniesResource(self)
-        self.compliance = compliance.AsyncComplianceResource(self)
-        self.portfolios = portfolios.AsyncPortfoliosResource(self)
-        self.with_raw_response = AsyncBusinessRadarWithRawResponse(self)
-        self.with_streaming_response = AsyncBusinessRadarWithStreamedResponse(self)
+    @cached_property
+    def news(self) -> AsyncNewsResource:
+        from .resources.news import AsyncNewsResource
+
+        return AsyncNewsResource(self)
+
+    @cached_property
+    def companies(self) -> AsyncCompaniesResource:
+        from .resources.companies import AsyncCompaniesResource
+
+        return AsyncCompaniesResource(self)
+
+    @cached_property
+    def compliance(self) -> AsyncComplianceResource:
+        from .resources.compliance import AsyncComplianceResource
+
+        return AsyncComplianceResource(self)
+
+    @cached_property
+    def portfolios(self) -> AsyncPortfoliosResource:
+        from .resources.portfolios import AsyncPortfoliosResource
+
+        return AsyncPortfoliosResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncBusinessRadarWithRawResponse:
+        return AsyncBusinessRadarWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncBusinessRadarWithStreamedResponse:
+        return AsyncBusinessRadarWithStreamedResponse(self)
 
     @property
     @override
@@ -393,35 +434,127 @@ class AsyncBusinessRadar(AsyncAPIClient):
 
 
 class BusinessRadarWithRawResponse:
+    _client: BusinessRadar
+
     def __init__(self, client: BusinessRadar) -> None:
-        self.news = news.NewsResourceWithRawResponse(client.news)
-        self.companies = companies.CompaniesResourceWithRawResponse(client.companies)
-        self.compliance = compliance.ComplianceResourceWithRawResponse(client.compliance)
-        self.portfolios = portfolios.PortfoliosResourceWithRawResponse(client.portfolios)
+        self._client = client
+
+    @cached_property
+    def news(self) -> news.NewsResourceWithRawResponse:
+        from .resources.news import NewsResourceWithRawResponse
+
+        return NewsResourceWithRawResponse(self._client.news)
+
+    @cached_property
+    def companies(self) -> companies.CompaniesResourceWithRawResponse:
+        from .resources.companies import CompaniesResourceWithRawResponse
+
+        return CompaniesResourceWithRawResponse(self._client.companies)
+
+    @cached_property
+    def compliance(self) -> compliance.ComplianceResourceWithRawResponse:
+        from .resources.compliance import ComplianceResourceWithRawResponse
+
+        return ComplianceResourceWithRawResponse(self._client.compliance)
+
+    @cached_property
+    def portfolios(self) -> portfolios.PortfoliosResourceWithRawResponse:
+        from .resources.portfolios import PortfoliosResourceWithRawResponse
+
+        return PortfoliosResourceWithRawResponse(self._client.portfolios)
 
 
 class AsyncBusinessRadarWithRawResponse:
+    _client: AsyncBusinessRadar
+
     def __init__(self, client: AsyncBusinessRadar) -> None:
-        self.news = news.AsyncNewsResourceWithRawResponse(client.news)
-        self.companies = companies.AsyncCompaniesResourceWithRawResponse(client.companies)
-        self.compliance = compliance.AsyncComplianceResourceWithRawResponse(client.compliance)
-        self.portfolios = portfolios.AsyncPortfoliosResourceWithRawResponse(client.portfolios)
+        self._client = client
+
+    @cached_property
+    def news(self) -> news.AsyncNewsResourceWithRawResponse:
+        from .resources.news import AsyncNewsResourceWithRawResponse
+
+        return AsyncNewsResourceWithRawResponse(self._client.news)
+
+    @cached_property
+    def companies(self) -> companies.AsyncCompaniesResourceWithRawResponse:
+        from .resources.companies import AsyncCompaniesResourceWithRawResponse
+
+        return AsyncCompaniesResourceWithRawResponse(self._client.companies)
+
+    @cached_property
+    def compliance(self) -> compliance.AsyncComplianceResourceWithRawResponse:
+        from .resources.compliance import AsyncComplianceResourceWithRawResponse
+
+        return AsyncComplianceResourceWithRawResponse(self._client.compliance)
+
+    @cached_property
+    def portfolios(self) -> portfolios.AsyncPortfoliosResourceWithRawResponse:
+        from .resources.portfolios import AsyncPortfoliosResourceWithRawResponse
+
+        return AsyncPortfoliosResourceWithRawResponse(self._client.portfolios)
 
 
 class BusinessRadarWithStreamedResponse:
+    _client: BusinessRadar
+
     def __init__(self, client: BusinessRadar) -> None:
-        self.news = news.NewsResourceWithStreamingResponse(client.news)
-        self.companies = companies.CompaniesResourceWithStreamingResponse(client.companies)
-        self.compliance = compliance.ComplianceResourceWithStreamingResponse(client.compliance)
-        self.portfolios = portfolios.PortfoliosResourceWithStreamingResponse(client.portfolios)
+        self._client = client
+
+    @cached_property
+    def news(self) -> news.NewsResourceWithStreamingResponse:
+        from .resources.news import NewsResourceWithStreamingResponse
+
+        return NewsResourceWithStreamingResponse(self._client.news)
+
+    @cached_property
+    def companies(self) -> companies.CompaniesResourceWithStreamingResponse:
+        from .resources.companies import CompaniesResourceWithStreamingResponse
+
+        return CompaniesResourceWithStreamingResponse(self._client.companies)
+
+    @cached_property
+    def compliance(self) -> compliance.ComplianceResourceWithStreamingResponse:
+        from .resources.compliance import ComplianceResourceWithStreamingResponse
+
+        return ComplianceResourceWithStreamingResponse(self._client.compliance)
+
+    @cached_property
+    def portfolios(self) -> portfolios.PortfoliosResourceWithStreamingResponse:
+        from .resources.portfolios import PortfoliosResourceWithStreamingResponse
+
+        return PortfoliosResourceWithStreamingResponse(self._client.portfolios)
 
 
 class AsyncBusinessRadarWithStreamedResponse:
+    _client: AsyncBusinessRadar
+
     def __init__(self, client: AsyncBusinessRadar) -> None:
-        self.news = news.AsyncNewsResourceWithStreamingResponse(client.news)
-        self.companies = companies.AsyncCompaniesResourceWithStreamingResponse(client.companies)
-        self.compliance = compliance.AsyncComplianceResourceWithStreamingResponse(client.compliance)
-        self.portfolios = portfolios.AsyncPortfoliosResourceWithStreamingResponse(client.portfolios)
+        self._client = client
+
+    @cached_property
+    def news(self) -> news.AsyncNewsResourceWithStreamingResponse:
+        from .resources.news import AsyncNewsResourceWithStreamingResponse
+
+        return AsyncNewsResourceWithStreamingResponse(self._client.news)
+
+    @cached_property
+    def companies(self) -> companies.AsyncCompaniesResourceWithStreamingResponse:
+        from .resources.companies import AsyncCompaniesResourceWithStreamingResponse
+
+        return AsyncCompaniesResourceWithStreamingResponse(self._client.companies)
+
+    @cached_property
+    def compliance(self) -> compliance.AsyncComplianceResourceWithStreamingResponse:
+        from .resources.compliance import AsyncComplianceResourceWithStreamingResponse
+
+        return AsyncComplianceResourceWithStreamingResponse(self._client.compliance)
+
+    @cached_property
+    def portfolios(self) -> portfolios.AsyncPortfoliosResourceWithStreamingResponse:
+        from .resources.portfolios import AsyncPortfoliosResourceWithStreamingResponse
+
+        return AsyncPortfoliosResourceWithStreamingResponse(self._client.portfolios)
 
 
 Client = BusinessRadar
