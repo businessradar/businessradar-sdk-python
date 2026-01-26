@@ -12,6 +12,9 @@ __all__ = ["CategoryTree"]
 class CategoryTree(BaseModel):
     """Category Tree Structure."""
 
+    is_material: bool
+    """Return is_material flag if present."""
+
     name: str
 
     sub_categories: List["CategoryTree"]
