@@ -21,6 +21,12 @@ from .company_retrieve_response import CompanyRetrieveResponse as CompanyRetriev
 from .compliance_create_response import ComplianceCreateResponse as ComplianceCreateResponse
 from .compliance_check_score_enum import ComplianceCheckScoreEnum as ComplianceCheckScoreEnum
 from .compliance_retrieve_response import ComplianceRetrieveResponse as ComplianceRetrieveResponse
+from .company_list_attribute_changes_params import (
+    CompanyListAttributeChangesParams as CompanyListAttributeChangesParams,
+)
+from .company_list_attribute_changes_response import (
+    CompanyListAttributeChangesResponse as CompanyListAttributeChangesResponse,
+)
 
 # Rebuild cyclical models only after all modules are imported.
 # This ensures that, when building the deferred (due to cyclical references) model schema,

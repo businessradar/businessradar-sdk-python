@@ -13,7 +13,9 @@ from businessradar.types import (
     Registration,
     CompanyListResponse,
     CompanyRetrieveResponse,
+    CompanyListAttributeChangesResponse,
 )
+from businessradar._utils import parse_datetime
 from businessradar.pagination import SyncNextKey, AsyncNextKey
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -144,6 +146,44 @@ class TestCompanies:
 
             company = response.parse()
             assert_matches_type(SyncNextKey[CompanyListResponse], company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_list_attribute_changes(self, client: BusinessRadar) -> None:
+        company = client.companies.list_attribute_changes()
+        assert_matches_type(SyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_list_attribute_changes_with_all_params(self, client: BusinessRadar) -> None:
+        company = client.companies.list_attribute_changes(
+            max_created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            min_created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            next_key="next_key",
+        )
+        assert_matches_type(SyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_list_attribute_changes(self, client: BusinessRadar) -> None:
+        response = client.companies.with_raw_response.list_attribute_changes()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = response.parse()
+        assert_matches_type(SyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_list_attribute_changes(self, client: BusinessRadar) -> None:
+        with client.companies.with_streaming_response.list_attribute_changes() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = response.parse()
+            assert_matches_type(SyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -317,6 +357,44 @@ class TestAsyncCompanies:
 
             company = await response.parse()
             assert_matches_type(AsyncNextKey[CompanyListResponse], company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_attribute_changes(self, async_client: AsyncBusinessRadar) -> None:
+        company = await async_client.companies.list_attribute_changes()
+        assert_matches_type(AsyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_attribute_changes_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
+        company = await async_client.companies.list_attribute_changes(
+            max_created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            min_created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            next_key="next_key",
+        )
+        assert_matches_type(AsyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_list_attribute_changes(self, async_client: AsyncBusinessRadar) -> None:
+        response = await async_client.companies.with_raw_response.list_attribute_changes()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = await response.parse()
+        assert_matches_type(AsyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_list_attribute_changes(self, async_client: AsyncBusinessRadar) -> None:
+        async with async_client.companies.with_streaming_response.list_attribute_changes() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = await response.parse()
+            assert_matches_type(AsyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

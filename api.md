@@ -67,6 +67,7 @@ from businessradar.types import (
     RegistrationRequest,
     CompanyRetrieveResponse,
     CompanyListResponse,
+    CompanyListAttributeChangesResponse,
 )
 ```
 
@@ -75,6 +76,7 @@ Methods:
 - <code title="post /ext/v3/companies">client.companies.<a href="./src/businessradar/resources/companies.py">create</a>(\*\*<a href="src/businessradar/types/company_create_params.py">params</a>) -> <a href="./src/businessradar/types/registration.py">Registration</a></code>
 - <code title="get /ext/v3/companies/{external_id}">client.companies.<a href="./src/businessradar/resources/companies.py">retrieve</a>(external_id) -> <a href="./src/businessradar/types/company_retrieve_response.py">CompanyRetrieveResponse</a></code>
 - <code title="get /ext/v3/companies">client.companies.<a href="./src/businessradar/resources/companies.py">list</a>(\*\*<a href="src/businessradar/types/company_list_params.py">params</a>) -> <a href="./src/businessradar/types/company_list_response.py">SyncNextKey[CompanyListResponse]</a></code>
+- <code title="get /ext/v3/companies/attribute_changes">client.companies.<a href="./src/businessradar/resources/companies.py">list_attribute_changes</a>(\*\*<a href="src/businessradar/types/company_list_attribute_changes_params.py">params</a>) -> <a href="./src/businessradar/types/company_list_attribute_changes_response.py">SyncNextKey[CompanyListAttributeChangesResponse]</a></code>
 - <code title="get /ext/v3/registrations/{registration_id}">client.companies.<a href="./src/businessradar/resources/companies.py">retrieve_registration</a>(registration_id) -> <a href="./src/businessradar/types/registration.py">Registration</a></code>
 
 # Compliance
