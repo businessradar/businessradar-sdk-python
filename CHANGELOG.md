@@ -1,5 +1,30 @@
 # Changelog
 
+## 1.7.0 (2026-01-26)
+
+Full Changelog: [v1.6.0...v1.7.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.6.0...v1.7.0)
+
+### Features
+
+* **api:** api update ([12ef8ee](https://github.com/businessradar/businessradar-sdk-python/commit/12ef8ee497a0559229fc894c2f0535187dd53358))
+* **api:** manual updates ([804f1dc](https://github.com/businessradar/businessradar-sdk-python/commit/804f1dc34e67d001d49e117924f615b1a6dde22b))
+* **client:** add support for binary request streaming ([eaf59bb](https://github.com/businessradar/businessradar-sdk-python/commit/eaf59bbf6a6abaa8bfec34d28390df64e6eeeab6))
+
+
+### Bug Fixes
+
+* use async_to_httpx_files in patch method ([5fd2ea4](https://github.com/businessradar/businessradar-sdk-python/commit/5fd2ea455cc9d37831f24357acc442f0909ddf07))
+
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([067b9dd](https://github.com/businessradar/businessradar-sdk-python/commit/067b9dde0cf6ab544c1e032f4598183469e11000))
+* **internal:** add `--fix` argument to lint script ([0c7ee4e](https://github.com/businessradar/businessradar-sdk-python/commit/0c7ee4eae333d5f94b69daaf310f12b78c707fae))
+* **internal:** add missing files argument to base client ([186d8bf](https://github.com/businessradar/businessradar-sdk-python/commit/186d8bfc249d33bf43f0c659c748373b2d482ed0))
+* **internal:** codegen related update ([31f3fe5](https://github.com/businessradar/businessradar-sdk-python/commit/31f3fe50d96c12590f3edacf7526b8a4af3cfd45))
+* **internal:** update `actions/checkout` version ([d72d132](https://github.com/businessradar/businessradar-sdk-python/commit/d72d1328c7818e894acfecbdb514ac8f63239bc3))
+* speedup initial import ([8043b1f](https://github.com/businessradar/businessradar-sdk-python/commit/8043b1f060383318e0e7c85806e6bd9fe66b221a))
+
 ## 1.6.0 (2025-12-15)
 
 Full Changelog: [v1.5.1...v1.6.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.5.1...v1.6.0)
