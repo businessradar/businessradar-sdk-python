@@ -89,6 +89,7 @@ class ArticlesResource(SyncAPIResource):
         duns_number: SequenceNotStr[str] | Omit = omit,
         global_ultimate: SequenceNotStr[str] | Omit = omit,
         include_clustered_articles: bool | Omit = omit,
+        is_material: bool | Omit = omit,
         language: SequenceNotStr[str] | Omit = omit,
         max_creation_date: Union[str, datetime] | Omit = omit,
         max_publication_date: Union[str, datetime] | Omit = omit,
@@ -138,6 +139,8 @@ class ArticlesResource(SyncAPIResource):
           global_ultimate: 9-digit Dun And Bradstreet Number
 
           include_clustered_articles: Include clustered articles
+
+          is_material: Filter articles by materiality flag (true/false)
 
           language: ISO 2-letter Language Code
 
@@ -191,6 +194,7 @@ class ArticlesResource(SyncAPIResource):
                         "duns_number": duns_number,
                         "global_ultimate": global_ultimate,
                         "include_clustered_articles": include_clustered_articles,
+                        "is_material": is_material,
                         "language": language,
                         "max_creation_date": max_creation_date,
                         "max_publication_date": max_publication_date,
@@ -372,6 +376,7 @@ class AsyncArticlesResource(AsyncAPIResource):
         duns_number: SequenceNotStr[str] | Omit = omit,
         global_ultimate: SequenceNotStr[str] | Omit = omit,
         include_clustered_articles: bool | Omit = omit,
+        is_material: bool | Omit = omit,
         language: SequenceNotStr[str] | Omit = omit,
         max_creation_date: Union[str, datetime] | Omit = omit,
         max_publication_date: Union[str, datetime] | Omit = omit,
@@ -421,6 +426,8 @@ class AsyncArticlesResource(AsyncAPIResource):
           global_ultimate: 9-digit Dun And Bradstreet Number
 
           include_clustered_articles: Include clustered articles
+
+          is_material: Filter articles by materiality flag (true/false)
 
           language: ISO 2-letter Language Code
 
@@ -474,6 +481,7 @@ class AsyncArticlesResource(AsyncAPIResource):
                         "duns_number": duns_number,
                         "global_ultimate": global_ultimate,
                         "include_clustered_articles": include_clustered_articles,
+                        "is_material": is_material,
                         "language": language,
                         "max_creation_date": max_creation_date,
                         "max_publication_date": max_publication_date,

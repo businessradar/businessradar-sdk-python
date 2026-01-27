@@ -44,6 +44,8 @@ class Filters(TypedDict, total=False):
 
     industries: Optional[SequenceNotStr[str]]
 
+    is_material: Optional[bool]
+
     languages: Optional[SequenceNotStr[str]]
 
     max_creation_date: Annotated[Union[str, datetime, None], PropertyInfo(format="iso8601")]
