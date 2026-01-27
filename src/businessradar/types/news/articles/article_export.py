@@ -29,6 +29,8 @@ class Filters(BaseModel):
 
     industries: Optional[List[str]] = None
 
+    is_material: Optional[bool] = None
+
     languages: Optional[List[str]] = None
 
     max_creation_date: Optional[datetime] = None

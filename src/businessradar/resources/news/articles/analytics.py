@@ -56,6 +56,7 @@ class AnalyticsResource(SyncAPIResource):
         global_ultimate: SequenceNotStr[str] | Omit = omit,
         include_clustered_articles: bool | Omit = omit,
         interval: Literal["day", "month", "week", "year"] | Omit = omit,
+        is_material: bool | Omit = omit,
         language: SequenceNotStr[str] | Omit = omit,
         max_creation_date: Union[str, datetime] | Omit = omit,
         max_publication_date: Union[str, datetime] | Omit = omit,
@@ -92,6 +93,8 @@ class AnalyticsResource(SyncAPIResource):
           global_ultimate: 9-digit Dun And Bradstreet Number
 
           include_clustered_articles: Include clustered articles
+
+          is_material: Filter articles by materiality flag (true/false)
 
           language: ISO 2-letter Language Code
 
@@ -138,6 +141,7 @@ class AnalyticsResource(SyncAPIResource):
                         "global_ultimate": global_ultimate,
                         "include_clustered_articles": include_clustered_articles,
                         "interval": interval,
+                        "is_material": is_material,
                         "language": language,
                         "max_creation_date": max_creation_date,
                         "max_publication_date": max_publication_date,
@@ -187,6 +191,7 @@ class AsyncAnalyticsResource(AsyncAPIResource):
         global_ultimate: SequenceNotStr[str] | Omit = omit,
         include_clustered_articles: bool | Omit = omit,
         interval: Literal["day", "month", "week", "year"] | Omit = omit,
+        is_material: bool | Omit = omit,
         language: SequenceNotStr[str] | Omit = omit,
         max_creation_date: Union[str, datetime] | Omit = omit,
         max_publication_date: Union[str, datetime] | Omit = omit,
@@ -223,6 +228,8 @@ class AsyncAnalyticsResource(AsyncAPIResource):
           global_ultimate: 9-digit Dun And Bradstreet Number
 
           include_clustered_articles: Include clustered articles
+
+          is_material: Filter articles by materiality flag (true/false)
 
           language: ISO 2-letter Language Code
 
@@ -269,6 +276,7 @@ class AsyncAnalyticsResource(AsyncAPIResource):
                         "global_ultimate": global_ultimate,
                         "include_clustered_articles": include_clustered_articles,
                         "interval": interval,
+                        "is_material": is_material,
                         "language": language,
                         "max_creation_date": max_creation_date,
                         "max_publication_date": max_publication_date,
