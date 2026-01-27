@@ -38,6 +38,9 @@ class ArticleListParams(TypedDict, total=False):
     include_clustered_articles: bool
     """Include clustered articles"""
 
+    is_material: bool
+    """Filter articles by materiality flag (true/false)"""
+
     language: SequenceNotStr[str]
     """ISO 2-letter Language Code"""
 

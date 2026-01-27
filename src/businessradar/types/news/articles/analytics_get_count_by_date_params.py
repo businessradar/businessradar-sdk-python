@@ -40,6 +40,9 @@ class AnalyticsGetCountByDateParams(TypedDict, total=False):
 
     interval: Literal["day", "month", "week", "year"]
 
+    is_material: bool
+    """Filter articles by materiality flag (true/false)"""
+
     language: SequenceNotStr[str]
     """ISO 2-letter Language Code"""
 
