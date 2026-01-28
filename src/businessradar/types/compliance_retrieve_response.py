@@ -495,6 +495,8 @@ class ComplianceRetrieveResponse(BaseModel):
 
     external_id: str
 
+    progress: float
+
     activity_score: Optional[Literal["low", "medium", "high", ""]] = None
 
     adverse_media_score: Optional[Literal["low", "medium", "high", ""]] = None
