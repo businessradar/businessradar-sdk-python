@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Optional
+
 import httpx
 
 from ..types import compliance_create_params
@@ -45,8 +47,8 @@ class ComplianceResource(SyncAPIResource):
     def create(
         self,
         *,
-        company_id: str,
         all_entities_screening_enabled: bool | Omit = omit,
+        company_id: Optional[str] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
         ownership_screening_threshold: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -75,8 +77,8 @@ class ComplianceResource(SyncAPIResource):
             "/ext/v3/compliance",
             body=maybe_transform(
                 {
-                    "company_id": company_id,
                     "all_entities_screening_enabled": all_entities_screening_enabled,
+                    "company_id": company_id,
                     "directors_screening_enabled": directors_screening_enabled,
                     "ownership_screening_threshold": ownership_screening_threshold,
                 },
@@ -145,8 +147,8 @@ class AsyncComplianceResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        company_id: str,
         all_entities_screening_enabled: bool | Omit = omit,
+        company_id: Optional[str] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
         ownership_screening_threshold: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -175,8 +177,8 @@ class AsyncComplianceResource(AsyncAPIResource):
             "/ext/v3/compliance",
             body=await async_maybe_transform(
                 {
-                    "company_id": company_id,
                     "all_entities_screening_enabled": all_entities_screening_enabled,
+                    "company_id": company_id,
                     "directors_screening_enabled": directors_screening_enabled,
                     "ownership_screening_threshold": ownership_screening_threshold,
                 },
