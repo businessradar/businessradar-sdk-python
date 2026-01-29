@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Optional
-from typing_extensions import TypedDict
+from typing import Union, Iterable, Optional
+from datetime import date
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
-__all__ = ["ComplianceCreateParams"]
+from .._utils import PropertyInfo
+
+__all__ = ["ComplianceCreateParams", "Entity"]
 
 
 class ComplianceCreateParams(TypedDict, total=False):
@@ -18,5 +21,31 @@ class ComplianceCreateParams(TypedDict, total=False):
     company_id: Optional[str]
 
     directors_screening_enabled: bool
+    """If directors should be screened."""
 
-    ownership_screening_threshold: float
+    entities: Iterable[Entity]
+
+    ownership_screening_threshold: Optional[float]
+    """The threshold for ultimate ownership to enable for screening."""
+
+
+class Entity(TypedDict, total=False):
+    """Compliance entity request serializer."""
+
+    name: Required[str]
+
+    country: Optional[str]
+
+    date_of_birth: Annotated[Union[str, date, None], PropertyInfo(format="iso8601")]
+
+    entity_type: Literal["individual", "company"]
+    """
+    - `individual` - Individual
+    - `company` - Company
+    """
+
+    first_name: Optional[str]
+
+    last_name: Optional[str]
+
+    middle_name: Optional[str]

@@ -10,6 +10,7 @@ import pytest
 from tests.utils import assert_matches_type
 from businessradar import BusinessRadar, AsyncBusinessRadar
 from businessradar.types import ComplianceCreateResponse, ComplianceRetrieveResponse
+from businessradar._utils import parse_date
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -30,6 +31,17 @@ class TestCompliance:
             all_entities_screening_enabled=True,
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             directors_screening_enabled=True,
+            entities=[
+                {
+                    "name": "x",
+                    "country": "xx",
+                    "date_of_birth": parse_date("2019-12-27"),
+                    "entity_type": "individual",
+                    "first_name": "first_name",
+                    "last_name": "last_name",
+                    "middle_name": "middle_name",
+                }
+            ],
             ownership_screening_threshold=0,
         )
         assert_matches_type(ComplianceCreateResponse, compliance, path=["response"])
@@ -117,6 +129,17 @@ class TestAsyncCompliance:
             all_entities_screening_enabled=True,
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             directors_screening_enabled=True,
+            entities=[
+                {
+                    "name": "x",
+                    "country": "xx",
+                    "date_of_birth": parse_date("2019-12-27"),
+                    "entity_type": "individual",
+                    "first_name": "first_name",
+                    "last_name": "last_name",
+                    "middle_name": "middle_name",
+                }
+            ],
             ownership_screening_threshold=0,
         )
         assert_matches_type(ComplianceCreateResponse, compliance, path=["response"])

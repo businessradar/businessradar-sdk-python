@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Iterable, Optional
 
 import httpx
 
@@ -50,7 +50,8 @@ class ComplianceResource(SyncAPIResource):
         all_entities_screening_enabled: bool | Omit = omit,
         company_id: Optional[str] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
-        ownership_screening_threshold: float | Omit = omit,
+        entities: Iterable[compliance_create_params.Entity] | Omit = omit,
+        ownership_screening_threshold: Optional[float] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -64,6 +65,10 @@ class ComplianceResource(SyncAPIResource):
         Args:
           all_entities_screening_enabled: If enabled all found entities UBOs, directors, shareholders will be screened.
               This can have an high cost impact.
+
+          directors_screening_enabled: If directors should be screened.
+
+          ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
 
           extra_headers: Send extra headers
 
@@ -80,6 +85,7 @@ class ComplianceResource(SyncAPIResource):
                     "all_entities_screening_enabled": all_entities_screening_enabled,
                     "company_id": company_id,
                     "directors_screening_enabled": directors_screening_enabled,
+                    "entities": entities,
                     "ownership_screening_threshold": ownership_screening_threshold,
                 },
                 compliance_create_params.ComplianceCreateParams,
@@ -102,7 +108,7 @@ class ComplianceResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ComplianceRetrieveResponse:
         """
-        Get compliance check results.
+        Get compliance check details.
 
         Args:
           extra_headers: Send extra headers
@@ -150,7 +156,8 @@ class AsyncComplianceResource(AsyncAPIResource):
         all_entities_screening_enabled: bool | Omit = omit,
         company_id: Optional[str] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
-        ownership_screening_threshold: float | Omit = omit,
+        entities: Iterable[compliance_create_params.Entity] | Omit = omit,
+        ownership_screening_threshold: Optional[float] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -164,6 +171,10 @@ class AsyncComplianceResource(AsyncAPIResource):
         Args:
           all_entities_screening_enabled: If enabled all found entities UBOs, directors, shareholders will be screened.
               This can have an high cost impact.
+
+          directors_screening_enabled: If directors should be screened.
+
+          ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
 
           extra_headers: Send extra headers
 
@@ -180,6 +191,7 @@ class AsyncComplianceResource(AsyncAPIResource):
                     "all_entities_screening_enabled": all_entities_screening_enabled,
                     "company_id": company_id,
                     "directors_screening_enabled": directors_screening_enabled,
+                    "entities": entities,
                     "ownership_screening_threshold": ownership_screening_threshold,
                 },
                 compliance_create_params.ComplianceCreateParams,
@@ -202,7 +214,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ComplianceRetrieveResponse:
         """
-        Get compliance check results.
+        Get compliance check details.
 
         Args:
           extra_headers: Send extra headers
