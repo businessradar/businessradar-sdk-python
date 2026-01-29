@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.9.0 (2026-01-29)
+
+Full Changelog: [v1.8.0...v1.9.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.8.0...v1.9.0)
+
+### Features
+
+* **api:** api update ([82cec3b](https://github.com/businessradar/businessradar-sdk-python/commit/82cec3b3d774401a19b36f50f2643a5e49162efa))
+* **api:** manual updates ([7738a48](https://github.com/businessradar/businessradar-sdk-python/commit/7738a48749ddfec3b415faeed9b3076366af8e80))
+
+
+### Bug Fixes
+
+* **docs:** fix mcp installation instructions for remote servers ([fd6867a](https://github.com/businessradar/businessradar-sdk-python/commit/fd6867a449341aff6b9a66f4d01028b9caba9f33))
+
+
+### Chores
+
+* configure new SDK language ([825093b](https://github.com/businessradar/businessradar-sdk-python/commit/825093b3acc68b935de9a74856a9ab947ebe564e))
+* update SDK settings ([91b4db2](https://github.com/businessradar/businessradar-sdk-python/commit/91b4db2ea1d96919a478bbd09a1d42197f7d7c63))
+
 ## 1.8.0 (2026-01-27)
 
 Full Changelog: [v1.7.0...v1.8.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.7.0...v1.8.0)
