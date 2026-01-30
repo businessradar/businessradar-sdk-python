@@ -454,8 +454,9 @@ class CompaniesResource(SyncAPIResource):
 
           duns_number: 9-digit Dun And Bradstreet Number (can be multiple)
 
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           portfolio_id: Filter companies belonging to specific Portfolio IDs (UUID)
 
@@ -854,8 +855,9 @@ class CompaniesResource(SyncAPIResource):
 
           min_created_at: Filter updates created at or after this time.
 
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           extra_headers: Send extra headers
 
@@ -903,8 +905,9 @@ class CompaniesResource(SyncAPIResource):
         found.
 
         Args:
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           extra_headers: Send extra headers
 
@@ -1412,8 +1415,9 @@ class AsyncCompaniesResource(AsyncAPIResource):
 
           duns_number: 9-digit Dun And Bradstreet Number (can be multiple)
 
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           portfolio_id: Filter companies belonging to specific Portfolio IDs (UUID)
 
@@ -1812,8 +1816,9 @@ class AsyncCompaniesResource(AsyncAPIResource):
 
           min_created_at: Filter updates created at or after this time.
 
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           extra_headers: Send extra headers
 
@@ -1863,8 +1868,9 @@ class AsyncCompaniesResource(AsyncAPIResource):
         found.
 
         Args:
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           extra_headers: Send extra headers
 

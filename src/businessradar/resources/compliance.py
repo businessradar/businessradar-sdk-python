@@ -62,12 +62,12 @@ class ComplianceResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ComplianceCreateResponse:
-        """### Create Compliance Check (Asynchronous)
+        """
+        ### Create Compliance Check (Asynchronous)
 
-        Initiate a new compliance screening.
-
-        Once posted, Business Radar processes the
-        request in the background.
+        Initiate a new compliance screening for either a specific company or a custom
+        list of entities. Once posted, Business Radar processes the request in the
+        background.
 
         To check the progress and/or retrieve the final result, you can use the
         [GET /compliance/{external_id}](/ext/v3/#/ext/ext_v3_compliance_retrieve)
@@ -172,8 +172,9 @@ class ComplianceResource(SyncAPIResource):
 
           min_confidence: Filter by minimum confidence score (0.0 - 1.0)
 
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           order: Sorting order
 
@@ -250,12 +251,12 @@ class AsyncComplianceResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ComplianceCreateResponse:
-        """### Create Compliance Check (Asynchronous)
+        """
+        ### Create Compliance Check (Asynchronous)
 
-        Initiate a new compliance screening.
-
-        Once posted, Business Radar processes the
-        request in the background.
+        Initiate a new compliance screening for either a specific company or a custom
+        list of entities. Once posted, Business Radar processes the request in the
+        background.
 
         To check the progress and/or retrieve the final result, you can use the
         [GET /compliance/{external_id}](/ext/v3/#/ext/ext_v3_compliance_retrieve)
@@ -360,8 +361,9 @@ class AsyncComplianceResource(AsyncAPIResource):
 
           min_confidence: Filter by minimum confidence score (0.0 - 1.0)
 
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           order: Sorting order
 
