@@ -321,12 +321,23 @@ class CompaniesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Registration:
         """
-        Register new Company to Business Radar.
+        ### Register Company (Asynchronous)
+
+        Register a new company to Business Radar using its identification details. Once
+        posted, Business Radar processes the request in the background.
+
+        To check the progress and/or retrieve the final result, you can use the
+        [GET /registrations/{registration_id}](/ext/v3/#/ext/ext_v3_registrations_retrieve)
+        endpoint.
+
+        If the company is already registered, the existing registration will be
+        returned.
 
         Args:
-          company: Portfolio Company Detail Serializer.
+          company: ### Portfolio Company Detail (Simplified)
 
-              Alternative serializer for the Company model which is limited.
+              A lightweight data structure for company identification (UUID, DUNS, Name,
+              Country).
 
           customer_reference: Customer reference for the client to understand relationship.
 
@@ -369,7 +380,9 @@ class CompaniesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanyRetrieveResponse:
         """
-        Get Company Information.
+        ### Retrieve Company Information
+
+        Fetch detailed information about a specific company using its `external_id`.
 
         Args:
           extra_headers: Send extra headers
@@ -408,29 +421,34 @@ class CompaniesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[CompanyListResponse]:
         """
-        Search all companies using Dun and Bradstreet.
+        ### Search Companies
 
-        Companies will contain an optional external_id, which is null if company is not
-        registered in Business Radar.
+        Search for companies across internal and external databases.
 
-        When you pass query and optional country it will search using dun and
-        bradstreet, otherwise using internal search.
+        - If `query` and an optional `country` are provided, the search is primarily
+          conducted via Dun & Bradstreet.
+
+        - If other filters (like `portfolio_id`) are provided, the search is limited to
+          our internal database.
+
+        The results include an `external_id` if the company is already registered in
+        Business Radar.
 
         Args:
-          country: ISO 2-letter Country Code
+          country: ISO 2-letter Country Code (e.g., NL, US)
 
-          duns_number: 9-digit Dun And Bradstreet Number
+          duns_number: 9-digit Dun And Bradstreet Number (can be multiple)
 
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
+              previous response to retrieve the next set of results.
 
-          portfolio_id: Portfolio ID to filter companies
+          portfolio_id: Filter companies belonging to specific Portfolio IDs (UUID)
 
           query: Custom search query to text search all companies.
 
-          registration_number: Local Registration Number
+          registration_number: Local Registration Number (can be multiple)
 
-          website_url: Website URL to search
+          website_url: Website URL to search for the company
 
           extra_headers: Send extra headers
 
@@ -477,16 +495,20 @@ class CompaniesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[CompanyListAttributeChangesResponse]:
-        """
-        List Company Updates.
+        """### List Company Updates
+
+        Retrieve a list of attribute changes for companies.
+
+        This allows monitoring how
+        company data has evolved over time.
 
         Args:
           max_created_at: Filter updates created at or before this time.
 
           min_created_at: Filter updates created at or after this time.
 
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
+              previous response to retrieve the next set of results.
 
           extra_headers: Send extra headers
 
@@ -528,7 +550,10 @@ class CompaniesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Registration:
         """
-        Get Registration Information.
+        ### Retrieve Registration Information
+
+        Fetch details about a specific company registration request using its
+        `registration_id`.
 
         Args:
           extra_headers: Send extra headers
@@ -841,12 +866,23 @@ class AsyncCompaniesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Registration:
         """
-        Register new Company to Business Radar.
+        ### Register Company (Asynchronous)
+
+        Register a new company to Business Radar using its identification details. Once
+        posted, Business Radar processes the request in the background.
+
+        To check the progress and/or retrieve the final result, you can use the
+        [GET /registrations/{registration_id}](/ext/v3/#/ext/ext_v3_registrations_retrieve)
+        endpoint.
+
+        If the company is already registered, the existing registration will be
+        returned.
 
         Args:
-          company: Portfolio Company Detail Serializer.
+          company: ### Portfolio Company Detail (Simplified)
 
-              Alternative serializer for the Company model which is limited.
+              A lightweight data structure for company identification (UUID, DUNS, Name,
+              Country).
 
           customer_reference: Customer reference for the client to understand relationship.
 
@@ -889,7 +925,9 @@ class AsyncCompaniesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanyRetrieveResponse:
         """
-        Get Company Information.
+        ### Retrieve Company Information
+
+        Fetch detailed information about a specific company using its `external_id`.
 
         Args:
           extra_headers: Send extra headers
@@ -928,29 +966,34 @@ class AsyncCompaniesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CompanyListResponse, AsyncNextKey[CompanyListResponse]]:
         """
-        Search all companies using Dun and Bradstreet.
+        ### Search Companies
 
-        Companies will contain an optional external_id, which is null if company is not
-        registered in Business Radar.
+        Search for companies across internal and external databases.
 
-        When you pass query and optional country it will search using dun and
-        bradstreet, otherwise using internal search.
+        - If `query` and an optional `country` are provided, the search is primarily
+          conducted via Dun & Bradstreet.
+
+        - If other filters (like `portfolio_id`) are provided, the search is limited to
+          our internal database.
+
+        The results include an `external_id` if the company is already registered in
+        Business Radar.
 
         Args:
-          country: ISO 2-letter Country Code
+          country: ISO 2-letter Country Code (e.g., NL, US)
 
-          duns_number: 9-digit Dun And Bradstreet Number
+          duns_number: 9-digit Dun And Bradstreet Number (can be multiple)
 
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
+              previous response to retrieve the next set of results.
 
-          portfolio_id: Portfolio ID to filter companies
+          portfolio_id: Filter companies belonging to specific Portfolio IDs (UUID)
 
           query: Custom search query to text search all companies.
 
-          registration_number: Local Registration Number
+          registration_number: Local Registration Number (can be multiple)
 
-          website_url: Website URL to search
+          website_url: Website URL to search for the company
 
           extra_headers: Send extra headers
 
@@ -997,16 +1040,20 @@ class AsyncCompaniesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CompanyListAttributeChangesResponse, AsyncNextKey[CompanyListAttributeChangesResponse]]:
-        """
-        List Company Updates.
+        """### List Company Updates
+
+        Retrieve a list of attribute changes for companies.
+
+        This allows monitoring how
+        company data has evolved over time.
 
         Args:
           max_created_at: Filter updates created at or before this time.
 
           min_created_at: Filter updates created at or after this time.
 
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
+              previous response to retrieve the next set of results.
 
           extra_headers: Send extra headers
 
@@ -1048,7 +1095,10 @@ class AsyncCompaniesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Registration:
         """
-        Get Registration Information.
+        ### Retrieve Registration Information
+
+        Fetch details about a specific company registration request using its
+        `registration_id`.
 
         Args:
           extra_headers: Send extra headers

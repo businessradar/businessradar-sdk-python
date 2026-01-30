@@ -6,9 +6,9 @@ __all__ = ["PortfolioCompanyDetailRequest"]
 
 
 class PortfolioCompanyDetailRequest(BaseModel):
-    """Portfolio Company Detail Serializer.
+    """### Portfolio Company Detail (Simplified)
 
-    Alternative serializer for the Company model which is limited.
+    A lightweight data structure for company identification (UUID, DUNS, Name, Country).
     """
 
     external_id: str

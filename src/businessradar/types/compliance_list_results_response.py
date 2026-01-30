@@ -10,7 +10,7 @@ __all__ = ["ComplianceListResultsResponse", "Address", "Entity", "EntityUbo", "S
 
 
 class Address(BaseModel):
-    """Compliance entity result address serializer."""
+    """Compliance entity result address."""
 
     city: Optional[str] = None
 
@@ -335,7 +335,7 @@ class Entity(BaseModel):
 
 
 class Source(BaseModel):
-    """Compliance entity result source serializer."""
+    """Compliance entity result source."""
 
     url: str
 
@@ -351,13 +351,13 @@ class Source(BaseModel):
 
 
 class Tag(BaseModel):
-    """Compliance entity result tag serializer."""
+    """Compliance entity result tag."""
 
     tag: str
 
 
 class ComplianceListResultsResponse(BaseModel):
-    """Compliance entity result serializer."""
+    """Compliance entity result."""
 
     addresses: List[Address]
 

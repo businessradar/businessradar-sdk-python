@@ -8,7 +8,10 @@ __all__ = ["IndustryCode"]
 
 
 class IndustryCode(BaseModel):
-    """Industry Code."""
+    """### Industry Code
+
+    Industry classification codes (e.g., NACE, SBI, SIC).
+    """
 
     code: str
 

@@ -14,68 +14,68 @@ __all__ = ["ArticleListParams"]
 
 class ArticleListParams(TypedDict, total=False):
     category: SequenceNotStr[str]
-    """Category ID to filter articles"""
+    """Filter by article Category IDs (UUIDs)."""
 
     company: SequenceNotStr[str]
-    """Company ID's"""
+    """Filter by internal Company UUIDs."""
 
     country: SequenceNotStr[str]
-    """ISO 2-letter Country Code"""
+    """Filter by ISO 2-letter Country Codes (e.g., 'US', 'GB')."""
 
     disable_company_article_deduplication: bool
     """
-    By default companies with the same trade names are grouped and the best one is
-    picked, the other ones are not included. By disabling this the amount of company
-    articles will grow significantly.
+    By default, companies with the same trade names are grouped and the best match
+    is selected. Enable this to see all associated companies.
     """
 
     duns_number: SequenceNotStr[str]
-    """9-digit Dun And Bradstreet Number"""
+    """Filter by one or more 9-digit Dun & Bradstreet Numbers."""
 
     global_ultimate: SequenceNotStr[str]
-    """9-digit Dun And Bradstreet Number"""
+    """Filter by Global Ultimate DUNS Numbers."""
 
     include_clustered_articles: bool
-    """Include clustered articles"""
+    """Include articles that are part of a cluster (reprints or similar articles)."""
 
     is_material: bool
-    """Filter articles by materiality flag (true/false)"""
+    """Filter by materiality flag (relevance to business risk)."""
 
     language: SequenceNotStr[str]
-    """ISO 2-letter Language Code"""
+    """Filter by ISO 2-letter Language Codes (e.g., 'en', 'nl')."""
 
     max_creation_date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """Filter articles created before this date"""
+    """Filter articles added to our database at or before this date/time."""
 
     max_publication_date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """Filter articles published before this date"""
+    """Filter articles published at or before this date/time."""
 
     min_creation_date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """Filter articles created after this date"""
+    """Filter articles added to our database at or after this date/time."""
 
     min_publication_date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """Filter articles published after this date"""
+    """Filter articles published at or after this date/time."""
 
     next_key: str
-    """
-    The next_key is an cursor used to make it possible to paginate to the next
-    results, pass the next_key from the previous request to retrieve next results.
+    """An opaque cursor value used for pagination.
+
+    Pass the `next_key` received from a previous response to retrieve the next set
+    of results.
     """
 
     portfolio_id: SequenceNotStr[str]
-    """Portfolio ID to filter articles"""
+    """Filter articles related to companies in specific Portfolios (UUIDs)."""
 
     query: str
-    """Custom search filters to text search all articles."""
+    """Full-text search query for filtering articles by content."""
 
     registration_number: SequenceNotStr[str]
-    """Local Registration Number"""
+    """Filter by local company registration numbers."""
 
     saved_article_filter_id: str
-    """Filter articles on already saved article filter id"""
+    """Apply a previously saved set of article filters (UUID)."""
 
     sentiment: bool
-    """Filter articles with sentiment"""
+    """Filter by sentiment: `true` for positive, `false` for negative."""
 
     sorting: Literal[
         "creation_date",

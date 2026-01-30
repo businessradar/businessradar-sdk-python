@@ -319,12 +319,20 @@ class CompaniesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Registration:
         """
-        Register a new Portfolio Company.
+        ### Register Portfolio Company (Asynchronous)
+
+        Register and add a new company to the portfolio. Once posted, Business Radar
+        processes the request in the background.
+
+        To check the progress and/or retrieve the final result, you can use the
+        [GET /registrations/{registration_id}](/ext/v3/#/ext/ext_v3_registrations_retrieve)
+        endpoint.
 
         Args:
-          company: Portfolio Company Detail Serializer.
+          company: ### Portfolio Company Detail (Simplified)
 
-              Alternative serializer for the Company model which is limited.
+              A lightweight data structure for company identification (UUID, DUNS, Name,
+              Country).
 
           customer_reference: Customer reference for the client to understand relationship.
 
@@ -369,12 +377,17 @@ class CompaniesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[CompanyListResponse]:
-        """
-        List And Create Portfolio Companies.
+        """### Portfolio Companies
+
+        Manage companies within a specific portfolio.
+
+        - **GET**: List all companies
+        currently in the portfolio. - **POST**: Register and add a new company to the
+        portfolio.
 
         Args:
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
+              previous response to retrieve the next set of results.
 
           extra_headers: Send extra headers
 
@@ -412,7 +425,9 @@ class CompaniesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Remove Portfolio Companies.
+        ### Remove Portfolio Company
+
+        Remove a company from a portfolio using its internal `external_id`.
 
         Args:
           extra_headers: Send extra headers
@@ -729,12 +744,20 @@ class AsyncCompaniesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Registration:
         """
-        Register a new Portfolio Company.
+        ### Register Portfolio Company (Asynchronous)
+
+        Register and add a new company to the portfolio. Once posted, Business Radar
+        processes the request in the background.
+
+        To check the progress and/or retrieve the final result, you can use the
+        [GET /registrations/{registration_id}](/ext/v3/#/ext/ext_v3_registrations_retrieve)
+        endpoint.
 
         Args:
-          company: Portfolio Company Detail Serializer.
+          company: ### Portfolio Company Detail (Simplified)
 
-              Alternative serializer for the Company model which is limited.
+              A lightweight data structure for company identification (UUID, DUNS, Name,
+              Country).
 
           customer_reference: Customer reference for the client to understand relationship.
 
@@ -779,12 +802,17 @@ class AsyncCompaniesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CompanyListResponse, AsyncNextKey[CompanyListResponse]]:
-        """
-        List And Create Portfolio Companies.
+        """### Portfolio Companies
+
+        Manage companies within a specific portfolio.
+
+        - **GET**: List all companies
+        currently in the portfolio. - **POST**: Register and add a new company to the
+        portfolio.
 
         Args:
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
+              previous response to retrieve the next set of results.
 
           extra_headers: Send extra headers
 
@@ -822,7 +850,9 @@ class AsyncCompaniesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Remove Portfolio Companies.
+        ### Remove Portfolio Company
+
+        Remove a company from a portfolio using its internal `external_id`.
 
         Args:
           extra_headers: Send extra headers

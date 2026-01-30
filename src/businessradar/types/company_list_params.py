@@ -11,25 +11,26 @@ __all__ = ["CompanyListParams"]
 
 class CompanyListParams(TypedDict, total=False):
     country: SequenceNotStr[str]
-    """ISO 2-letter Country Code"""
+    """ISO 2-letter Country Code (e.g., NL, US)"""
 
     duns_number: SequenceNotStr[str]
-    """9-digit Dun And Bradstreet Number"""
+    """9-digit Dun And Bradstreet Number (can be multiple)"""
 
     next_key: str
-    """
-    The next_key is an cursor used to make it possible to paginate to the next
-    results, pass the next_key from the previous request to retrieve next results.
+    """An opaque cursor value used for pagination.
+
+    Pass the `next_key` received from a previous response to retrieve the next set
+    of results.
     """
 
     portfolio_id: SequenceNotStr[str]
-    """Portfolio ID to filter companies"""
+    """Filter companies belonging to specific Portfolio IDs (UUID)"""
 
     query: str
     """Custom search query to text search all companies."""
 
     registration_number: SequenceNotStr[str]
-    """Local Registration Number"""
+    """Local Registration Number (can be multiple)"""
 
     website_url: str
-    """Website URL to search"""
+    """Website URL to search for the company"""

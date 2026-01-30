@@ -75,46 +75,49 @@ class AnalyticsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AnalyticsGetCountByDateResponse:
         """
-        Get Count of Articles published by Date.
+        ### Get Article Aggregations
+
+        Retrieve the number of articles and their average sentiment, grouped by date.
 
         Args:
-          category: Category ID to filter articles
+          category: Filter by article Category IDs (UUIDs).
 
-          company: Company ID's
+          company: Filter by internal Company UUIDs.
 
-          country: ISO 2-letter Country Code
+          country: Filter by ISO 2-letter Country Codes (e.g., 'US', 'GB').
 
-          disable_company_article_deduplication: By default companies with the same trade names are grouped and the best one is
-              picked, the other ones are not included. By disabling this the amount of company
-              articles will grow significantly.
+          disable_company_article_deduplication: By default, companies with the same trade names are grouped and the best match
+              is selected. Enable this to see all associated companies.
 
-          duns_number: 9-digit Dun And Bradstreet Number
+          duns_number: Filter by one or more 9-digit Dun & Bradstreet Numbers.
 
-          global_ultimate: 9-digit Dun And Bradstreet Number
+          global_ultimate: Filter by Global Ultimate DUNS Numbers.
 
-          include_clustered_articles: Include clustered articles
+          include_clustered_articles: Include articles that are part of a cluster (reprints or similar articles).
 
-          is_material: Filter articles by materiality flag (true/false)
+          interval: The time interval for aggregation.
 
-          language: ISO 2-letter Language Code
+          is_material: Filter by materiality flag (relevance to business risk).
 
-          max_creation_date: Filter articles created before this date
+          language: Filter by ISO 2-letter Language Codes (e.g., 'en', 'nl').
 
-          max_publication_date: Filter articles published before this date
+          max_creation_date: Filter articles added to our database at or before this date/time.
 
-          min_creation_date: Filter articles created after this date
+          max_publication_date: Filter articles published at or before this date/time.
 
-          min_publication_date: Filter articles published after this date
+          min_creation_date: Filter articles added to our database at or after this date/time.
 
-          portfolio_id: Portfolio ID to filter articles
+          min_publication_date: Filter articles published at or after this date/time.
 
-          query: Custom search filters to text search all articles.
+          portfolio_id: Filter articles related to companies in specific Portfolios (UUIDs).
 
-          registration_number: Local Registration Number
+          query: Full-text search query for filtering articles by content.
 
-          saved_article_filter_id: Filter articles on already saved article filter id
+          registration_number: Filter by local company registration numbers.
 
-          sentiment: Filter articles with sentiment
+          saved_article_filter_id: Apply a previously saved set of article filters (UUID).
+
+          sentiment: Filter by sentiment: `true` for positive, `false` for negative.
 
           extra_headers: Send extra headers
 
@@ -210,46 +213,49 @@ class AsyncAnalyticsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AnalyticsGetCountByDateResponse:
         """
-        Get Count of Articles published by Date.
+        ### Get Article Aggregations
+
+        Retrieve the number of articles and their average sentiment, grouped by date.
 
         Args:
-          category: Category ID to filter articles
+          category: Filter by article Category IDs (UUIDs).
 
-          company: Company ID's
+          company: Filter by internal Company UUIDs.
 
-          country: ISO 2-letter Country Code
+          country: Filter by ISO 2-letter Country Codes (e.g., 'US', 'GB').
 
-          disable_company_article_deduplication: By default companies with the same trade names are grouped and the best one is
-              picked, the other ones are not included. By disabling this the amount of company
-              articles will grow significantly.
+          disable_company_article_deduplication: By default, companies with the same trade names are grouped and the best match
+              is selected. Enable this to see all associated companies.
 
-          duns_number: 9-digit Dun And Bradstreet Number
+          duns_number: Filter by one or more 9-digit Dun & Bradstreet Numbers.
 
-          global_ultimate: 9-digit Dun And Bradstreet Number
+          global_ultimate: Filter by Global Ultimate DUNS Numbers.
 
-          include_clustered_articles: Include clustered articles
+          include_clustered_articles: Include articles that are part of a cluster (reprints or similar articles).
 
-          is_material: Filter articles by materiality flag (true/false)
+          interval: The time interval for aggregation.
 
-          language: ISO 2-letter Language Code
+          is_material: Filter by materiality flag (relevance to business risk).
 
-          max_creation_date: Filter articles created before this date
+          language: Filter by ISO 2-letter Language Codes (e.g., 'en', 'nl').
 
-          max_publication_date: Filter articles published before this date
+          max_creation_date: Filter articles added to our database at or before this date/time.
 
-          min_creation_date: Filter articles created after this date
+          max_publication_date: Filter articles published at or before this date/time.
 
-          min_publication_date: Filter articles published after this date
+          min_creation_date: Filter articles added to our database at or after this date/time.
 
-          portfolio_id: Portfolio ID to filter articles
+          min_publication_date: Filter articles published at or after this date/time.
 
-          query: Custom search filters to text search all articles.
+          portfolio_id: Filter articles related to companies in specific Portfolios (UUIDs).
 
-          registration_number: Local Registration Number
+          query: Full-text search query for filtering articles by content.
 
-          saved_article_filter_id: Filter articles on already saved article filter id
+          registration_number: Filter by local company registration numbers.
 
-          sentiment: Filter articles with sentiment
+          saved_article_filter_id: Apply a previously saved set of article filters (UUID).
+
+          sentiment: Filter by sentiment: `true` for positive, `false` for negative.
 
           extra_headers: Send extra headers
 

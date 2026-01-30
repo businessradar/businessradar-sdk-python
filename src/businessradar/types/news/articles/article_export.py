@@ -11,7 +11,11 @@ __all__ = ["ArticleExport", "Filters"]
 
 
 class Filters(BaseModel):
-    """Article Filter Serializer."""
+    """### Article Filters
+
+    Used to validate and process filters for article searches. Supports filtering by
+    query text, countries, languages, specific companies (DUNS), and portfolios.
+    """
 
     categories: Optional[List[str]] = None
 
@@ -79,7 +83,11 @@ class ArticleExport(BaseModel):
     """
 
     filters: Filters
-    """Article Filter Serializer."""
+    """### Article Filters
+
+    Used to validate and process filters for article searches. Supports filtering by
+    query text, countries, languages, specific companies (DUNS), and portfolios.
+    """
 
     location: Optional[str] = None
     """Location of exports"""

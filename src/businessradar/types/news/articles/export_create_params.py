@@ -22,11 +22,19 @@ class ExportCreateParams(TypedDict, total=False):
     """
 
     filters: Required[Filters]
-    """Article Filter Serializer."""
+    """### Article Filters
+
+    Used to validate and process filters for article searches. Supports filtering by
+    query text, countries, languages, specific companies (DUNS), and portfolios.
+    """
 
 
 class Filters(TypedDict, total=False):
-    """Article Filter Serializer."""
+    """### Article Filters
+
+    Used to validate and process filters for article searches. Supports filtering by
+    query text, countries, languages, specific companies (DUNS), and portfolios.
+    """
 
     categories: Optional[SequenceNotStr[str]]
 

@@ -9,7 +9,11 @@ __all__ = ["Portfolio"]
 
 
 class Portfolio(BaseModel):
-    """Portfolio Instance."""
+    """### Portfolio
+
+    Represents a collection of companies (a portfolio) managed by a user or profile.
+    Includes basic metadata and default permission settings.
+    """
 
     external_id: str
 
