@@ -88,6 +88,7 @@ from businessradar.types import (
     ComplianceCheckScoreEnum,
     ComplianceCreateResponse,
     ComplianceRetrieveResponse,
+    ComplianceListResultsResponse,
 )
 ```
 
@@ -95,6 +96,7 @@ Methods:
 
 - <code title="post /ext/v3/compliance">client.compliance.<a href="./src/businessradar/resources/compliance.py">create</a>(\*\*<a href="src/businessradar/types/compliance_create_params.py">params</a>) -> <a href="./src/businessradar/types/compliance_create_response.py">ComplianceCreateResponse</a></code>
 - <code title="get /ext/v3/compliance/{external_id}">client.compliance.<a href="./src/businessradar/resources/compliance.py">retrieve</a>(external_id) -> <a href="./src/businessradar/types/compliance_retrieve_response.py">ComplianceRetrieveResponse</a></code>
+- <code title="get /ext/v3/compliance/{external_id}/results">client.compliance.<a href="./src/businessradar/resources/compliance.py">list_results</a>(external_id, \*\*<a href="src/businessradar/types/compliance_list_results_params.py">params</a>) -> <a href="./src/businessradar/types/compliance_list_results_response.py">SyncNextKey[ComplianceListResultsResponse]</a></code>
 
 # Portfolios
 
