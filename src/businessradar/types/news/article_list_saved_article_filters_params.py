@@ -9,7 +9,9 @@ __all__ = ["ArticleListSavedArticleFiltersParams"]
 
 class ArticleListSavedArticleFiltersParams(TypedDict, total=False):
     next_key: str
-    """
-    The next_key is an cursor used to make it possible to paginate to the next
-    results, pass the next_key from the previous request to retrieve next results.
+    """A cursor value used for pagination.
+
+    Include the `next_key` value from your previous request to retrieve the
+    subsequent page of results. If this value is `null`, the first page of results
+    is returned.
     """

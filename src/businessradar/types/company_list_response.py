@@ -14,7 +14,15 @@ class IndustryCode(BaseModel):
 
 
 class CompanyListResponse(BaseModel):
-    """Universal Company."""
+    """### Universal Company Data
+
+    Handles company data from both internal and external sources (e.g., Dun &
+    Bradstreet). Provides a unified representation of a company.
+
+    - **DUNS Number**: Unique 9-digit identifier. - **External ID**: Internal unique
+    identifier if the company is registered. - **Industry Codes**: List of industry
+    classifications.
+    """
 
     address_place: str
 

@@ -63,7 +63,24 @@ class ComplianceResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ComplianceCreateResponse:
         """
-        Create a new compliance check.
+        ### Create Compliance Check (Asynchronous)
+
+        Initiate a new compliance screening using one of two methods:
+
+        1. **Company-based screening**: Provide a `company_id` to automatically screen
+           the company and its associated entities (like UBOs and directors). You can
+           optionally include a list of additional `entities` to be screened alongside
+           the company.
+
+        2. **Custom entity screening**: Provide a list of `entities` without a
+           `company_id` to screen specific individuals or organizations that are not
+           necessarily affiliated with a company in our database.
+
+        Once posted, Business Radar processes the request in the background.
+
+        To check the progress and/or retrieve the final result, you can use the
+        [GET /compliance/{external_id}](/ext/v3/#/ext/ext_v3_compliance_retrieve)
+        endpoint.
 
         Args:
           all_entities_screening_enabled: If enabled all found entities UBOs, directors, shareholders will be screened.
@@ -111,7 +128,10 @@ class ComplianceResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ComplianceRetrieveResponse:
         """
-        Get compliance check details.
+        ### Compliance Check Status
+
+        Check the current status, progress, and high-level scores of a specific
+        compliance check.
 
         Args:
           extra_headers: Send extra headers
@@ -149,16 +169,21 @@ class ComplianceResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[ComplianceListResultsResponse]:
-        """
-        List compliance results.
+        """### List Compliance Results
+
+        Retrieve all findings for a compliance check.
+
+        Results can be filtered by entity,
+        type of finding (e.g., Sanction, PEP), and confidence score.
 
         Args:
           entity: Filter by entity external ID
 
           min_confidence: Filter by minimum confidence score (0.0 - 1.0)
 
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           order: Sorting order
 
@@ -236,7 +261,24 @@ class AsyncComplianceResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ComplianceCreateResponse:
         """
-        Create a new compliance check.
+        ### Create Compliance Check (Asynchronous)
+
+        Initiate a new compliance screening using one of two methods:
+
+        1. **Company-based screening**: Provide a `company_id` to automatically screen
+           the company and its associated entities (like UBOs and directors). You can
+           optionally include a list of additional `entities` to be screened alongside
+           the company.
+
+        2. **Custom entity screening**: Provide a list of `entities` without a
+           `company_id` to screen specific individuals or organizations that are not
+           necessarily affiliated with a company in our database.
+
+        Once posted, Business Radar processes the request in the background.
+
+        To check the progress and/or retrieve the final result, you can use the
+        [GET /compliance/{external_id}](/ext/v3/#/ext/ext_v3_compliance_retrieve)
+        endpoint.
 
         Args:
           all_entities_screening_enabled: If enabled all found entities UBOs, directors, shareholders will be screened.
@@ -284,7 +326,10 @@ class AsyncComplianceResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ComplianceRetrieveResponse:
         """
-        Get compliance check details.
+        ### Compliance Check Status
+
+        Check the current status, progress, and high-level scores of a specific
+        compliance check.
 
         Args:
           extra_headers: Send extra headers
@@ -322,16 +367,21 @@ class AsyncComplianceResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ComplianceListResultsResponse, AsyncNextKey[ComplianceListResultsResponse]]:
-        """
-        List compliance results.
+        """### List Compliance Results
+
+        Retrieve all findings for a compliance check.
+
+        Results can be filtered by entity,
+        type of finding (e.g., Sanction, PEP), and confidence score.
 
         Args:
           entity: Filter by entity external ID
 
           min_confidence: Filter by minimum confidence score (0.0 - 1.0)
 
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           order: Sorting order
 

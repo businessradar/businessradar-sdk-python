@@ -1,20 +1,23 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
-from datetime import date, datetime
+from datetime import datetime
 
-from ..._models import BaseModel
-from ..country_enum import CountryEnum
+from .._models import BaseModel
+from .country_enum import CountryEnum
 
-__all__ = ["CompanyListResponse", "Company"]
+__all__ = ["CompanyCreateMissingCompanyInvestigationResponse"]
 
 
-class Company(BaseModel):
-    """### Company List
+class CompanyCreateMissingCompanyInvestigationResponse(BaseModel):
+    """### Missing Company Investigation
 
-    Provides a detailed overview of a company, including identification, contact info,
-    and aggregated news/review metrics.
+    Used to request and track investigations for companies not currently in the
+    database. This is typically used when a search for a company yields no results,
+    allowing users to provide known details for a manual or automated investigation.
     """
+
+    company_external_id: Optional[str] = None
 
     country: CountryEnum
     """
@@ -269,21 +272,22 @@ class Company(BaseModel):
     - `ZW` - Zimbabwe
     """
 
-    name: str
+    created_at: datetime
+    """The date and time when this missing company record was created."""
 
-    slug: str
+    external_id: str
 
-    social_description: Optional[str] = None
-    """Get Social Description."""
+    last_status_update: datetime
 
-    social_logo: Optional[str] = None
-    """Get Social Logo."""
+    legal_name: str
+    """Official name of the company as registered in legal documents."""
 
-    address_latitude: Optional[float] = None
+    status: str
 
-    address_longitude: Optional[float] = None
+    address_number: Optional[str] = None
 
     address_phone: Optional[str] = None
+    """Phone number should include international code prefix, e.g., +31."""
 
     address_place: Optional[str] = None
 
@@ -293,54 +297,20 @@ class Company(BaseModel):
 
     address_street: Optional[str] = None
 
-    article_count: Optional[int] = None
-    """Amount of articles available"""
+    description: Optional[str] = None
+    """Any additional notes or details about the company."""
 
-    duns_number: Optional[str] = None
+    officer_name: Optional[str] = None
+    """Name of the primary officer or CEO of the company."""
 
-    external_id: Optional[str] = None
+    officer_title: Optional[str] = None
+    """Title or position of the named officer in the company."""
 
-    founding_date: Optional[date] = None
-
-    linkedin_url: Optional[str] = None
-
-    publication_count: Optional[int] = None
-    """Amount of publications available"""
-
-    report_count: Optional[int] = None
-    """Amount of reports available"""
-
-    review_average_score: Optional[float] = None
-    """Average review score"""
-
-    review_count: Optional[int] = None
-    """Amount of reviews available"""
-
-    ticker_symbol: Optional[str] = None
-
-    website_domain: Optional[str] = None
-
-    website_icon_url: Optional[str] = None
-    """Icon of the found website"""
+    trade_name: Optional[str] = None
+    """
+    Alternate name the company might use in its operations, distinct from the legal
+    name.
+    """
 
     website_url: Optional[str] = None
-
-
-class CompanyListResponse(BaseModel):
-    """### Portfolio-Company
-
-    Represents the association between a company and a portfolio, including portfolio-
-    specific data such as `customer_reference`.
-    """
-
-    company: Company
-    """### Company List
-
-    Provides a detailed overview of a company, including identification, contact
-    info, and aggregated news/review metrics.
-    """
-
-    created_at: datetime
-
-    customer_reference: Optional[str] = None
-    """Customer reference for the client to understand relationship."""
+    """Provide the official website of the company if available."""

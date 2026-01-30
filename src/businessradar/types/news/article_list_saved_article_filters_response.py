@@ -6,7 +6,10 @@ __all__ = ["ArticleListSavedArticleFiltersResponse"]
 
 
 class ArticleListSavedArticleFiltersResponse(BaseModel):
-    """SavedArticleFilter Instance."""
+    """### Saved Article Filter
+
+    Represents a named set of article search filters that can be reused.
+    """
 
     external_id: str
 

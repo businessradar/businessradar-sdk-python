@@ -118,52 +118,52 @@ class ArticlesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[Article]:
         """
-        Search News Articles.
+        ### Search News Articles
 
-        List Articles from the Business Radar platform, search using advanced queries or
-        check articles that have been published since last check.
+        Retrieve articles matching the specified search criteria. Advanced queries and
+        incremental checks (using publication/creation dates) are supported.
 
         Args:
-          category: Category ID to filter articles
+          category: Filter by article Category IDs (UUIDs).
 
-          company: Company ID's
+          company: Filter by internal Company UUIDs.
 
-          country: ISO 2-letter Country Code
+          country: Filter by ISO 2-letter Country Codes (e.g., 'US', 'GB').
 
-          disable_company_article_deduplication: By default companies with the same trade names are grouped and the best one is
-              picked, the other ones are not included. By disabling this the amount of company
-              articles will grow significantly.
+          disable_company_article_deduplication: By default, companies with the same trade names are grouped and the best match
+              is selected. Enable this to see all associated companies.
 
-          duns_number: 9-digit Dun And Bradstreet Number
+          duns_number: Filter by one or more 9-digit Dun & Bradstreet Numbers.
 
-          global_ultimate: 9-digit Dun And Bradstreet Number
+          global_ultimate: Filter by Global Ultimate DUNS Numbers.
 
-          include_clustered_articles: Include clustered articles
+          include_clustered_articles: Include articles that are part of a cluster (reprints or similar articles).
 
-          is_material: Filter articles by materiality flag (true/false)
+          is_material: Filter by materiality flag (relevance to business risk).
 
-          language: ISO 2-letter Language Code
+          language: Filter by ISO 2-letter Language Codes (e.g., 'en', 'nl').
 
-          max_creation_date: Filter articles created before this date
+          max_creation_date: Filter articles added to our database at or before this date/time.
 
-          max_publication_date: Filter articles published before this date
+          max_publication_date: Filter articles published at or before this date/time.
 
-          min_creation_date: Filter articles created after this date
+          min_creation_date: Filter articles added to our database at or after this date/time.
 
-          min_publication_date: Filter articles published after this date
+          min_publication_date: Filter articles published at or after this date/time.
 
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
-          portfolio_id: Portfolio ID to filter articles
+          portfolio_id: Filter articles related to companies in specific Portfolios (UUIDs).
 
-          query: Custom search filters to text search all articles.
+          query: Full-text search query for filtering articles by content.
 
-          registration_number: Local Registration Number
+          registration_number: Filter by local company registration numbers.
 
-          saved_article_filter_id: Filter articles on already saved article filter id
+          saved_article_filter_id: Apply a previously saved set of article filters (UUID).
 
-          sentiment: Filter articles with sentiment
+          sentiment: Filter by sentiment: `true` for positive, `false` for negative.
 
           sorting: Sort articles
 
@@ -229,8 +229,12 @@ class ArticlesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ArticleCreateFeedbackResponse:
-        """
-        Create Article Feedback.
+        """### Submit Article Feedback
+
+        Submit feedback for a specific article.
+
+        This helps improve our analysis and
+        relevance.
 
         Args:
           feedback_type: - `false_positive` - False Positive
@@ -274,11 +278,16 @@ class ArticlesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[ArticleListSavedArticleFiltersResponse]:
         """
-        List Create Saved Article Filter.
+        ### Saved Article Filters
+
+        Retrieve a list of all search filters saved by the current profile. These
+        filters can be applied to article search requests using the
+        `saved_article_filter_id` parameter.
 
         Args:
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           extra_headers: Send extra headers
 
@@ -316,7 +325,10 @@ class ArticlesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ArticleRetrieveRelatedResponse:
         """
-        Retrieve Article Embedding Search.
+        ### Find Related Articles
+
+        Retrieve a list of articles that are semantically similar to the specified
+        article, ranked by similarity distance.
 
         Args:
           extra_headers: Send extra headers
@@ -405,52 +417,52 @@ class AsyncArticlesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Article, AsyncNextKey[Article]]:
         """
-        Search News Articles.
+        ### Search News Articles
 
-        List Articles from the Business Radar platform, search using advanced queries or
-        check articles that have been published since last check.
+        Retrieve articles matching the specified search criteria. Advanced queries and
+        incremental checks (using publication/creation dates) are supported.
 
         Args:
-          category: Category ID to filter articles
+          category: Filter by article Category IDs (UUIDs).
 
-          company: Company ID's
+          company: Filter by internal Company UUIDs.
 
-          country: ISO 2-letter Country Code
+          country: Filter by ISO 2-letter Country Codes (e.g., 'US', 'GB').
 
-          disable_company_article_deduplication: By default companies with the same trade names are grouped and the best one is
-              picked, the other ones are not included. By disabling this the amount of company
-              articles will grow significantly.
+          disable_company_article_deduplication: By default, companies with the same trade names are grouped and the best match
+              is selected. Enable this to see all associated companies.
 
-          duns_number: 9-digit Dun And Bradstreet Number
+          duns_number: Filter by one or more 9-digit Dun & Bradstreet Numbers.
 
-          global_ultimate: 9-digit Dun And Bradstreet Number
+          global_ultimate: Filter by Global Ultimate DUNS Numbers.
 
-          include_clustered_articles: Include clustered articles
+          include_clustered_articles: Include articles that are part of a cluster (reprints or similar articles).
 
-          is_material: Filter articles by materiality flag (true/false)
+          is_material: Filter by materiality flag (relevance to business risk).
 
-          language: ISO 2-letter Language Code
+          language: Filter by ISO 2-letter Language Codes (e.g., 'en', 'nl').
 
-          max_creation_date: Filter articles created before this date
+          max_creation_date: Filter articles added to our database at or before this date/time.
 
-          max_publication_date: Filter articles published before this date
+          max_publication_date: Filter articles published at or before this date/time.
 
-          min_creation_date: Filter articles created after this date
+          min_creation_date: Filter articles added to our database at or after this date/time.
 
-          min_publication_date: Filter articles published after this date
+          min_publication_date: Filter articles published at or after this date/time.
 
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
-          portfolio_id: Portfolio ID to filter articles
+          portfolio_id: Filter articles related to companies in specific Portfolios (UUIDs).
 
-          query: Custom search filters to text search all articles.
+          query: Full-text search query for filtering articles by content.
 
-          registration_number: Local Registration Number
+          registration_number: Filter by local company registration numbers.
 
-          saved_article_filter_id: Filter articles on already saved article filter id
+          saved_article_filter_id: Apply a previously saved set of article filters (UUID).
 
-          sentiment: Filter articles with sentiment
+          sentiment: Filter by sentiment: `true` for positive, `false` for negative.
 
           sorting: Sort articles
 
@@ -516,8 +528,12 @@ class AsyncArticlesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ArticleCreateFeedbackResponse:
-        """
-        Create Article Feedback.
+        """### Submit Article Feedback
+
+        Submit feedback for a specific article.
+
+        This helps improve our analysis and
+        relevance.
 
         Args:
           feedback_type: - `false_positive` - False Positive
@@ -561,11 +577,16 @@ class AsyncArticlesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ArticleListSavedArticleFiltersResponse, AsyncNextKey[ArticleListSavedArticleFiltersResponse]]:
         """
-        List Create Saved Article Filter.
+        ### Saved Article Filters
+
+        Retrieve a list of all search filters saved by the current profile. These
+        filters can be applied to article search requests using the
+        `saved_article_filter_id` parameter.
 
         Args:
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           extra_headers: Send extra headers
 
@@ -603,7 +624,10 @@ class AsyncArticlesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ArticleRetrieveRelatedResponse:
         """
-        Retrieve Article Embedding Search.
+        ### Find Related Articles
+
+        Retrieve a list of articles that are semantically similar to the specified
+        article, ranked by similarity distance.
 
         Args:
           extra_headers: Send extra headers

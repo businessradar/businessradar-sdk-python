@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-__all__ = ["PortfolioListParams"]
+__all__ = ["CompanyListMissingCompanyInvestigationsParams"]
 
 
-class PortfolioListParams(TypedDict, total=False):
+class CompanyListMissingCompanyInvestigationsParams(TypedDict, total=False):
     next_key: str
     """A cursor value used for pagination.
 

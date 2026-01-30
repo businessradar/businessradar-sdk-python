@@ -70,8 +70,12 @@ class PortfoliosResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Portfolio:
-        """
-        List Create Portfolio.
+        """### Portfolios
+
+        Manage collections of companies.
+
+        This view allows you to list existing
+        portfolios associated with your profile or create new ones.
 
         Args:
           customer_reference: Customer reference for the client to understand relationship.
@@ -118,12 +122,17 @@ class PortfoliosResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[Portfolio]:
-        """
-        List Create Portfolio.
+        """### Portfolios
+
+        Manage collections of companies.
+
+        This view allows you to list existing
+        portfolios associated with your profile or create new ones.
 
         Args:
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           extra_headers: Send extra headers
 
@@ -184,8 +193,12 @@ class AsyncPortfoliosResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Portfolio:
-        """
-        List Create Portfolio.
+        """### Portfolios
+
+        Manage collections of companies.
+
+        This view allows you to list existing
+        portfolios associated with your profile or create new ones.
 
         Args:
           customer_reference: Customer reference for the client to understand relationship.
@@ -232,12 +245,17 @@ class AsyncPortfoliosResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Portfolio, AsyncNextKey[Portfolio]]:
-        """
-        List Create Portfolio.
+        """### Portfolios
+
+        Manage collections of companies.
+
+        This view allows you to list existing
+        portfolios associated with your profile or create new ones.
 
         Args:
-          next_key: The next_key is an cursor used to make it possible to paginate to the next
-              results, pass the next_key from the previous request to retrieve next results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           extra_headers: Send extra headers
 

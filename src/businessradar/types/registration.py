@@ -11,9 +11,9 @@ __all__ = ["Registration", "Company"]
 
 
 class Company(BaseModel):
-    """Portfolio Company Detail Serializer.
+    """### Portfolio Company Detail (Simplified)
 
-    Alternative serializer for the Company model which is limited.
+    A lightweight data structure for company identification (UUID, DUNS, Name, Country).
     """
 
     country: CountryEnum
@@ -277,9 +277,10 @@ class Company(BaseModel):
 
 
 class Registration(BaseModel):
-    """Portfolio Registration Serializer.
+    """### Company Registration
 
-    Serializer used for registering a new company.
+    Handles the registration of companies for monitoring. New companies can be
+    identified by DUNS number, local registration number, or name and country.
     """
 
     external_id: str
@@ -341,9 +342,10 @@ class Registration(BaseModel):
     """Get Registration Status text."""
 
     company: Optional[Company] = None
-    """Portfolio Company Detail Serializer.
+    """### Portfolio Company Detail (Simplified)
 
-    Alternative serializer for the Company model which is limited.
+    A lightweight data structure for company identification (UUID, DUNS, Name,
+    Country).
     """
 
     country: Optional[

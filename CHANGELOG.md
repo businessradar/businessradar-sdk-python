@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.11.0 (2026-01-30)
+
+Full Changelog: [v1.10.0...v1.11.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.10.0...v1.11.0)
+
+### Features
+
+* **api:** api update ([751609e](https://github.com/businessradar/businessradar-sdk-python/commit/751609e9a91c3137235d351e8f2078e4dc286212))
+* **api:** api update ([ad589c1](https://github.com/businessradar/businessradar-sdk-python/commit/ad589c1f3e211c6703a5ef0dba5475829b7cbfc6))
+* **api:** api update ([fb8d21d](https://github.com/businessradar/businessradar-sdk-python/commit/fb8d21d82b2b08a384f92d9b42bacdd7b1a47939))
+* **api:** api update ([b3bd594](https://github.com/businessradar/businessradar-sdk-python/commit/b3bd5945e8823db72e7fcdc4250a3b14c8bb090f))
+* **api:** api update ([180ec4a](https://github.com/businessradar/businessradar-sdk-python/commit/180ec4a2ef2f87446f0cc1cbe072492984692992))
+* **api:** api update ([351a8b8](https://github.com/businessradar/businessradar-sdk-python/commit/351a8b81480156274f0d525aa3e611ae2db0c4cb))
+* **api:** api update ([97abde8](https://github.com/businessradar/businessradar-sdk-python/commit/97abde8d2428d6bbd9d8ebfc650e519533a06c87))
+* **api:** manual updates ([ac7a60f](https://github.com/businessradar/businessradar-sdk-python/commit/ac7a60f05af09c73e3ca85f6cd01ad38cfa437fb))
+
 ## 1.10.0 (2026-01-30)
 
 Full Changelog: [v1.9.0...v1.10.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.9.0...v1.10.0)
