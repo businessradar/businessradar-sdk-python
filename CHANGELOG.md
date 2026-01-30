@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.10.0 (2026-01-30)
+
+Full Changelog: [v1.9.0...v1.10.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.9.0...v1.10.0)
+
+### Features
+
+* **api:** api update ([65cea5a](https://github.com/businessradar/businessradar-sdk-python/commit/65cea5afd440b39beb56785302b6533fc429dcdb))
+* **api:** api update ([6ffdd96](https://github.com/businessradar/businessradar-sdk-python/commit/6ffdd96ce8eb8c7a0efaf82434d830026237dcb7))
+* **api:** manual updates ([a83b442](https://github.com/businessradar/businessradar-sdk-python/commit/a83b442411d77178308652b005dd33ee3f9a12b5))
+* **client:** add custom JSON encoder for extended type support ([ebb8af7](https://github.com/businessradar/businessradar-sdk-python/commit/ebb8af7e242b1b25d4531840e290306965f66e01))
+
 ## 1.9.0 (2026-01-29)
 
 Full Changelog: [v1.8.0...v1.9.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.8.0...v1.9.0)
