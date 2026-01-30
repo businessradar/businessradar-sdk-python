@@ -130,8 +130,9 @@ class PortfoliosResource(SyncAPIResource):
         portfolios associated with your profile or create new ones.
 
         Args:
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           extra_headers: Send extra headers
 
@@ -252,8 +253,9 @@ class AsyncPortfoliosResource(AsyncAPIResource):
         portfolios associated with your profile or create new ones.
 
         Args:
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           extra_headers: Send extra headers
 

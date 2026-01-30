@@ -151,8 +151,9 @@ class ArticlesResource(SyncAPIResource):
 
           min_publication_date: Filter articles published at or after this date/time.
 
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           portfolio_id: Filter articles related to companies in specific Portfolios (UUIDs).
 
@@ -284,8 +285,9 @@ class ArticlesResource(SyncAPIResource):
         `saved_article_filter_id` parameter.
 
         Args:
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           extra_headers: Send extra headers
 
@@ -448,8 +450,9 @@ class AsyncArticlesResource(AsyncAPIResource):
 
           min_publication_date: Filter articles published at or after this date/time.
 
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           portfolio_id: Filter articles related to companies in specific Portfolios (UUIDs).
 
@@ -581,8 +584,9 @@ class AsyncArticlesResource(AsyncAPIResource):
         `saved_article_filter_id` parameter.
 
         Args:
-          next_key: An opaque cursor value used for pagination. Pass the `next_key` received from a
-              previous response to retrieve the next set of results.
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
 
           extra_headers: Send extra headers
 
