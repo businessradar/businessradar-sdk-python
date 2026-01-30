@@ -29,6 +29,21 @@ from .company_list_attribute_changes_params import (
 from .company_list_attribute_changes_response import (
     CompanyListAttributeChangesResponse as CompanyListAttributeChangesResponse,
 )
+from .company_list_missing_company_investigations_params import (
+    CompanyListMissingCompanyInvestigationsParams as CompanyListMissingCompanyInvestigationsParams,
+)
+from .company_create_missing_company_investigation_params import (
+    CompanyCreateMissingCompanyInvestigationParams as CompanyCreateMissingCompanyInvestigationParams,
+)
+from .company_list_missing_company_investigations_response import (
+    CompanyListMissingCompanyInvestigationsResponse as CompanyListMissingCompanyInvestigationsResponse,
+)
+from .company_create_missing_company_investigation_response import (
+    CompanyCreateMissingCompanyInvestigationResponse as CompanyCreateMissingCompanyInvestigationResponse,
+)
+from .company_retrieve_missing_company_investigation_response import (
+    CompanyRetrieveMissingCompanyInvestigationResponse as CompanyRetrieveMissingCompanyInvestigationResponse,
+)
 
 # Rebuild cyclical models only after all modules are imported.
 # This ensures that, when building the deferred (due to cyclical references) model schema,

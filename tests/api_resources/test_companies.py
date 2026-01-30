@@ -14,6 +14,9 @@ from businessradar.types import (
     CompanyListResponse,
     CompanyRetrieveResponse,
     CompanyListAttributeChangesResponse,
+    CompanyListMissingCompanyInvestigationsResponse,
+    CompanyCreateMissingCompanyInvestigationResponse,
+    CompanyRetrieveMissingCompanyInvestigationResponse,
 )
 from businessradar._utils import parse_datetime
 from businessradar.pagination import SyncNextKey, AsyncNextKey
@@ -151,6 +154,63 @@ class TestCompanies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    def test_method_create_missing_company_investigation(self, client: BusinessRadar) -> None:
+        company = client.companies.create_missing_company_investigation(
+            country="AF",
+            legal_name="x",
+        )
+        assert_matches_type(CompanyCreateMissingCompanyInvestigationResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_create_missing_company_investigation_with_all_params(self, client: BusinessRadar) -> None:
+        company = client.companies.create_missing_company_investigation(
+            country="AF",
+            legal_name="x",
+            address_number="address_number",
+            address_phone="address_phone",
+            address_place="address_place",
+            address_postal="address_postal",
+            address_region="address_region",
+            address_street="address_street",
+            description="description",
+            officer_name="officer_name",
+            officer_title="officer_title",
+            trade_name="trade_name",
+            website_url="https://example.com",
+        )
+        assert_matches_type(CompanyCreateMissingCompanyInvestigationResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_create_missing_company_investigation(self, client: BusinessRadar) -> None:
+        response = client.companies.with_raw_response.create_missing_company_investigation(
+            country="AF",
+            legal_name="x",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = response.parse()
+        assert_matches_type(CompanyCreateMissingCompanyInvestigationResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_create_missing_company_investigation(self, client: BusinessRadar) -> None:
+        with client.companies.with_streaming_response.create_missing_company_investigation(
+            country="AF",
+            legal_name="x",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = response.parse()
+            assert_matches_type(CompanyCreateMissingCompanyInvestigationResponse, company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     def test_method_list_attribute_changes(self, client: BusinessRadar) -> None:
         company = client.companies.list_attribute_changes()
         assert_matches_type(SyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
@@ -186,6 +246,86 @@ class TestCompanies:
             assert_matches_type(SyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_list_missing_company_investigations(self, client: BusinessRadar) -> None:
+        company = client.companies.list_missing_company_investigations()
+        assert_matches_type(SyncNextKey[CompanyListMissingCompanyInvestigationsResponse], company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_list_missing_company_investigations_with_all_params(self, client: BusinessRadar) -> None:
+        company = client.companies.list_missing_company_investigations(
+            next_key="next_key",
+        )
+        assert_matches_type(SyncNextKey[CompanyListMissingCompanyInvestigationsResponse], company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_list_missing_company_investigations(self, client: BusinessRadar) -> None:
+        response = client.companies.with_raw_response.list_missing_company_investigations()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = response.parse()
+        assert_matches_type(SyncNextKey[CompanyListMissingCompanyInvestigationsResponse], company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_list_missing_company_investigations(self, client: BusinessRadar) -> None:
+        with client.companies.with_streaming_response.list_missing_company_investigations() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = response.parse()
+            assert_matches_type(
+                SyncNextKey[CompanyListMissingCompanyInvestigationsResponse], company, path=["response"]
+            )
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_retrieve_missing_company_investigation(self, client: BusinessRadar) -> None:
+        company = client.companies.retrieve_missing_company_investigation(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+        assert_matches_type(CompanyRetrieveMissingCompanyInvestigationResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_retrieve_missing_company_investigation(self, client: BusinessRadar) -> None:
+        response = client.companies.with_raw_response.retrieve_missing_company_investigation(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = response.parse()
+        assert_matches_type(CompanyRetrieveMissingCompanyInvestigationResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_retrieve_missing_company_investigation(self, client: BusinessRadar) -> None:
+        with client.companies.with_streaming_response.retrieve_missing_company_investigation(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = response.parse()
+            assert_matches_type(CompanyRetrieveMissingCompanyInvestigationResponse, company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_path_params_retrieve_missing_company_investigation(self, client: BusinessRadar) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_id` but received ''"):
+            client.companies.with_raw_response.retrieve_missing_company_investigation(
+                "",
+            )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -362,6 +502,67 @@ class TestAsyncCompanies:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    async def test_method_create_missing_company_investigation(self, async_client: AsyncBusinessRadar) -> None:
+        company = await async_client.companies.create_missing_company_investigation(
+            country="AF",
+            legal_name="x",
+        )
+        assert_matches_type(CompanyCreateMissingCompanyInvestigationResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_create_missing_company_investigation_with_all_params(
+        self, async_client: AsyncBusinessRadar
+    ) -> None:
+        company = await async_client.companies.create_missing_company_investigation(
+            country="AF",
+            legal_name="x",
+            address_number="address_number",
+            address_phone="address_phone",
+            address_place="address_place",
+            address_postal="address_postal",
+            address_region="address_region",
+            address_street="address_street",
+            description="description",
+            officer_name="officer_name",
+            officer_title="officer_title",
+            trade_name="trade_name",
+            website_url="https://example.com",
+        )
+        assert_matches_type(CompanyCreateMissingCompanyInvestigationResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_create_missing_company_investigation(self, async_client: AsyncBusinessRadar) -> None:
+        response = await async_client.companies.with_raw_response.create_missing_company_investigation(
+            country="AF",
+            legal_name="x",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = await response.parse()
+        assert_matches_type(CompanyCreateMissingCompanyInvestigationResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_create_missing_company_investigation(
+        self, async_client: AsyncBusinessRadar
+    ) -> None:
+        async with async_client.companies.with_streaming_response.create_missing_company_investigation(
+            country="AF",
+            legal_name="x",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = await response.parse()
+            assert_matches_type(CompanyCreateMissingCompanyInvestigationResponse, company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     async def test_method_list_attribute_changes(self, async_client: AsyncBusinessRadar) -> None:
         company = await async_client.companies.list_attribute_changes()
         assert_matches_type(AsyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
@@ -397,6 +598,92 @@ class TestAsyncCompanies:
             assert_matches_type(AsyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_missing_company_investigations(self, async_client: AsyncBusinessRadar) -> None:
+        company = await async_client.companies.list_missing_company_investigations()
+        assert_matches_type(AsyncNextKey[CompanyListMissingCompanyInvestigationsResponse], company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_missing_company_investigations_with_all_params(
+        self, async_client: AsyncBusinessRadar
+    ) -> None:
+        company = await async_client.companies.list_missing_company_investigations(
+            next_key="next_key",
+        )
+        assert_matches_type(AsyncNextKey[CompanyListMissingCompanyInvestigationsResponse], company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_list_missing_company_investigations(self, async_client: AsyncBusinessRadar) -> None:
+        response = await async_client.companies.with_raw_response.list_missing_company_investigations()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = await response.parse()
+        assert_matches_type(AsyncNextKey[CompanyListMissingCompanyInvestigationsResponse], company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_list_missing_company_investigations(
+        self, async_client: AsyncBusinessRadar
+    ) -> None:
+        async with async_client.companies.with_streaming_response.list_missing_company_investigations() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = await response.parse()
+            assert_matches_type(
+                AsyncNextKey[CompanyListMissingCompanyInvestigationsResponse], company, path=["response"]
+            )
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_retrieve_missing_company_investigation(self, async_client: AsyncBusinessRadar) -> None:
+        company = await async_client.companies.retrieve_missing_company_investigation(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+        assert_matches_type(CompanyRetrieveMissingCompanyInvestigationResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_retrieve_missing_company_investigation(self, async_client: AsyncBusinessRadar) -> None:
+        response = await async_client.companies.with_raw_response.retrieve_missing_company_investigation(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = await response.parse()
+        assert_matches_type(CompanyRetrieveMissingCompanyInvestigationResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_retrieve_missing_company_investigation(
+        self, async_client: AsyncBusinessRadar
+    ) -> None:
+        async with async_client.companies.with_streaming_response.retrieve_missing_company_investigation(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = await response.parse()
+            assert_matches_type(CompanyRetrieveMissingCompanyInvestigationResponse, company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_path_params_retrieve_missing_company_investigation(self, async_client: AsyncBusinessRadar) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_id` but received ''"):
+            await async_client.companies.with_raw_response.retrieve_missing_company_investigation(
+                "",
+            )
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
