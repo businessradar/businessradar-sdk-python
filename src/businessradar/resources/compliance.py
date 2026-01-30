@@ -65,18 +65,9 @@ class ComplianceResource(SyncAPIResource):
         """
         ### Create Compliance Check (Asynchronous)
 
-        Initiate a new compliance screening using one of two methods:
-
-        1. **Company-based screening**: Provide a `company_id` to automatically screen
-           the company and its associated entities (like UBOs and directors). You can
-           optionally include a list of additional `entities` to be screened alongside
-           the company.
-
-        2. **Custom entity screening**: Provide a list of `entities` without a
-           `company_id` to screen specific individuals or organizations that are not
-           necessarily affiliated with a company in our database.
-
-        Once posted, Business Radar processes the request in the background.
+        Initiate a new compliance screening for either a specific company or a custom
+        list of entities. Once posted, Business Radar processes the request in the
+        background.
 
         To check the progress and/or retrieve the final result, you can use the
         [GET /compliance/{external_id}](/ext/v3/#/ext/ext_v3_compliance_retrieve)
@@ -263,18 +254,9 @@ class AsyncComplianceResource(AsyncAPIResource):
         """
         ### Create Compliance Check (Asynchronous)
 
-        Initiate a new compliance screening using one of two methods:
-
-        1. **Company-based screening**: Provide a `company_id` to automatically screen
-           the company and its associated entities (like UBOs and directors). You can
-           optionally include a list of additional `entities` to be screened alongside
-           the company.
-
-        2. **Custom entity screening**: Provide a list of `entities` without a
-           `company_id` to screen specific individuals or organizations that are not
-           necessarily affiliated with a company in our database.
-
-        Once posted, Business Radar processes the request in the background.
+        Initiate a new compliance screening for either a specific company or a custom
+        list of entities. Once posted, Business Radar processes the request in the
+        background.
 
         To check the progress and/or retrieve the final result, you can use the
         [GET /compliance/{external_id}](/ext/v3/#/ext/ext_v3_compliance_retrieve)
