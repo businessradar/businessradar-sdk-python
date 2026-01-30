@@ -9,7 +9,11 @@ __all__ = ["CompanyListAttributeChangesResponse"]
 
 
 class CompanyListAttributeChangesResponse(BaseModel):
-    """Company Attribute Change Serializer."""
+    """### Company Attribute Change
+
+    Tracks changes to specific attributes of a company over time. Used for monitoring
+    updates and maintaining a history of company data.
+    """
 
     attribute: str
 

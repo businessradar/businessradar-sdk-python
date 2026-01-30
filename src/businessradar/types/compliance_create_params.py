@@ -30,7 +30,11 @@ class ComplianceCreateParams(TypedDict, total=False):
 
 
 class Entity(TypedDict, total=False):
-    """Compliance entity request serializer."""
+    """### Compliance Entity Request
+
+    Represents an entity (individual or organization) to be included in a compliance
+    screening.
+    """
 
     name: Required[str]
 

@@ -9,7 +9,11 @@ __all__ = ["ArticleCreateFeedbackResponse"]
 
 
 class ArticleCreateFeedbackResponse(BaseModel):
-    """External Article Feedback Serializer."""
+    """### External Article Feedback
+
+    Allows users to provide feedback on specific articles, including feedback type,
+    comments, and contact information.
+    """
 
     article: str
 

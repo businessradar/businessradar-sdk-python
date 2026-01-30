@@ -6,6 +6,9 @@ __all__ = ["ComplianceCreateResponse"]
 
 
 class ComplianceCreateResponse(BaseModel):
-    """Compliance check create serializer."""
+    """### Compliance Check
+
+    Used for creating a minimal compliance check record.
+    """
 
     external_id: str

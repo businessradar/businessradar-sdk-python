@@ -19,7 +19,8 @@ class CompanyListAttributeChangesParams(TypedDict, total=False):
     """Filter updates created at or after this time."""
 
     next_key: str
-    """
-    The next_key is an cursor used to make it possible to paginate to the next
-    results, pass the next_key from the previous request to retrieve next results.
+    """An opaque cursor value used for pagination.
+
+    Pass the `next_key` received from a previous response to retrieve the next set
+    of results.
     """

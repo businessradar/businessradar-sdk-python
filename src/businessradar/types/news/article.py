@@ -14,7 +14,11 @@ __all__ = ["Article", "CompanyArticle", "CompanyArticleCompany", "Source", "SubA
 
 
 class CompanyArticleCompany(BaseModel):
-    """Custom Company Serializer for News Articles."""
+    """### News Company
+
+    Company information when associated with news articles. Includes DUNS numbers and an
+    optional customer reference.
+    """
 
     country: CountryEnum
     """
@@ -284,12 +288,20 @@ class CompanyArticleCompany(BaseModel):
 
 
 class CompanyArticle(BaseModel):
-    """Serialize Company Article."""
+    """### Company-Article
+
+    The relationship between a company and a specific article, including snippets and
+    sentiment analysis relevant to that company.
+    """
 
     categories: List["CategoryTree"]
 
     company: CompanyArticleCompany
-    """Custom Company Serializer for News Articles."""
+    """### News Company
+
+    Company information when associated with news articles. Includes DUNS numbers
+    and an optional customer reference.
+    """
 
     sentiment: Optional[float] = None
 
@@ -299,7 +311,10 @@ class CompanyArticle(BaseModel):
 
 
 class Source(BaseModel):
-    """Serializer for Source Information."""
+    """### Source
+
+    Represents the origin of a news article, including its domain, URL, and name.
+    """
 
     domain: str
 
@@ -309,7 +324,11 @@ class Source(BaseModel):
 
 
 class SubArticle(BaseModel):
-    """Serializer for snippet of Sub Article."""
+    """### Sub-Article
+
+    A lightweight representation of an article that is part of a larger cluster or
+    related to a main article.
+    """
 
     url: str
 
@@ -317,7 +336,13 @@ class SubArticle(BaseModel):
 
 
 class Article(BaseModel):
-    """Custom Serializer for the Article Model."""
+    """### Article
+
+    The primary data structure for news articles. It provides comprehensive data,
+    including: - Metadata (URLs, publication dates, languages, countries) - Content
+    (titles, snippets, summaries - both original and translated) - Relationships
+    (source, related companies, categories) - Analysis (sentiment, clustering status)
+    """
 
     categories: List["CategoryTree"]
 
@@ -424,7 +449,10 @@ class Article(BaseModel):
     """Get snippet if allowed for source."""
 
     source: Source
-    """Serializer for Source Information."""
+    """### Source
+
+    Represents the origin of a news article, including its domain, URL, and name.
+    """
 
     sub_articles: List[SubArticle]
 

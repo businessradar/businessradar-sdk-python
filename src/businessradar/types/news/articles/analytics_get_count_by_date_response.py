@@ -10,7 +10,12 @@ __all__ = ["AnalyticsGetCountByDateResponse", "AnalyticsGetCountByDateResponseIt
 
 
 class AnalyticsGetCountByDateResponseItem(BaseModel):
-    """Article Date Aggregation Serializer."""
+    """### Article Date Aggregation
+
+    Provides aggregated metrics for articles on a per-date basis. - **count**: Total
+    articles found for the given date. - **average_sentiment**: Average sentiment score
+    of these articles. - **date**: The specific date of the aggregation.
+    """
 
     average_sentiment: float
 

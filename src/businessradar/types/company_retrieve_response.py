@@ -11,7 +11,10 @@ __all__ = ["CompanyRetrieveResponse", "RegistrationNumber"]
 
 
 class RegistrationNumber(BaseModel):
-    """Registration Number."""
+    """### Registration Number
+
+    Company registration numbers, such as Chamber of Commerce (KvK) or VAT numbers.
+    """
 
     description: str
 
@@ -22,7 +25,15 @@ class RegistrationNumber(BaseModel):
 
 
 class CompanyRetrieveResponse(BaseModel):
-    """Company."""
+    """### Company
+
+    Detailed representation of a company in Business Radar.
+
+    This data includes: - Basic info (name, country, website) - Identification (DUNS,
+    external ID, registration numbers) - Industry classifications - Geographical data
+    (address, coordinates) - Social and online presence - Summary metrics (article
+    count, review scores, etc.)
+    """
 
     country: CountryEnum
     """

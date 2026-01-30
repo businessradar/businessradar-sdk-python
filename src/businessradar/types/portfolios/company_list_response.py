@@ -10,7 +10,11 @@ __all__ = ["CompanyListResponse", "Company"]
 
 
 class Company(BaseModel):
-    """Company List."""
+    """### Company List
+
+    Provides a detailed overview of a company, including identification, contact info,
+    and aggregated news/review metrics.
+    """
 
     country: CountryEnum
     """
@@ -323,10 +327,18 @@ class Company(BaseModel):
 
 
 class CompanyListResponse(BaseModel):
-    """Portfolio Company Instance."""
+    """### Portfolio-Company
+
+    Represents the association between a company and a portfolio, including portfolio-
+    specific data such as `customer_reference`.
+    """
 
     company: Company
-    """Company List."""
+    """### Company List
+
+    Provides a detailed overview of a company, including identification, contact
+    info, and aggregated news/review metrics.
+    """
 
     created_at: datetime
 

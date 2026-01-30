@@ -12,9 +12,10 @@ __all__ = ["CompanyCreateParams"]
 
 class CompanyCreateParams(TypedDict, total=False):
     company: Optional[PortfolioCompanyDetailRequest]
-    """Portfolio Company Detail Serializer.
+    """### Portfolio Company Detail (Simplified)
 
-    Alternative serializer for the Company model which is limited.
+    A lightweight data structure for company identification (UUID, DUNS, Name,
+    Country).
     """
 
     country: Optional[
