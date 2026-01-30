@@ -21,6 +21,8 @@ from .company_retrieve_response import CompanyRetrieveResponse as CompanyRetriev
 from .compliance_create_response import ComplianceCreateResponse as ComplianceCreateResponse
 from .compliance_check_score_enum import ComplianceCheckScoreEnum as ComplianceCheckScoreEnum
 from .compliance_retrieve_response import ComplianceRetrieveResponse as ComplianceRetrieveResponse
+from .compliance_list_results_params import ComplianceListResultsParams as ComplianceListResultsParams
+from .compliance_list_results_response import ComplianceListResultsResponse as ComplianceListResultsResponse
 from .company_list_attribute_changes_params import (
     CompanyListAttributeChangesParams as CompanyListAttributeChangesParams,
 )
