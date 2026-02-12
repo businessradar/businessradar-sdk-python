@@ -48,6 +48,7 @@ class TestCompliance:
                 }
             ],
             ownership_screening_threshold=0,
+            ubo_screening_enabled=True,
         )
         assert_matches_type(ComplianceCreateResponse, compliance, path=["response"])
 
@@ -202,6 +203,7 @@ class TestAsyncCompliance:
                 }
             ],
             ownership_screening_threshold=0,
+            ubo_screening_enabled=True,
         )
         assert_matches_type(ComplianceCreateResponse, compliance, path=["response"])
 
