@@ -55,6 +55,7 @@ class ComplianceResource(SyncAPIResource):
         directors_screening_enabled: bool | Omit = omit,
         entities: Iterable[compliance_create_params.Entity] | Omit = omit,
         ownership_screening_threshold: Optional[float] | Omit = omit,
+        ubo_screening_enabled: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -67,10 +68,10 @@ class ComplianceResource(SyncAPIResource):
 
         Initiate a new compliance screening using one of two methods:
 
-        1. **Company-based screening**: Provide a `company_id` to automatically screen
-           the company and its associated entities (like UBOs and directors). You can
-           optionally include a list of additional `entities` to be screened alongside
-           the company.
+        1. **Company-based screening**: Provide a `company_id` to screen the company.
+           Optionally enable screening of related entities (UBOs and directors) via
+           `ubo_screening_enabled` and `directors_screening_enabled`. You can optionally
+           include a list of additional `entities` to be screened alongside the company.
 
         2. **Custom entity screening**: Provide a list of `entities` without a
            `company_id` to screen specific individuals or organizations that are not
@@ -83,12 +84,14 @@ class ComplianceResource(SyncAPIResource):
         endpoint.
 
         Args:
-          all_entities_screening_enabled: If enabled all found entities UBOs, directors, shareholders will be screened.
-              This can have an high cost impact.
+          all_entities_screening_enabled: If enabled all found entities (UBOs, directors, shareholders) will be screened.
+              This can have a high cost impact.
 
           directors_screening_enabled: If directors should be screened.
 
           ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
+
+          ubo_screening_enabled: If enabled, UBOs discovered for the company will be screened.
 
           extra_headers: Send extra headers
 
@@ -107,6 +110,7 @@ class ComplianceResource(SyncAPIResource):
                     "directors_screening_enabled": directors_screening_enabled,
                     "entities": entities,
                     "ownership_screening_threshold": ownership_screening_threshold,
+                    "ubo_screening_enabled": ubo_screening_enabled,
                 },
                 compliance_create_params.ComplianceCreateParams,
             ),
@@ -253,6 +257,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         directors_screening_enabled: bool | Omit = omit,
         entities: Iterable[compliance_create_params.Entity] | Omit = omit,
         ownership_screening_threshold: Optional[float] | Omit = omit,
+        ubo_screening_enabled: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -265,10 +270,10 @@ class AsyncComplianceResource(AsyncAPIResource):
 
         Initiate a new compliance screening using one of two methods:
 
-        1. **Company-based screening**: Provide a `company_id` to automatically screen
-           the company and its associated entities (like UBOs and directors). You can
-           optionally include a list of additional `entities` to be screened alongside
-           the company.
+        1. **Company-based screening**: Provide a `company_id` to screen the company.
+           Optionally enable screening of related entities (UBOs and directors) via
+           `ubo_screening_enabled` and `directors_screening_enabled`. You can optionally
+           include a list of additional `entities` to be screened alongside the company.
 
         2. **Custom entity screening**: Provide a list of `entities` without a
            `company_id` to screen specific individuals or organizations that are not
@@ -281,12 +286,14 @@ class AsyncComplianceResource(AsyncAPIResource):
         endpoint.
 
         Args:
-          all_entities_screening_enabled: If enabled all found entities UBOs, directors, shareholders will be screened.
-              This can have an high cost impact.
+          all_entities_screening_enabled: If enabled all found entities (UBOs, directors, shareholders) will be screened.
+              This can have a high cost impact.
 
           directors_screening_enabled: If directors should be screened.
 
           ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
+
+          ubo_screening_enabled: If enabled, UBOs discovered for the company will be screened.
 
           extra_headers: Send extra headers
 
@@ -305,6 +312,7 @@ class AsyncComplianceResource(AsyncAPIResource):
                     "directors_screening_enabled": directors_screening_enabled,
                     "entities": entities,
                     "ownership_screening_threshold": ownership_screening_threshold,
+                    "ubo_screening_enabled": ubo_screening_enabled,
                 },
                 compliance_create_params.ComplianceCreateParams,
             ),
