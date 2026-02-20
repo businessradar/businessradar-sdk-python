@@ -18,13 +18,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestAnalytics:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_count_by_date(self, client: BusinessRadar) -> None:
         analytics = client.news.articles.analytics.get_count_by_date()
         assert_matches_type(AnalyticsGetCountByDateResponse, analytics, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_count_by_date_with_all_params(self, client: BusinessRadar) -> None:
         analytics = client.news.articles.analytics.get_count_by_date(
@@ -50,7 +50,7 @@ class TestAnalytics:
         )
         assert_matches_type(AnalyticsGetCountByDateResponse, analytics, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_count_by_date(self, client: BusinessRadar) -> None:
         response = client.news.articles.analytics.with_raw_response.get_count_by_date()
@@ -60,7 +60,7 @@ class TestAnalytics:
         analytics = response.parse()
         assert_matches_type(AnalyticsGetCountByDateResponse, analytics, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_count_by_date(self, client: BusinessRadar) -> None:
         with client.news.articles.analytics.with_streaming_response.get_count_by_date() as response:
@@ -78,13 +78,13 @@ class TestAsyncAnalytics:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_count_by_date(self, async_client: AsyncBusinessRadar) -> None:
         analytics = await async_client.news.articles.analytics.get_count_by_date()
         assert_matches_type(AnalyticsGetCountByDateResponse, analytics, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_count_by_date_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         analytics = await async_client.news.articles.analytics.get_count_by_date(
@@ -110,7 +110,7 @@ class TestAsyncAnalytics:
         )
         assert_matches_type(AnalyticsGetCountByDateResponse, analytics, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_count_by_date(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.news.articles.analytics.with_raw_response.get_count_by_date()
@@ -120,7 +120,7 @@ class TestAsyncAnalytics:
         analytics = await response.parse()
         assert_matches_type(AnalyticsGetCountByDateResponse, analytics, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_count_by_date(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.news.articles.analytics.with_streaming_response.get_count_by_date() as response:

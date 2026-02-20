@@ -23,13 +23,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestCompliance:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create(self, client: BusinessRadar) -> None:
         compliance = client.compliance.create()
         assert_matches_type(ComplianceCreateResponse, compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: BusinessRadar) -> None:
         compliance = client.compliance.create(
@@ -52,7 +52,7 @@ class TestCompliance:
         )
         assert_matches_type(ComplianceCreateResponse, compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: BusinessRadar) -> None:
         response = client.compliance.with_raw_response.create()
@@ -62,7 +62,7 @@ class TestCompliance:
         compliance = response.parse()
         assert_matches_type(ComplianceCreateResponse, compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: BusinessRadar) -> None:
         with client.compliance.with_streaming_response.create() as response:
@@ -74,7 +74,7 @@ class TestCompliance:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: BusinessRadar) -> None:
         compliance = client.compliance.retrieve(
@@ -82,7 +82,7 @@ class TestCompliance:
         )
         assert_matches_type(ComplianceRetrieveResponse, compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: BusinessRadar) -> None:
         response = client.compliance.with_raw_response.retrieve(
@@ -94,7 +94,7 @@ class TestCompliance:
         compliance = response.parse()
         assert_matches_type(ComplianceRetrieveResponse, compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: BusinessRadar) -> None:
         with client.compliance.with_streaming_response.retrieve(
@@ -108,7 +108,7 @@ class TestCompliance:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: BusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_id` but received ''"):
@@ -116,7 +116,7 @@ class TestCompliance:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_results(self, client: BusinessRadar) -> None:
         compliance = client.compliance.list_results(
@@ -124,7 +124,7 @@ class TestCompliance:
         )
         assert_matches_type(SyncNextKey[ComplianceListResultsResponse], compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_results_with_all_params(self, client: BusinessRadar) -> None:
         compliance = client.compliance.list_results(
@@ -138,7 +138,7 @@ class TestCompliance:
         )
         assert_matches_type(SyncNextKey[ComplianceListResultsResponse], compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_results(self, client: BusinessRadar) -> None:
         response = client.compliance.with_raw_response.list_results(
@@ -150,7 +150,7 @@ class TestCompliance:
         compliance = response.parse()
         assert_matches_type(SyncNextKey[ComplianceListResultsResponse], compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list_results(self, client: BusinessRadar) -> None:
         with client.compliance.with_streaming_response.list_results(
@@ -164,7 +164,7 @@ class TestCompliance:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_list_results(self, client: BusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_id` but received ''"):
@@ -178,13 +178,13 @@ class TestAsyncCompliance:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncBusinessRadar) -> None:
         compliance = await async_client.compliance.create()
         assert_matches_type(ComplianceCreateResponse, compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         compliance = await async_client.compliance.create(
@@ -207,7 +207,7 @@ class TestAsyncCompliance:
         )
         assert_matches_type(ComplianceCreateResponse, compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.compliance.with_raw_response.create()
@@ -217,7 +217,7 @@ class TestAsyncCompliance:
         compliance = await response.parse()
         assert_matches_type(ComplianceCreateResponse, compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.compliance.with_streaming_response.create() as response:
@@ -229,7 +229,7 @@ class TestAsyncCompliance:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncBusinessRadar) -> None:
         compliance = await async_client.compliance.retrieve(
@@ -237,7 +237,7 @@ class TestAsyncCompliance:
         )
         assert_matches_type(ComplianceRetrieveResponse, compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.compliance.with_raw_response.retrieve(
@@ -249,7 +249,7 @@ class TestAsyncCompliance:
         compliance = await response.parse()
         assert_matches_type(ComplianceRetrieveResponse, compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.compliance.with_streaming_response.retrieve(
@@ -263,7 +263,7 @@ class TestAsyncCompliance:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncBusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_id` but received ''"):
@@ -271,7 +271,7 @@ class TestAsyncCompliance:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_results(self, async_client: AsyncBusinessRadar) -> None:
         compliance = await async_client.compliance.list_results(
@@ -279,7 +279,7 @@ class TestAsyncCompliance:
         )
         assert_matches_type(AsyncNextKey[ComplianceListResultsResponse], compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_results_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         compliance = await async_client.compliance.list_results(
@@ -293,7 +293,7 @@ class TestAsyncCompliance:
         )
         assert_matches_type(AsyncNextKey[ComplianceListResultsResponse], compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_results(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.compliance.with_raw_response.list_results(
@@ -305,7 +305,7 @@ class TestAsyncCompliance:
         compliance = await response.parse()
         assert_matches_type(AsyncNextKey[ComplianceListResultsResponse], compliance, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_results(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.compliance.with_streaming_response.list_results(
@@ -319,7 +319,7 @@ class TestAsyncCompliance:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_list_results(self, async_client: AsyncBusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_id` but received ''"):
