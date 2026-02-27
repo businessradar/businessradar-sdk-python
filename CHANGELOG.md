@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.12.1 (2026-02-27)
+
+Full Changelog: [v1.12.0...v1.12.1](https://github.com/businessradar/businessradar-sdk-python/compare/v1.12.0...v1.12.1)
+
 ## 1.12.0 (2026-02-27)
 
 Full Changelog: [v1.11.0...v1.12.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.11.0...v1.12.0)
