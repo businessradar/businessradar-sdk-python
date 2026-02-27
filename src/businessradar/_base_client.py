@@ -574,7 +574,7 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
             # `Params` type as it needs to be typed as `Mapping[str, object]`
             # so that passing a `TypedDict` doesn't cause an error.
             # https://github.com/microsoft/pyright/issues/3526#event-6715453066
-            params=self.qs.stringify(cast(Mapping[str, Any], params)) if params else None,
+            params=self.qs.stringify(cast(Mapping[str, Any], params), array_format="repeat",) if params else None,
             **kwargs,
         )
 
