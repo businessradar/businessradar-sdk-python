@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.12.0 (2026-02-27)
+
+Full Changelog: [v1.11.0...v1.12.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.11.0...v1.12.0)
+
+### Features
+
+* **api:** api update ([4ec7c18](https://github.com/businessradar/businessradar-sdk-python/commit/4ec7c18bde49a9de8054aa780bbcc3b124c2cee0))
+
+
+### Chores
+
+* format all `api.md` files ([29c800c](https://github.com/businessradar/businessradar-sdk-python/commit/29c800cd9edaf98f60852af4591f71a1ec65db4b))
+* **internal:** add request options to SSE classes ([6d25dce](https://github.com/businessradar/businessradar-sdk-python/commit/6d25dceb335b94a638d78775aff9921eec5646bf))
+* **internal:** bump dependencies ([85d6078](https://github.com/businessradar/businessradar-sdk-python/commit/85d6078a3651504b08a40f5fd6190cb0e187a399))
+* **internal:** fix lint error on Python 3.14 ([ced88c4](https://github.com/businessradar/businessradar-sdk-python/commit/ced88c49da08bf4abbdf280f8b1b0aaaaa0884d4))
+* **internal:** make `test_proxy_environment_variables` more resilient ([53edf3b](https://github.com/businessradar/businessradar-sdk-python/commit/53edf3b574ccd93ba9e86dddb9c3b29f60f13036))
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([fb33a8c](https://github.com/businessradar/businessradar-sdk-python/commit/fb33a8c4a98ffe0a706af1b1b9a06bff5b20086a))
+* **internal:** remove mock server code ([a897eb3](https://github.com/businessradar/businessradar-sdk-python/commit/a897eb3a518a0f8a4c5309148d419c363af366fc))
+* update mock server docs ([0283a7d](https://github.com/businessradar/businessradar-sdk-python/commit/0283a7df9cb60a34b611066b781cdb4a43d293a9))
+
 ## 1.11.0 (2026-01-30)
 
 Full Changelog: [v1.10.0...v1.11.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.10.0...v1.11.0)

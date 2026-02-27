@@ -13,9 +13,9 @@ __all__ = ["ComplianceCreateParams", "Entity"]
 
 class ComplianceCreateParams(TypedDict, total=False):
     all_entities_screening_enabled: bool
-    """If enabled all found entities UBOs, directors, shareholders will be screened.
+    """If enabled all found entities (UBOs, directors, shareholders) will be screened.
 
-    This can have an high cost impact.
+    This can have a high cost impact.
     """
 
     company_id: Optional[str]
@@ -27,6 +27,9 @@ class ComplianceCreateParams(TypedDict, total=False):
 
     ownership_screening_threshold: Optional[float]
     """The threshold for ultimate ownership to enable for screening."""
+
+    ubo_screening_enabled: bool
+    """If enabled, UBOs discovered for the company will be screened."""
 
 
 class Entity(TypedDict, total=False):

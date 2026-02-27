@@ -19,7 +19,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestCompanies:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create(self, client: BusinessRadar) -> None:
         company = client.portfolios.companies.create(
@@ -27,7 +27,7 @@ class TestCompanies:
         )
         assert_matches_type(Registration, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: BusinessRadar) -> None:
         company = client.portfolios.companies.create(
@@ -41,7 +41,7 @@ class TestCompanies:
         )
         assert_matches_type(Registration, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: BusinessRadar) -> None:
         response = client.portfolios.companies.with_raw_response.create(
@@ -53,7 +53,7 @@ class TestCompanies:
         company = response.parse()
         assert_matches_type(Registration, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: BusinessRadar) -> None:
         with client.portfolios.companies.with_streaming_response.create(
@@ -67,7 +67,7 @@ class TestCompanies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_create(self, client: BusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `portfolio_id` but received ''"):
@@ -75,7 +75,7 @@ class TestCompanies:
                 portfolio_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: BusinessRadar) -> None:
         company = client.portfolios.companies.list(
@@ -83,7 +83,7 @@ class TestCompanies:
         )
         assert_matches_type(SyncNextKey[CompanyListResponse], company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: BusinessRadar) -> None:
         company = client.portfolios.companies.list(
@@ -92,7 +92,7 @@ class TestCompanies:
         )
         assert_matches_type(SyncNextKey[CompanyListResponse], company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: BusinessRadar) -> None:
         response = client.portfolios.companies.with_raw_response.list(
@@ -104,7 +104,7 @@ class TestCompanies:
         company = response.parse()
         assert_matches_type(SyncNextKey[CompanyListResponse], company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: BusinessRadar) -> None:
         with client.portfolios.companies.with_streaming_response.list(
@@ -118,7 +118,7 @@ class TestCompanies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_list(self, client: BusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `portfolio_id` but received ''"):
@@ -126,7 +126,7 @@ class TestCompanies:
                 portfolio_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_delete(self, client: BusinessRadar) -> None:
         company = client.portfolios.companies.delete(
@@ -135,7 +135,7 @@ class TestCompanies:
         )
         assert company is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: BusinessRadar) -> None:
         response = client.portfolios.companies.with_raw_response.delete(
@@ -148,7 +148,7 @@ class TestCompanies:
         company = response.parse()
         assert company is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: BusinessRadar) -> None:
         with client.portfolios.companies.with_streaming_response.delete(
@@ -163,7 +163,7 @@ class TestCompanies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_delete(self, client: BusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `portfolio_id` but received ''"):
@@ -184,7 +184,7 @@ class TestAsyncCompanies:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncBusinessRadar) -> None:
         company = await async_client.portfolios.companies.create(
@@ -192,7 +192,7 @@ class TestAsyncCompanies:
         )
         assert_matches_type(Registration, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         company = await async_client.portfolios.companies.create(
@@ -206,7 +206,7 @@ class TestAsyncCompanies:
         )
         assert_matches_type(Registration, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.portfolios.companies.with_raw_response.create(
@@ -218,7 +218,7 @@ class TestAsyncCompanies:
         company = await response.parse()
         assert_matches_type(Registration, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.portfolios.companies.with_streaming_response.create(
@@ -232,7 +232,7 @@ class TestAsyncCompanies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_create(self, async_client: AsyncBusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `portfolio_id` but received ''"):
@@ -240,7 +240,7 @@ class TestAsyncCompanies:
                 portfolio_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncBusinessRadar) -> None:
         company = await async_client.portfolios.companies.list(
@@ -248,7 +248,7 @@ class TestAsyncCompanies:
         )
         assert_matches_type(AsyncNextKey[CompanyListResponse], company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         company = await async_client.portfolios.companies.list(
@@ -257,7 +257,7 @@ class TestAsyncCompanies:
         )
         assert_matches_type(AsyncNextKey[CompanyListResponse], company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.portfolios.companies.with_raw_response.list(
@@ -269,7 +269,7 @@ class TestAsyncCompanies:
         company = await response.parse()
         assert_matches_type(AsyncNextKey[CompanyListResponse], company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.portfolios.companies.with_streaming_response.list(
@@ -283,7 +283,7 @@ class TestAsyncCompanies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_list(self, async_client: AsyncBusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `portfolio_id` but received ''"):
@@ -291,7 +291,7 @@ class TestAsyncCompanies:
                 portfolio_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncBusinessRadar) -> None:
         company = await async_client.portfolios.companies.delete(
@@ -300,7 +300,7 @@ class TestAsyncCompanies:
         )
         assert company is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.portfolios.companies.with_raw_response.delete(
@@ -313,7 +313,7 @@ class TestAsyncCompanies:
         company = await response.parse()
         assert company is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.portfolios.companies.with_streaming_response.delete(
@@ -328,7 +328,7 @@ class TestAsyncCompanies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncBusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `portfolio_id` but received ''"):

@@ -18,7 +18,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestExport:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create(self, client: BusinessRadar) -> None:
         export = client.news.articles.export.create(
@@ -27,7 +27,7 @@ class TestExport:
         )
         assert_matches_type(ArticleExport, export, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: BusinessRadar) -> None:
         export = client.news.articles.export.create(
@@ -57,7 +57,7 @@ class TestExport:
         )
         assert_matches_type(ArticleExport, export, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: BusinessRadar) -> None:
         response = client.news.articles.export.with_raw_response.create(
@@ -70,7 +70,7 @@ class TestExport:
         export = response.parse()
         assert_matches_type(ArticleExport, export, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: BusinessRadar) -> None:
         with client.news.articles.export.with_streaming_response.create(
@@ -85,7 +85,7 @@ class TestExport:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: BusinessRadar) -> None:
         export = client.news.articles.export.retrieve(
@@ -93,7 +93,7 @@ class TestExport:
         )
         assert_matches_type(ArticleExport, export, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: BusinessRadar) -> None:
         response = client.news.articles.export.with_raw_response.retrieve(
@@ -105,7 +105,7 @@ class TestExport:
         export = response.parse()
         assert_matches_type(ArticleExport, export, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: BusinessRadar) -> None:
         with client.news.articles.export.with_streaming_response.retrieve(
@@ -119,7 +119,7 @@ class TestExport:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: BusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_id` but received ''"):
@@ -133,7 +133,7 @@ class TestAsyncExport:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncBusinessRadar) -> None:
         export = await async_client.news.articles.export.create(
@@ -142,7 +142,7 @@ class TestAsyncExport:
         )
         assert_matches_type(ArticleExport, export, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         export = await async_client.news.articles.export.create(
@@ -172,7 +172,7 @@ class TestAsyncExport:
         )
         assert_matches_type(ArticleExport, export, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.news.articles.export.with_raw_response.create(
@@ -185,7 +185,7 @@ class TestAsyncExport:
         export = await response.parse()
         assert_matches_type(ArticleExport, export, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.news.articles.export.with_streaming_response.create(
@@ -200,7 +200,7 @@ class TestAsyncExport:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncBusinessRadar) -> None:
         export = await async_client.news.articles.export.retrieve(
@@ -208,7 +208,7 @@ class TestAsyncExport:
         )
         assert_matches_type(ArticleExport, export, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncBusinessRadar) -> None:
         response = await async_client.news.articles.export.with_raw_response.retrieve(
@@ -220,7 +220,7 @@ class TestAsyncExport:
         export = await response.parse()
         assert_matches_type(ArticleExport, export, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncBusinessRadar) -> None:
         async with async_client.news.articles.export.with_streaming_response.retrieve(
@@ -234,7 +234,7 @@ class TestAsyncExport:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncBusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_id` but received ''"):
