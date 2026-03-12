@@ -11,6 +11,9 @@ class ComplianceListResultsParams(TypedDict, total=False):
     entity: str
     """Filter by entity external ID"""
 
+    exclude_automated_false_positives: bool
+    """Filter out automated false positive rated results"""
+
     min_confidence: float
     """Filter by minimum confidence score (0.0 - 1.0)"""
 

@@ -161,6 +161,7 @@ class ComplianceResource(SyncAPIResource):
         external_id: str,
         *,
         entity: str | Omit = omit,
+        exclude_automated_false_positives: bool | Omit = omit,
         min_confidence: float | Omit = omit,
         next_key: str | Omit = omit,
         order: Literal["asc", "desc"] | Omit = omit,
@@ -182,6 +183,8 @@ class ComplianceResource(SyncAPIResource):
 
         Args:
           entity: Filter by entity external ID
+
+          exclude_automated_false_positives: Filter out automated false positive rated results
 
           min_confidence: Filter by minimum confidence score (0.0 - 1.0)
 
@@ -216,6 +219,7 @@ class ComplianceResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "entity": entity,
+                        "exclude_automated_false_positives": exclude_automated_false_positives,
                         "min_confidence": min_confidence,
                         "next_key": next_key,
                         "order": order,
@@ -363,6 +367,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         external_id: str,
         *,
         entity: str | Omit = omit,
+        exclude_automated_false_positives: bool | Omit = omit,
         min_confidence: float | Omit = omit,
         next_key: str | Omit = omit,
         order: Literal["asc", "desc"] | Omit = omit,
@@ -384,6 +389,8 @@ class AsyncComplianceResource(AsyncAPIResource):
 
         Args:
           entity: Filter by entity external ID
+
+          exclude_automated_false_positives: Filter out automated false positive rated results
 
           min_confidence: Filter by minimum confidence score (0.0 - 1.0)
 
@@ -418,6 +425,7 @@ class AsyncComplianceResource(AsyncAPIResource):
                 query=maybe_transform(
                     {
                         "entity": entity,
+                        "exclude_automated_false_positives": exclude_automated_false_positives,
                         "min_confidence": min_confidence,
                         "next_key": next_key,
                         "order": order,
