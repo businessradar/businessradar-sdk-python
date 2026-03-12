@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.13.0 (2026-03-12)
+
+Full Changelog: [v1.12.1...v1.13.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.12.1...v1.13.0)
+
+### Features
+
+* **api:** api update ([d8ba8c4](https://github.com/businessradar/businessradar-sdk-python/commit/d8ba8c48944674ef288d78ea875fd01c87a9dc61))
+
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([1d33cb3](https://github.com/businessradar/businessradar-sdk-python/commit/1d33cb3f8e6e6308b8c08e0372248e78a47f8cfe))
+
 ## 1.12.1 (2026-02-27)
 
 Full Changelog: [v1.12.0...v1.12.1](https://github.com/businessradar/businessradar-sdk-python/compare/v1.12.0...v1.12.1)
