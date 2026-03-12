@@ -299,6 +299,8 @@ class EntityUbo(BaseModel):
 
 
 class Entity(BaseModel):
+    aliases: List[str]
+
     entity_role: Literal["ubo", "director", "company", "manually_added"]
     """
     - `ubo` - Ultimate Beneficial Owner
@@ -360,6 +362,10 @@ class ComplianceListResultsResponse(BaseModel):
     """Compliance entity result."""
 
     addresses: List[Address]
+
+    automated_false_positive_rating: Optional[str] = None
+
+    automated_false_positive_rating_comments: Optional[str] = None
 
     created_at: datetime
 

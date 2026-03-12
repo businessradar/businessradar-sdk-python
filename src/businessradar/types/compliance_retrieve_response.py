@@ -34,6 +34,8 @@ class EntityUbo(BaseModel):
 
 
 class Entity(BaseModel):
+    aliases: List[str]
+
     entity_role: Literal["ubo", "director", "company", "manually_added"]
     """
     - `ubo` - Ultimate Beneficial Owner

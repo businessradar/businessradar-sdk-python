@@ -6,6 +6,7 @@ from typing import Union, Iterable, Optional
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["ComplianceCreateParams", "Entity"]
@@ -40,6 +41,9 @@ class Entity(TypedDict, total=False):
     """
 
     name: Required[str]
+
+    aliases: SequenceNotStr[str]
+    """Alternative names or aliases for the compliance entity."""
 
     country: Optional[str]
 

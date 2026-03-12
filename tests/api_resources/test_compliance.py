@@ -39,6 +39,7 @@ class TestCompliance:
             entities=[
                 {
                     "name": "x",
+                    "aliases": ["x"],
                     "country": "xx",
                     "date_of_birth": parse_date("2019-12-27"),
                     "entity_type": "individual",
@@ -130,6 +131,7 @@ class TestCompliance:
         compliance = client.compliance.list_results(
             external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             entity="entity",
+            exclude_automated_false_positives=True,
             min_confidence=0,
             next_key="next_key",
             order="asc",
@@ -194,6 +196,7 @@ class TestAsyncCompliance:
             entities=[
                 {
                     "name": "x",
+                    "aliases": ["x"],
                     "country": "xx",
                     "date_of_birth": parse_date("2019-12-27"),
                     "entity_type": "individual",
@@ -285,6 +288,7 @@ class TestAsyncCompliance:
         compliance = await async_client.compliance.list_results(
             external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             entity="entity",
+            exclude_automated_false_positives=True,
             min_confidence=0,
             next_key="next_key",
             order="asc",
