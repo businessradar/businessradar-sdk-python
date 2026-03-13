@@ -13,12 +13,6 @@ __all__ = ["ComplianceCreateParams", "Entity"]
 
 
 class ComplianceCreateParams(TypedDict, total=False):
-    all_entities_screening_enabled: bool
-    """If enabled all found entities (UBOs, directors, shareholders) will be screened.
-
-    This can have a high cost impact.
-    """
-
     company_id: Optional[str]
 
     directors_screening_enabled: bool
