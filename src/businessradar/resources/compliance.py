@@ -50,7 +50,6 @@ class ComplianceResource(SyncAPIResource):
     def create(
         self,
         *,
-        all_entities_screening_enabled: bool | Omit = omit,
         company_id: Optional[str] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
         entities: Iterable[compliance_create_params.Entity] | Omit = omit,
@@ -84,9 +83,6 @@ class ComplianceResource(SyncAPIResource):
         endpoint.
 
         Args:
-          all_entities_screening_enabled: If enabled all found entities (UBOs, directors, shareholders) will be screened.
-              This can have a high cost impact.
-
           directors_screening_enabled: If directors should be screened.
 
           ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
@@ -105,7 +101,6 @@ class ComplianceResource(SyncAPIResource):
             "/ext/v3/compliance",
             body=maybe_transform(
                 {
-                    "all_entities_screening_enabled": all_entities_screening_enabled,
                     "company_id": company_id,
                     "directors_screening_enabled": directors_screening_enabled,
                     "entities": entities,
@@ -256,7 +251,6 @@ class AsyncComplianceResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        all_entities_screening_enabled: bool | Omit = omit,
         company_id: Optional[str] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
         entities: Iterable[compliance_create_params.Entity] | Omit = omit,
@@ -290,9 +284,6 @@ class AsyncComplianceResource(AsyncAPIResource):
         endpoint.
 
         Args:
-          all_entities_screening_enabled: If enabled all found entities (UBOs, directors, shareholders) will be screened.
-              This can have a high cost impact.
-
           directors_screening_enabled: If directors should be screened.
 
           ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
@@ -311,7 +302,6 @@ class AsyncComplianceResource(AsyncAPIResource):
             "/ext/v3/compliance",
             body=await async_maybe_transform(
                 {
-                    "all_entities_screening_enabled": all_entities_screening_enabled,
                     "company_id": company_id,
                     "directors_screening_enabled": directors_screening_enabled,
                     "entities": entities,

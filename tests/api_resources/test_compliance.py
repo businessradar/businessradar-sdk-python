@@ -33,7 +33,6 @@ class TestCompliance:
     @parametrize
     def test_method_create_with_all_params(self, client: BusinessRadar) -> None:
         compliance = client.compliance.create(
-            all_entities_screening_enabled=True,
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             directors_screening_enabled=True,
             entities=[
@@ -190,7 +189,6 @@ class TestAsyncCompliance:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         compliance = await async_client.compliance.create(
-            all_entities_screening_enabled=True,
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             directors_screening_enabled=True,
             entities=[
