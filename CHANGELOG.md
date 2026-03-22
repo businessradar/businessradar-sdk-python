@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.15.0 (2026-03-20)
+
+Full Changelog: [v1.14.0...v1.15.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.14.0...v1.15.0)
+
+### Features
+
+* **api:** api update ([8d3e4c7](https://github.com/businessradar/businessradar-sdk-python/commit/8d3e4c7fdb7c94851db2018aaf21fef5849e6d66))
+
+
+### Bug Fixes
+
+* **deps:** bump minimum typing-extensions version ([1852b69](https://github.com/businessradar/businessradar-sdk-python/commit/1852b69eec6d104b6b452d1406d6dced1069d996))
+* **pydantic:** do not pass `by_alias` unless set ([cf0901d](https://github.com/businessradar/businessradar-sdk-python/commit/cf0901d915c2982071acd0b354ee110904039b27))
+* sanitize endpoint path params ([7a2f124](https://github.com/businessradar/businessradar-sdk-python/commit/7a2f12444661e14b8d2d6f3a933c9d4d75fccc3d))
+
+
+### Chores
+
+* **internal:** tweak CI branches ([5e2e210](https://github.com/businessradar/businessradar-sdk-python/commit/5e2e21092a41a8f18b7ffe4d6552fa2471567798))
+
 ## 1.14.0 (2026-03-13)
 
 Full Changelog: [v1.13.0...v1.14.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.13.0...v1.14.0)

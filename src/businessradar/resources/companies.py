@@ -17,7 +17,7 @@ from ..types import (
     company_create_missing_company_investigation_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -411,7 +411,7 @@ class CompaniesResource(SyncAPIResource):
         if not external_id:
             raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
         return self._get(
-            f"/ext/v3/companies/{external_id}",
+            path_template("/ext/v3/companies/{external_id}", external_id=external_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -962,7 +962,7 @@ class CompaniesResource(SyncAPIResource):
         if not external_id:
             raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
         return self._get(
-            f"/ext/v3/companies/investigations/{external_id}",
+            path_template("/ext/v3/companies/investigations/{external_id}", external_id=external_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -998,7 +998,7 @@ class CompaniesResource(SyncAPIResource):
         if not registration_id:
             raise ValueError(f"Expected a non-empty value for `registration_id` but received {registration_id!r}")
         return self._get(
-            f"/ext/v3/registrations/{registration_id}",
+            path_template("/ext/v3/registrations/{registration_id}", registration_id=registration_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1372,7 +1372,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         if not external_id:
             raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
         return await self._get(
-            f"/ext/v3/companies/{external_id}",
+            path_template("/ext/v3/companies/{external_id}", external_id=external_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1925,7 +1925,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         if not external_id:
             raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
         return await self._get(
-            f"/ext/v3/companies/investigations/{external_id}",
+            path_template("/ext/v3/companies/investigations/{external_id}", external_id=external_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1961,7 +1961,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         if not registration_id:
             raise ValueError(f"Expected a non-empty value for `registration_id` but received {registration_id!r}")
         return await self._get(
-            f"/ext/v3/registrations/{registration_id}",
+            path_template("/ext/v3/registrations/{registration_id}", registration_id=registration_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -312,6 +312,8 @@ class CompanyRetrieveResponse(BaseModel):
 
     address_longitude: Optional[float] = None
 
+    address_number: Optional[str] = None
+
     address_phone: Optional[str] = None
 
     address_place: Optional[str] = None
