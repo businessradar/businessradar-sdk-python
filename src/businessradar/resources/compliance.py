@@ -53,6 +53,7 @@ class ComplianceResource(SyncAPIResource):
         company_id: Optional[str] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
         entities: Iterable[compliance_create_params.Entity] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         ownership_screening_threshold: Optional[float] | Omit = omit,
         ubo_screening_enabled: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -85,6 +86,8 @@ class ComplianceResource(SyncAPIResource):
         Args:
           directors_screening_enabled: If directors should be screened.
 
+          name: Custom name for this compliance check.
+
           ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
 
           ubo_screening_enabled: If enabled, UBOs discovered for the company will be screened.
@@ -104,6 +107,7 @@ class ComplianceResource(SyncAPIResource):
                     "company_id": company_id,
                     "directors_screening_enabled": directors_screening_enabled,
                     "entities": entities,
+                    "name": name,
                     "ownership_screening_threshold": ownership_screening_threshold,
                     "ubo_screening_enabled": ubo_screening_enabled,
                 },
@@ -254,6 +258,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         company_id: Optional[str] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
         entities: Iterable[compliance_create_params.Entity] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         ownership_screening_threshold: Optional[float] | Omit = omit,
         ubo_screening_enabled: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -286,6 +291,8 @@ class AsyncComplianceResource(AsyncAPIResource):
         Args:
           directors_screening_enabled: If directors should be screened.
 
+          name: Custom name for this compliance check.
+
           ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
 
           ubo_screening_enabled: If enabled, UBOs discovered for the company will be screened.
@@ -305,6 +312,7 @@ class AsyncComplianceResource(AsyncAPIResource):
                     "company_id": company_id,
                     "directors_screening_enabled": directors_screening_enabled,
                     "entities": entities,
+                    "name": name,
                     "ownership_screening_threshold": ownership_screening_threshold,
                     "ubo_screening_enabled": ubo_screening_enabled,
                 },
