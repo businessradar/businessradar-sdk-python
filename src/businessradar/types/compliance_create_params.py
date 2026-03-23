@@ -20,6 +20,9 @@ class ComplianceCreateParams(TypedDict, total=False):
 
     entities: Iterable[Entity]
 
+    name: Optional[str]
+    """Custom name for this compliance check."""
+
     ownership_screening_threshold: Optional[float]
     """The threshold for ultimate ownership to enable for screening."""
 
