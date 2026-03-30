@@ -17,7 +17,7 @@ from .export import (
     AsyncExportResourceWithStreamingResponse,
 )
 from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from .analytics import (
     AnalyticsResource,
     AsyncAnalyticsResource,
@@ -36,14 +36,12 @@ from ...._response import (
 )
 from ....pagination import SyncNextKey, AsyncNextKey
 from ....types.news import (
-    FeedbackTypeEnum,
     article_list_params,
     article_create_feedback_params,
     article_list_saved_article_filters_params,
 )
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.news.article import Article
-from ....types.news.feedback_type_enum import FeedbackTypeEnum
 from ....types.news.article_create_feedback_response import ArticleCreateFeedbackResponse
 from ....types.news.article_retrieve_related_response import ArticleRetrieveRelatedResponse
 from ....types.news.article_list_saved_article_filters_response import ArticleListSavedArticleFiltersResponse
@@ -221,7 +219,7 @@ class ArticlesResource(SyncAPIResource):
         article: str,
         comment: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
-        feedback_type: FeedbackTypeEnum | Omit = omit,
+        feedback_type: Literal["false_positive", "no_risk", "risk_confirmed"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -342,7 +340,7 @@ class ArticlesResource(SyncAPIResource):
         if not article_id:
             raise ValueError(f"Expected a non-empty value for `article_id` but received {article_id!r}")
         return self._get(
-            f"/ext/v3/articles/{article_id}/related/",
+            path_template("/ext/v3/articles/{article_id}/related/", article_id=article_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -520,7 +518,7 @@ class AsyncArticlesResource(AsyncAPIResource):
         article: str,
         comment: Optional[str] | Omit = omit,
         email: Optional[str] | Omit = omit,
-        feedback_type: FeedbackTypeEnum | Omit = omit,
+        feedback_type: Literal["false_positive", "no_risk", "risk_confirmed"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -641,7 +639,7 @@ class AsyncArticlesResource(AsyncAPIResource):
         if not article_id:
             raise ValueError(f"Expected a non-empty value for `article_id` but received {article_id!r}")
         return await self._get(
-            f"/ext/v3/articles/{article_id}/related/",
+            path_template("/ext/v3/articles/{article_id}/related/", article_id=article_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

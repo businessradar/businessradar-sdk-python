@@ -3,9 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import Required, TypedDict
-
-from .feedback_type_enum import FeedbackTypeEnum
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["ArticleCreateFeedbackParams"]
 
@@ -17,7 +15,7 @@ class ArticleCreateFeedbackParams(TypedDict, total=False):
 
     email: Optional[str]
 
-    feedback_type: FeedbackTypeEnum
+    feedback_type: Literal["false_positive", "no_risk", "risk_confirmed"]
     """
     - `false_positive` - False Positive
     - `no_risk` - No Risk

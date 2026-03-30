@@ -47,6 +47,7 @@ class TestCompliance:
                     "middle_name": "middle_name",
                 }
             ],
+            name="name",
             ownership_screening_threshold=0,
             ubo_screening_enabled=True,
         )
@@ -203,6 +204,7 @@ class TestAsyncCompliance:
                     "middle_name": "middle_name",
                 }
             ],
+            name="name",
             ownership_screening_threshold=0,
             ubo_screening_enabled=True,
         )

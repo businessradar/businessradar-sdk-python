@@ -9,7 +9,7 @@ import httpx
 
 from ..types import compliance_create_params, compliance_list_results_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -53,6 +53,7 @@ class ComplianceResource(SyncAPIResource):
         company_id: Optional[str] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
         entities: Iterable[compliance_create_params.Entity] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         ownership_screening_threshold: Optional[float] | Omit = omit,
         ubo_screening_enabled: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -85,6 +86,8 @@ class ComplianceResource(SyncAPIResource):
         Args:
           directors_screening_enabled: If directors should be screened.
 
+          name: Custom name for this compliance check.
+
           ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
 
           ubo_screening_enabled: If enabled, UBOs discovered for the company will be screened.
@@ -104,6 +107,7 @@ class ComplianceResource(SyncAPIResource):
                     "company_id": company_id,
                     "directors_screening_enabled": directors_screening_enabled,
                     "entities": entities,
+                    "name": name,
                     "ownership_screening_threshold": ownership_screening_threshold,
                     "ubo_screening_enabled": ubo_screening_enabled,
                 },
@@ -144,7 +148,7 @@ class ComplianceResource(SyncAPIResource):
         if not external_id:
             raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
         return self._get(
-            f"/ext/v3/compliance/{external_id}",
+            path_template("/ext/v3/compliance/{external_id}", external_id=external_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -204,7 +208,7 @@ class ComplianceResource(SyncAPIResource):
         if not external_id:
             raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
         return self._get_api_list(
-            f"/ext/v3/compliance/{external_id}/results",
+            path_template("/ext/v3/compliance/{external_id}/results", external_id=external_id),
             page=SyncNextKey[ComplianceListResultsResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -254,6 +258,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         company_id: Optional[str] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
         entities: Iterable[compliance_create_params.Entity] | Omit = omit,
+        name: Optional[str] | Omit = omit,
         ownership_screening_threshold: Optional[float] | Omit = omit,
         ubo_screening_enabled: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -286,6 +291,8 @@ class AsyncComplianceResource(AsyncAPIResource):
         Args:
           directors_screening_enabled: If directors should be screened.
 
+          name: Custom name for this compliance check.
+
           ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
 
           ubo_screening_enabled: If enabled, UBOs discovered for the company will be screened.
@@ -305,6 +312,7 @@ class AsyncComplianceResource(AsyncAPIResource):
                     "company_id": company_id,
                     "directors_screening_enabled": directors_screening_enabled,
                     "entities": entities,
+                    "name": name,
                     "ownership_screening_threshold": ownership_screening_threshold,
                     "ubo_screening_enabled": ubo_screening_enabled,
                 },
@@ -345,7 +353,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         if not external_id:
             raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
         return await self._get(
-            f"/ext/v3/compliance/{external_id}",
+            path_template("/ext/v3/compliance/{external_id}", external_id=external_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -405,7 +413,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         if not external_id:
             raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
         return self._get_api_list(
-            f"/ext/v3/compliance/{external_id}/results",
+            path_template("/ext/v3/compliance/{external_id}/results", external_id=external_id),
             page=AsyncNextKey[ComplianceListResultsResponse],
             options=make_request_options(
                 extra_headers=extra_headers,

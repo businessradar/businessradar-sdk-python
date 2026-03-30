@@ -13,6 +13,7 @@ from businessradar.types import (
     Registration,
     CompanyListResponse,
     CompanyRetrieveResponse,
+    CompanyCreateFeedbackResponse,
     CompanyListAttributeChangesResponse,
     CompanyListMissingCompanyInvestigationsResponse,
     CompanyCreateMissingCompanyInvestigationResponse,
@@ -149,6 +150,55 @@ class TestCompanies:
 
             company = response.parse()
             assert_matches_type(SyncNextKey[CompanyListResponse], company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_create_feedback(self, client: BusinessRadar) -> None:
+        company = client.companies.create_feedback(
+            company="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            feedback_type="NOT_ENOUGH_NEWS",
+        )
+        assert_matches_type(CompanyCreateFeedbackResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_create_feedback_with_all_params(self, client: BusinessRadar) -> None:
+        company = client.companies.create_feedback(
+            company="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            feedback_type="NOT_ENOUGH_NEWS",
+            comment="comment",
+            notification_email="dev@stainless.com",
+            trade_name="trade_name",
+        )
+        assert_matches_type(CompanyCreateFeedbackResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_create_feedback(self, client: BusinessRadar) -> None:
+        response = client.companies.with_raw_response.create_feedback(
+            company="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            feedback_type="NOT_ENOUGH_NEWS",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = response.parse()
+        assert_matches_type(CompanyCreateFeedbackResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_create_feedback(self, client: BusinessRadar) -> None:
+        with client.companies.with_streaming_response.create_feedback(
+            company="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            feedback_type="NOT_ENOUGH_NEWS",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = response.parse()
+            assert_matches_type(CompanyCreateFeedbackResponse, company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -497,6 +547,55 @@ class TestAsyncCompanies:
 
             company = await response.parse()
             assert_matches_type(AsyncNextKey[CompanyListResponse], company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create_feedback(self, async_client: AsyncBusinessRadar) -> None:
+        company = await async_client.companies.create_feedback(
+            company="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            feedback_type="NOT_ENOUGH_NEWS",
+        )
+        assert_matches_type(CompanyCreateFeedbackResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create_feedback_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
+        company = await async_client.companies.create_feedback(
+            company="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            feedback_type="NOT_ENOUGH_NEWS",
+            comment="comment",
+            notification_email="dev@stainless.com",
+            trade_name="trade_name",
+        )
+        assert_matches_type(CompanyCreateFeedbackResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_create_feedback(self, async_client: AsyncBusinessRadar) -> None:
+        response = await async_client.companies.with_raw_response.create_feedback(
+            company="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            feedback_type="NOT_ENOUGH_NEWS",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = await response.parse()
+        assert_matches_type(CompanyCreateFeedbackResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_create_feedback(self, async_client: AsyncBusinessRadar) -> None:
+        async with async_client.companies.with_streaming_response.create_feedback(
+            company="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            feedback_type="NOT_ENOUGH_NEWS",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = await response.parse()
+            assert_matches_type(CompanyCreateFeedbackResponse, company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

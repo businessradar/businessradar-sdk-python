@@ -86,6 +86,9 @@ class ComplianceRetrieveResponse(BaseModel):
 
     country_score: Optional[Literal["low", "medium", "high", ""]] = None
 
+    name: Optional[str] = None
+    """Custom name for this compliance check."""
+
     pep_score: Optional[Literal["low", "medium", "high", ""]] = None
 
     sanction_score: Optional[Literal["low", "medium", "high", ""]] = None
