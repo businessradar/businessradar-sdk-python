@@ -12,6 +12,7 @@ from ..types import (
     CountryEnum,
     company_list_params,
     company_create_params,
+    company_create_feedback_params,
     company_list_attribute_changes_params,
     company_list_missing_company_investigations_params,
     company_create_missing_company_investigation_params,
@@ -32,6 +33,7 @@ from ..types.country_enum import CountryEnum
 from ..types.registration import Registration
 from ..types.company_list_response import CompanyListResponse
 from ..types.company_retrieve_response import CompanyRetrieveResponse
+from ..types.company_create_feedback_response import CompanyCreateFeedbackResponse
 from ..types.company_list_attribute_changes_response import CompanyListAttributeChangesResponse
 from ..types.shared_params.portfolio_company_detail_request import PortfolioCompanyDetailRequest
 from ..types.company_list_missing_company_investigations_response import CompanyListMissingCompanyInvestigationsResponse
@@ -496,6 +498,82 @@ class CompaniesResource(SyncAPIResource):
                 ),
             ),
             model=CompanyListResponse,
+        )
+
+    def create_feedback(
+        self,
+        *,
+        company: str,
+        feedback_type: Literal[
+            "NOT_ENOUGH_NEWS",
+            "COMPANY_NAME_OUTDATED",
+            "INCORRECT_COMPANY_WEBSITE",
+            "MISSING_REGISTRATION_NUMBER",
+            "MISSING_TRADE_NAME",
+            "INCORRECT_TRADE_NAME",
+            "NOT_ENOUGH_REVIEWS",
+            "OUTDATED_CORPORATE_LINKAGE",
+            "INCORRECT_CORPORATE_LINKAGE",
+            "OTHER",
+        ],
+        comment: Optional[str] | Omit = omit,
+        notification_email: Optional[str] | Omit = omit,
+        trade_name: Optional[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CompanyCreateFeedbackResponse:
+        """### Submit Company Feedback
+
+        Submit feedback about a specific company.
+
+        If feedback already exists for the
+        same company and profile, the existing record is updated.
+
+        Optionally provide a `notification_email` to be notified when the feedback is
+        resolved.
+
+        Args:
+          feedback_type: - `NOT_ENOUGH_NEWS` - Not Enough News
+              - `COMPANY_NAME_OUTDATED` - Company Name Outdated
+              - `INCORRECT_COMPANY_WEBSITE` - Incorrect Company Website
+              - `MISSING_REGISTRATION_NUMBER` - Missing Registration Number
+              - `MISSING_TRADE_NAME` - Missing Trade Name
+              - `INCORRECT_TRADE_NAME` - Incorrect Trade Name
+              - `NOT_ENOUGH_REVIEWS` - Not Enough Reviews
+              - `OUTDATED_CORPORATE_LINKAGE` - Outdated Corporate Linkage
+              - `INCORRECT_CORPORATE_LINKAGE` - Incorrect Corporate Linkage
+              - `OTHER` - Other
+
+          notification_email: Email address to notify when feedback is resolved.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/ext/v3/companies/feedback/",
+            body=maybe_transform(
+                {
+                    "company": company,
+                    "feedback_type": feedback_type,
+                    "comment": comment,
+                    "notification_email": notification_email,
+                    "trade_name": trade_name,
+                },
+                company_create_feedback_params.CompanyCreateFeedbackParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompanyCreateFeedbackResponse,
         )
 
     def create_missing_company_investigation(
@@ -1459,6 +1537,82 @@ class AsyncCompaniesResource(AsyncAPIResource):
             model=CompanyListResponse,
         )
 
+    async def create_feedback(
+        self,
+        *,
+        company: str,
+        feedback_type: Literal[
+            "NOT_ENOUGH_NEWS",
+            "COMPANY_NAME_OUTDATED",
+            "INCORRECT_COMPANY_WEBSITE",
+            "MISSING_REGISTRATION_NUMBER",
+            "MISSING_TRADE_NAME",
+            "INCORRECT_TRADE_NAME",
+            "NOT_ENOUGH_REVIEWS",
+            "OUTDATED_CORPORATE_LINKAGE",
+            "INCORRECT_CORPORATE_LINKAGE",
+            "OTHER",
+        ],
+        comment: Optional[str] | Omit = omit,
+        notification_email: Optional[str] | Omit = omit,
+        trade_name: Optional[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CompanyCreateFeedbackResponse:
+        """### Submit Company Feedback
+
+        Submit feedback about a specific company.
+
+        If feedback already exists for the
+        same company and profile, the existing record is updated.
+
+        Optionally provide a `notification_email` to be notified when the feedback is
+        resolved.
+
+        Args:
+          feedback_type: - `NOT_ENOUGH_NEWS` - Not Enough News
+              - `COMPANY_NAME_OUTDATED` - Company Name Outdated
+              - `INCORRECT_COMPANY_WEBSITE` - Incorrect Company Website
+              - `MISSING_REGISTRATION_NUMBER` - Missing Registration Number
+              - `MISSING_TRADE_NAME` - Missing Trade Name
+              - `INCORRECT_TRADE_NAME` - Incorrect Trade Name
+              - `NOT_ENOUGH_REVIEWS` - Not Enough Reviews
+              - `OUTDATED_CORPORATE_LINKAGE` - Outdated Corporate Linkage
+              - `INCORRECT_CORPORATE_LINKAGE` - Incorrect Corporate Linkage
+              - `OTHER` - Other
+
+          notification_email: Email address to notify when feedback is resolved.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/ext/v3/companies/feedback/",
+            body=await async_maybe_transform(
+                {
+                    "company": company,
+                    "feedback_type": feedback_type,
+                    "comment": comment,
+                    "notification_email": notification_email,
+                    "trade_name": trade_name,
+                },
+                company_create_feedback_params.CompanyCreateFeedbackParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompanyCreateFeedbackResponse,
+        )
+
     async def create_missing_company_investigation(
         self,
         *,
@@ -1982,6 +2136,9 @@ class CompaniesResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             companies.list,
         )
+        self.create_feedback = to_raw_response_wrapper(
+            companies.create_feedback,
+        )
         self.create_missing_company_investigation = to_raw_response_wrapper(
             companies.create_missing_company_investigation,
         )
@@ -2011,6 +2168,9 @@ class AsyncCompaniesResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             companies.list,
+        )
+        self.create_feedback = async_to_raw_response_wrapper(
+            companies.create_feedback,
         )
         self.create_missing_company_investigation = async_to_raw_response_wrapper(
             companies.create_missing_company_investigation,
@@ -2042,6 +2202,9 @@ class CompaniesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             companies.list,
         )
+        self.create_feedback = to_streamed_response_wrapper(
+            companies.create_feedback,
+        )
         self.create_missing_company_investigation = to_streamed_response_wrapper(
             companies.create_missing_company_investigation,
         )
@@ -2071,6 +2234,9 @@ class AsyncCompaniesResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             companies.list,
+        )
+        self.create_feedback = async_to_streamed_response_wrapper(
+            companies.create_feedback,
         )
         self.create_missing_company_investigation = async_to_streamed_response_wrapper(
             companies.create_missing_company_investigation,
