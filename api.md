@@ -14,7 +14,6 @@ Types:
 from businessradar.types.news import (
     Article,
     CategoryTree,
-    FeedbackTypeEnum,
     LanguageEnum,
     ArticleCreateFeedbackResponse,
     ArticleListSavedArticleFiltersResponse,
