@@ -66,6 +66,7 @@ from businessradar.types import (
     RegistrationRequest,
     CompanyRetrieveResponse,
     CompanyListResponse,
+    CompanyCreateFeedbackResponse,
     CompanyCreateMissingCompanyInvestigationResponse,
     CompanyListAttributeChangesResponse,
     CompanyListMissingCompanyInvestigationsResponse,
@@ -78,6 +79,7 @@ Methods:
 - <code title="post /ext/v3/companies">client.companies.<a href="./src/businessradar/resources/companies.py">create</a>(\*\*<a href="src/businessradar/types/company_create_params.py">params</a>) -> <a href="./src/businessradar/types/registration.py">Registration</a></code>
 - <code title="get /ext/v3/companies/{external_id}">client.companies.<a href="./src/businessradar/resources/companies.py">retrieve</a>(external_id) -> <a href="./src/businessradar/types/company_retrieve_response.py">CompanyRetrieveResponse</a></code>
 - <code title="get /ext/v3/companies">client.companies.<a href="./src/businessradar/resources/companies.py">list</a>(\*\*<a href="src/businessradar/types/company_list_params.py">params</a>) -> <a href="./src/businessradar/types/company_list_response.py">SyncNextKey[CompanyListResponse]</a></code>
+- <code title="post /ext/v3/companies/feedback/">client.companies.<a href="./src/businessradar/resources/companies.py">create_feedback</a>(\*\*<a href="src/businessradar/types/company_create_feedback_params.py">params</a>) -> <a href="./src/businessradar/types/company_create_feedback_response.py">CompanyCreateFeedbackResponse</a></code>
 - <code title="post /ext/v3/companies/investigations">client.companies.<a href="./src/businessradar/resources/companies.py">create_missing_company_investigation</a>(\*\*<a href="src/businessradar/types/company_create_missing_company_investigation_params.py">params</a>) -> <a href="./src/businessradar/types/company_create_missing_company_investigation_response.py">CompanyCreateMissingCompanyInvestigationResponse</a></code>
 - <code title="get /ext/v3/companies/attribute_changes">client.companies.<a href="./src/businessradar/resources/companies.py">list_attribute_changes</a>(\*\*<a href="src/businessradar/types/company_list_attribute_changes_params.py">params</a>) -> <a href="./src/businessradar/types/company_list_attribute_changes_response.py">SyncNextKey[CompanyListAttributeChangesResponse]</a></code>
 - <code title="get /ext/v3/companies/investigations">client.companies.<a href="./src/businessradar/resources/companies.py">list_missing_company_investigations</a>(\*\*<a href="src/businessradar/types/company_list_missing_company_investigations_params.py">params</a>) -> <a href="./src/businessradar/types/company_list_missing_company_investigations_response.py">SyncNextKey[CompanyListMissingCompanyInvestigationsResponse]</a></code>
