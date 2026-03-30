@@ -1,5 +1,31 @@
 # Changelog
 
+## 1.15.0 (2026-03-30)
+
+Full Changelog: [v1.14.0...v1.15.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.14.0...v1.15.0)
+
+### Features
+
+* **api:** api update ([a09bb90](https://github.com/businessradar/businessradar-sdk-python/commit/a09bb90c9c1bd1fe79c34768acff3d31d2b9a14f))
+* **api:** api update ([5247987](https://github.com/businessradar/businessradar-sdk-python/commit/52479872db8067a5f47c7e14bbd34a3c5e566070))
+* **api:** api update ([8d3e4c7](https://github.com/businessradar/businessradar-sdk-python/commit/8d3e4c7fdb7c94851db2018aaf21fef5849e6d66))
+* **api:** manual updates ([80489da](https://github.com/businessradar/businessradar-sdk-python/commit/80489da22ed156b46cf8741f3292d6f77b3be2d0))
+* **internal:** implement indices array format for query and form serialization ([2bb17a7](https://github.com/businessradar/businessradar-sdk-python/commit/2bb17a71139462ba29536ac73bbd81828fbeb4cb))
+
+
+### Bug Fixes
+
+* **deps:** bump minimum typing-extensions version ([1852b69](https://github.com/businessradar/businessradar-sdk-python/commit/1852b69eec6d104b6b452d1406d6dced1069d996))
+* **pydantic:** do not pass `by_alias` unless set ([cf0901d](https://github.com/businessradar/businessradar-sdk-python/commit/cf0901d915c2982071acd0b354ee110904039b27))
+* sanitize endpoint path params ([7a2f124](https://github.com/businessradar/businessradar-sdk-python/commit/7a2f12444661e14b8d2d6f3a933c9d4d75fccc3d))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([70249e1](https://github.com/businessradar/businessradar-sdk-python/commit/70249e1f18ee11f24ea1a499be96c2f0c155fefd))
+* **internal:** tweak CI branches ([5e2e210](https://github.com/businessradar/businessradar-sdk-python/commit/5e2e21092a41a8f18b7ffe4d6552fa2471567798))
+* **internal:** update gitignore ([5bc45eb](https://github.com/businessradar/businessradar-sdk-python/commit/5bc45eb7f42d60657c446991f405df279e46d804))
+
 ## 1.14.0 (2026-03-13)
 
 Full Changelog: [v1.13.0...v1.14.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.13.0...v1.14.0)
