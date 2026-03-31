@@ -33,6 +33,7 @@ class TestCompliance:
     @parametrize
     def test_method_create_with_all_params(self, client: BusinessRadar) -> None:
         compliance = client.compliance.create(
+            adverse_media_monitoring_enabled=True,
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             directors_screening_enabled=True,
             entities=[
@@ -49,6 +50,7 @@ class TestCompliance:
             ],
             name="name",
             ownership_screening_threshold=0,
+            sanction_monitoring_enabled=True,
             ubo_screening_enabled=True,
         )
         assert_matches_type(ComplianceCreateResponse, compliance, path=["response"])
@@ -190,6 +192,7 @@ class TestAsyncCompliance:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         compliance = await async_client.compliance.create(
+            adverse_media_monitoring_enabled=True,
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             directors_screening_enabled=True,
             entities=[
@@ -206,6 +209,7 @@ class TestAsyncCompliance:
             ],
             name="name",
             ownership_screening_threshold=0,
+            sanction_monitoring_enabled=True,
             ubo_screening_enabled=True,
         )
         assert_matches_type(ComplianceCreateResponse, compliance, path=["response"])

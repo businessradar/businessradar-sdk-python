@@ -34,15 +34,11 @@ class EntityUbo(BaseModel):
 
 
 class Entity(BaseModel):
+    adverse_media_monitoring_enabled: bool
+
     aliases: List[str]
 
-    entity_role: Literal["ubo", "director", "company", "manually_added"]
-    """
-    - `ubo` - Ultimate Beneficial Owner
-    - `director` - Director
-    - `company` - Company
-    - `manually_added` - Manually added
-    """
+    entity_role: str
 
     entity_type: Literal["individual", "company"]
     """
@@ -53,6 +49,8 @@ class Entity(BaseModel):
     external_id: str
 
     name: str
+
+    sanction_monitoring_enabled: bool
 
     status: Literal["on_hold", "queued", "in_progress", "completed", "skipped", "failed"]
     """
