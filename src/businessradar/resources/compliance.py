@@ -50,11 +50,13 @@ class ComplianceResource(SyncAPIResource):
     def create(
         self,
         *,
+        adverse_media_monitoring_enabled: bool | Omit = omit,
         company_id: Optional[str] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
         entities: Iterable[compliance_create_params.Entity] | Omit = omit,
         name: Optional[str] | Omit = omit,
         ownership_screening_threshold: Optional[float] | Omit = omit,
+        sanction_monitoring_enabled: bool | Omit = omit,
         ubo_screening_enabled: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -84,11 +86,17 @@ class ComplianceResource(SyncAPIResource):
         endpoint.
 
         Args:
+          adverse_media_monitoring_enabled: If enabled, adverse media monitoring will be activated for all system-created
+              entities (company, directors, UBOs).
+
           directors_screening_enabled: If directors should be screened.
 
           name: Custom name for this compliance check.
 
           ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
+
+          sanction_monitoring_enabled: If enabled, sanctions monitoring will be activated for all system-created
+              entities (company, directors, UBOs).
 
           ubo_screening_enabled: If enabled, UBOs discovered for the company will be screened.
 
@@ -104,11 +112,13 @@ class ComplianceResource(SyncAPIResource):
             "/ext/v3/compliance",
             body=maybe_transform(
                 {
+                    "adverse_media_monitoring_enabled": adverse_media_monitoring_enabled,
                     "company_id": company_id,
                     "directors_screening_enabled": directors_screening_enabled,
                     "entities": entities,
                     "name": name,
                     "ownership_screening_threshold": ownership_screening_threshold,
+                    "sanction_monitoring_enabled": sanction_monitoring_enabled,
                     "ubo_screening_enabled": ubo_screening_enabled,
                 },
                 compliance_create_params.ComplianceCreateParams,
@@ -255,11 +265,13 @@ class AsyncComplianceResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        adverse_media_monitoring_enabled: bool | Omit = omit,
         company_id: Optional[str] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
         entities: Iterable[compliance_create_params.Entity] | Omit = omit,
         name: Optional[str] | Omit = omit,
         ownership_screening_threshold: Optional[float] | Omit = omit,
+        sanction_monitoring_enabled: bool | Omit = omit,
         ubo_screening_enabled: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -289,11 +301,17 @@ class AsyncComplianceResource(AsyncAPIResource):
         endpoint.
 
         Args:
+          adverse_media_monitoring_enabled: If enabled, adverse media monitoring will be activated for all system-created
+              entities (company, directors, UBOs).
+
           directors_screening_enabled: If directors should be screened.
 
           name: Custom name for this compliance check.
 
           ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
+
+          sanction_monitoring_enabled: If enabled, sanctions monitoring will be activated for all system-created
+              entities (company, directors, UBOs).
 
           ubo_screening_enabled: If enabled, UBOs discovered for the company will be screened.
 
@@ -309,11 +327,13 @@ class AsyncComplianceResource(AsyncAPIResource):
             "/ext/v3/compliance",
             body=await async_maybe_transform(
                 {
+                    "adverse_media_monitoring_enabled": adverse_media_monitoring_enabled,
                     "company_id": company_id,
                     "directors_screening_enabled": directors_screening_enabled,
                     "entities": entities,
                     "name": name,
                     "ownership_screening_threshold": ownership_screening_threshold,
+                    "sanction_monitoring_enabled": sanction_monitoring_enabled,
                     "ubo_screening_enabled": ubo_screening_enabled,
                 },
                 compliance_create_params.ComplianceCreateParams,
