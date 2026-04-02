@@ -13,6 +13,12 @@ __all__ = ["ComplianceCreateParams", "Entity"]
 
 
 class ComplianceCreateParams(TypedDict, total=False):
+    adverse_media_monitoring_enabled: bool
+    """
+    If enabled, adverse media monitoring will be activated for all system-created
+    entities (company, directors, UBOs).
+    """
+
     company_id: Optional[str]
 
     directors_screening_enabled: bool
@@ -25,6 +31,12 @@ class ComplianceCreateParams(TypedDict, total=False):
 
     ownership_screening_threshold: Optional[float]
     """The threshold for ultimate ownership to enable for screening."""
+
+    sanction_monitoring_enabled: bool
+    """
+    If enabled, sanctions monitoring will be activated for all system-created
+    entities (company, directors, UBOs).
+    """
 
     ubo_screening_enabled: bool
     """If enabled, UBOs discovered for the company will be screened."""
