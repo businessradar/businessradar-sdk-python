@@ -10,11 +10,12 @@ import pytest
 from tests.utils import assert_matches_type
 from businessradar import BusinessRadar, AsyncBusinessRadar
 from businessradar.types import (
+    ComplianceListResponse,
     ComplianceCreateResponse,
     ComplianceRetrieveResponse,
     ComplianceListResultsResponse,
 )
-from businessradar._utils import parse_date
+from businessradar._utils import parse_date, parse_datetime
 from businessradar.pagination import SyncNextKey, AsyncNextKey
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -118,6 +119,52 @@ class TestCompliance:
             client.compliance.with_raw_response.retrieve(
                 "",
             )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list(self, client: BusinessRadar) -> None:
+        compliance = client.compliance.list()
+        assert_matches_type(SyncNextKey[ComplianceListResponse], compliance, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_with_all_params(self, client: BusinessRadar) -> None:
+        compliance = client.compliance.list(
+            adverse_media_monitoring_enabled=True,
+            compliance_score="high",
+            created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            next_key="next_key",
+            order="asc",
+            results_changed_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            results_changed_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            sanction_monitoring_enabled=True,
+            sorting="created_at",
+            status="completed",
+        )
+        assert_matches_type(SyncNextKey[ComplianceListResponse], compliance, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_list(self, client: BusinessRadar) -> None:
+        response = client.compliance.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        compliance = response.parse()
+        assert_matches_type(SyncNextKey[ComplianceListResponse], compliance, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_list(self, client: BusinessRadar) -> None:
+        with client.compliance.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            compliance = response.parse()
+            assert_matches_type(SyncNextKey[ComplianceListResponse], compliance, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -277,6 +324,52 @@ class TestAsyncCompliance:
             await async_client.compliance.with_raw_response.retrieve(
                 "",
             )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list(self, async_client: AsyncBusinessRadar) -> None:
+        compliance = await async_client.compliance.list()
+        assert_matches_type(AsyncNextKey[ComplianceListResponse], compliance, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
+        compliance = await async_client.compliance.list(
+            adverse_media_monitoring_enabled=True,
+            compliance_score="high",
+            created_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            created_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            next_key="next_key",
+            order="asc",
+            results_changed_at_gte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            results_changed_at_lte=parse_datetime("2019-12-27T18:11:19.117Z"),
+            sanction_monitoring_enabled=True,
+            sorting="created_at",
+            status="completed",
+        )
+        assert_matches_type(AsyncNextKey[ComplianceListResponse], compliance, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncBusinessRadar) -> None:
+        response = await async_client.compliance.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        compliance = await response.parse()
+        assert_matches_type(AsyncNextKey[ComplianceListResponse], compliance, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncBusinessRadar) -> None:
+        async with async_client.compliance.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            compliance = await response.parse()
+            assert_matches_type(AsyncNextKey[ComplianceListResponse], compliance, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
