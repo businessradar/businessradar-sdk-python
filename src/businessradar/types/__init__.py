@@ -15,8 +15,10 @@ from .company_list_params import CompanyListParams as CompanyListParams
 from .company_create_params import CompanyCreateParams as CompanyCreateParams
 from .company_list_response import CompanyListResponse as CompanyListResponse
 from .portfolio_list_params import PortfolioListParams as PortfolioListParams
+from .compliance_list_params import ComplianceListParams as ComplianceListParams
 from .portfolio_create_params import PortfolioCreateParams as PortfolioCreateParams
 from .compliance_create_params import ComplianceCreateParams as ComplianceCreateParams
+from .compliance_list_response import ComplianceListResponse as ComplianceListResponse
 from .company_retrieve_response import CompanyRetrieveResponse as CompanyRetrieveResponse
 from .compliance_create_response import ComplianceCreateResponse as ComplianceCreateResponse
 from .compliance_check_score_enum import ComplianceCheckScoreEnum as ComplianceCheckScoreEnum

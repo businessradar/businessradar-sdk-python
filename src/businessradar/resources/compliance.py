@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import Union, Iterable, Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 import httpx
 
-from ..types import compliance_create_params, compliance_list_results_params
+from ..types import compliance_list_params, compliance_create_params, compliance_list_results_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -20,6 +21,7 @@ from .._response import (
 )
 from ..pagination import SyncNextKey, AsyncNextKey
 from .._base_client import AsyncPaginator, make_request_options
+from ..types.compliance_list_response import ComplianceListResponse
 from ..types.compliance_create_response import ComplianceCreateResponse
 from ..types.compliance_retrieve_response import ComplianceRetrieveResponse
 from ..types.compliance_list_results_response import ComplianceListResultsResponse
@@ -163,6 +165,108 @@ class ComplianceResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ComplianceRetrieveResponse,
+        )
+
+    def list(
+        self,
+        *,
+        adverse_media_monitoring_enabled: bool | Omit = omit,
+        compliance_score: Literal["high", "low", "medium"] | Omit = omit,
+        created_at_gte: Union[str, datetime] | Omit = omit,
+        created_at_lte: Union[str, datetime] | Omit = omit,
+        next_key: str | Omit = omit,
+        order: Literal["asc", "desc"] | Omit = omit,
+        results_changed_at_gte: Union[str, datetime] | Omit = omit,
+        results_changed_at_lte: Union[str, datetime] | Omit = omit,
+        sanction_monitoring_enabled: bool | Omit = omit,
+        sorting: Literal["created_at", "finished_at", "results_changed_at"] | Omit = omit,
+        status: Literal["completed", "failed", "in_progress", "pending", "queued", "searching_directors"] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SyncNextKey[ComplianceListResponse]:
+        """
+        ### Compliance Checks
+
+        **GET** — Retrieve a paginated list of compliance checks created via this API
+        key. Supports filtering by status and date ranges, and sorting by key
+        timestamps.
+
+        **POST** — Initiate a new compliance screening using one of two methods:
+
+        1. **Company-based screening**: Provide a `company_id` to screen the company.
+           Optionally enable screening of related entities (UBOs and directors) via
+           `ubo_screening_enabled` and `directors_screening_enabled`. You can also
+           include additional custom `entities` to be screened alongside the company.
+
+        2. **Custom entity screening**: Provide a list of `entities` without a
+           `company_id` to screen specific individuals or organizations that are not
+           necessarily affiliated with a company in our database.
+
+        Args:
+          adverse_media_monitoring_enabled: Filter checks that have entities with adverse media monitoring enabled (pending
+              or active).
+
+          compliance_score: Filter by compliance score.
+
+          created_at_gte: Filter checks created at or after this time.
+
+          created_at_lte: Filter checks created at or before this time.
+
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
+
+          order: Sorting order.
+
+          results_changed_at_gte: Filter checks with results changed at or after this time.
+
+          results_changed_at_lte: Filter checks with results changed at or before this time.
+
+          sanction_monitoring_enabled: Filter checks that have entities with sanction monitoring enabled (pending or
+              active).
+
+          sorting: Sorting field.
+
+          status: Filter by compliance check status.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/ext/v3/compliance",
+            page=SyncNextKey[ComplianceListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "adverse_media_monitoring_enabled": adverse_media_monitoring_enabled,
+                        "compliance_score": compliance_score,
+                        "created_at_gte": created_at_gte,
+                        "created_at_lte": created_at_lte,
+                        "next_key": next_key,
+                        "order": order,
+                        "results_changed_at_gte": results_changed_at_gte,
+                        "results_changed_at_lte": results_changed_at_lte,
+                        "sanction_monitoring_enabled": sanction_monitoring_enabled,
+                        "sorting": sorting,
+                        "status": status,
+                    },
+                    compliance_list_params.ComplianceListParams,
+                ),
+            ),
+            model=ComplianceListResponse,
         )
 
     def list_results(
@@ -380,6 +484,108 @@ class AsyncComplianceResource(AsyncAPIResource):
             cast_to=ComplianceRetrieveResponse,
         )
 
+    def list(
+        self,
+        *,
+        adverse_media_monitoring_enabled: bool | Omit = omit,
+        compliance_score: Literal["high", "low", "medium"] | Omit = omit,
+        created_at_gte: Union[str, datetime] | Omit = omit,
+        created_at_lte: Union[str, datetime] | Omit = omit,
+        next_key: str | Omit = omit,
+        order: Literal["asc", "desc"] | Omit = omit,
+        results_changed_at_gte: Union[str, datetime] | Omit = omit,
+        results_changed_at_lte: Union[str, datetime] | Omit = omit,
+        sanction_monitoring_enabled: bool | Omit = omit,
+        sorting: Literal["created_at", "finished_at", "results_changed_at"] | Omit = omit,
+        status: Literal["completed", "failed", "in_progress", "pending", "queued", "searching_directors"] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncPaginator[ComplianceListResponse, AsyncNextKey[ComplianceListResponse]]:
+        """
+        ### Compliance Checks
+
+        **GET** — Retrieve a paginated list of compliance checks created via this API
+        key. Supports filtering by status and date ranges, and sorting by key
+        timestamps.
+
+        **POST** — Initiate a new compliance screening using one of two methods:
+
+        1. **Company-based screening**: Provide a `company_id` to screen the company.
+           Optionally enable screening of related entities (UBOs and directors) via
+           `ubo_screening_enabled` and `directors_screening_enabled`. You can also
+           include additional custom `entities` to be screened alongside the company.
+
+        2. **Custom entity screening**: Provide a list of `entities` without a
+           `company_id` to screen specific individuals or organizations that are not
+           necessarily affiliated with a company in our database.
+
+        Args:
+          adverse_media_monitoring_enabled: Filter checks that have entities with adverse media monitoring enabled (pending
+              or active).
+
+          compliance_score: Filter by compliance score.
+
+          created_at_gte: Filter checks created at or after this time.
+
+          created_at_lte: Filter checks created at or before this time.
+
+          next_key: A cursor value used for pagination. Include the `next_key` value from your
+              previous request to retrieve the subsequent page of results. If this value is
+              `null`, the first page of results is returned.
+
+          order: Sorting order.
+
+          results_changed_at_gte: Filter checks with results changed at or after this time.
+
+          results_changed_at_lte: Filter checks with results changed at or before this time.
+
+          sanction_monitoring_enabled: Filter checks that have entities with sanction monitoring enabled (pending or
+              active).
+
+          sorting: Sorting field.
+
+          status: Filter by compliance check status.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/ext/v3/compliance",
+            page=AsyncNextKey[ComplianceListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "adverse_media_monitoring_enabled": adverse_media_monitoring_enabled,
+                        "compliance_score": compliance_score,
+                        "created_at_gte": created_at_gte,
+                        "created_at_lte": created_at_lte,
+                        "next_key": next_key,
+                        "order": order,
+                        "results_changed_at_gte": results_changed_at_gte,
+                        "results_changed_at_lte": results_changed_at_lte,
+                        "sanction_monitoring_enabled": sanction_monitoring_enabled,
+                        "sorting": sorting,
+                        "status": status,
+                    },
+                    compliance_list_params.ComplianceListParams,
+                ),
+            ),
+            model=ComplianceListResponse,
+        )
+
     def list_results(
         self,
         external_id: str,
@@ -467,6 +673,9 @@ class ComplianceResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             compliance.retrieve,
         )
+        self.list = to_raw_response_wrapper(
+            compliance.list,
+        )
         self.list_results = to_raw_response_wrapper(
             compliance.list_results,
         )
@@ -481,6 +690,9 @@ class AsyncComplianceResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             compliance.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            compliance.list,
         )
         self.list_results = async_to_raw_response_wrapper(
             compliance.list_results,
@@ -497,6 +709,9 @@ class ComplianceResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             compliance.retrieve,
         )
+        self.list = to_streamed_response_wrapper(
+            compliance.list,
+        )
         self.list_results = to_streamed_response_wrapper(
             compliance.list_results,
         )
@@ -511,6 +726,9 @@ class AsyncComplianceResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             compliance.retrieve,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            compliance.list,
         )
         self.list_results = async_to_streamed_response_wrapper(
             compliance.list_results,
