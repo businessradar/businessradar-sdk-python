@@ -63,7 +63,7 @@ class ArticleExport(BaseModel):
 
     created_at: datetime
 
-    export_type: Literal["NEWS", "BINDER", "COMPANIES", "REGISTRATIONS", "COMPLIANCE", "BILLING"]
+    export_type: Literal["NEWS", "BINDER", "COMPANIES", "REGISTRATIONS", "COMPLIANCE", "BILLING", "KEY_EVENTS"]
     """
     - `NEWS` - News
     - `BINDER` - Binder
@@ -71,6 +71,7 @@ class ArticleExport(BaseModel):
     - `REGISTRATIONS` - Registrations
     - `COMPLIANCE` - Compliance
     - `BILLING` - Billing
+    - `KEY_EVENTS` - Key Events
     """
 
     external_id: str
