@@ -273,7 +273,7 @@ class CompanyListMissingCompanyInvestigationsResponse(BaseModel):
     """
 
     created_at: datetime
-    """The date and time when this missing company record was created."""
+    """The date and time when this investigation was created."""
 
     external_id: str
 
