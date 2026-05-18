@@ -5,8 +5,9 @@ from datetime import date, datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
+from .compliance_entity_retrieve import ComplianceEntityRetrieve
 
-__all__ = ["ComplianceListResultsResponse", "Address", "Entity", "EntityUbo", "Source", "Tag"]
+__all__ = ["ComplianceListResultsResponse", "Address", "Source", "Tag"]
 
 
 class Address(BaseModel):
@@ -274,66 +275,6 @@ class Address(BaseModel):
     street: Optional[str] = None
 
 
-class EntityUbo(BaseModel):
-    name: str
-
-    beneficial_ownership_percentage: Optional[float] = None
-
-    birth_date: Optional[date] = None
-
-    degree_of_separation: Optional[int] = None
-
-    direct_ownership_percentage: Optional[float] = None
-
-    implied_beneficial_ownership_percentage: Optional[float] = None
-
-    implied_direct_ownership_percentage: Optional[float] = None
-
-    implied_indirect_ownership_percentage: Optional[float] = None
-
-    indirect_ownership_percentage: Optional[float] = None
-
-    is_beneficiary: Optional[bool] = None
-
-    is_person_with_significant_control: Optional[bool] = None
-
-
-class Entity(BaseModel):
-    adverse_media_monitoring_enabled: bool
-
-    aliases: List[str]
-
-    entity_role: str
-
-    entity_type: Literal["individual", "company"]
-    """
-    - `individual` - Individual
-    - `company` - Company
-    """
-
-    external_id: str
-
-    name: str
-
-    sanction_monitoring_enabled: bool
-
-    status: Literal["on_hold", "queued", "in_progress", "completed", "skipped", "failed"]
-    """
-    - `on_hold` - On Hold
-    - `queued` - Queued
-    - `in_progress` - In Progress
-    - `completed` - Completed
-    - `skipped` - Skipped
-    - `failed` - Failed
-    """
-
-    ubo: Optional[EntityUbo] = None
-
-    country: Optional[str] = None
-
-    gender: Optional[Literal["male", "female", ""]] = None
-
-
 class Source(BaseModel):
     """Compliance entity result source."""
 
@@ -367,7 +308,7 @@ class ComplianceListResultsResponse(BaseModel):
 
     created_at: datetime
 
-    entity: Entity
+    entity: ComplianceEntityRetrieve
 
     external_id: str
 
