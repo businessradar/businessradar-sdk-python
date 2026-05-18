@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.19.0 (2026-05-18)
+
+Full Changelog: [v1.18.0...v1.19.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.18.0...v1.19.0)
+
+### Features
+
+* **api:** manual updates ([330869a](https://github.com/businessradar/businessradar-sdk-python/commit/330869ad46a84e4fd516ddcf4fe3c2ab82f9786f))
+
 ## 1.18.0 (2026-05-18)
 
 Full Changelog: [v1.17.0...v1.18.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.17.0...v1.18.0)
