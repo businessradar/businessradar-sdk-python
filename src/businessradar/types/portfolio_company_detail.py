@@ -1,23 +1,18 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
-from datetime import datetime
 
 from .._models import BaseModel
 from .country_enum import CountryEnum
 
-__all__ = ["CompanyCreateMissingCompanyInvestigationResponse"]
+__all__ = ["PortfolioCompanyDetail"]
 
 
-class CompanyCreateMissingCompanyInvestigationResponse(BaseModel):
-    """### Missing Company Investigation
+class PortfolioCompanyDetail(BaseModel):
+    """### Portfolio Company Detail (Simplified)
 
-    Used to request and track investigations for companies not currently in the
-    database. This is typically used when a search for a company yields no results,
-    allowing users to provide known details for a manual or automated investigation.
+    A lightweight data structure for company identification (UUID, DUNS, Name, Country).
     """
-
-    company_external_id: Optional[str] = None
 
     country: CountryEnum
     """
@@ -272,45 +267,8 @@ class CompanyCreateMissingCompanyInvestigationResponse(BaseModel):
     - `ZW` - Zimbabwe
     """
 
-    created_at: datetime
-    """The date and time when this investigation was created."""
+    duns_number: Optional[str] = None
 
     external_id: str
 
-    last_status_update: datetime
-
-    legal_name: str
-    """Official name of the company as registered in legal documents."""
-
-    status: str
-
-    address_number: Optional[str] = None
-
-    address_phone: Optional[str] = None
-    """Phone number should include international code prefix, e.g., +31."""
-
-    address_place: Optional[str] = None
-
-    address_postal: Optional[str] = None
-
-    address_region: Optional[str] = None
-
-    address_street: Optional[str] = None
-
-    description: Optional[str] = None
-    """Any additional notes or details about the company."""
-
-    officer_name: Optional[str] = None
-    """Name of the primary officer or CEO of the company."""
-
-    officer_title: Optional[str] = None
-    """Title or position of the named officer in the company."""
-
-    trade_name: Optional[str] = None
-    """
-    Alternate name the company might use in its operations, distinct from the legal
-    name.
-    """
-
-    website_url: Optional[str] = None
-    """Provide the official website of the company if available."""
+    name: str

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from . import news
 from .. import _compat
+from .ubo import Ubo as Ubo
 from .shared import PortfolioCompanyDetailRequest as PortfolioCompanyDetailRequest
 from .portfolio import Portfolio as Portfolio
 from .blank_enum import BlankEnum as BlankEnum
@@ -19,8 +20,10 @@ from .compliance_list_params import ComplianceListParams as ComplianceListParams
 from .portfolio_create_params import PortfolioCreateParams as PortfolioCreateParams
 from .compliance_create_params import ComplianceCreateParams as ComplianceCreateParams
 from .compliance_list_response import ComplianceListResponse as ComplianceListResponse
+from .portfolio_company_detail import PortfolioCompanyDetail as PortfolioCompanyDetail
 from .company_retrieve_response import CompanyRetrieveResponse as CompanyRetrieveResponse
 from .compliance_create_response import ComplianceCreateResponse as ComplianceCreateResponse
+from .compliance_entity_retrieve import ComplianceEntityRetrieve as ComplianceEntityRetrieve
 from .compliance_check_score_enum import ComplianceCheckScoreEnum as ComplianceCheckScoreEnum
 from .compliance_retrieve_response import ComplianceRetrieveResponse as ComplianceRetrieveResponse
 from .company_create_feedback_params import CompanyCreateFeedbackParams as CompanyCreateFeedbackParams

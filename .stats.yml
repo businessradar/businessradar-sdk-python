@@ -1,4 +1,4 @@
 configured_endpoints: 25
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/bartmachielsen%2Fbusinessradar-110fa9fb71691fb9327e80252343741682078629576ad6a8dbe06324c76f55b4.yml
-openapi_spec_hash: 0f63c5b2b34fa1a3d2bfde841140271e
-config_hash: 2a8c05e7a7d0e13e4ec31b6bdbdc52fd
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/bartmachielsen/businessradar-13364532ec8e46703c65266707f1591e7181202b9d280305c4b999c2f36cc248.yml
+openapi_spec_hash: e0bfb7ca6555c185e254d11fb36dd5f2
+config_hash: bd5a8dd34fd3eb1e6e668a9d719e87bf

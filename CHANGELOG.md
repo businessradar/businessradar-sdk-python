@@ -1,5 +1,38 @@
 # Changelog
 
+## 1.18.0 (2026-05-18)
+
+Full Changelog: [v1.17.0...v1.18.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.17.0...v1.18.0)
+
+### Features
+
+* **api:** api update ([dc562ba](https://github.com/businessradar/businessradar-sdk-python/commit/dc562ba99f33ccbe71a440d131a2a3086aae65d6))
+* **api:** api update ([918a0d0](https://github.com/businessradar/businessradar-sdk-python/commit/918a0d04e112f8b3a949692d06dbc3d34f6837ec))
+* **api:** api update ([8f87bac](https://github.com/businessradar/businessradar-sdk-python/commit/8f87bacbfe86c51b2f14bd34cff70a5ecf3ac634))
+* **api:** manual updates ([84dcea3](https://github.com/businessradar/businessradar-sdk-python/commit/84dcea38f025af11b50e7485d2d4c5a35547fbfc))
+* **api:** manual updates ([fe46207](https://github.com/businessradar/businessradar-sdk-python/commit/fe46207954171e430d5a26839a2dc3035d3ae0a9))
+* **internal/types:** support eagerly validating pydantic iterators ([4b3fa02](https://github.com/businessradar/businessradar-sdk-python/commit/4b3fa02e36136a8614cf5532837bf5732a943b52))
+* support setting headers via env ([1d911cd](https://github.com/businessradar/businessradar-sdk-python/commit/1d911cd2eddcb399129192a0c9868725d23a1f46))
+
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([6e5dd10](https://github.com/businessradar/businessradar-sdk-python/commit/6e5dd106cb90297c23f55c190ee72d626a9ba12b))
+* **client:** preserve hardcoded query params when merging with user params ([299adce](https://github.com/businessradar/businessradar-sdk-python/commit/299adcec4e31289969de227b77ef93b42fd31e64))
+* ensure file data are only sent as 1 parameter ([46712c6](https://github.com/businessradar/businessradar-sdk-python/commit/46712c68db2d1e89da0669d920153d77303b9d5d))
+* use correct field name format for multipart file arrays ([274ed7e](https://github.com/businessradar/businessradar-sdk-python/commit/274ed7ef77399da9c999ddd2664f549e24c744ef))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([d3d5788](https://github.com/businessradar/businessradar-sdk-python/commit/d3d578838c682539f86ec9e750fd465bdc1f77d0))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([95c2e2e](https://github.com/businessradar/businessradar-sdk-python/commit/95c2e2ef9db387056828060e155275a6b3a6386a))
+* **internal:** reformat pyproject.toml ([6f3d95d](https://github.com/businessradar/businessradar-sdk-python/commit/6f3d95dc27218506536089054ef127d3a54fc0ad))
+
 ## 1.17.0 (2026-04-02)
 
 Full Changelog: [v1.16.0...v1.17.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.16.0...v1.17.0)

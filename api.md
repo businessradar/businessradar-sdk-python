@@ -45,7 +45,12 @@ Methods:
 Types:
 
 ```python
-from businessradar.types.news.articles import ArticleExport, DataExportFileType, MediaTypeEnum
+from businessradar.types.news.articles import (
+    ArticleExport,
+    ArticleFilters,
+    DataExportFileType,
+    MediaTypeEnum,
+)
 ```
 
 Methods:
@@ -62,6 +67,7 @@ from businessradar.types import (
     BlankEnum,
     CountryEnum,
     IndustryCode,
+    PortfolioCompanyDetail,
     Registration,
     RegistrationRequest,
     CompanyRetrieveResponse,
@@ -93,6 +99,8 @@ Types:
 ```python
 from businessradar.types import (
     ComplianceCheckScoreEnum,
+    ComplianceEntityRetrieve,
+    Ubo,
     ComplianceCreateResponse,
     ComplianceRetrieveResponse,
     ComplianceListResponse,
