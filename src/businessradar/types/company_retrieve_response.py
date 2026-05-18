@@ -308,6 +308,8 @@ class CompanyRetrieveResponse(BaseModel):
     social_logo: Optional[str] = None
     """Get Social Logo."""
 
+    trade_names: List[str]
+
     address_latitude: Optional[float] = None
 
     address_longitude: Optional[float] = None
