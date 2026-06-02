@@ -399,7 +399,6 @@ class Article(BaseModel):
     - `ka` - Georgian
     - `kk` - Kazakh
     - `km` - Khmer
-    - `no` - Norwegian
     - `kn` - Kannada
     - `ko` - Korean
     - `ky` - Kyrgyz
@@ -413,6 +412,7 @@ class Article(BaseModel):
     - `my` - Burmese
     - `ne` - Nepali
     - `nl` - Dutch
+    - `no` - Norwegian
     - `os` - Ossetic
     - `pa` - Punjabi
     - `pl` - Polish
