@@ -101,6 +101,7 @@ class ArticlesResource(SyncAPIResource):
         sentiment: bool | Omit = omit,
         sorting: Literal[
             "creation_date",
+            "priority",
             "publication_date_clustering",
             "publication_date_priority",
             "publication_date_source_references",
@@ -163,7 +164,10 @@ class ArticlesResource(SyncAPIResource):
 
           sentiment: Filter by sentiment: `true` for positive, `false` for negative.
 
-          sorting: Sort articles
+          sorting: Sort articles. Use 'priority' to sort primarily by category priority
+              (publication date as tiebreaker), surfacing the most important articles across
+              the whole result set regardless of date. Lower numeric priority values indicate
+              higher priority, so use sorting_order=asc for best-first ordering.
 
           sorting_order: Sort order
 
@@ -400,6 +404,7 @@ class AsyncArticlesResource(AsyncAPIResource):
         sentiment: bool | Omit = omit,
         sorting: Literal[
             "creation_date",
+            "priority",
             "publication_date_clustering",
             "publication_date_priority",
             "publication_date_source_references",
@@ -462,7 +467,10 @@ class AsyncArticlesResource(AsyncAPIResource):
 
           sentiment: Filter by sentiment: `true` for positive, `false` for negative.
 
-          sorting: Sort articles
+          sorting: Sort articles. Use 'priority' to sort primarily by category priority
+              (publication date as tiebreaker), surfacing the most important articles across
+              the whole result set regardless of date. Lower numeric priority values indicate
+              higher priority, so use sorting_order=asc for best-first ordering.
 
           sorting_order: Sort order
 
