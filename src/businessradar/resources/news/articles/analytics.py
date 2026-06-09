@@ -80,7 +80,7 @@ class AnalyticsResource(SyncAPIResource):
         Retrieve the number of articles and their average sentiment, grouped by date.
 
         Args:
-          category: Filter by one or more article Category IDs (UUIDs).
+          category: Filter by article Category IDs (UUIDs).
 
           company: Filter by internal Company UUIDs.
 
@@ -218,7 +218,7 @@ class AsyncAnalyticsResource(AsyncAPIResource):
         Retrieve the number of articles and their average sentiment, grouped by date.
 
         Args:
-          category: Filter by one or more article Category IDs (UUIDs).
+          category: Filter by article Category IDs (UUIDs).
 
           company: Filter by internal Company UUIDs.
 
