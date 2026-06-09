@@ -3,26 +3,15 @@
 <!-- prettier-ignore -->
 [![PyPI version](https://img.shields.io/pypi/v/businessradar.svg?label=pypi%20(stable))](https://pypi.org/project/businessradar/)
 
-Easily integrate [Business Radar’s](https://www.businessradar.com) real-time company and news data into your Python apps.
-
 The Business Radar Python library provides convenient access to the Business Radar REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
-Reach out to [support@businessradar.com](mailto:support@businessradar.com) for any technical questions/suggestions.
-
-## MCP Server
-
-Use the Business Radar MCP Server to enable AI assistants to interact with this API, allowing them to explore endpoints, make test requests, and use documentation to help integrate this SDK into your application.
-
-[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=%40businessradar%2Fbusinessradar-mcp&config=eyJuYW1lIjoiQGJ1c2luZXNzcmFkYXIvYnVzaW5lc3NyYWRhci1tY3AiLCJ0cmFuc3BvcnQiOiJodHRwIiwidXJsIjoiaHR0cHM6Ly9idXNpbmVzc3JhZGFyLnN0bG1jcC5jb20iLCJoZWFkZXJzIjp7IngtYnVzaW5lc3NyYWRhci1hcGkta2V5IjoiTXkgQVBJIEtleSJ9fQ)
-[![Install in VS Code](https://img.shields.io/badge/_-Add_to_VS_Code-blue?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHBhdGggZmlsbD0iI0VFRSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMzAuMjM1IDM5Ljg4NGEyLjQ5MSAyLjQ5MSAwIDAgMS0xLjc4MS0uNzNMMTIuNyAyNC43OGwtMy40NiAyLjYyNC0zLjQwNiAyLjU4MmExLjY2NSAxLjY2NSAwIDAgMS0xLjA4Mi4zMzggMS42NjQgMS42NjQgMCAwIDEtMS4wNDYtLjQzMWwtMi4yLTJhMS42NjYgMS42NjYgMCAwIDEgMC0yLjQ2M0w3LjQ1OCAyMCA0LjY3IDE3LjQ1MyAxLjUwNyAxNC41N2ExLjY2NSAxLjY2NSAwIDAgMSAwLTIuNDYzbDIuMi0yYTEuNjY1IDEuNjY1IDAgMCAxIDIuMTMtLjA5N2w2Ljg2MyA1LjIwOUwyOC40NTIuODQ0YTIuNDg4IDIuNDg4IDAgMCAxIDEuODQxLS43MjljLjM1MS4wMDkuNjk5LjA5MSAxLjAxOS4yNDVsOC4yMzYgMy45NjFhMi41IDIuNSAwIDAgMSAxLjQxNSAyLjI1M3YuMDk5LS4wNDVWMzMuMzd2LS4wNDUuMDk1YTIuNTAxIDIuNTAxIDAgMCAxLTEuNDE2IDIuMjU3bC04LjIzNSAzLjk2MWEyLjQ5MiAyLjQ5MiAwIDAgMS0xLjA3Ny4yNDZabS43MTYtMjguOTQ3LTExLjk0OCA5LjA2MiAxMS45NTIgOS4wNjUtLjAwNC0xOC4xMjdaIi8+PC9zdmc+)](https://vscode.stainless.com/mcp/%7B%22name%22%3A%22%40businessradar%2Fbusinessradar-mcp%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fbusinessradar.stlmcp.com%22%2C%22headers%22%3A%7B%22x-businessradar-api-key%22%3A%22My%20API%20Key%22%7D%7D)
-
-> Note: You may need to set environment variables in your MCP client.
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-The REST API documentation can be found on [businessradar.com](https://api.businessradar.com/ext/v3/). 
+The REST API documentation can be found on [api.businessradar.com](https://api.businessradar.com/ext/v3/). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
@@ -52,7 +41,7 @@ we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
 to add `BUSINESSRADAR_API_KEY="My API Key"` to your `.env` file
 so that your API Key is not stored in source control.
 
-## Async Support
+## Async usage
 
 Simply import `AsyncBusinessRadar` instead of `BusinessRadar` and use `await` with each API call:
 
@@ -456,3 +445,7 @@ print(businessradar.__version__)
 ## Requirements
 
 Python 3.9 or higher.
+
+## Contributing
+
+See [the contributing documentation](./CONTRIBUTING.md).
