@@ -123,7 +123,7 @@ class ArticlesResource(SyncAPIResource):
         incremental checks (using publication/creation dates) are supported.
 
         Args:
-          category: Filter by article Category IDs (UUIDs).
+          category: Filter by one or more article Category IDs (UUIDs).
 
           company: Filter by internal Company UUIDs.
 
@@ -426,7 +426,7 @@ class AsyncArticlesResource(AsyncAPIResource):
         incremental checks (using publication/creation dates) are supported.
 
         Args:
-          category: Filter by article Category IDs (UUIDs).
+          category: Filter by one or more article Category IDs (UUIDs).
 
           company: Filter by internal Company UUIDs.
 

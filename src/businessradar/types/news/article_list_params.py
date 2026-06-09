@@ -14,7 +14,7 @@ __all__ = ["ArticleListParams"]
 
 class ArticleListParams(TypedDict, total=False):
     category: SequenceNotStr[str]
-    """Filter by article Category IDs (UUIDs)."""
+    """Filter by one or more article Category IDs (UUIDs)."""
 
     company: SequenceNotStr[str]
     """Filter by internal Company UUIDs."""
