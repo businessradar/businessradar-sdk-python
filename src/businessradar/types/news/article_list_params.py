@@ -80,12 +80,19 @@ class ArticleListParams(TypedDict, total=False):
 
     sorting: Literal[
         "creation_date",
+        "priority",
         "publication_date_clustering",
         "publication_date_priority",
         "publication_date_source_references",
         "publication_datetime",
     ]
-    """Sort articles"""
+    """Sort articles.
+
+    Use 'priority' to sort primarily by category priority (publication date as
+    tiebreaker), surfacing the most important articles across the whole result set
+    regardless of date. Lower numeric priority values indicate higher priority, so
+    use sorting_order=asc for best-first ordering.
+    """
 
     sorting_order: Literal["asc", "desc"]
     """Sort order"""
