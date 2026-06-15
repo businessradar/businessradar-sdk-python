@@ -2,8 +2,7 @@ name: Promote SDKs
 
 # Lives in businessradar/businessradar-python-staging.
 # On every push to staging main, opens/updates a release PR against the
-# public production repo. NOTE: the python production repo's default branch
-# is `master`, not `main` — every production ref below uses master.
+# public production repo's default branch (`main`).
 on:
   push:
     branches: [main]
@@ -17,7 +16,7 @@ jobs:
     if: github.repository == 'businessradar/businessradar-python-staging'
     env:
       PRODUCTION_REPO: businessradar/businessradar-sdk-python
-      PRODUCTION_BRANCH: master
+      PRODUCTION_BRANCH: main
       GH_TOKEN: ${{ secrets.PRODUCTION_REPO_TOKEN }}
     steps:
       - name: Check out staging
