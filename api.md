@@ -141,3 +141,44 @@ Methods:
 - <code title="post /ext/v3/portfolios/{portfolio_id}/companies">client.portfolios.companies.<a href="./src/businessradar/resources/portfolios/companies.py">create</a>(portfolio_id, \*\*<a href="src/businessradar/types/portfolios/company_create_params.py">params</a>) -> <a href="./src/businessradar/types/registration.py">Registration</a></code>
 - <code title="get /ext/v3/portfolios/{portfolio_id}/companies">client.portfolios.companies.<a href="./src/businessradar/resources/portfolios/companies.py">list</a>(portfolio_id, \*\*<a href="src/businessradar/types/portfolios/company_list_params.py">params</a>) -> <a href="./src/businessradar/types/portfolios/company_list_response.py">SyncNextKey[CompanyListResponse]</a></code>
 - <code title="delete /ext/v3/portfolios/{portfolio_id}/companies/{external_id}">client.portfolios.companies.<a href="./src/businessradar/resources/portfolios/companies.py">delete</a>(external_id, \*, portfolio_id) -> None</code>
+
+# Webhooks
+
+Types:
+
+```python
+from businessradar.types import (
+    Webhook,
+    WebhookDelivery,
+    WebhookDeliveryStatusEnum,
+    WebhookSubscription,
+    WebhookSubscriptionRequest,
+    WebhookRegenerateSecretResponse,
+)
+```
+
+Methods:
+
+- <code title="post /ext/v3/webhooks/">client.webhooks.<a href="./src/businessradar/resources/webhooks/webhooks.py">create</a>(\*\*<a href="src/businessradar/types/webhook_create_params.py">params</a>) -> <a href="./src/businessradar/types/webhook.py">Webhook</a></code>
+- <code title="get /ext/v3/webhooks/{webhook_external_id}/">client.webhooks.<a href="./src/businessradar/resources/webhooks/webhooks.py">retrieve</a>(webhook_external_id) -> <a href="./src/businessradar/types/webhook.py">Webhook</a></code>
+- <code title="put /ext/v3/webhooks/{webhook_external_id}/">client.webhooks.<a href="./src/businessradar/resources/webhooks/webhooks.py">update</a>(webhook_external_id, \*\*<a href="src/businessradar/types/webhook_update_params.py">params</a>) -> <a href="./src/businessradar/types/webhook.py">Webhook</a></code>
+- <code title="get /ext/v3/webhooks/">client.webhooks.<a href="./src/businessradar/resources/webhooks/webhooks.py">list</a>(\*\*<a href="src/businessradar/types/webhook_list_params.py">params</a>) -> <a href="./src/businessradar/types/webhook.py">SyncNextKey[Webhook]</a></code>
+- <code title="delete /ext/v3/webhooks/{webhook_external_id}/">client.webhooks.<a href="./src/businessradar/resources/webhooks/webhooks.py">delete</a>(webhook_external_id) -> None</code>
+- <code title="patch /ext/v3/webhooks/{webhook_external_id}/">client.webhooks.<a href="./src/businessradar/resources/webhooks/webhooks.py">partial_update</a>(webhook_external_id, \*\*<a href="src/businessradar/types/webhook_partial_update_params.py">params</a>) -> <a href="./src/businessradar/types/webhook.py">Webhook</a></code>
+- <code title="post /ext/v3/webhooks/{webhook_external_id}/regenerate_secret/">client.webhooks.<a href="./src/businessradar/resources/webhooks/webhooks.py">regenerate_secret</a>(webhook_external_id) -> <a href="./src/businessradar/types/webhook_regenerate_secret_response.py">WebhookRegenerateSecretResponse</a></code>
+- <code title="get /ext/v3/webhooks/event_types/">client.webhooks.<a href="./src/businessradar/resources/webhooks/webhooks.py">retrieve_event_types</a>() -> None</code>
+
+## Deliveries
+
+Methods:
+
+- <code title="get /ext/v3/webhooks/{webhook_external_id}/deliveries/">client.webhooks.deliveries.<a href="./src/businessradar/resources/webhooks/deliveries.py">list</a>(webhook_external_id, \*\*<a href="src/businessradar/types/webhooks/delivery_list_params.py">params</a>) -> <a href="./src/businessradar/types/webhook_delivery.py">SyncNextKey[WebhookDelivery]</a></code>
+- <code title="post /ext/v3/webhooks/{webhook_external_id}/deliveries/test/">client.webhooks.deliveries.<a href="./src/businessradar/resources/webhooks/deliveries.py">test</a>(webhook_external_id, \*\*<a href="src/businessradar/types/webhooks/delivery_test_params.py">params</a>) -> <a href="./src/businessradar/types/webhook_delivery.py">WebhookDelivery</a></code>
+
+## Subscriptions
+
+Methods:
+
+- <code title="post /ext/v3/webhooks/{webhook_external_id}/subscriptions/">client.webhooks.subscriptions.<a href="./src/businessradar/resources/webhooks/subscriptions.py">create</a>(webhook_external_id, \*\*<a href="src/businessradar/types/webhooks/subscription_create_params.py">params</a>) -> <a href="./src/businessradar/types/webhook_subscription.py">WebhookSubscription</a></code>
+- <code title="get /ext/v3/webhooks/{webhook_external_id}/subscriptions/">client.webhooks.subscriptions.<a href="./src/businessradar/resources/webhooks/subscriptions.py">list</a>(webhook_external_id, \*\*<a href="src/businessradar/types/webhooks/subscription_list_params.py">params</a>) -> <a href="./src/businessradar/types/webhook_subscription.py">SyncNextKey[WebhookSubscription]</a></code>
+- <code title="delete /ext/v3/webhooks/{webhook_external_id}/subscriptions/{subscription_external_id}/">client.webhooks.subscriptions.<a href="./src/businessradar/resources/webhooks/subscriptions.py">delete</a>(subscription_external_id, \*, webhook_external_id) -> None</code>
