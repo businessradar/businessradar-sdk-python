@@ -35,10 +35,11 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import news, companies, compliance, portfolios
+    from .resources import news, webhooks, companies, compliance, portfolios
     from .resources.companies import CompaniesResource, AsyncCompaniesResource
     from .resources.news.news import NewsResource, AsyncNewsResource
     from .resources.compliance import ComplianceResource, AsyncComplianceResource
+    from .resources.webhooks.webhooks import WebhooksResource, AsyncWebhooksResource
     from .resources.portfolios.portfolios import PortfoliosResource, AsyncPortfoliosResource
 
 __all__ = [
@@ -140,6 +141,12 @@ class BusinessRadar(SyncAPIClient):
         from .resources.portfolios import PortfoliosResource
 
         return PortfoliosResource(self)
+
+    @cached_property
+    def webhooks(self) -> WebhooksResource:
+        from .resources.webhooks import WebhooksResource
+
+        return WebhooksResource(self)
 
     @cached_property
     def with_raw_response(self) -> BusinessRadarWithRawResponse:
@@ -343,6 +350,12 @@ class AsyncBusinessRadar(AsyncAPIClient):
         return AsyncPortfoliosResource(self)
 
     @cached_property
+    def webhooks(self) -> AsyncWebhooksResource:
+        from .resources.webhooks import AsyncWebhooksResource
+
+        return AsyncWebhooksResource(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncBusinessRadarWithRawResponse:
         return AsyncBusinessRadarWithRawResponse(self)
 
@@ -485,6 +498,12 @@ class BusinessRadarWithRawResponse:
 
         return PortfoliosResourceWithRawResponse(self._client.portfolios)
 
+    @cached_property
+    def webhooks(self) -> webhooks.WebhooksResourceWithRawResponse:
+        from .resources.webhooks import WebhooksResourceWithRawResponse
+
+        return WebhooksResourceWithRawResponse(self._client.webhooks)
+
 
 class AsyncBusinessRadarWithRawResponse:
     _client: AsyncBusinessRadar
@@ -515,6 +534,12 @@ class AsyncBusinessRadarWithRawResponse:
         from .resources.portfolios import AsyncPortfoliosResourceWithRawResponse
 
         return AsyncPortfoliosResourceWithRawResponse(self._client.portfolios)
+
+    @cached_property
+    def webhooks(self) -> webhooks.AsyncWebhooksResourceWithRawResponse:
+        from .resources.webhooks import AsyncWebhooksResourceWithRawResponse
+
+        return AsyncWebhooksResourceWithRawResponse(self._client.webhooks)
 
 
 class BusinessRadarWithStreamedResponse:
@@ -547,6 +572,12 @@ class BusinessRadarWithStreamedResponse:
 
         return PortfoliosResourceWithStreamingResponse(self._client.portfolios)
 
+    @cached_property
+    def webhooks(self) -> webhooks.WebhooksResourceWithStreamingResponse:
+        from .resources.webhooks import WebhooksResourceWithStreamingResponse
+
+        return WebhooksResourceWithStreamingResponse(self._client.webhooks)
+
 
 class AsyncBusinessRadarWithStreamedResponse:
     _client: AsyncBusinessRadar
@@ -577,6 +608,12 @@ class AsyncBusinessRadarWithStreamedResponse:
         from .resources.portfolios import AsyncPortfoliosResourceWithStreamingResponse
 
         return AsyncPortfoliosResourceWithStreamingResponse(self._client.portfolios)
+
+    @cached_property
+    def webhooks(self) -> webhooks.AsyncWebhooksResourceWithStreamingResponse:
+        from .resources.webhooks import AsyncWebhooksResourceWithStreamingResponse
+
+        return AsyncWebhooksResourceWithStreamingResponse(self._client.webhooks)
 
 
 Client = BusinessRadar

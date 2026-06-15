@@ -6,16 +6,22 @@ from . import news
 from .. import _compat
 from .ubo import Ubo as Ubo
 from .shared import PortfolioCompanyDetailRequest as PortfolioCompanyDetailRequest
+from .webhook import Webhook as Webhook
 from .portfolio import Portfolio as Portfolio
 from .blank_enum import BlankEnum as BlankEnum
 from .country_enum import CountryEnum as CountryEnum
 from .registration import Registration as Registration
 from .industry_code import IndustryCode as IndustryCode
 from .permission_enum import PermissionEnum as PermissionEnum
+from .webhook_delivery import WebhookDelivery as WebhookDelivery
 from .company_list_params import CompanyListParams as CompanyListParams
+from .webhook_list_params import WebhookListParams as WebhookListParams
+from .webhook_subscription import WebhookSubscription as WebhookSubscription
 from .company_create_params import CompanyCreateParams as CompanyCreateParams
 from .company_list_response import CompanyListResponse as CompanyListResponse
 from .portfolio_list_params import PortfolioListParams as PortfolioListParams
+from .webhook_create_params import WebhookCreateParams as WebhookCreateParams
+from .webhook_update_params import WebhookUpdateParams as WebhookUpdateParams
 from .compliance_list_params import ComplianceListParams as ComplianceListParams
 from .portfolio_create_params import PortfolioCreateParams as PortfolioCreateParams
 from .compliance_create_params import ComplianceCreateParams as ComplianceCreateParams
@@ -26,10 +32,14 @@ from .compliance_create_response import ComplianceCreateResponse as ComplianceCr
 from .compliance_entity_retrieve import ComplianceEntityRetrieve as ComplianceEntityRetrieve
 from .compliance_check_score_enum import ComplianceCheckScoreEnum as ComplianceCheckScoreEnum
 from .compliance_retrieve_response import ComplianceRetrieveResponse as ComplianceRetrieveResponse
+from .webhook_delivery_status_enum import WebhookDeliveryStatusEnum as WebhookDeliveryStatusEnum
+from .webhook_partial_update_params import WebhookPartialUpdateParams as WebhookPartialUpdateParams
 from .company_create_feedback_params import CompanyCreateFeedbackParams as CompanyCreateFeedbackParams
 from .compliance_list_results_params import ComplianceListResultsParams as ComplianceListResultsParams
 from .company_create_feedback_response import CompanyCreateFeedbackResponse as CompanyCreateFeedbackResponse
 from .compliance_list_results_response import ComplianceListResultsResponse as ComplianceListResultsResponse
+from .webhook_regenerate_secret_response import WebhookRegenerateSecretResponse as WebhookRegenerateSecretResponse
+from .webhook_subscription_request_param import WebhookSubscriptionRequestParam as WebhookSubscriptionRequestParam
 from .company_list_attribute_changes_params import (
     CompanyListAttributeChangesParams as CompanyListAttributeChangesParams,
 )
