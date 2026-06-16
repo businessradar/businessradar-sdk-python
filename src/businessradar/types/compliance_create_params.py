@@ -2,12 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable, Optional
-from datetime import date
-from typing_extensions import Literal, Required, Annotated, TypedDict
+from typing import Iterable, Optional
+from typing_extensions import Literal, Required, TypedDict
 
 from .._types import SequenceNotStr
-from .._utils import PropertyInfo
 
 __all__ = ["ComplianceCreateParams", "Entity"]
 
@@ -56,7 +54,12 @@ class Entity(TypedDict, total=False):
 
     country: Optional[str]
 
-    date_of_birth: Annotated[Union[str, date, None], PropertyInfo(format="iso8601")]
+    date_of_birth: Optional[str]
+    """Date of birth.
+
+    Accepts a full or partial date in YYYY, YYYY-MM or YYYY-MM-DD format (e.g. when
+    only the year is known).
+    """
 
     entity_type: Literal["individual", "company"]
     """

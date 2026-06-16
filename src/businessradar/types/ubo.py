@@ -1,7 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
-from datetime import date
 
 from .._models import BaseModel
 
@@ -13,7 +12,7 @@ class Ubo(BaseModel):
 
     beneficial_ownership_percentage: Optional[float] = None
 
-    birth_date: Optional[date] = None
+    birth_date: Optional[str] = None
 
     degree_of_separation: Optional[int] = None
 
