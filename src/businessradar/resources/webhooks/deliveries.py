@@ -57,7 +57,11 @@ class DeliveriesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncNextKey[WebhookDelivery]:
         """
-        List delivery history for a specific webhook.
+        List deliveries newest first.
+
+        The default cursor pagination ignores the queryset ordering and applies its own
+        `ordering` attribute, so set it on the paginator here. The `-id` tiebreaker
+        keeps cursor paging stable when deliveries share a `created_at` timestamp.
 
         Args:
           next_key: A cursor value used for pagination. Include the `next_key` value from your
@@ -176,7 +180,11 @@ class AsyncDeliveriesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[WebhookDelivery, AsyncNextKey[WebhookDelivery]]:
         """
-        List delivery history for a specific webhook.
+        List deliveries newest first.
+
+        The default cursor pagination ignores the queryset ordering and applies its own
+        `ordering` attribute, so set it on the paginator here. The `-id` tiebreaker
+        keeps cursor paging stable when deliveries share a `created_at` timestamp.
 
         Args:
           next_key: A cursor value used for pagination. Include the `next_key` value from your

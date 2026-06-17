@@ -1,7 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
-from datetime import date
 from typing_extensions import Literal
 
 from .ubo import Ubo
@@ -43,6 +42,6 @@ class ComplianceEntityRetrieve(BaseModel):
 
     country: Optional[str] = None
 
-    date_of_birth: Optional[date] = None
+    date_of_birth: Optional[str] = None
 
     gender: Optional[Literal["male", "female", ""]] = None

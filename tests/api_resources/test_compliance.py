@@ -15,7 +15,7 @@ from businessradar.types import (
     ComplianceRetrieveResponse,
     ComplianceListResultsResponse,
 )
-from businessradar._utils import parse_date, parse_datetime
+from businessradar._utils import parse_datetime
 from businessradar.pagination import SyncNextKey, AsyncNextKey
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -42,7 +42,7 @@ class TestCompliance:
                     "name": "x",
                     "aliases": ["x"],
                     "country": "xx",
-                    "date_of_birth": parse_date("2019-12-27"),
+                    "date_of_birth": "date_of_birth",
                     "entity_type": "individual",
                     "first_name": "first_name",
                     "last_name": "last_name",
@@ -247,7 +247,7 @@ class TestAsyncCompliance:
                     "name": "x",
                     "aliases": ["x"],
                     "country": "xx",
-                    "date_of_birth": parse_date("2019-12-27"),
+                    "date_of_birth": "date_of_birth",
                     "entity_type": "individual",
                     "first_name": "first_name",
                     "last_name": "last_name",
