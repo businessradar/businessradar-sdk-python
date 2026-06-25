@@ -140,6 +140,7 @@ class CompanyCreateParams(TypedDict, total=False):
             "KI",
             "KP",
             "KR",
+            "XK",
             "KW",
             "KG",
             "LA",

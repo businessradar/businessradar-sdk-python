@@ -204,6 +204,7 @@ class Registration(BaseModel):
             "KI",
             "KP",
             "KR",
+            "XK",
             "KW",
             "KG",
             "LA",

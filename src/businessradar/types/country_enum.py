@@ -125,6 +125,7 @@ CountryEnum: TypeAlias = Literal[
     "KI",
     "KP",
     "KR",
+    "XK",
     "KW",
     "KG",
     "LA",

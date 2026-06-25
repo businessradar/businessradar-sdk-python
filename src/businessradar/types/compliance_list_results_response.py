@@ -137,6 +137,7 @@ class Address(BaseModel):
             "KI",
             "KP",
             "KR",
+            "XK",
             "KW",
             "KG",
             "LA",
