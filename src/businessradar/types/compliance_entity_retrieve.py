@@ -16,10 +16,11 @@ class ComplianceEntityRetrieve(BaseModel):
 
     entity_role: str
 
-    entity_type: Literal["individual", "company"]
+    entity_type: Literal["individual", "company", "vessel"]
     """
     - `individual` - Individual
     - `company` - Company
+    - `vessel` - Vessel
     """
 
     external_id: str
