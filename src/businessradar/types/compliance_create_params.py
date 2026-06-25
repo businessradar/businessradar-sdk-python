@@ -61,10 +61,11 @@ class Entity(TypedDict, total=False):
     only the year is known).
     """
 
-    entity_type: Literal["individual", "company"]
+    entity_type: Literal["individual", "company", "vessel"]
     """
     - `individual` - Individual
     - `company` - Company
+    - `vessel` - Vessel
     """
 
     first_name: Optional[str]
