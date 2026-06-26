@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.21.0...v1.22.0) (2026-06-17)
+
+
+### Features
+
+* sync API from production ([#35](https://github.com/businessradar/businessradar-sdk-python/issues/35)) ([b015bb9](https://github.com/businessradar/businessradar-sdk-python/commit/b015bb979842d8f12bb36a9feabbbb4093f9e18e))
+
 ## [1.21.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.20.0...v1.21.0) (2026-06-09)
 
 
