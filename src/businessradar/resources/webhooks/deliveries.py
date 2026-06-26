@@ -105,6 +105,7 @@ class DeliveriesResource(SyncAPIResource):
             "compliance_check.results.new",
             "company_registration.status_changed",
             "company_registration.status_registered",
+            "company.updated",
         ]
         | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -124,6 +125,7 @@ class DeliveriesResource(SyncAPIResource):
               - `company_registration.status_changed` - Company Registration Status Changed
               - `company_registration.status_registered` - Company Registration Status
                 Registered
+              - `company.updated` - Company Updated
 
           extra_headers: Send extra headers
 
@@ -230,6 +232,7 @@ class AsyncDeliveriesResource(AsyncAPIResource):
             "compliance_check.results.new",
             "company_registration.status_changed",
             "company_registration.status_registered",
+            "company.updated",
         ]
         | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -249,6 +252,7 @@ class AsyncDeliveriesResource(AsyncAPIResource):
               - `company_registration.status_changed` - Company Registration Status Changed
               - `company_registration.status_registered` - Company Registration Status
                 Registered
+              - `company.updated` - Company Updated
 
           extra_headers: Send extra headers
 

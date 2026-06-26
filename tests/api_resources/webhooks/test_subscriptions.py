@@ -29,6 +29,16 @@ class TestSubscriptions:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_method_create_with_all_params(self, client: BusinessRadar) -> None:
+        subscription = client.webhooks.subscriptions.create(
+            webhook_external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            event_type="compliance_check.status_changed",
+            portfolio="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+        assert_matches_type(WebhookSubscription, subscription, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_raw_response_create(self, client: BusinessRadar) -> None:
         response = client.webhooks.subscriptions.with_raw_response.create(
             webhook_external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -181,6 +191,16 @@ class TestAsyncSubscriptions:
         subscription = await async_client.webhooks.subscriptions.create(
             webhook_external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             event_type="compliance_check.status_changed",
+        )
+        assert_matches_type(WebhookSubscription, subscription, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
+        subscription = await async_client.webhooks.subscriptions.create(
+            webhook_external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            event_type="compliance_check.status_changed",
+            portfolio="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
         assert_matches_type(WebhookSubscription, subscription, path=["response"])
 

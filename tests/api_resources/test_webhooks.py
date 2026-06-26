@@ -34,7 +34,12 @@ class TestWebhooks:
     @parametrize
     def test_method_create_with_all_params(self, client: BusinessRadar) -> None:
         webhook = client.webhooks.create(
-            subscriptions=[{"event_type": "compliance_check.status_changed"}],
+            subscriptions=[
+                {
+                    "event_type": "compliance_check.status_changed",
+                    "portfolio": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                }
+            ],
             url="https://example.com",
             enabled=True,
         )
@@ -125,7 +130,12 @@ class TestWebhooks:
     def test_method_update_with_all_params(self, client: BusinessRadar) -> None:
         webhook = client.webhooks.update(
             webhook_external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            subscriptions=[{"event_type": "compliance_check.status_changed"}],
+            subscriptions=[
+                {
+                    "event_type": "compliance_check.status_changed",
+                    "portfolio": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                }
+            ],
             url="https://example.com",
             enabled=True,
         )
@@ -263,7 +273,12 @@ class TestWebhooks:
         webhook = client.webhooks.partial_update(
             webhook_external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             enabled=True,
-            subscriptions=[{"event_type": "compliance_check.status_changed"}],
+            subscriptions=[
+                {
+                    "event_type": "compliance_check.status_changed",
+                    "portfolio": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                }
+            ],
             url="https://example.com",
         )
         assert_matches_type(Webhook, webhook, path=["response"])
@@ -391,7 +406,12 @@ class TestAsyncWebhooks:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         webhook = await async_client.webhooks.create(
-            subscriptions=[{"event_type": "compliance_check.status_changed"}],
+            subscriptions=[
+                {
+                    "event_type": "compliance_check.status_changed",
+                    "portfolio": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                }
+            ],
             url="https://example.com",
             enabled=True,
         )
@@ -482,7 +502,12 @@ class TestAsyncWebhooks:
     async def test_method_update_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         webhook = await async_client.webhooks.update(
             webhook_external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            subscriptions=[{"event_type": "compliance_check.status_changed"}],
+            subscriptions=[
+                {
+                    "event_type": "compliance_check.status_changed",
+                    "portfolio": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                }
+            ],
             url="https://example.com",
             enabled=True,
         )
@@ -620,7 +645,12 @@ class TestAsyncWebhooks:
         webhook = await async_client.webhooks.partial_update(
             webhook_external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             enabled=True,
-            subscriptions=[{"event_type": "compliance_check.status_changed"}],
+            subscriptions=[
+                {
+                    "event_type": "compliance_check.status_changed",
+                    "portfolio": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                }
+            ],
             url="https://example.com",
         )
         assert_matches_type(Webhook, webhook, path=["response"])
