@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import Literal
 
 import httpx
@@ -54,7 +55,9 @@ class SubscriptionsResource(SyncAPIResource):
             "compliance_check.results.new",
             "company_registration.status_changed",
             "company_registration.status_registered",
+            "company.updated",
         ],
+        portfolio: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -72,6 +75,10 @@ class SubscriptionsResource(SyncAPIResource):
               - `company_registration.status_changed` - Company Registration Status Changed
               - `company_registration.status_registered` - Company Registration Status
                 Registered
+              - `company.updated` - Company Updated
+
+          portfolio: Portfolio external_id. Required for portfolio-scoped events (e.g.
+              company.updated); must be omitted for all other events.
 
           extra_headers: Send extra headers
 
@@ -89,7 +96,13 @@ class SubscriptionsResource(SyncAPIResource):
             path_template(
                 "/ext/v3/webhooks/{webhook_external_id}/subscriptions/", webhook_external_id=webhook_external_id
             ),
-            body=maybe_transform({"event_type": event_type}, subscription_create_params.SubscriptionCreateParams),
+            body=maybe_transform(
+                {
+                    "event_type": event_type,
+                    "portfolio": portfolio,
+                },
+                subscription_create_params.SubscriptionCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -219,7 +232,9 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
             "compliance_check.results.new",
             "company_registration.status_changed",
             "company_registration.status_registered",
+            "company.updated",
         ],
+        portfolio: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -237,6 +252,10 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
               - `company_registration.status_changed` - Company Registration Status Changed
               - `company_registration.status_registered` - Company Registration Status
                 Registered
+              - `company.updated` - Company Updated
+
+          portfolio: Portfolio external_id. Required for portfolio-scoped events (e.g.
+              company.updated); must be omitted for all other events.
 
           extra_headers: Send extra headers
 
@@ -255,7 +274,11 @@ class AsyncSubscriptionsResource(AsyncAPIResource):
                 "/ext/v3/webhooks/{webhook_external_id}/subscriptions/", webhook_external_id=webhook_external_id
             ),
             body=await async_maybe_transform(
-                {"event_type": event_type}, subscription_create_params.SubscriptionCreateParams
+                {
+                    "event_type": event_type,
+                    "portfolio": portfolio,
+                },
+                subscription_create_params.SubscriptionCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

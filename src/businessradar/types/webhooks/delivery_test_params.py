@@ -14,6 +14,7 @@ class DeliveryTestParams(TypedDict, total=False):
         "compliance_check.results.new",
         "company_registration.status_changed",
         "company_registration.status_registered",
+        "company.updated",
     ]
     """
     - `compliance_check.status_changed` - Compliance Check Status Changed
@@ -22,4 +23,5 @@ class DeliveryTestParams(TypedDict, total=False):
     - `company_registration.status_changed` - Company Registration Status Changed
     - `company_registration.status_registered` - Company Registration Status
       Registered
+    - `company.updated` - Company Updated
     """

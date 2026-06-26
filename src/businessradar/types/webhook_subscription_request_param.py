@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["WebhookSubscriptionRequestParam"]
@@ -15,6 +16,7 @@ class WebhookSubscriptionRequestParam(TypedDict, total=False):
             "compliance_check.results.new",
             "company_registration.status_changed",
             "company_registration.status_registered",
+            "company.updated",
         ]
     ]
     """
@@ -24,4 +26,12 @@ class WebhookSubscriptionRequestParam(TypedDict, total=False):
     - `company_registration.status_changed` - Company Registration Status Changed
     - `company_registration.status_registered` - Company Registration Status
       Registered
+    - `company.updated` - Company Updated
+    """
+
+    portfolio: Optional[str]
+    """Portfolio external_id.
+
+    Required for portfolio-scoped events (e.g. company.updated); must be omitted for
+    all other events.
     """
