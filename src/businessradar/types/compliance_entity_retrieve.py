@@ -29,7 +29,15 @@ class ComplianceEntityRetrieve(BaseModel):
 
     sanction_monitoring_enabled: bool
 
-    status: Literal["on_hold", "queued", "in_progress", "completed", "skipped", "failed"]
+    ubo: Optional[Ubo] = None
+
+    country: Optional[str] = None
+
+    date_of_birth: Optional[str] = None
+
+    gender: Optional[Literal["male", "female", ""]] = None
+
+    status: Optional[Literal["on_hold", "queued", "in_progress", "completed", "skipped", "failed"]] = None
     """
     - `on_hold` - On Hold
     - `queued` - Queued
@@ -38,11 +46,3 @@ class ComplianceEntityRetrieve(BaseModel):
     - `skipped` - Skipped
     - `failed` - Failed
     """
-
-    ubo: Optional[Ubo] = None
-
-    country: Optional[str] = None
-
-    date_of_birth: Optional[str] = None
-
-    gender: Optional[Literal["male", "female", ""]] = None
