@@ -425,6 +425,26 @@ class ComplianceListResultsResponse(BaseModel):
         ]
     ] = None
 
+    pep_related_to: Optional[str] = None
+    """Name of the PEP this person is related to (family / associate only)."""
+
+    pep_relationship: Optional[Literal["SELF", "FAMILY", "ASSOCIATE", ""]] = None
+    """How this person relates to the PEP status: self, family or associate.
+
+    - `SELF` - Self
+    - `FAMILY` - Family member
+    - `ASSOCIATE` - Close associate
+    """
+
+    pep_tier: Optional[Literal["TIER_1", "TIER_2", "TIER_3", "INTERNATIONAL_ORG", ""]] = None
+    """PEP tier of this match (national / regional / local / international).
+
+    - `TIER_1` - Tier 1 (national)
+    - `TIER_2` - Tier 2 (regional)
+    - `TIER_3` - Tier 3 (local / SOE)
+    - `INTERNATIONAL_ORG` - International organization
+    """
+
     source_date: Optional[datetime] = None
 
     source_name: Optional[str] = None
