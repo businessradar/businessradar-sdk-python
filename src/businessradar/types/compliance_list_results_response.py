@@ -445,6 +445,26 @@ class ComplianceListResultsResponse(BaseModel):
     - `INTERNATIONAL_ORG` - International organization
     """
 
+    soe_ownership_percentage: Optional[float] = None
+    """Percentage of government ownership, when reported."""
+
+    soe_parent_entity: Optional[str] = None
+    """Immediate parent or controlling government entity."""
+
+    soe_relationship_type: Optional[
+        Literal["WHOLLY_OWNED", "MAJORITY_OWNED", "MINORITY_OWNED", "STATE_CONTROLLED", "GOVERNMENT_LINKED", ""]
+    ] = None
+    """
+    Nature of this match's government relationship (ownership level or control
+    without ownership).
+
+    - `WHOLLY_OWNED` - Wholly state-owned
+    - `MAJORITY_OWNED` - Majority state-owned
+    - `MINORITY_OWNED` - Minority state-owned
+    - `STATE_CONTROLLED` - State-controlled
+    - `GOVERNMENT_LINKED` - Government-linked
+    """
+
     source_date: Optional[datetime] = None
 
     source_name: Optional[str] = None

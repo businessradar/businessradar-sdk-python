@@ -1,0 +1,46 @@
+name: Production source policy
+
+# This file is the canonical copy for the three production SDK repositories.
+# It intentionally uses pull_request_target without checking out or executing
+# PR-controlled code, so fork PRs cannot spoof an approved branch name.
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  source-policy:
+    name: Production source policy
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Require the automated release path
+        env:
+          BASE_REPOSITORY: ${{ github.repository }}
+          HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          set -euo pipefail
+          case "$BASE_REPOSITORY" in
+            businessradar/businessradar-sdk-python|businessradar/businessradar-sdk-typescript|businessradar/businessradar-sdk-php)
+              ;;
+            *)
+              echo "Policy is dormant in SDK staging repository: $BASE_REPOSITORY"
+              exit 0
+              ;;
+          esac
+          if [ "$HEAD_REPOSITORY" != "$BASE_REPOSITORY" ]; then
+            echo "::error::Production SDK changes must originate from this repository's automated staging branches."
+            exit 1
+          fi
+          case "$HEAD_BRANCH" in
+            stainless/release|release-please--branches--main*)
+              echo "Approved automated production source: $HEAD_BRANCH"
+              ;;
+            *)
+              echo "::error::Direct production SDK changes are disabled. Open the change against the matching staging repository; stlc will track, verify, and promote it automatically."
+              exit 1
+              ;;
+          esac

@@ -16,13 +16,16 @@ class ArticleExport(BaseModel):
 
     created_at: datetime
 
-    export_type: Literal["NEWS", "BINDER", "COMPANIES", "REGISTRATIONS", "COMPLIANCE", "BILLING", "KEY_EVENTS"]
+    export_type: Literal[
+        "NEWS", "BINDER", "COMPANIES", "REGISTRATIONS", "COMPLIANCE", "COMPLIANCE_CHANGELOG", "BILLING", "KEY_EVENTS"
+    ]
     """
     - `NEWS` - News
     - `BINDER` - Binder
     - `COMPANIES` - Companies
     - `REGISTRATIONS` - Registrations
     - `COMPLIANCE` - Compliance
+    - `COMPLIANCE_CHANGELOG` - Compliance changelog
     - `BILLING` - Billing
     - `KEY_EVENTS` - Key Events
     """
