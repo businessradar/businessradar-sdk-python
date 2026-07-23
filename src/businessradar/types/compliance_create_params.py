@@ -12,9 +12,10 @@ __all__ = ["ComplianceCreateParams", "Entity"]
 
 class ComplianceCreateParams(TypedDict, total=False):
     adverse_media_monitoring_enabled: bool
-    """
-    If enabled, adverse media monitoring will be activated for all system-created
-    entities (company, directors, UBOs).
+    """Deprecated: monitoring is now derived from screening.
+
+    This flag (OR'd with sanction_monitoring_enabled) sets the check's monitoring
+    master switch; per-type coverage follows which screenings run.
     """
 
     company_id: Optional[str]
@@ -31,9 +32,10 @@ class ComplianceCreateParams(TypedDict, total=False):
     """The threshold for ultimate ownership to enable for screening."""
 
     sanction_monitoring_enabled: bool
-    """
-    If enabled, sanctions monitoring will be activated for all system-created
-    entities (company, directors, UBOs).
+    """Deprecated: monitoring is now derived from screening.
+
+    This flag (OR'd with adverse_media_monitoring_enabled) sets the check's
+    monitoring master switch; per-type coverage follows which screenings run.
     """
 
     ubo_screening_enabled: bool

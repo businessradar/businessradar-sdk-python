@@ -88,8 +88,9 @@ class ComplianceResource(SyncAPIResource):
         endpoint.
 
         Args:
-          adverse_media_monitoring_enabled: If enabled, adverse media monitoring will be activated for all system-created
-              entities (company, directors, UBOs).
+          adverse_media_monitoring_enabled: Deprecated: monitoring is now derived from screening. This flag (OR'd with
+              sanction_monitoring_enabled) sets the check's monitoring master switch; per-type
+              coverage follows which screenings run.
 
           directors_screening_enabled: If directors should be screened.
 
@@ -97,8 +98,9 @@ class ComplianceResource(SyncAPIResource):
 
           ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
 
-          sanction_monitoring_enabled: If enabled, sanctions monitoring will be activated for all system-created
-              entities (company, directors, UBOs).
+          sanction_monitoring_enabled: Deprecated: monitoring is now derived from screening. This flag (OR'd with
+              adverse_media_monitoring_enabled) sets the check's monitoring master switch;
+              per-type coverage follows which screenings run.
 
           ubo_screening_enabled: If enabled, UBOs discovered for the company will be screened.
 
@@ -405,8 +407,9 @@ class AsyncComplianceResource(AsyncAPIResource):
         endpoint.
 
         Args:
-          adverse_media_monitoring_enabled: If enabled, adverse media monitoring will be activated for all system-created
-              entities (company, directors, UBOs).
+          adverse_media_monitoring_enabled: Deprecated: monitoring is now derived from screening. This flag (OR'd with
+              sanction_monitoring_enabled) sets the check's monitoring master switch; per-type
+              coverage follows which screenings run.
 
           directors_screening_enabled: If directors should be screened.
 
@@ -414,8 +417,9 @@ class AsyncComplianceResource(AsyncAPIResource):
 
           ownership_screening_threshold: The threshold for ultimate ownership to enable for screening.
 
-          sanction_monitoring_enabled: If enabled, sanctions monitoring will be activated for all system-created
-              entities (company, directors, UBOs).
+          sanction_monitoring_enabled: Deprecated: monitoring is now derived from screening. This flag (OR'd with
+              adverse_media_monitoring_enabled) sets the check's monitoring master switch;
+              per-type coverage follows which screenings run.
 
           ubo_screening_enabled: If enabled, UBOs discovered for the company will be screened.
 
