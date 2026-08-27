@@ -12,7 +12,12 @@ class ComplianceListResultsParams(TypedDict, total=False):
     """Filter by entity external ID"""
 
     exclude_automated_false_positives: bool
-    """Filter out automated false positive rated results"""
+    """Filter out automated false positive rated results.
+
+    While a check is still running, only AI-validated results are returned, so the
+    result count grows monotonically. Set to `false` to get the raw unfiltered set,
+    including results that have not been validated yet.
+    """
 
     min_confidence: float
     """Filter by minimum confidence score (0.0 - 1.0)"""
