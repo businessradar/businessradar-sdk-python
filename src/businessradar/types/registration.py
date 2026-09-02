@@ -346,3 +346,10 @@ class Registration(BaseModel):
     primary_name: Optional[str] = None
 
     registration_number: Optional[str] = None
+
+    submit_investigation_when_not_identified: Optional[bool] = None
+    """
+    With this option enabled a missing company investigation is submitted
+    automatically when the registration cannot be identified, instead of failing
+    with company not found.
+    """
