@@ -312,6 +312,7 @@ class CompaniesResource(SyncAPIResource):
         duns_number: Optional[str] | Omit = omit,
         primary_name: Optional[str] | Omit = omit,
         registration_number: Optional[str] | Omit = omit,
+        submit_investigation_when_not_identified: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -337,6 +338,10 @@ class CompaniesResource(SyncAPIResource):
 
           customer_reference: Customer reference for the client to understand relationship.
 
+          submit_investigation_when_not_identified: With this option enabled a missing company investigation is submitted
+              automatically when the registration cannot be identified, instead of failing
+              with company not found.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -357,6 +362,7 @@ class CompaniesResource(SyncAPIResource):
                     "duns_number": duns_number,
                     "primary_name": primary_name,
                     "registration_number": registration_number,
+                    "submit_investigation_when_not_identified": submit_investigation_when_not_identified,
                 },
                 company_create_params.CompanyCreateParams,
             ),
@@ -743,6 +749,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         duns_number: Optional[str] | Omit = omit,
         primary_name: Optional[str] | Omit = omit,
         registration_number: Optional[str] | Omit = omit,
+        submit_investigation_when_not_identified: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -768,6 +775,10 @@ class AsyncCompaniesResource(AsyncAPIResource):
 
           customer_reference: Customer reference for the client to understand relationship.
 
+          submit_investigation_when_not_identified: With this option enabled a missing company investigation is submitted
+              automatically when the registration cannot be identified, instead of failing
+              with company not found.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -788,6 +799,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
                     "duns_number": duns_number,
                     "primary_name": primary_name,
                     "registration_number": registration_number,
+                    "submit_investigation_when_not_identified": submit_investigation_when_not_identified,
                 },
                 company_create_params.CompanyCreateParams,
             ),

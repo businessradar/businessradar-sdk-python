@@ -282,3 +282,10 @@ class CompanyCreateParams(TypedDict, total=False):
     primary_name: Optional[str]
 
     registration_number: Optional[str]
+
+    submit_investigation_when_not_identified: bool
+    """
+    With this option enabled a missing company investigation is submitted
+    automatically when the registration cannot be identified, instead of failing
+    with company not found.
+    """

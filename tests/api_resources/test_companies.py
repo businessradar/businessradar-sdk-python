@@ -44,6 +44,7 @@ class TestCompanies:
             duns_number="duns_number",
             primary_name="primary_name",
             registration_number="registration_number",
+            submit_investigation_when_not_identified=True,
         )
         assert_matches_type(Registration, company, path=["response"])
 
@@ -441,6 +442,7 @@ class TestAsyncCompanies:
             duns_number="duns_number",
             primary_name="primary_name",
             registration_number="registration_number",
+            submit_investigation_when_not_identified=True,
         )
         assert_matches_type(Registration, company, path=["response"])
 
