@@ -11,6 +11,7 @@ import httpx
 from ..types import (
     CountryEnum,
     company_list_params,
+    company_match_params,
     company_create_params,
     company_create_feedback_params,
     company_list_attribute_changes_params,
@@ -32,6 +33,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.country_enum import CountryEnum
 from ..types.registration import Registration
 from ..types.company_list_response import CompanyListResponse
+from ..types.company_match_response import CompanyMatchResponse
 from ..types.company_retrieve_response import CompanyRetrieveResponse
 from ..types.company_create_feedback_response import CompanyCreateFeedbackResponse
 from ..types.company_list_attribute_changes_response import CompanyListAttributeChangesResponse
@@ -1017,6 +1019,133 @@ class CompaniesResource(SyncAPIResource):
                 ),
             ),
             model=CompanyListMissingCompanyInvestigationsResponse,
+        )
+
+    def match(
+        self,
+        *,
+        address_county: str | Omit = omit,
+        address_locality: str | Omit = omit,
+        address_region: str | Omit = omit,
+        confidence_lower_level_threshold_value: int | Omit = omit,
+        country: str | Omit = omit,
+        customer_reference: str | Omit = omit,
+        duns_number: str | Omit = omit,
+        email: str | Omit = omit,
+        name: str | Omit = omit,
+        postal_code: str | Omit = omit,
+        registration_number: str | Omit = omit,
+        registration_number_type: str | Omit = omit,
+        street_address_line1: str | Omit = omit,
+        street_address_line2: str | Omit = omit,
+        telephone_number: str | Omit = omit,
+        url: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CompanyMatchResponse:
+        """
+        ### Match a Single Company
+
+        Resolve a set of identifying details to the single best-matching company.
+
+        Provide as many identifying details as you have. At least one of `name`,
+        `duns_number`, `registration_number` or `customer_reference` is required, and a
+        `country` must accompany a `name` or `registration_number` lookup. More fields
+        (address, telephone, url, email) yield a more confident match.
+
+        Matching happens in two stages:
+
+        - **Internal first.** A `customer_reference` mapped to one of your portfolio
+          companies, or a `duns_number` we already track, returns that Business Radar
+          company immediately — no Dun & Bradstreet lookup is performed.
+
+        - **Dun & Bradstreet fallback.** Otherwise the details are matched against Dun &
+          Bradstreet's Cleanse Match API and the single best candidate is returned, even
+          if the company is not yet registered in Business Radar.
+
+        The result is a company object. When the company is already tracked in Business
+        Radar its `external_id` is populated; when it only exists at Dun & Bradstreet
+        the `external_id` is `null` and you can register it via
+        [POST /companies](/ext/v3/#/ext/ext_v3_companies_create) using the returned
+        `duns_number`.
+
+        Returns `404` when no company can be matched.
+
+        Args:
+          address_county: County.
+
+          address_locality: City / locality.
+
+          address_region: Region / state / province.
+
+          confidence_lower_level_threshold_value: Minimum Dun & Bradstreet confidence code (1-10).
+
+          country: ISO 2-letter Country Code (e.g., NL, US).
+
+          customer_reference: Your own reference linking to a tracked company.
+
+          duns_number: 9-digit Dun And Bradstreet Number to match.
+
+          email: Company email address.
+
+          name: Company name to match.
+
+          postal_code: Postal / ZIP code.
+
+          registration_number: Local Registration Number.
+
+          registration_number_type: Type of the registration number.
+
+          street_address_line1: First line of the street address.
+
+          street_address_line2: Second line of the street address.
+
+          telephone_number: Telephone number.
+
+          url: Company website URL.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/ext/v3/companies/match/",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "address_county": address_county,
+                        "address_locality": address_locality,
+                        "address_region": address_region,
+                        "confidence_lower_level_threshold_value": confidence_lower_level_threshold_value,
+                        "country": country,
+                        "customer_reference": customer_reference,
+                        "duns_number": duns_number,
+                        "email": email,
+                        "name": name,
+                        "postal_code": postal_code,
+                        "registration_number": registration_number,
+                        "registration_number_type": registration_number_type,
+                        "street_address_line1": street_address_line1,
+                        "street_address_line2": street_address_line2,
+                        "telephone_number": telephone_number,
+                        "url": url,
+                    },
+                    company_match_params.CompanyMatchParams,
+                ),
+            ),
+            cast_to=CompanyMatchResponse,
         )
 
     def retrieve_missing_company_investigation(
@@ -2066,6 +2195,133 @@ class AsyncCompaniesResource(AsyncAPIResource):
             model=CompanyListMissingCompanyInvestigationsResponse,
         )
 
+    async def match(
+        self,
+        *,
+        address_county: str | Omit = omit,
+        address_locality: str | Omit = omit,
+        address_region: str | Omit = omit,
+        confidence_lower_level_threshold_value: int | Omit = omit,
+        country: str | Omit = omit,
+        customer_reference: str | Omit = omit,
+        duns_number: str | Omit = omit,
+        email: str | Omit = omit,
+        name: str | Omit = omit,
+        postal_code: str | Omit = omit,
+        registration_number: str | Omit = omit,
+        registration_number_type: str | Omit = omit,
+        street_address_line1: str | Omit = omit,
+        street_address_line2: str | Omit = omit,
+        telephone_number: str | Omit = omit,
+        url: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CompanyMatchResponse:
+        """
+        ### Match a Single Company
+
+        Resolve a set of identifying details to the single best-matching company.
+
+        Provide as many identifying details as you have. At least one of `name`,
+        `duns_number`, `registration_number` or `customer_reference` is required, and a
+        `country` must accompany a `name` or `registration_number` lookup. More fields
+        (address, telephone, url, email) yield a more confident match.
+
+        Matching happens in two stages:
+
+        - **Internal first.** A `customer_reference` mapped to one of your portfolio
+          companies, or a `duns_number` we already track, returns that Business Radar
+          company immediately — no Dun & Bradstreet lookup is performed.
+
+        - **Dun & Bradstreet fallback.** Otherwise the details are matched against Dun &
+          Bradstreet's Cleanse Match API and the single best candidate is returned, even
+          if the company is not yet registered in Business Radar.
+
+        The result is a company object. When the company is already tracked in Business
+        Radar its `external_id` is populated; when it only exists at Dun & Bradstreet
+        the `external_id` is `null` and you can register it via
+        [POST /companies](/ext/v3/#/ext/ext_v3_companies_create) using the returned
+        `duns_number`.
+
+        Returns `404` when no company can be matched.
+
+        Args:
+          address_county: County.
+
+          address_locality: City / locality.
+
+          address_region: Region / state / province.
+
+          confidence_lower_level_threshold_value: Minimum Dun & Bradstreet confidence code (1-10).
+
+          country: ISO 2-letter Country Code (e.g., NL, US).
+
+          customer_reference: Your own reference linking to a tracked company.
+
+          duns_number: 9-digit Dun And Bradstreet Number to match.
+
+          email: Company email address.
+
+          name: Company name to match.
+
+          postal_code: Postal / ZIP code.
+
+          registration_number: Local Registration Number.
+
+          registration_number_type: Type of the registration number.
+
+          street_address_line1: First line of the street address.
+
+          street_address_line2: Second line of the street address.
+
+          telephone_number: Telephone number.
+
+          url: Company website URL.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/ext/v3/companies/match/",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "address_county": address_county,
+                        "address_locality": address_locality,
+                        "address_region": address_region,
+                        "confidence_lower_level_threshold_value": confidence_lower_level_threshold_value,
+                        "country": country,
+                        "customer_reference": customer_reference,
+                        "duns_number": duns_number,
+                        "email": email,
+                        "name": name,
+                        "postal_code": postal_code,
+                        "registration_number": registration_number,
+                        "registration_number_type": registration_number_type,
+                        "street_address_line1": street_address_line1,
+                        "street_address_line2": street_address_line2,
+                        "telephone_number": telephone_number,
+                        "url": url,
+                    },
+                    company_match_params.CompanyMatchParams,
+                ),
+            ),
+            cast_to=CompanyMatchResponse,
+        )
+
     async def retrieve_missing_company_investigation(
         self,
         external_id: str,
@@ -2164,6 +2420,9 @@ class CompaniesResourceWithRawResponse:
         self.list_missing_company_investigations = to_raw_response_wrapper(
             companies.list_missing_company_investigations,
         )
+        self.match = to_raw_response_wrapper(
+            companies.match,
+        )
         self.retrieve_missing_company_investigation = to_raw_response_wrapper(
             companies.retrieve_missing_company_investigation,
         )
@@ -2196,6 +2455,9 @@ class AsyncCompaniesResourceWithRawResponse:
         )
         self.list_missing_company_investigations = async_to_raw_response_wrapper(
             companies.list_missing_company_investigations,
+        )
+        self.match = async_to_raw_response_wrapper(
+            companies.match,
         )
         self.retrieve_missing_company_investigation = async_to_raw_response_wrapper(
             companies.retrieve_missing_company_investigation,
@@ -2230,6 +2492,9 @@ class CompaniesResourceWithStreamingResponse:
         self.list_missing_company_investigations = to_streamed_response_wrapper(
             companies.list_missing_company_investigations,
         )
+        self.match = to_streamed_response_wrapper(
+            companies.match,
+        )
         self.retrieve_missing_company_investigation = to_streamed_response_wrapper(
             companies.retrieve_missing_company_investigation,
         )
@@ -2262,6 +2527,9 @@ class AsyncCompaniesResourceWithStreamingResponse:
         )
         self.list_missing_company_investigations = async_to_streamed_response_wrapper(
             companies.list_missing_company_investigations,
+        )
+        self.match = async_to_streamed_response_wrapper(
+            companies.match,
         )
         self.retrieve_missing_company_investigation = async_to_streamed_response_wrapper(
             companies.retrieve_missing_company_investigation,

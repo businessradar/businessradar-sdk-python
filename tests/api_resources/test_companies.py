@@ -12,6 +12,7 @@ from businessradar import BusinessRadar, AsyncBusinessRadar
 from businessradar.types import (
     Registration,
     CompanyListResponse,
+    CompanyMatchResponse,
     CompanyRetrieveResponse,
     CompanyCreateFeedbackResponse,
     CompanyListAttributeChangesResponse,
@@ -333,6 +334,57 @@ class TestCompanies:
             assert_matches_type(
                 SyncNextKey[CompanyListMissingCompanyInvestigationsResponse], company, path=["response"]
             )
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_match(self, client: BusinessRadar) -> None:
+        company = client.companies.match()
+        assert_matches_type(CompanyMatchResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_match_with_all_params(self, client: BusinessRadar) -> None:
+        company = client.companies.match(
+            address_county="x",
+            address_locality="x",
+            address_region="x",
+            confidence_lower_level_threshold_value=0,
+            country="x",
+            customer_reference="x",
+            duns_number="x",
+            email="x",
+            name="x",
+            postal_code="x",
+            registration_number="x",
+            registration_number_type="x",
+            street_address_line1="x",
+            street_address_line2="x",
+            telephone_number="x",
+            url="x",
+        )
+        assert_matches_type(CompanyMatchResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_match(self, client: BusinessRadar) -> None:
+        response = client.companies.with_raw_response.match()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = response.parse()
+        assert_matches_type(CompanyMatchResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_match(self, client: BusinessRadar) -> None:
+        with client.companies.with_streaming_response.match() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = response.parse()
+            assert_matches_type(CompanyMatchResponse, company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -739,6 +791,57 @@ class TestAsyncCompanies:
             assert_matches_type(
                 AsyncNextKey[CompanyListMissingCompanyInvestigationsResponse], company, path=["response"]
             )
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_match(self, async_client: AsyncBusinessRadar) -> None:
+        company = await async_client.companies.match()
+        assert_matches_type(CompanyMatchResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_match_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
+        company = await async_client.companies.match(
+            address_county="x",
+            address_locality="x",
+            address_region="x",
+            confidence_lower_level_threshold_value=0,
+            country="x",
+            customer_reference="x",
+            duns_number="x",
+            email="x",
+            name="x",
+            postal_code="x",
+            registration_number="x",
+            registration_number_type="x",
+            street_address_line1="x",
+            street_address_line2="x",
+            telephone_number="x",
+            url="x",
+        )
+        assert_matches_type(CompanyMatchResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_match(self, async_client: AsyncBusinessRadar) -> None:
+        response = await async_client.companies.with_raw_response.match()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        company = await response.parse()
+        assert_matches_type(CompanyMatchResponse, company, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_match(self, async_client: AsyncBusinessRadar) -> None:
+        async with async_client.companies.with_streaming_response.match() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = await response.parse()
+            assert_matches_type(CompanyMatchResponse, company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
