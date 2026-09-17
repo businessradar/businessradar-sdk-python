@@ -16,12 +16,14 @@ from .permission_enum import PermissionEnum as PermissionEnum
 from .webhook_delivery import WebhookDelivery as WebhookDelivery
 from .company_list_params import CompanyListParams as CompanyListParams
 from .webhook_list_params import WebhookListParams as WebhookListParams
+from .company_match_params import CompanyMatchParams as CompanyMatchParams
 from .webhook_subscription import WebhookSubscription as WebhookSubscription
 from .company_create_params import CompanyCreateParams as CompanyCreateParams
 from .company_list_response import CompanyListResponse as CompanyListResponse
 from .portfolio_list_params import PortfolioListParams as PortfolioListParams
 from .webhook_create_params import WebhookCreateParams as WebhookCreateParams
 from .webhook_update_params import WebhookUpdateParams as WebhookUpdateParams
+from .company_match_response import CompanyMatchResponse as CompanyMatchResponse
 from .compliance_list_params import ComplianceListParams as ComplianceListParams
 from .portfolio_create_params import PortfolioCreateParams as PortfolioCreateParams
 from .compliance_create_params import ComplianceCreateParams as ComplianceCreateParams

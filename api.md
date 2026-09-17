@@ -76,6 +76,7 @@ from businessradar.types import (
     CompanyCreateMissingCompanyInvestigationResponse,
     CompanyListAttributeChangesResponse,
     CompanyListMissingCompanyInvestigationsResponse,
+    CompanyMatchResponse,
     CompanyRetrieveMissingCompanyInvestigationResponse,
 )
 ```
@@ -89,6 +90,7 @@ Methods:
 - <code title="post /ext/v3/companies/investigations">client.companies.<a href="./src/businessradar/resources/companies.py">create_missing_company_investigation</a>(\*\*<a href="src/businessradar/types/company_create_missing_company_investigation_params.py">params</a>) -> <a href="./src/businessradar/types/company_create_missing_company_investigation_response.py">CompanyCreateMissingCompanyInvestigationResponse</a></code>
 - <code title="get /ext/v3/companies/attribute_changes">client.companies.<a href="./src/businessradar/resources/companies.py">list_attribute_changes</a>(\*\*<a href="src/businessradar/types/company_list_attribute_changes_params.py">params</a>) -> <a href="./src/businessradar/types/company_list_attribute_changes_response.py">SyncNextKey[CompanyListAttributeChangesResponse]</a></code>
 - <code title="get /ext/v3/companies/investigations">client.companies.<a href="./src/businessradar/resources/companies.py">list_missing_company_investigations</a>(\*\*<a href="src/businessradar/types/company_list_missing_company_investigations_params.py">params</a>) -> <a href="./src/businessradar/types/company_list_missing_company_investigations_response.py">SyncNextKey[CompanyListMissingCompanyInvestigationsResponse]</a></code>
+- <code title="get /ext/v3/companies/match/">client.companies.<a href="./src/businessradar/resources/companies.py">match</a>(\*\*<a href="src/businessradar/types/company_match_params.py">params</a>) -> <a href="./src/businessradar/types/company_match_response.py">CompanyMatchResponse</a></code>
 - <code title="get /ext/v3/companies/investigations/{external_id}">client.companies.<a href="./src/businessradar/resources/companies.py">retrieve_missing_company_investigation</a>(external_id) -> <a href="./src/businessradar/types/company_retrieve_missing_company_investigation_response.py">CompanyRetrieveMissingCompanyInvestigationResponse</a></code>
 - <code title="get /ext/v3/registrations/{registration_id}">client.companies.<a href="./src/businessradar/resources/companies.py">retrieve_registration</a>(registration_id) -> <a href="./src/businessradar/types/registration.py">Registration</a></code>
 
