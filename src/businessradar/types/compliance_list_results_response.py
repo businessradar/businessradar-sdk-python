@@ -469,6 +469,16 @@ class ComplianceListResultsResponse(BaseModel):
 
     source_name: Optional[str] = None
 
+    source_type: Optional[Literal["news", "icij", "enforcement"]] = None
+    """
+    - `news` - News
+    - `icij` - ICIJ
+    - `enforcement` - Enforcement
+    """
+
+    structured: Optional[object] = None
+    """Generic entity_document/v1 payload (enforcement/sanctions listings)."""
+
     text: Optional[str] = None
 
     text_en: Optional[str] = None
