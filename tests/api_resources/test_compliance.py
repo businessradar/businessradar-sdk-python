@@ -186,6 +186,7 @@ class TestCompliance:
             order="asc",
             result_type="adverse_media",
             sorting="confidence",
+            source_type="enforcement",
         )
         assert_matches_type(SyncNextKey[ComplianceListResultsResponse], compliance, path=["response"])
 
@@ -391,6 +392,7 @@ class TestAsyncCompliance:
             order="asc",
             result_type="adverse_media",
             sorting="confidence",
+            source_type="enforcement",
         )
         assert_matches_type(AsyncNextKey[ComplianceListResultsResponse], compliance, path=["response"])
 

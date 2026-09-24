@@ -282,6 +282,7 @@ class ComplianceResource(SyncAPIResource):
         order: Literal["asc", "desc"] | Omit = omit,
         result_type: Literal["adverse_media", "enforcement", "govt_owned", "pep", "sanction"] | Omit = omit,
         sorting: Literal["confidence", "created_at", "source_date"] | Omit = omit,
+        source_type: Literal["enforcement", "icij", "news"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -316,6 +317,8 @@ class ComplianceResource(SyncAPIResource):
 
           sorting: Sorting field
 
+          source_type: Filter adverse media results by sub-source (news / icij / enforcement)
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -343,6 +346,7 @@ class ComplianceResource(SyncAPIResource):
                         "order": order,
                         "result_type": result_type,
                         "sorting": sorting,
+                        "source_type": source_type,
                     },
                     compliance_list_results_params.ComplianceListResultsParams,
                 ),
@@ -604,6 +608,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         order: Literal["asc", "desc"] | Omit = omit,
         result_type: Literal["adverse_media", "enforcement", "govt_owned", "pep", "sanction"] | Omit = omit,
         sorting: Literal["confidence", "created_at", "source_date"] | Omit = omit,
+        source_type: Literal["enforcement", "icij", "news"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -638,6 +643,8 @@ class AsyncComplianceResource(AsyncAPIResource):
 
           sorting: Sorting field
 
+          source_type: Filter adverse media results by sub-source (news / icij / enforcement)
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -665,6 +672,7 @@ class AsyncComplianceResource(AsyncAPIResource):
                         "order": order,
                         "result_type": result_type,
                         "sorting": sorting,
+                        "source_type": source_type,
                     },
                     compliance_list_results_params.ComplianceListResultsParams,
                 ),

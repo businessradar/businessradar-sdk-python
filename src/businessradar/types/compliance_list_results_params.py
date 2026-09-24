@@ -38,3 +38,6 @@ class ComplianceListResultsParams(TypedDict, total=False):
 
     sorting: Literal["confidence", "created_at", "source_date"]
     """Sorting field"""
+
+    source_type: Literal["enforcement", "icij", "news"]
+    """Filter adverse media results by sub-source (news / icij / enforcement)"""
