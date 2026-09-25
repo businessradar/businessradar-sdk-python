@@ -125,6 +125,7 @@ class TestCompanies:
         company = client.companies.list(
             country=["string"],
             duns_number=["string"],
+            is_listed=True,
             next_key="next_key",
             portfolio_id=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
             query="query",
@@ -574,6 +575,7 @@ class TestAsyncCompanies:
         company = await async_client.companies.list(
             country=["string"],
             duns_number=["string"],
+            is_listed=True,
             next_key="next_key",
             portfolio_id=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
             query="query",
