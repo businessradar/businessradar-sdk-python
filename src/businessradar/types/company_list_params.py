@@ -16,6 +16,9 @@ class CompanyListParams(TypedDict, total=False):
     duns_number: SequenceNotStr[str]
     """9-digit Dun And Bradstreet Number (can be multiple)"""
 
+    is_listed: bool
+    """Filter on publicly listed companies (has a `ticker_symbol`)"""
+
     next_key: str
     """A cursor value used for pagination.
 

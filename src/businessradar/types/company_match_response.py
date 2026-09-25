@@ -47,3 +47,5 @@ class CompanyMatchResponse(BaseModel):
     website_icon_url: Optional[str] = None
 
     is_out_of_business: Optional[bool] = None
+
+    ticker_symbol: Optional[str] = None

@@ -434,6 +434,7 @@ class CompaniesResource(SyncAPIResource):
         *,
         country: SequenceNotStr[str] | Omit = omit,
         duns_number: SequenceNotStr[str] | Omit = omit,
+        is_listed: bool | Omit = omit,
         next_key: str | Omit = omit,
         portfolio_id: SequenceNotStr[str] | Omit = omit,
         query: str | Omit = omit,
@@ -464,6 +465,8 @@ class CompaniesResource(SyncAPIResource):
           country: ISO 2-letter Country Code (e.g., NL, US)
 
           duns_number: 9-digit Dun And Bradstreet Number (can be multiple)
+
+          is_listed: Filter on publicly listed companies (has a `ticker_symbol`)
 
           next_key: A cursor value used for pagination. Include the `next_key` value from your
               previous request to retrieve the subsequent page of results. If this value is
@@ -497,6 +500,7 @@ class CompaniesResource(SyncAPIResource):
                     {
                         "country": country,
                         "duns_number": duns_number,
+                        "is_listed": is_listed,
                         "next_key": next_key,
                         "portfolio_id": portfolio_id,
                         "query": query,
@@ -1606,6 +1610,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         *,
         country: SequenceNotStr[str] | Omit = omit,
         duns_number: SequenceNotStr[str] | Omit = omit,
+        is_listed: bool | Omit = omit,
         next_key: str | Omit = omit,
         portfolio_id: SequenceNotStr[str] | Omit = omit,
         query: str | Omit = omit,
@@ -1636,6 +1641,8 @@ class AsyncCompaniesResource(AsyncAPIResource):
           country: ISO 2-letter Country Code (e.g., NL, US)
 
           duns_number: 9-digit Dun And Bradstreet Number (can be multiple)
+
+          is_listed: Filter on publicly listed companies (has a `ticker_symbol`)
 
           next_key: A cursor value used for pagination. Include the `next_key` value from your
               previous request to retrieve the subsequent page of results. If this value is
@@ -1669,6 +1676,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
                     {
                         "country": country,
                         "duns_number": duns_number,
+                        "is_listed": is_listed,
                         "next_key": next_key,
                         "portfolio_id": portfolio_id,
                         "query": query,
