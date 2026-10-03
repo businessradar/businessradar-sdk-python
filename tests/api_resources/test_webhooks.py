@@ -192,6 +192,7 @@ class TestWebhooks:
     def test_method_list_with_all_params(self, client: BusinessRadar) -> None:
         webhook = client.webhooks.list(
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(SyncNextKey[Webhook], webhook, path=["response"])
 
@@ -564,6 +565,7 @@ class TestAsyncWebhooks:
     async def test_method_list_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         webhook = await async_client.webhooks.list(
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(AsyncNextKey[Webhook], webhook, path=["response"])
 

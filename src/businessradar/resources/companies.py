@@ -436,6 +436,7 @@ class CompaniesResource(SyncAPIResource):
         duns_number: SequenceNotStr[str] | Omit = omit,
         is_listed: bool | Omit = omit,
         next_key: str | Omit = omit,
+        page_size: int | Omit = omit,
         portfolio_id: SequenceNotStr[str] | Omit = omit,
         query: str | Omit = omit,
         registration_number: SequenceNotStr[str] | Omit = omit,
@@ -452,14 +453,25 @@ class CompaniesResource(SyncAPIResource):
 
         Search for companies across internal and external databases.
 
-        - If `query` and an optional `country` are provided, the search is primarily
-          conducted via Dun & Bradstreet.
+        - A nonempty `query` with at most one `country` uses Dun & Bradstreet unless a
+          website domain or additional filters require internal search.
 
-        - If other filters (like `portfolio_id`) are provided, the search is limited to
-          our internal database.
+        - A resolved website domain, multiple countries, no query, or additional filters
+          (like `portfolio_id`) select internal search. `registration_number`,
+          `include_annotations`, `page_size`, and `next_key` do not change routing.
 
         The results include an `external_id` if the company is already registered in
         Business Radar.
+
+        `page_size` defaults to 50 and accepts integers from 1 through 100; invalid
+        sizes or filters raise `ValidationError` (400). Internal results support
+        `next_key` continuation; undecodable cursors raise `ValidationError`. Dun &
+        Bradstreet requests are capped at 50, ignore `next_key`, and return a null
+        cursor with `total_results` equal to the returned result count.
+
+        Dun & Bradstreet 404 responses become empty results. Its throttling,
+        invalid-input, and connection exceptions propagate, as do internal search
+        errors. Website parsing failures fall back to the supplied URL unchanged.
 
         Args:
           country: ISO 2-letter Country Code (e.g., NL, US)
@@ -471,6 +483,10 @@ class CompaniesResource(SyncAPIResource):
           next_key: A cursor value used for pagination. Include the `next_key` value from your
               previous request to retrieve the subsequent page of results. If this value is
               `null`, the first page of results is returned.
+
+          page_size: Number of results per page. Default 50, max 100. Dun & Bradstreet results (no
+              other filters besides `query`/`country`) are capped at 50 and do not support
+              continuation.
 
           portfolio_id: Filter companies belonging to specific Portfolio IDs (UUID)
 
@@ -502,6 +518,7 @@ class CompaniesResource(SyncAPIResource):
                         "duns_number": duns_number,
                         "is_listed": is_listed,
                         "next_key": next_key,
+                        "page_size": page_size,
                         "portfolio_id": portfolio_id,
                         "query": query,
                         "registration_number": registration_number,
@@ -928,6 +945,7 @@ class CompaniesResource(SyncAPIResource):
         max_created_at: Union[str, datetime] | Omit = omit,
         min_created_at: Union[str, datetime] | Omit = omit,
         next_key: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -951,6 +969,8 @@ class CompaniesResource(SyncAPIResource):
               previous request to retrieve the subsequent page of results. If this value is
               `null`, the first page of results is returned.
 
+          page_size: Number of results per page. Default 50, max 100.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -972,6 +992,7 @@ class CompaniesResource(SyncAPIResource):
                         "max_created_at": max_created_at,
                         "min_created_at": min_created_at,
                         "next_key": next_key,
+                        "page_size": page_size,
                     },
                     company_list_attribute_changes_params.CompanyListAttributeChangesParams,
                 ),
@@ -983,6 +1004,7 @@ class CompaniesResource(SyncAPIResource):
         self,
         *,
         next_key: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1001,6 +1023,8 @@ class CompaniesResource(SyncAPIResource):
               previous request to retrieve the subsequent page of results. If this value is
               `null`, the first page of results is returned.
 
+          page_size: Number of results per page. Default 50, max 100.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1018,7 +1042,10 @@ class CompaniesResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"next_key": next_key},
+                    {
+                        "next_key": next_key,
+                        "page_size": page_size,
+                    },
                     company_list_missing_company_investigations_params.CompanyListMissingCompanyInvestigationsParams,
                 ),
             ),
@@ -1612,6 +1639,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         duns_number: SequenceNotStr[str] | Omit = omit,
         is_listed: bool | Omit = omit,
         next_key: str | Omit = omit,
+        page_size: int | Omit = omit,
         portfolio_id: SequenceNotStr[str] | Omit = omit,
         query: str | Omit = omit,
         registration_number: SequenceNotStr[str] | Omit = omit,
@@ -1628,14 +1656,25 @@ class AsyncCompaniesResource(AsyncAPIResource):
 
         Search for companies across internal and external databases.
 
-        - If `query` and an optional `country` are provided, the search is primarily
-          conducted via Dun & Bradstreet.
+        - A nonempty `query` with at most one `country` uses Dun & Bradstreet unless a
+          website domain or additional filters require internal search.
 
-        - If other filters (like `portfolio_id`) are provided, the search is limited to
-          our internal database.
+        - A resolved website domain, multiple countries, no query, or additional filters
+          (like `portfolio_id`) select internal search. `registration_number`,
+          `include_annotations`, `page_size`, and `next_key` do not change routing.
 
         The results include an `external_id` if the company is already registered in
         Business Radar.
+
+        `page_size` defaults to 50 and accepts integers from 1 through 100; invalid
+        sizes or filters raise `ValidationError` (400). Internal results support
+        `next_key` continuation; undecodable cursors raise `ValidationError`. Dun &
+        Bradstreet requests are capped at 50, ignore `next_key`, and return a null
+        cursor with `total_results` equal to the returned result count.
+
+        Dun & Bradstreet 404 responses become empty results. Its throttling,
+        invalid-input, and connection exceptions propagate, as do internal search
+        errors. Website parsing failures fall back to the supplied URL unchanged.
 
         Args:
           country: ISO 2-letter Country Code (e.g., NL, US)
@@ -1647,6 +1686,10 @@ class AsyncCompaniesResource(AsyncAPIResource):
           next_key: A cursor value used for pagination. Include the `next_key` value from your
               previous request to retrieve the subsequent page of results. If this value is
               `null`, the first page of results is returned.
+
+          page_size: Number of results per page. Default 50, max 100. Dun & Bradstreet results (no
+              other filters besides `query`/`country`) are capped at 50 and do not support
+              continuation.
 
           portfolio_id: Filter companies belonging to specific Portfolio IDs (UUID)
 
@@ -1678,6 +1721,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
                         "duns_number": duns_number,
                         "is_listed": is_listed,
                         "next_key": next_key,
+                        "page_size": page_size,
                         "portfolio_id": portfolio_id,
                         "query": query,
                         "registration_number": registration_number,
@@ -2104,6 +2148,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         max_created_at: Union[str, datetime] | Omit = omit,
         min_created_at: Union[str, datetime] | Omit = omit,
         next_key: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2127,6 +2172,8 @@ class AsyncCompaniesResource(AsyncAPIResource):
               previous request to retrieve the subsequent page of results. If this value is
               `null`, the first page of results is returned.
 
+          page_size: Number of results per page. Default 50, max 100.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -2148,6 +2195,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
                         "max_created_at": max_created_at,
                         "min_created_at": min_created_at,
                         "next_key": next_key,
+                        "page_size": page_size,
                     },
                     company_list_attribute_changes_params.CompanyListAttributeChangesParams,
                 ),
@@ -2159,6 +2207,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         self,
         *,
         next_key: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2179,6 +2228,8 @@ class AsyncCompaniesResource(AsyncAPIResource):
               previous request to retrieve the subsequent page of results. If this value is
               `null`, the first page of results is returned.
 
+          page_size: Number of results per page. Default 50, max 100.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -2196,7 +2247,10 @@ class AsyncCompaniesResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"next_key": next_key},
+                    {
+                        "next_key": next_key,
+                        "page_size": page_size,
+                    },
                     company_list_missing_company_investigations_params.CompanyListMissingCompanyInvestigationsParams,
                 ),
             ),

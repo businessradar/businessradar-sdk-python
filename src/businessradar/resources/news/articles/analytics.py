@@ -62,6 +62,7 @@ class AnalyticsResource(SyncAPIResource):
         max_publication_date: Union[str, datetime] | Omit = omit,
         min_creation_date: Union[str, datetime] | Omit = omit,
         min_publication_date: Union[str, datetime] | Omit = omit,
+        page_size: int | Omit = omit,
         portfolio_id: SequenceNotStr[str] | Omit = omit,
         query: str | Omit = omit,
         registration_number: SequenceNotStr[str] | Omit = omit,
@@ -109,6 +110,8 @@ class AnalyticsResource(SyncAPIResource):
 
           min_publication_date: Filter articles published at or after this date/time.
 
+          page_size: Number of results per page. Default 30, max 100.
+
           portfolio_id: Filter articles related to companies in specific Portfolios (UUIDs).
 
           query: Full-text search query for filtering articles by content.
@@ -150,6 +153,7 @@ class AnalyticsResource(SyncAPIResource):
                         "max_publication_date": max_publication_date,
                         "min_creation_date": min_creation_date,
                         "min_publication_date": min_publication_date,
+                        "page_size": page_size,
                         "portfolio_id": portfolio_id,
                         "query": query,
                         "registration_number": registration_number,
@@ -200,6 +204,7 @@ class AsyncAnalyticsResource(AsyncAPIResource):
         max_publication_date: Union[str, datetime] | Omit = omit,
         min_creation_date: Union[str, datetime] | Omit = omit,
         min_publication_date: Union[str, datetime] | Omit = omit,
+        page_size: int | Omit = omit,
         portfolio_id: SequenceNotStr[str] | Omit = omit,
         query: str | Omit = omit,
         registration_number: SequenceNotStr[str] | Omit = omit,
@@ -247,6 +252,8 @@ class AsyncAnalyticsResource(AsyncAPIResource):
 
           min_publication_date: Filter articles published at or after this date/time.
 
+          page_size: Number of results per page. Default 30, max 100.
+
           portfolio_id: Filter articles related to companies in specific Portfolios (UUIDs).
 
           query: Full-text search query for filtering articles by content.
@@ -288,6 +295,7 @@ class AsyncAnalyticsResource(AsyncAPIResource):
                         "max_publication_date": max_publication_date,
                         "min_creation_date": min_creation_date,
                         "min_publication_date": min_publication_date,
+                        "page_size": page_size,
                         "portfolio_id": portfolio_id,
                         "query": query,
                         "registration_number": registration_number,

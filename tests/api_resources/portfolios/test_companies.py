@@ -90,6 +90,7 @@ class TestCompanies:
         company = client.portfolios.companies.list(
             portfolio_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(SyncNextKey[CompanyListResponse], company, path=["response"])
 
@@ -256,6 +257,7 @@ class TestAsyncCompanies:
         company = await async_client.portfolios.companies.list(
             portfolio_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(AsyncNextKey[CompanyListResponse], company, path=["response"])
 

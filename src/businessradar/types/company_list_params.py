@@ -27,6 +27,13 @@ class CompanyListParams(TypedDict, total=False):
     is returned.
     """
 
+    page_size: int
+    """Number of results per page.
+
+    Default 50, max 100. Dun & Bradstreet results (no other filters besides
+    `query`/`country`) are capped at 50 and do not support continuation.
+    """
+
     portfolio_id: SequenceNotStr[str]
     """Filter companies belonging to specific Portfolio IDs (UUID)"""
 

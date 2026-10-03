@@ -33,6 +33,9 @@ class ComplianceListResultsParams(TypedDict, total=False):
     order: Literal["asc", "desc"]
     """Sorting order"""
 
+    page_size: int
+    """Number of results per page. Default 50, max 100."""
+
     result_type: Literal["adverse_media", "enforcement", "govt_owned", "pep", "sanction"]
     """Filter by result type"""
 

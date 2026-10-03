@@ -38,6 +38,9 @@ class ComplianceListParams(TypedDict, total=False):
     order: Literal["asc", "desc"]
     """Sorting order."""
 
+    page_size: int
+    """Number of results per page. Default 50, max 100."""
+
     results_changed_at_gte: Annotated[
         Union[str, datetime], PropertyInfo(alias="results_changed_at__gte", format="iso8601")
     ]
