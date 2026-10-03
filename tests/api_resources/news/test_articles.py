@@ -48,6 +48,7 @@ class TestArticles:
             min_creation_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             min_publication_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             next_key="next_key",
+            page_size=0,
             portfolio_id=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
             query="query",
             registration_number=["string"],
@@ -136,6 +137,7 @@ class TestArticles:
     def test_method_list_saved_article_filters_with_all_params(self, client: BusinessRadar) -> None:
         article = client.news.articles.list_saved_article_filters(
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(SyncNextKey[ArticleListSavedArticleFiltersResponse], article, path=["response"])
 
@@ -233,6 +235,7 @@ class TestAsyncArticles:
             min_creation_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             min_publication_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             next_key="next_key",
+            page_size=0,
             portfolio_id=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
             query="query",
             registration_number=["string"],
@@ -321,6 +324,7 @@ class TestAsyncArticles:
     async def test_method_list_saved_article_filters_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         article = await async_client.news.articles.list_saved_article_filters(
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(AsyncNextKey[ArticleListSavedArticleFiltersResponse], article, path=["response"])
 

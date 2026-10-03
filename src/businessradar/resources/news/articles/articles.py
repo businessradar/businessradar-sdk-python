@@ -94,6 +94,7 @@ class ArticlesResource(SyncAPIResource):
         min_creation_date: Union[str, datetime] | Omit = omit,
         min_publication_date: Union[str, datetime] | Omit = omit,
         next_key: str | Omit = omit,
+        page_size: int | Omit = omit,
         portfolio_id: SequenceNotStr[str] | Omit = omit,
         query: str | Omit = omit,
         registration_number: SequenceNotStr[str] | Omit = omit,
@@ -121,6 +122,15 @@ class ArticlesResource(SyncAPIResource):
 
         Retrieve articles matching the specified search criteria. Advanced queries and
         incremental checks (using publication/creation dates) are supported.
+
+        Return `results`, `total_results`, and a `next_key` for continuation.
+        `page_size` defaults to 30 and accepts integers from 1 through 100. Invalid page
+        sizes, filters, or undecodable cursors raise `ValidationError` (400).
+        Company-specific filters also enforce available company credits, raising
+        `CreditsExhausted` (403) when blocked.
+
+        Query parse and tokenizer errors from OpenSearch become
+        `InvalidArticleFiltersError` (400); other search errors propagate.
 
         Args:
           category: Filter by article Category IDs (UUIDs).
@@ -153,6 +163,8 @@ class ArticlesResource(SyncAPIResource):
           next_key: A cursor value used for pagination. Include the `next_key` value from your
               previous request to retrieve the subsequent page of results. If this value is
               `null`, the first page of results is returned.
+
+          page_size: Number of results per page. Default 30, max 100.
 
           portfolio_id: Filter articles related to companies in specific Portfolios (UUIDs).
 
@@ -203,6 +215,7 @@ class ArticlesResource(SyncAPIResource):
                         "min_creation_date": min_creation_date,
                         "min_publication_date": min_publication_date,
                         "next_key": next_key,
+                        "page_size": page_size,
                         "portfolio_id": portfolio_id,
                         "query": query,
                         "registration_number": registration_number,
@@ -272,6 +285,7 @@ class ArticlesResource(SyncAPIResource):
         self,
         *,
         next_key: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -291,6 +305,8 @@ class ArticlesResource(SyncAPIResource):
               previous request to retrieve the subsequent page of results. If this value is
               `null`, the first page of results is returned.
 
+          page_size: Number of results per page. Default 50, max 100.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -308,7 +324,10 @@ class ArticlesResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"next_key": next_key},
+                    {
+                        "next_key": next_key,
+                        "page_size": page_size,
+                    },
                     article_list_saved_article_filters_params.ArticleListSavedArticleFiltersParams,
                 ),
             ),
@@ -397,6 +416,7 @@ class AsyncArticlesResource(AsyncAPIResource):
         min_creation_date: Union[str, datetime] | Omit = omit,
         min_publication_date: Union[str, datetime] | Omit = omit,
         next_key: str | Omit = omit,
+        page_size: int | Omit = omit,
         portfolio_id: SequenceNotStr[str] | Omit = omit,
         query: str | Omit = omit,
         registration_number: SequenceNotStr[str] | Omit = omit,
@@ -424,6 +444,15 @@ class AsyncArticlesResource(AsyncAPIResource):
 
         Retrieve articles matching the specified search criteria. Advanced queries and
         incremental checks (using publication/creation dates) are supported.
+
+        Return `results`, `total_results`, and a `next_key` for continuation.
+        `page_size` defaults to 30 and accepts integers from 1 through 100. Invalid page
+        sizes, filters, or undecodable cursors raise `ValidationError` (400).
+        Company-specific filters also enforce available company credits, raising
+        `CreditsExhausted` (403) when blocked.
+
+        Query parse and tokenizer errors from OpenSearch become
+        `InvalidArticleFiltersError` (400); other search errors propagate.
 
         Args:
           category: Filter by article Category IDs (UUIDs).
@@ -456,6 +485,8 @@ class AsyncArticlesResource(AsyncAPIResource):
           next_key: A cursor value used for pagination. Include the `next_key` value from your
               previous request to retrieve the subsequent page of results. If this value is
               `null`, the first page of results is returned.
+
+          page_size: Number of results per page. Default 30, max 100.
 
           portfolio_id: Filter articles related to companies in specific Portfolios (UUIDs).
 
@@ -506,6 +537,7 @@ class AsyncArticlesResource(AsyncAPIResource):
                         "min_creation_date": min_creation_date,
                         "min_publication_date": min_publication_date,
                         "next_key": next_key,
+                        "page_size": page_size,
                         "portfolio_id": portfolio_id,
                         "query": query,
                         "registration_number": registration_number,
@@ -575,6 +607,7 @@ class AsyncArticlesResource(AsyncAPIResource):
         self,
         *,
         next_key: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -594,6 +627,8 @@ class AsyncArticlesResource(AsyncAPIResource):
               previous request to retrieve the subsequent page of results. If this value is
               `null`, the first page of results is returned.
 
+          page_size: Number of results per page. Default 50, max 100.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -611,7 +646,10 @@ class AsyncArticlesResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"next_key": next_key},
+                    {
+                        "next_key": next_key,
+                        "page_size": page_size,
+                    },
                     article_list_saved_article_filters_params.ArticleListSavedArticleFiltersParams,
                 ),
             ),

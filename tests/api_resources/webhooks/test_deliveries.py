@@ -32,6 +32,7 @@ class TestDeliveries:
         delivery = client.webhooks.deliveries.list(
             webhook_external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(SyncNextKey[WebhookDelivery], delivery, path=["response"])
 
@@ -140,6 +141,7 @@ class TestAsyncDeliveries:
         delivery = await async_client.webhooks.deliveries.list(
             webhook_external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(AsyncNextKey[WebhookDelivery], delivery, path=["response"])
 

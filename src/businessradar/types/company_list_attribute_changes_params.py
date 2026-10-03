@@ -25,3 +25,6 @@ class CompanyListAttributeChangesParams(TypedDict, total=False):
     subsequent page of results. If this value is `null`, the first page of results
     is returned.
     """
+
+    page_size: int
+    """Number of results per page. Default 50, max 100."""

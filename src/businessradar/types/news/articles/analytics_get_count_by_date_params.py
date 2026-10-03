@@ -58,6 +58,9 @@ class AnalyticsGetCountByDateParams(TypedDict, total=False):
     min_publication_date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """Filter articles published at or after this date/time."""
 
+    page_size: int
+    """Number of results per page. Default 30, max 100."""
+
     portfolio_id: SequenceNotStr[str]
     """Filter articles related to companies in specific Portfolios (UUIDs)."""
 

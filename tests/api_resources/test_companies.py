@@ -127,6 +127,7 @@ class TestCompanies:
             duns_number=["string"],
             is_listed=True,
             next_key="next_key",
+            page_size=0,
             portfolio_id=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
             query="query",
             registration_number=["string"],
@@ -275,6 +276,7 @@ class TestCompanies:
             max_created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             min_created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(SyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
 
@@ -311,6 +313,7 @@ class TestCompanies:
     def test_method_list_missing_company_investigations_with_all_params(self, client: BusinessRadar) -> None:
         company = client.companies.list_missing_company_investigations(
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(SyncNextKey[CompanyListMissingCompanyInvestigationsResponse], company, path=["response"])
 
@@ -577,6 +580,7 @@ class TestAsyncCompanies:
             duns_number=["string"],
             is_listed=True,
             next_key="next_key",
+            page_size=0,
             portfolio_id=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
             query="query",
             registration_number=["string"],
@@ -729,6 +733,7 @@ class TestAsyncCompanies:
             max_created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             min_created_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(AsyncNextKey[CompanyListAttributeChangesResponse], company, path=["response"])
 
@@ -767,6 +772,7 @@ class TestAsyncCompanies:
     ) -> None:
         company = await async_client.companies.list_missing_company_investigations(
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(AsyncNextKey[CompanyListMissingCompanyInvestigationsResponse], company, path=["response"])
 

@@ -73,6 +73,7 @@ class TestPortfolios:
     def test_method_list_with_all_params(self, client: BusinessRadar) -> None:
         portfolio = client.portfolios.list(
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(SyncNextKey[Portfolio], portfolio, path=["response"])
 
@@ -159,6 +160,7 @@ class TestAsyncPortfolios:
     async def test_method_list_with_all_params(self, async_client: AsyncBusinessRadar) -> None:
         portfolio = await async_client.portfolios.list(
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(AsyncNextKey[Portfolio], portfolio, path=["response"])
 

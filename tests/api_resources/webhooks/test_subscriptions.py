@@ -88,6 +88,7 @@ class TestSubscriptions:
         subscription = client.webhooks.subscriptions.list(
             webhook_external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(SyncNextKey[WebhookSubscription], subscription, path=["response"])
 
@@ -255,6 +256,7 @@ class TestAsyncSubscriptions:
         subscription = await async_client.webhooks.subscriptions.list(
             webhook_external_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             next_key="next_key",
+            page_size=0,
         )
         assert_matches_type(AsyncNextKey[WebhookSubscription], subscription, path=["response"])
 

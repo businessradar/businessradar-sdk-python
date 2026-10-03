@@ -178,6 +178,7 @@ class ComplianceResource(SyncAPIResource):
         created_at_lte: Union[str, datetime] | Omit = omit,
         next_key: str | Omit = omit,
         order: Literal["asc", "desc"] | Omit = omit,
+        page_size: int | Omit = omit,
         results_changed_at_gte: Union[str, datetime] | Omit = omit,
         results_changed_at_lte: Union[str, datetime] | Omit = omit,
         sanction_monitoring_enabled: bool | Omit = omit,
@@ -224,6 +225,8 @@ class ComplianceResource(SyncAPIResource):
 
           order: Sorting order.
 
+          page_size: Number of results per page. Default 50, max 100.
+
           results_changed_at_gte: Filter checks with results changed at or after this time.
 
           results_changed_at_lte: Filter checks with results changed at or before this time.
@@ -259,6 +262,7 @@ class ComplianceResource(SyncAPIResource):
                         "created_at_lte": created_at_lte,
                         "next_key": next_key,
                         "order": order,
+                        "page_size": page_size,
                         "results_changed_at_gte": results_changed_at_gte,
                         "results_changed_at_lte": results_changed_at_lte,
                         "sanction_monitoring_enabled": sanction_monitoring_enabled,
@@ -280,6 +284,7 @@ class ComplianceResource(SyncAPIResource):
         min_confidence: float | Omit = omit,
         next_key: str | Omit = omit,
         order: Literal["asc", "desc"] | Omit = omit,
+        page_size: int | Omit = omit,
         result_type: Literal["adverse_media", "enforcement", "govt_owned", "pep", "sanction"] | Omit = omit,
         sorting: Literal["confidence", "created_at", "source_date"] | Omit = omit,
         source_type: Literal["enforcement", "icij", "news"] | Omit = omit,
@@ -313,6 +318,8 @@ class ComplianceResource(SyncAPIResource):
 
           order: Sorting order
 
+          page_size: Number of results per page. Default 50, max 100.
+
           result_type: Filter by result type
 
           sorting: Sorting field
@@ -344,6 +351,7 @@ class ComplianceResource(SyncAPIResource):
                         "min_confidence": min_confidence,
                         "next_key": next_key,
                         "order": order,
+                        "page_size": page_size,
                         "result_type": result_type,
                         "sorting": sorting,
                         "source_type": source_type,
@@ -504,6 +512,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         created_at_lte: Union[str, datetime] | Omit = omit,
         next_key: str | Omit = omit,
         order: Literal["asc", "desc"] | Omit = omit,
+        page_size: int | Omit = omit,
         results_changed_at_gte: Union[str, datetime] | Omit = omit,
         results_changed_at_lte: Union[str, datetime] | Omit = omit,
         sanction_monitoring_enabled: bool | Omit = omit,
@@ -550,6 +559,8 @@ class AsyncComplianceResource(AsyncAPIResource):
 
           order: Sorting order.
 
+          page_size: Number of results per page. Default 50, max 100.
+
           results_changed_at_gte: Filter checks with results changed at or after this time.
 
           results_changed_at_lte: Filter checks with results changed at or before this time.
@@ -585,6 +596,7 @@ class AsyncComplianceResource(AsyncAPIResource):
                         "created_at_lte": created_at_lte,
                         "next_key": next_key,
                         "order": order,
+                        "page_size": page_size,
                         "results_changed_at_gte": results_changed_at_gte,
                         "results_changed_at_lte": results_changed_at_lte,
                         "sanction_monitoring_enabled": sanction_monitoring_enabled,
@@ -606,6 +618,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         min_confidence: float | Omit = omit,
         next_key: str | Omit = omit,
         order: Literal["asc", "desc"] | Omit = omit,
+        page_size: int | Omit = omit,
         result_type: Literal["adverse_media", "enforcement", "govt_owned", "pep", "sanction"] | Omit = omit,
         sorting: Literal["confidence", "created_at", "source_date"] | Omit = omit,
         source_type: Literal["enforcement", "icij", "news"] | Omit = omit,
@@ -639,6 +652,8 @@ class AsyncComplianceResource(AsyncAPIResource):
 
           order: Sorting order
 
+          page_size: Number of results per page. Default 50, max 100.
+
           result_type: Filter by result type
 
           sorting: Sorting field
@@ -670,6 +685,7 @@ class AsyncComplianceResource(AsyncAPIResource):
                         "min_confidence": min_confidence,
                         "next_key": next_key,
                         "order": order,
+                        "page_size": page_size,
                         "result_type": result_type,
                         "sorting": sorting,
                         "source_type": source_type,
