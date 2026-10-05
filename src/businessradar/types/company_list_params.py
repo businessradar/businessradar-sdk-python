@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from datetime import datetime
+from typing_extensions import Annotated, TypedDict
 
 from .._types import SequenceNotStr
+from .._utils import PropertyInfo
 
 __all__ = ["CompanyListParams"]
 
@@ -18,6 +21,34 @@ class CompanyListParams(TypedDict, total=False):
 
     is_listed: bool
     """Filter on publicly listed companies (has a `ticker_symbol`)"""
+
+    max_created_at: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """Companies added at or before this time (inclusive).
+
+    ISO 8601, UTC when no offset is given, millisecond precision. Cannot be combined
+    with `query`.
+    """
+
+    max_updated_at: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """Companies updated at or before this time (inclusive).
+
+    ISO 8601, UTC when no offset is given, millisecond precision. Cannot be combined
+    with `query`.
+    """
+
+    min_created_at: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """Companies added at or after this time (inclusive).
+
+    ISO 8601, UTC when no offset is given, millisecond precision. Cannot be combined
+    with `query`.
+    """
+
+    min_updated_at: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """Companies updated at or after this time (inclusive).
+
+    ISO 8601, UTC when no offset is given, millisecond precision. Cannot be combined
+    with `query`.
+    """
 
     next_key: str
     """A cursor value used for pagination.

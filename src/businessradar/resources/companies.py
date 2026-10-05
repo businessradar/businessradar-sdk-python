@@ -435,6 +435,10 @@ class CompaniesResource(SyncAPIResource):
         country: SequenceNotStr[str] | Omit = omit,
         duns_number: SequenceNotStr[str] | Omit = omit,
         is_listed: bool | Omit = omit,
+        max_created_at: Union[str, datetime] | Omit = omit,
+        max_updated_at: Union[str, datetime] | Omit = omit,
+        min_created_at: Union[str, datetime] | Omit = omit,
+        min_updated_at: Union[str, datetime] | Omit = omit,
         next_key: str | Omit = omit,
         page_size: int | Omit = omit,
         portfolio_id: SequenceNotStr[str] | Omit = omit,
@@ -473,12 +477,29 @@ class CompaniesResource(SyncAPIResource):
         invalid-input, and connection exceptions propagate, as do internal search
         errors. Website parsing failures fall back to the supplied URL unchanged.
 
+        `min_created_at`, `max_created_at`, `min_updated_at` and `max_updated_at` filter
+        on when a company was added or last updated (inclusive, ISO 8601, UTC). They use
+        internal search, sort results by that timestamp, and cannot be combined with
+        `query`.
+
         Args:
           country: ISO 2-letter Country Code (e.g., NL, US)
 
           duns_number: 9-digit Dun And Bradstreet Number (can be multiple)
 
           is_listed: Filter on publicly listed companies (has a `ticker_symbol`)
+
+          max_created_at: Companies added at or before this time (inclusive). ISO 8601, UTC when no offset
+              is given, millisecond precision. Cannot be combined with `query`.
+
+          max_updated_at: Companies updated at or before this time (inclusive). ISO 8601, UTC when no
+              offset is given, millisecond precision. Cannot be combined with `query`.
+
+          min_created_at: Companies added at or after this time (inclusive). ISO 8601, UTC when no offset
+              is given, millisecond precision. Cannot be combined with `query`.
+
+          min_updated_at: Companies updated at or after this time (inclusive). ISO 8601, UTC when no
+              offset is given, millisecond precision. Cannot be combined with `query`.
 
           next_key: A cursor value used for pagination. Include the `next_key` value from your
               previous request to retrieve the subsequent page of results. If this value is
@@ -517,6 +538,10 @@ class CompaniesResource(SyncAPIResource):
                         "country": country,
                         "duns_number": duns_number,
                         "is_listed": is_listed,
+                        "max_created_at": max_created_at,
+                        "max_updated_at": max_updated_at,
+                        "min_created_at": min_created_at,
+                        "min_updated_at": min_updated_at,
                         "next_key": next_key,
                         "page_size": page_size,
                         "portfolio_id": portfolio_id,
@@ -1638,6 +1663,10 @@ class AsyncCompaniesResource(AsyncAPIResource):
         country: SequenceNotStr[str] | Omit = omit,
         duns_number: SequenceNotStr[str] | Omit = omit,
         is_listed: bool | Omit = omit,
+        max_created_at: Union[str, datetime] | Omit = omit,
+        max_updated_at: Union[str, datetime] | Omit = omit,
+        min_created_at: Union[str, datetime] | Omit = omit,
+        min_updated_at: Union[str, datetime] | Omit = omit,
         next_key: str | Omit = omit,
         page_size: int | Omit = omit,
         portfolio_id: SequenceNotStr[str] | Omit = omit,
@@ -1676,12 +1705,29 @@ class AsyncCompaniesResource(AsyncAPIResource):
         invalid-input, and connection exceptions propagate, as do internal search
         errors. Website parsing failures fall back to the supplied URL unchanged.
 
+        `min_created_at`, `max_created_at`, `min_updated_at` and `max_updated_at` filter
+        on when a company was added or last updated (inclusive, ISO 8601, UTC). They use
+        internal search, sort results by that timestamp, and cannot be combined with
+        `query`.
+
         Args:
           country: ISO 2-letter Country Code (e.g., NL, US)
 
           duns_number: 9-digit Dun And Bradstreet Number (can be multiple)
 
           is_listed: Filter on publicly listed companies (has a `ticker_symbol`)
+
+          max_created_at: Companies added at or before this time (inclusive). ISO 8601, UTC when no offset
+              is given, millisecond precision. Cannot be combined with `query`.
+
+          max_updated_at: Companies updated at or before this time (inclusive). ISO 8601, UTC when no
+              offset is given, millisecond precision. Cannot be combined with `query`.
+
+          min_created_at: Companies added at or after this time (inclusive). ISO 8601, UTC when no offset
+              is given, millisecond precision. Cannot be combined with `query`.
+
+          min_updated_at: Companies updated at or after this time (inclusive). ISO 8601, UTC when no
+              offset is given, millisecond precision. Cannot be combined with `query`.
 
           next_key: A cursor value used for pagination. Include the `next_key` value from your
               previous request to retrieve the subsequent page of results. If this value is
@@ -1720,6 +1766,10 @@ class AsyncCompaniesResource(AsyncAPIResource):
                         "country": country,
                         "duns_number": duns_number,
                         "is_listed": is_listed,
+                        "max_created_at": max_created_at,
+                        "max_updated_at": max_updated_at,
+                        "min_created_at": min_created_at,
+                        "min_updated_at": min_updated_at,
                         "next_key": next_key,
                         "page_size": page_size,
                         "portfolio_id": portfolio_id,
