@@ -1,5 +1,51 @@
 # Changelog
 
+## [1.27.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.26.0...v1.27.0) (2026-10-03)
+
+
+### Features
+
+* sync API from production ([#56](https://github.com/businessradar/businessradar-sdk-python/issues/56)) ([8111e08](https://github.com/businessradar/businessradar-sdk-python/commit/8111e0801c0fb59e07a47d54f5c2835d1c268a1b))
+* sync API from production ([#58](https://github.com/businessradar/businessradar-sdk-python/issues/58)) ([e450955](https://github.com/businessradar/businessradar-sdk-python/commit/e4509559240f01df1204aa5e8a6c10c2cd0ddbd7))
+
+## [1.26.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.25.0...v1.26.0) (2026-09-25)
+
+
+### Features
+
+* sync API from production ([#53](https://github.com/businessradar/businessradar-sdk-python/issues/53)) ([8508543](https://github.com/businessradar/businessradar-sdk-python/commit/85085432f7f4eba5bd08b6644c9bd80935ebb619))
+* sync API from production ([#55](https://github.com/businessradar/businessradar-sdk-python/issues/55)) ([c7bb58d](https://github.com/businessradar/businessradar-sdk-python/commit/c7bb58d1f8322c51807ca19ac19d64ec7f4b3319))
+
+## [1.25.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.24.0...v1.25.0) (2026-09-17)
+
+
+### Features
+
+* sync API from production ([#51](https://github.com/businessradar/businessradar-sdk-python/issues/51)) ([d9ae207](https://github.com/businessradar/businessradar-sdk-python/commit/d9ae20745e592cdb8897975e602f3f1cf8a3edbb))
+
+## [1.24.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.23.0...v1.24.0) (2026-09-02)
+
+
+### Features
+
+* sync API from production ([#47](https://github.com/businessradar/businessradar-sdk-python/issues/47)) ([c45e70d](https://github.com/businessradar/businessradar-sdk-python/commit/c45e70d9974782f7796b62beb3fac45c8e6fcdce))
+* sync API from production ([#49](https://github.com/businessradar/businessradar-sdk-python/issues/49)) ([53cf569](https://github.com/businessradar/businessradar-sdk-python/commit/53cf5694b56ce7310e4c5f97a4f33b66c140dd3b))
+* sync API from production ([#50](https://github.com/businessradar/businessradar-sdk-python/issues/50)) ([e2a116a](https://github.com/businessradar/businessradar-sdk-python/commit/e2a116a29e0bc9ee5922cc86faf8ed9136308ea2))
+
+## [1.23.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.22.0...v1.23.0) (2026-07-12)
+
+
+### Features
+
+* sync API from production ([#37](https://github.com/businessradar/businessradar-sdk-python/issues/37)) ([1a3e56e](https://github.com/businessradar/businessradar-sdk-python/commit/1a3e56e3e818db281c7ca5c9872ea9641a252fe1))
+
+## [1.22.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.21.0...v1.22.0) (2026-06-17)
+
+
+### Features
+
+* sync API from production ([#35](https://github.com/businessradar/businessradar-sdk-python/issues/35)) ([b015bb9](https://github.com/businessradar/businessradar-sdk-python/commit/b015bb979842d8f12bb36a9feabbbb4093f9e18e))
+
 ## [1.21.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.20.0...v1.21.0) (2026-06-09)
 
 
