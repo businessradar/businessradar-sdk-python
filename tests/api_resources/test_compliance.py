@@ -41,7 +41,7 @@ class TestCompliance:
                 {
                     "name": "x",
                     "aliases": ["x"],
-                    "country": "xx",
+                    "country": "AF",
                     "date_of_birth": "date_of_birth",
                     "entity_type": "individual",
                     "first_name": "first_name",
@@ -249,7 +249,7 @@ class TestAsyncCompliance:
                 {
                     "name": "x",
                     "aliases": ["x"],
-                    "country": "xx",
+                    "country": "AF",
                     "date_of_birth": "date_of_birth",
                     "entity_type": "individual",
                     "first_name": "first_name",
