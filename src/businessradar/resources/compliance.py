@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable, Optional
+from typing import List, Union, Iterable, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -54,6 +54,7 @@ class ComplianceResource(SyncAPIResource):
         *,
         adverse_media_monitoring_enabled: bool | Omit = omit,
         company_id: Optional[str] | Omit = omit,
+        director_role_groups: Optional[List[Literal["BOARD", "MANAGEMENT", "OFFICER", "OTHER"]]] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
         entities: Iterable[compliance_create_params.Entity] | Omit = omit,
         name: Optional[str] | Omit = omit,
@@ -92,6 +93,10 @@ class ComplianceResource(SyncAPIResource):
               sanction_monitoring_enabled) sets the check's monitoring master switch; per-type
               coverage follows which screenings run.
 
+          director_role_groups: Providing director role groups enables director screening. Null selects all
+              roles; an empty list selects none. Cannot be combined with
+              directors_screening_enabled=false.
+
           directors_screening_enabled: If directors should be screened.
 
           name: Custom name for this compliance check.
@@ -118,6 +123,7 @@ class ComplianceResource(SyncAPIResource):
                 {
                     "adverse_media_monitoring_enabled": adverse_media_monitoring_enabled,
                     "company_id": company_id,
+                    "director_role_groups": director_role_groups,
                     "directors_screening_enabled": directors_screening_enabled,
                     "entities": entities,
                     "name": name,
@@ -388,6 +394,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         *,
         adverse_media_monitoring_enabled: bool | Omit = omit,
         company_id: Optional[str] | Omit = omit,
+        director_role_groups: Optional[List[Literal["BOARD", "MANAGEMENT", "OFFICER", "OTHER"]]] | Omit = omit,
         directors_screening_enabled: bool | Omit = omit,
         entities: Iterable[compliance_create_params.Entity] | Omit = omit,
         name: Optional[str] | Omit = omit,
@@ -426,6 +433,10 @@ class AsyncComplianceResource(AsyncAPIResource):
               sanction_monitoring_enabled) sets the check's monitoring master switch; per-type
               coverage follows which screenings run.
 
+          director_role_groups: Providing director role groups enables director screening. Null selects all
+              roles; an empty list selects none. Cannot be combined with
+              directors_screening_enabled=false.
+
           directors_screening_enabled: If directors should be screened.
 
           name: Custom name for this compliance check.
@@ -452,6 +463,7 @@ class AsyncComplianceResource(AsyncAPIResource):
                 {
                     "adverse_media_monitoring_enabled": adverse_media_monitoring_enabled,
                     "company_id": company_id,
+                    "director_role_groups": director_role_groups,
                     "directors_screening_enabled": directors_screening_enabled,
                     "entities": entities,
                     "name": name,
