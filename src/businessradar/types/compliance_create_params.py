@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import List, Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 from .._types import SequenceNotStr
@@ -19,6 +19,13 @@ class ComplianceCreateParams(TypedDict, total=False):
     """
 
     company_id: Optional[str]
+
+    director_role_groups: Optional[List[Literal["BOARD", "MANAGEMENT", "OFFICER", "OTHER"]]]
+    """Providing director role groups enables director screening.
+
+    Null selects all roles; an empty list selects none. Cannot be combined with
+    directors_screening_enabled=false.
+    """
 
     directors_screening_enabled: bool
     """If directors should be screened."""

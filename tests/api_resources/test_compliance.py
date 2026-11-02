@@ -36,6 +36,7 @@ class TestCompliance:
         compliance = client.compliance.create(
             adverse_media_monitoring_enabled=True,
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            director_role_groups=["BOARD"],
             directors_screening_enabled=True,
             entities=[
                 {
@@ -244,6 +245,7 @@ class TestAsyncCompliance:
         compliance = await async_client.compliance.create(
             adverse_media_monitoring_enabled=True,
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            director_role_groups=["BOARD"],
             directors_screening_enabled=True,
             entities=[
                 {
