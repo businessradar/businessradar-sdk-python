@@ -45,6 +45,7 @@ from ....types.news.article import Article
 from ....types.news.article_create_feedback_response import ArticleCreateFeedbackResponse
 from ....types.news.article_retrieve_related_response import ArticleRetrieveRelatedResponse
 from ....types.news.article_list_saved_article_filters_response import ArticleListSavedArticleFiltersResponse
+from ....types.news.article_retrieve_saved_article_filter_response import ArticleRetrieveSavedArticleFilterResponse
 
 __all__ = ["ArticlesResource", "AsyncArticlesResource"]
 
@@ -370,6 +371,42 @@ class ArticlesResource(SyncAPIResource):
             cast_to=ArticleRetrieveRelatedResponse,
         )
 
+    def retrieve_saved_article_filter(
+        self,
+        external_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ArticleRetrieveSavedArticleFilterResponse:
+        """
+        ### Saved Article Filter
+
+        Retrieve a saved article filter of the current profile, including the filters
+        applied by `saved_article_filter_id` on article search requests.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not external_id:
+            raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
+        return self._get(
+            path_template("/ext/v3/saved_article_filters/{external_id}", external_id=external_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ArticleRetrieveSavedArticleFilterResponse,
+        )
+
 
 class AsyncArticlesResource(AsyncAPIResource):
     @cached_property
@@ -692,6 +729,42 @@ class AsyncArticlesResource(AsyncAPIResource):
             cast_to=ArticleRetrieveRelatedResponse,
         )
 
+    async def retrieve_saved_article_filter(
+        self,
+        external_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ArticleRetrieveSavedArticleFilterResponse:
+        """
+        ### Saved Article Filter
+
+        Retrieve a saved article filter of the current profile, including the filters
+        applied by `saved_article_filter_id` on article search requests.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not external_id:
+            raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
+        return await self._get(
+            path_template("/ext/v3/saved_article_filters/{external_id}", external_id=external_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ArticleRetrieveSavedArticleFilterResponse,
+        )
+
 
 class ArticlesResourceWithRawResponse:
     def __init__(self, articles: ArticlesResource) -> None:
@@ -708,6 +781,9 @@ class ArticlesResourceWithRawResponse:
         )
         self.retrieve_related = to_raw_response_wrapper(
             articles.retrieve_related,
+        )
+        self.retrieve_saved_article_filter = to_raw_response_wrapper(
+            articles.retrieve_saved_article_filter,
         )
 
     @cached_property
@@ -735,6 +811,9 @@ class AsyncArticlesResourceWithRawResponse:
         self.retrieve_related = async_to_raw_response_wrapper(
             articles.retrieve_related,
         )
+        self.retrieve_saved_article_filter = async_to_raw_response_wrapper(
+            articles.retrieve_saved_article_filter,
+        )
 
     @cached_property
     def analytics(self) -> AsyncAnalyticsResourceWithRawResponse:
@@ -761,6 +840,9 @@ class ArticlesResourceWithStreamingResponse:
         self.retrieve_related = to_streamed_response_wrapper(
             articles.retrieve_related,
         )
+        self.retrieve_saved_article_filter = to_streamed_response_wrapper(
+            articles.retrieve_saved_article_filter,
+        )
 
     @cached_property
     def analytics(self) -> AnalyticsResourceWithStreamingResponse:
@@ -786,6 +868,9 @@ class AsyncArticlesResourceWithStreamingResponse:
         )
         self.retrieve_related = async_to_streamed_response_wrapper(
             articles.retrieve_related,
+        )
+        self.retrieve_saved_article_filter = async_to_streamed_response_wrapper(
+            articles.retrieve_saved_article_filter,
         )
 
     @cached_property
