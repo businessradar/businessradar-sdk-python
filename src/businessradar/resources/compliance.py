@@ -287,6 +287,7 @@ class ComplianceResource(SyncAPIResource):
         *,
         entity: str | Omit = omit,
         exclude_automated_false_positives: bool | Omit = omit,
+        is_cluster_head: bool | Omit = omit,
         min_confidence: float | Omit = omit,
         next_key: str | Omit = omit,
         order: Literal["asc", "desc"] | Omit = omit,
@@ -315,6 +316,10 @@ class ComplianceResource(SyncAPIResource):
               running, only AI-validated results are returned, so the result count grows
               monotonically. Set to `false` to get the raw unfiltered set, including results
               that have not been validated yet.
+
+          is_cluster_head: Filter by whether a result is the one representative of its similarity group,
+              plus all ungrouped results. `true` gives a condensed, deduplicated reading view,
+              not a complete screening set — use the unfiltered list for screening.
 
           min_confidence: Filter by minimum confidence score (0.0 - 1.0)
 
@@ -354,6 +359,7 @@ class ComplianceResource(SyncAPIResource):
                     {
                         "entity": entity,
                         "exclude_automated_false_positives": exclude_automated_false_positives,
+                        "is_cluster_head": is_cluster_head,
                         "min_confidence": min_confidence,
                         "next_key": next_key,
                         "order": order,
@@ -627,6 +633,7 @@ class AsyncComplianceResource(AsyncAPIResource):
         *,
         entity: str | Omit = omit,
         exclude_automated_false_positives: bool | Omit = omit,
+        is_cluster_head: bool | Omit = omit,
         min_confidence: float | Omit = omit,
         next_key: str | Omit = omit,
         order: Literal["asc", "desc"] | Omit = omit,
@@ -655,6 +662,10 @@ class AsyncComplianceResource(AsyncAPIResource):
               running, only AI-validated results are returned, so the result count grows
               monotonically. Set to `false` to get the raw unfiltered set, including results
               that have not been validated yet.
+
+          is_cluster_head: Filter by whether a result is the one representative of its similarity group,
+              plus all ungrouped results. `true` gives a condensed, deduplicated reading view,
+              not a complete screening set — use the unfiltered list for screening.
 
           min_confidence: Filter by minimum confidence score (0.0 - 1.0)
 
@@ -694,6 +705,7 @@ class AsyncComplianceResource(AsyncAPIResource):
                     {
                         "entity": entity,
                         "exclude_automated_false_positives": exclude_automated_false_positives,
+                        "is_cluster_head": is_cluster_head,
                         "min_confidence": min_confidence,
                         "next_key": next_key,
                         "order": order,
