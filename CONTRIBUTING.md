@@ -118,4 +118,34 @@ You can release to package managers by using [the `Publish PyPI` GitHub action](
 ### Publish manually
 
 If you need to manually release a package, you can run the `bin/publish-pypi` script with a `PYPI_TOKEN` set on
-the environment.
+the environment. Set `RELEASE_TAG` to the intended existing release tag (for example, `v1.31.1`).
+The publisher refuses branch refs and validates the manifest, runtime version, and built wheel/sdist metadata before uploading.
+For a manual workflow dispatch, select the release tag, not `main`.
+
+### Recovering a release/version mismatch
+
+A GitHub release tag does not change the package version. Promotion PRs must use a
+conventional commit title so Release Please can create the version-bump PR. Merge
+the generated release PR only after reviewing its version changes, then let its
+release trigger publication. Do not create a release directly from a promotion
+commit whose package metadata still contains the previous version.
+
+For the existing `v1.31.0` mismatch, leave that tag unchanged. Prepare a new,
+reviewable Release Please release above `1.31.0` (for example `1.31.1`) through the
+normal staging/promotion path. If a specific recovery version is required, a
+`Release-As: 1.31.1` footer must reach the final production commit that Release
+Please reads. A footer on a staging commit alone is not sufficient: the config
+auto-merger replaces the squash title and clears its body. Arrange the approved
+recovery merge explicitly, or use reviewed Release Please configuration that
+survives promotion. Verify `pyproject.toml`,
+`src/businessradar/_version.py`, `.release-please-manifest.json`, the changelog,
+and the built artifacts all contain the new version before approving release.
+The new release must include the saved-article-filter change from production
+PR #69, since that change never reached PyPI through the failed `v1.31.0` run.
+Do not retry that old run: it builds the old version from the old tag.
+
+Run the publisher's offline regression tests with:
+
+```sh
+python3 -m unittest discover -s scripts -p test_release_version.py
+```

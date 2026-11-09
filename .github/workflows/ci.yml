@@ -53,5 +53,8 @@ jobs:
       - name: Install dependencies
         run: uv sync --all-extras
 
+      - name: Test release validation
+        run: python3 -m unittest discover -s scripts -p "test_release_version.py"
+
       - name: Run build
         run: uv build
