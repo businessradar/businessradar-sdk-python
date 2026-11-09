@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.31.1](https://github.com/businessradar/businessradar-sdk-python/compare/v1.30.0...v1.31.1) (2026-11-09)
+
+
+### Bug Fixes
+
+* guard release versions and recover saved article filter release ([#70](https://github.com/businessradar/businessradar-sdk-python/issues/70)) ([2880bfe](https://github.com/businessradar/businessradar-sdk-python/commit/2880bfe6cf1e9a99faec0ed624fe436517e302c9))
+
 ## [1.30.0](https://github.com/businessradar/businessradar-sdk-python/compare/v1.29.0...v1.30.0) (2026-11-09)
 
 
