@@ -18,6 +18,7 @@ from businessradar.types.news import (
     ArticleCreateFeedbackResponse,
     ArticleListSavedArticleFiltersResponse,
     ArticleRetrieveRelatedResponse,
+    ArticleRetrieveSavedArticleFilterResponse,
 )
 ```
 
@@ -27,6 +28,7 @@ Methods:
 - <code title="post /ext/v3/articles/feedback/">client.news.articles.<a href="./src/businessradar/resources/news/articles/articles.py">create_feedback</a>(\*\*<a href="src/businessradar/types/news/article_create_feedback_params.py">params</a>) -> <a href="./src/businessradar/types/news/article_create_feedback_response.py">ArticleCreateFeedbackResponse</a></code>
 - <code title="get /ext/v3/saved_article_filters">client.news.articles.<a href="./src/businessradar/resources/news/articles/articles.py">list_saved_article_filters</a>(\*\*<a href="src/businessradar/types/news/article_list_saved_article_filters_params.py">params</a>) -> <a href="./src/businessradar/types/news/article_list_saved_article_filters_response.py">SyncNextKey[ArticleListSavedArticleFiltersResponse]</a></code>
 - <code title="get /ext/v3/articles/{article_id}/related/">client.news.articles.<a href="./src/businessradar/resources/news/articles/articles.py">retrieve_related</a>(article_id) -> <a href="./src/businessradar/types/news/article_retrieve_related_response.py">ArticleRetrieveRelatedResponse</a></code>
+- <code title="get /ext/v3/saved_article_filters/{external_id}">client.news.articles.<a href="./src/businessradar/resources/news/articles/articles.py">retrieve_saved_article_filter</a>(external_id) -> <a href="./src/businessradar/types/news/article_retrieve_saved_article_filter_response.py">ArticleRetrieveSavedArticleFilterResponse</a></code>
 
 ### Analytics
 

@@ -16,6 +16,7 @@ from businessradar.types.news import (
     ArticleCreateFeedbackResponse,
     ArticleRetrieveRelatedResponse,
     ArticleListSavedArticleFiltersResponse,
+    ArticleRetrieveSavedArticleFilterResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -205,6 +206,48 @@ class TestArticles:
                 "",
             )
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_retrieve_saved_article_filter(self, client: BusinessRadar) -> None:
+        article = client.news.articles.retrieve_saved_article_filter(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+        assert_matches_type(ArticleRetrieveSavedArticleFilterResponse, article, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_retrieve_saved_article_filter(self, client: BusinessRadar) -> None:
+        response = client.news.articles.with_raw_response.retrieve_saved_article_filter(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        article = response.parse()
+        assert_matches_type(ArticleRetrieveSavedArticleFilterResponse, article, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_retrieve_saved_article_filter(self, client: BusinessRadar) -> None:
+        with client.news.articles.with_streaming_response.retrieve_saved_article_filter(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            article = response.parse()
+            assert_matches_type(ArticleRetrieveSavedArticleFilterResponse, article, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_retrieve_saved_article_filter(self, client: BusinessRadar) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_id` but received ''"):
+            client.news.articles.with_raw_response.retrieve_saved_article_filter(
+                "",
+            )
+
 
 class TestAsyncArticles:
     parametrize = pytest.mark.parametrize(
@@ -389,5 +432,47 @@ class TestAsyncArticles:
     async def test_path_params_retrieve_related(self, async_client: AsyncBusinessRadar) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `article_id` but received ''"):
             await async_client.news.articles.with_raw_response.retrieve_related(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_retrieve_saved_article_filter(self, async_client: AsyncBusinessRadar) -> None:
+        article = await async_client.news.articles.retrieve_saved_article_filter(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+        assert_matches_type(ArticleRetrieveSavedArticleFilterResponse, article, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_retrieve_saved_article_filter(self, async_client: AsyncBusinessRadar) -> None:
+        response = await async_client.news.articles.with_raw_response.retrieve_saved_article_filter(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        article = await response.parse()
+        assert_matches_type(ArticleRetrieveSavedArticleFilterResponse, article, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_retrieve_saved_article_filter(self, async_client: AsyncBusinessRadar) -> None:
+        async with async_client.news.articles.with_streaming_response.retrieve_saved_article_filter(
+            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            article = await response.parse()
+            assert_matches_type(ArticleRetrieveSavedArticleFilterResponse, article, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_retrieve_saved_article_filter(self, async_client: AsyncBusinessRadar) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_id` but received ''"):
+            await async_client.news.articles.with_raw_response.retrieve_saved_article_filter(
                 "",
             )

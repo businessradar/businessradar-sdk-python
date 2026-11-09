@@ -15,3 +15,6 @@ from .article_list_saved_article_filters_params import (
 from .article_list_saved_article_filters_response import (
     ArticleListSavedArticleFiltersResponse as ArticleListSavedArticleFiltersResponse,
 )
+from .article_retrieve_saved_article_filter_response import (
+    ArticleRetrieveSavedArticleFilterResponse as ArticleRetrieveSavedArticleFilterResponse,
+)
