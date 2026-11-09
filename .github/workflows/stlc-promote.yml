@@ -62,8 +62,11 @@ jobs:
               --repo "${PRODUCTION_REPO}" \
               --base "${PRODUCTION_BRANCH}" \
               --head stainless/release \
-              --title "Release SDK updates" \
+              --title "feat: sync API from production" \
               --body "$(git log --oneline production/${PRODUCTION_BRANCH}..origin/main)"
           else
-            echo "Release PR #${EXISTING_PR} already exists. Force-push has updated it."
+            gh pr edit "${EXISTING_PR}" \
+              --repo "${PRODUCTION_REPO}" \
+              --title "feat: sync API from production"
+            echo "Release PR #${EXISTING_PR} updated with a conventional title."
           fi

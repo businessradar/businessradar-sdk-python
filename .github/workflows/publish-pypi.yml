@@ -25,5 +25,7 @@ jobs:
           version: '0.9.13'
 
       - name: Publish to PyPI
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name || github.ref_name }}
         run: |
           bash ./bin/publish-pypi

@@ -1,11 +1,28 @@
 #!/usr/bin/env bash
 
-set -eux
+set -eu
+
+cd "$(dirname "$0")/.."
+: "${RELEASE_TAG:?Set RELEASE_TAG to the intended existing release tag (vX.Y.Z)}"
+if [ "${GITHUB_ACTIONS:-false}" = true ] && [ "${GITHUB_REF_TYPE:-}" != tag ]; then
+  echo "Publishing requires a tag ref; select an existing release tag, not a branch." >&2
+  exit 1
+fi
+tag_commit=$(git rev-parse --verify "refs/tags/${RELEASE_TAG}^{commit}")
+if [ "$(git rev-parse HEAD)" != "$tag_commit" ]; then
+  echo "Checkout does not match ${RELEASE_TAG}; refusing to publish." >&2
+  exit 1
+fi
+if [ -n "$(git status --porcelain --untracked-files=normal)" ]; then
+  echo "Checkout has uncommitted changes; refusing to publish." >&2
+  exit 1
+fi
 rm -rf dist
 mkdir -p dist
 uv build
+python3 scripts/check-release-version.py "$RELEASE_TAG"
 if [ -n "${PYPI_TOKEN:-}" ]; then
-  uv publish --token=$PYPI_TOKEN
+  uv publish --token="$PYPI_TOKEN" dist/*.whl dist/*.tar.gz
 else
-  uv publish
+  uv publish dist/*.whl dist/*.tar.gz
 fi
