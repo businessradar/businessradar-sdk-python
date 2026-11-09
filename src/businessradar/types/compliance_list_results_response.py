@@ -307,11 +307,26 @@ class ComplianceListResultsResponse(BaseModel):
 
     automated_false_positive_rating_comments: Optional[str] = None
 
+    cluster_id: Optional[str] = None
+    """
+    Opaque group key from the Compliance API: results sharing the same cluster_id
+    form one best-effort semantic similarity group within the same screened subject.
+    Not an identifier of any other result (not an external_id). Null when ungrouped
+    or not adverse media.
+    """
+
     created_at: datetime
 
     entity: ComplianceEntityRetrieve
 
     external_id: str
+
+    is_cluster_head: bool
+    """
+    True for the one representative result per similarity group, plus all ungrouped
+    results. `true` gives a condensed, deduplicated reading view, not a complete
+    screening set — use the unfiltered list for screening.
+    """
 
     name: str
 

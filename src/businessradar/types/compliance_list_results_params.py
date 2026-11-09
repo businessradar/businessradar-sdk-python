@@ -19,6 +19,13 @@ class ComplianceListResultsParams(TypedDict, total=False):
     including results that have not been validated yet.
     """
 
+    is_cluster_head: bool
+    """
+    Filter by whether a result is the one representative of its similarity group,
+    plus all ungrouped results. `true` gives a condensed, deduplicated reading view,
+    not a complete screening set — use the unfiltered list for screening.
+    """
+
     min_confidence: float
     """Filter by minimum confidence score (0.0 - 1.0)"""
 
