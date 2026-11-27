@@ -281,6 +281,12 @@ class CompanyCreateParams(TypedDict, total=False):
 
     primary_name: Optional[str]
 
+    registration_candidate_id: str
+    """
+    The reference number of the company to register, as returned by a company search
+    or match result.
+    """
+
     registration_number: Optional[str]
 
     submit_investigation_when_not_identified: bool

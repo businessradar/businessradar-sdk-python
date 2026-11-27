@@ -311,6 +311,7 @@ class CompaniesResource(SyncAPIResource):
         customer_reference: Optional[str] | Omit = omit,
         duns_number: Optional[str] | Omit = omit,
         primary_name: Optional[str] | Omit = omit,
+        registration_candidate_id: str | Omit = omit,
         registration_number: Optional[str] | Omit = omit,
         submit_investigation_when_not_identified: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -338,6 +339,9 @@ class CompaniesResource(SyncAPIResource):
 
           customer_reference: Customer reference for the client to understand relationship.
 
+          registration_candidate_id: The reference number of the company to register, as returned by a company search
+              or match result.
+
           submit_investigation_when_not_identified: With this option enabled a missing company investigation is submitted
               automatically when the registration cannot be identified, instead of failing
               with company not found.
@@ -361,6 +365,7 @@ class CompaniesResource(SyncAPIResource):
                     "customer_reference": customer_reference,
                     "duns_number": duns_number,
                     "primary_name": primary_name,
+                    "registration_candidate_id": registration_candidate_id,
                     "registration_number": registration_number,
                     "submit_investigation_when_not_identified": submit_investigation_when_not_identified,
                 },
@@ -757,6 +762,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
         customer_reference: Optional[str] | Omit = omit,
         duns_number: Optional[str] | Omit = omit,
         primary_name: Optional[str] | Omit = omit,
+        registration_candidate_id: str | Omit = omit,
         registration_number: Optional[str] | Omit = omit,
         submit_investigation_when_not_identified: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -784,6 +790,9 @@ class AsyncCompaniesResource(AsyncAPIResource):
 
           customer_reference: Customer reference for the client to understand relationship.
 
+          registration_candidate_id: The reference number of the company to register, as returned by a company search
+              or match result.
+
           submit_investigation_when_not_identified: With this option enabled a missing company investigation is submitted
               automatically when the registration cannot be identified, instead of failing
               with company not found.
@@ -807,6 +816,7 @@ class AsyncCompaniesResource(AsyncAPIResource):
                     "customer_reference": customer_reference,
                     "duns_number": duns_number,
                     "primary_name": primary_name,
+                    "registration_candidate_id": registration_candidate_id,
                     "registration_number": registration_number,
                     "submit_investigation_when_not_identified": submit_investigation_when_not_identified,
                 },

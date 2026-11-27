@@ -37,6 +37,7 @@ class TestCompanies:
             customer_reference="customer_reference",
             duns_number="duns_number",
             primary_name="primary_name",
+            registration_candidate_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             registration_number="registration_number",
             submit_investigation_when_not_identified=True,
         )
@@ -204,6 +205,7 @@ class TestAsyncCompanies:
             customer_reference="customer_reference",
             duns_number="duns_number",
             primary_name="primary_name",
+            registration_candidate_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             registration_number="registration_number",
             submit_investigation_when_not_identified=True,
         )
