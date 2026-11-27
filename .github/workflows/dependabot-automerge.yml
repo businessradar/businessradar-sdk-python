@@ -1,0 +1,50 @@
+name: Dependabot auto-merge
+
+# Merges a Dependabot PR once the CI workflow has passed on its head commit.
+# With .github/dependabot.yml set to open-pull-requests-limit: 0, Dependabot
+# only opens security-update PRs here, so this merges security fixes only.
+# Production still needs its "Release SDK updates" PR merged by a person.
+#
+# The merge uses DEPENDABOT_AUTOMERGE_TOKEN (a Dependabot secret, not an
+# Actions secret: runs started from Dependabot's CI can only read those).
+# A merge with the default GITHUB_TOKEN would not trigger stlc-promote, so
+# the fix would never reach the production repository.
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+permissions: {}
+
+jobs:
+  automerge:
+    name: Merge green Dependabot PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.actor.login == 'dependabot[bot]' &&
+      startsWith(github.event.workflow_run.head_branch, 'dependabot/')
+    steps:
+      - name: Merge the PR for this commit
+        env:
+          GH_TOKEN: ${{ secrets.DEPENDABOT_AUTOMERGE_TOKEN }}
+          REPO: ${{ github.repository }}
+          OWNER: ${{ github.repository_owner }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+          SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GH_TOKEN}" ]; then
+            echo "::error::Dependabot secret DEPENDABOT_AUTOMERGE_TOKEN is not set; not merging."
+            exit 1
+          fi
+          PR=$(gh api "repos/${REPO}/pulls?state=open&head=${OWNER}:${BRANCH}" \
+            --jq '.[] | select(.user.login == "dependabot[bot]" and .head.sha == env.SHA) | .number')
+          if [ -z "${PR}" ]; then
+            echo "No open Dependabot PR at ${SHA} on ${BRANCH} (merged, closed or updated since CI ran)."
+            exit 0
+          fi
+          gh pr merge "${PR}" --repo "${REPO}" --squash --match-head-commit "${SHA}"
+          echo "Merged #${PR}."
