@@ -34,7 +34,7 @@ class CompanyListResponse(BaseModel):
 
     country: str
 
-    duns_number: str
+    duns_number: Optional[str] = None
 
     external_id: Optional[str] = None
 
@@ -47,5 +47,12 @@ class CompanyListResponse(BaseModel):
     website_icon_url: Optional[str] = None
 
     is_out_of_business: Optional[bool] = None
+
+    registration_candidate_id: Optional[str] = None
+    """Reference number for this company.
+
+    Always present. Pass it as `registration_candidate_id` to POST /companies or
+    POST /portfolios/{id}/companies to register it.
+    """
 
     ticker_symbol: Optional[str] = None
