@@ -13,8 +13,9 @@ __all__ = ["Registration"]
 class Registration(BaseModel):
     """### Company Registration
 
-    Handles the registration of companies for monitoring. New companies can be
-    identified by DUNS number, local registration number, or name and country.
+    Handles the registration of companies for monitoring. Identify the company with
+    the `registration_candidate_id` from a company search or match result, or by
+    local registration number or name and country.
     """
 
     external_id: str
