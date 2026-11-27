@@ -1,0 +1,26 @@
+# Dependabot policy for the Stainless-generated SDK.
+#
+# Dependency changes are made here, in the staging repository; stlc-promote
+# ships them to businessradar/businessradar-sdk-python. Production rejects any
+# PR that doesn't come from stainless/release or release-please, so Dependabot
+# security PRs there would always fail.
+#
+# - No routine version-bump PRs: Stainless owns the dependency set and
+#   regenerates manifests/lockfiles, so routine bumps only cause conflicts.
+# - Security fixes still arrive, grouped into a single PR per run.
+# - No github-actions ecosystem: workflows are generated and SHA-pinned by
+#   Stainless.
+version: 2
+updates:
+  - package-ecosystem: uv
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    groups:
+      security:
+        applies-to: security-updates
+        patterns: ["*"]
+    commit-message:
+      prefix: chore
+      include: scope
